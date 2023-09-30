@@ -15,19 +15,33 @@ document.addEventListener("DOMContentLoaded", event=> {
     // prints the firebase connection to check for bugs
     console.log(app); 
 
-    db = firebase.firestore();
-    //connect to a data source in firebase
-    var reviewsCollection = db.collection("Reviews");
-
-    reviewsCollection.get().then(function(querySnapshot) {
-        querySnapshot.forEach(function(doc) {
-            // doc.data() contains the data for each document in the collection
-            var reviewData = doc.data();
-            console.log(reviewData);
-        });
-    }).catch(function(error) {
-        console.error("Error getting documents:", error);
+    // Check the user's authentication status
+    firebase.auth().onAuthStateChanged(function(user) {
+        if (!user) { // need to adjust this value to correct web host
+            // User is not authenticated, redirect to the login page
+            // if (window.location.href!='https://xchange-2af7e.web.app') {
+            //     // window.location.href = 'https://xchange-2af7e.web.app'; // Change 'index.html' to your login page URL
+            // }
+        } else {
+            // User is authenticated, you can continue with other logic
+            // connect to the firebase server database
+            db = firebase.firestore();
+            //connect to a data source in firebase
+            var reviewsCollection = db.collection("Reviews");
+        
+            reviewsCollection.get().then(function(querySnapshot) {
+                querySnapshot.forEach(function(doc) {
+                    // doc.data() contains the data for each document in the collection
+                    var reviewData = doc.data();
+                    console.log(reviewData); // tbr
+                });
+            }).catch(function(error) {
+                console.error("Error getting documents:", error);
+            });
+        }
     });
+
+    
 
 });
 
@@ -40,8 +54,10 @@ function googleLogin() {
         const user = result.user;
         document.write(`Hello ${user.displayName}`)
         console.log(user); // tbr
+        window.location.href = "./university.html";
     })
     .catch(err => {
         console.log(err);
     })
+
 }
