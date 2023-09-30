@@ -1,0 +1,28 @@
+/* 
+
+light color palette:
+Aero Blue: #96B6C5
+Bluish Gray: #ADC4CE
+Isabelline: #EEE0C9
+Alabaster: #F1F0E8
+Lavender Gray: #DDDDEE
+
+Dark Color Palette:
+Dark Blue: #354F5B
+Deep Teal: #465B66
+Rich Brown: #7C6D5E
+Charcoal Gray: #464646
+Deep Purple: #635D7D
+
+*/
+:root {
+    --text-color: #464646;
+    /* Text color is deep teal and can be adjusted */
+    --background-color: #96B6C5;
+    /* background color is aero blue and can be adjusted */
+    --hover-color: #ADC4CE;
+    /* hover color is blueish gray and can be adjusted */
+    --error-color: #ff0000;
+    /* error color is blueish gray and can be adjusted */
+
+}
