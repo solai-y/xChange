@@ -39,3 +39,7 @@ body {
     background-color: var(--background-color);
     border-bottom: var(--text-color) 1px solid;
 }
+
+.active {
+    font: weight 1500px;;
+}
