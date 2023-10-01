@@ -38,6 +38,8 @@ document.addEventListener("DOMContentLoaded", event=> {
             }).catch(function(error) {
                 console.error("Error getting documents:", error);
             });
+
+            
         }
     });
 
@@ -60,3 +62,4 @@ function googleLogin() {
         console.log(err);
     })
 }
+
