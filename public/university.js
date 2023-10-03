@@ -1,12 +1,13 @@
 
 function getAllUniversities() {
-    axios.get('https://universities.hipolabs.com/search', {
+    axios.get('http://universities.hipolabs.com/search', {
         params: {
             
         }
     })
     .then(response => {
         for (let university of response.data) {
+            console.log(university);
             // elements of row data and card
             let album = document.createElement('div');
             let container = document.createElement('div'); 
@@ -22,7 +23,7 @@ function getAllUniversities() {
 
 
             // text nodes
-            let tnUniName = document.createTextNode(university.name, university.country);
+            let tnUniName = document.createTextNode(university.name);
 
             // setting card classes
             album.setAttribute('class', 'album py-5 bg-light');
