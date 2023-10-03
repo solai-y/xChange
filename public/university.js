@@ -1,55 +1,52 @@
 
 function getAllUniversities() {
-    axios.get('https://universities.hipolabs.com/search', {
+    axios.get('http://universities.hipolabs.com/search', {
         params: {
             
         }
     })
     .then(response => {
         for (let university of response.data) {
+            console.log(university)
             // elements of row data and card
-            let album = document.createElement('div');
-            let container = document.createElement('div'); 
-            let cardRow = document.createElement('div');
-            let individualCol = document.createElement('div');
             let individualCard = document.createElement('div');
-            let uniPhoto = document.createElement('svg'); 
-            let cardBody = document.createElement('div');
-            let cardContent = document.createElement('p'); 
-            let viewCol = document.createElement('div');
+            let uniPhoto = document.createElement('svg');
+            let cardContent = document.createElement('div');
+            let uniName = document.createElement('p');
+            let viewSection = document.createElement('div');
             let viewButton = document.createElement('div');
-            let view = document.createElement('button');
+            let viewName = document.createElement('button');
+            
 
 
             // text nodes
             let tnUniName = document.createTextNode(university.name, university.country);
-
+            let btnName = document.createTextNode('Explore');
             // setting card classes
-            album.setAttribute('class', 'album py-5 bg-light');
-            container.setAttribute('class', 'container');
-            cardRow.setAttribute('class', 'row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3');
-            individualCol.setAttribute('class', 'col');
-            individualCard.setAttribute('class', 'card shadow-sm')
+            individualCard.setAttribute('class', 'card shadow-sm');
             uniPhoto.setAttribute('class', 'bd-placeholder-img card-img-top');
-            cardBody.setAttribute('class', 'card-body');
-            cardContent.setAttribute('class', 'card-title');
-            viewCol.setAttribute('class', 'd-flex justify-content-between align-items-center');
+            cardContent.setAttribute('class', 'card-body');
+            uniName.setAttribute('class', 'card-title');
+            viewSection.setAttribute('class', 'd-flex justify-content-between align-items-center');
             viewButton.setAttribute('class', 'btn-group');
-            view.setAttribute('class', 'btn btn-sm btn-outline-secondary');
-
-
+            viewName.setAttribute('class', 'btn btn-sm btn-outline-secondary');
+            
             // a.setAttribute('href', university.webpages[0]);
 
             // appending children
-            view.appendChild(viewButton);
-            viewButton.append(viewCol);
-            viewCol.appendChild(cardContent);
-            cardContent.appendChild(tnUniName);
-            uniPhoto.appendChild(individualCard);
-            individualCard.appendChild(individualCol);
-            individualCol.appendChild(cardRow);
-            cardRow.appendChild(container);
-            container.appendChild(album);
+            uniName.appendChild(tnUniName);
+            cardContent.appendChild(uniName);
+            individualCard.appendChild(cardContent);
+            individualCard.appendChild(uniPhoto);
+            viewName.appendChild(btnName);
+            viewButton.appendChild(viewName);
+            viewSection.appendChild(viewButton);
+            cardContent.appendChild(viewSection);
+            
+
+
+            document.getElementById('uniResults').appendChild(individualCard)
+
         }
 
         // <tr>
