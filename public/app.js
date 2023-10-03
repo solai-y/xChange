@@ -9,14 +9,14 @@ const firebaseConfig = {
     measurementId: "G-94L4SG8ZW0"
 };
 
-document.addEventListener("DOMContentLoaded", event=> {
+document.addEventListener("DOMContentLoaded", event => {
     // initialize firebase
     const app = firebase.initializeApp(firebaseConfig);
     // prints the firebase connection to check for bugs
-    console.log(app); 
-
+    console.log(app);
+    //function  to register 
     // Check the user's authentication status
-    firebase.auth().onAuthStateChanged(function(user) {
+    firebase.auth().onAuthStateChanged(function (user) {
         if (!user) { // need to adjust this value to correct web host
             // User is not authenticated, redirect to the login page
             // if (window.location.href!='https://xchange-2af7e.web.app') {
@@ -28,22 +28,22 @@ document.addEventListener("DOMContentLoaded", event=> {
             db = firebase.firestore();
             //connect to a data source in firebase
             var reviewsCollection = db.collection("Reviews");
-        
-            reviewsCollection.get().then(function(querySnapshot) {
-                querySnapshot.forEach(function(doc) {
+
+            reviewsCollection.get().then(function (querySnapshot) {
+                querySnapshot.forEach(function (doc) {
                     // doc.data() contains the data for each document in the collection
                     var reviewData = doc.data();
                     console.log(reviewData); // tbr
                 });
-            }).catch(function(error) {
+            }).catch(function (error) {
                 console.error("Error getting documents:", error);
             });
 
-            
+
         }
     });
 
-    
+
 
 });
 
@@ -52,14 +52,14 @@ function googleLogin() {
     const provider = new firebase.auth.GoogleAuthProvider();
     // log in promise
     firebase.auth().signInWithPopup(provider)
-    .then(result => {
-        const user = result.user;
-        document.write(`Hello ${user.displayName}`)
-        console.log(user); // tbr
-        window.location.href = "./university.html";
-    })
-    .catch(err => {
-        console.log(err);
-    })
+        .then(result => {
+            const user = result.user;
+            document.write(`Hello ${user.displayName}`)
+            console.log(user); // tbr
+            window.location.href = "./university.html";
+        })
+        .catch(err => {
+            console.log(err);
+        })
 }
 
