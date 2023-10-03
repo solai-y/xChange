@@ -43,3 +43,7 @@ body {
 .active {
     font: weight 1500px;;
 }
+
+.logo {
+    width: 40px;
+}
