@@ -8,30 +8,48 @@ function getAllUniversities() {
     .then(response => {
         for (let university of response.data) {
             // elements of row data and card
-            let tr = document.createElement('tr'); // not sure if we want to use table formatting?
-            let td = document.createElement('td');
-            let cardDiv = document.createElement('div');// main card div
-            let cardBody = document.createElement('div');// card body div
-            let a = document.createElement('a'); // should set up link to the uni page (in our website) here 
-            let uniName = document.createElement('h5');// card title
+            let album = document.createElement('div');
+            let container = document.createElement('div'); 
+            let cardRow = document.createElement('div');
+            let individualCol = document.createElement('div');
+            let individualCard = document.createElement('div');
+            let uniPhoto = document.createElement('svg'); 
+            let cardBody = document.createElement('div');
+            let cardContent = document.createElement('p'); 
+            let viewCol = document.createElement('div');
+            let viewButton = document.createElement('div');
+            let view = document.createElement('button');
+
 
             // text nodes
             let tnUniName = document.createTextNode(university.name, university.country);
 
             // setting card classes
-            cardDiv.setAttribute('class', 'card');
+            album.setAttribute('class', 'album py-5 bg-light');
+            container.setAttribute('class', 'container');
+            cardRow.setAttribute('class', 'row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3');
+            individualCol.setAttribute('class', 'col');
+            individualCard.setAttribute('class', 'card shadow-sm')
+            uniPhoto.setAttribute('class', 'bd-placeholder-img card-img-top');
             cardBody.setAttribute('class', 'card-body');
-            uniName.setAttribute('class', 'card-title');
+            cardContent.setAttribute('class', 'card-title');
+            viewCol.setAttribute('class', 'd-flex justify-content-between align-items-center');
+            viewButton.setAttribute('class', 'btn-group');
+            view.setAttribute('class', 'btn btn-sm btn-outline-secondary');
+
+
             // a.setAttribute('href', university.webpages[0]);
 
             // appending children
-            uniName.appendChild(tnUniName);
-            cardBody.appendChild(uniName);
-            cardDiv.appendChild(cardBody);
-            td.appendChild(cardDiv);
-            a.appendChild(td);
-            tr.appendChild(a);
-            document.getElementById('UniversityList').appendChild(tr);
+            view.appendChild(viewButton);
+            viewButton.append(viewCol);
+            viewCol.appendChild(cardContent);
+            cardContent.appendChild(tnUniName);
+            uniPhoto.appendChild(individualCard);
+            individualCard.appendChild(individualCol);
+            individualCol.appendChild(cardRow);
+            cardRow.appendChild(container);
+            container.appendChild(album);
         }
 
         // <tr>
