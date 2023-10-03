@@ -29,6 +29,11 @@ Deep Purple: #635D7D
 
 }
 
+.row img {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
 body {
     background-color: var(--background-color);
     color: var(--text-color);
@@ -40,6 +45,7 @@ body {
 .navbar {
     background-color: var(--background-color);
     border-bottom: var(--text-color) 1px solid;
+    width: 100%;
 }
 
 .active {
@@ -53,6 +59,13 @@ section{
     height: 100vh;
     width:100%;
 }
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  }
 
 .text-overlay {
     position: absolute;
