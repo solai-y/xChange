@@ -1,75 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>xChange</title>
-    <link rel = "stylesheet" href = "stylesheets/style.css">
-    <script defer src = "scrollsequence.js" ></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">		
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>xChange</title>
+  <link rel="stylesheet" href="stylesheets/style.css">
+  <script defer src="scrollsequence.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 </head>
-    
+
 <body>
-    <!-- BS navbar: start --> 
-    <nav class="navbar navbar-expand-lg"> 
-        <div class="container-fluid">  
-            <a class="navbar-brand" href="index.html"><img src = "logo.jpeg" class="logo">xChange</a> 
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> 
-                <span class="navbar-toggler-icon"></span> 
-            </button> 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent"> 
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0"> 
-                    <li class="nav-item"> 
-                        <a class="nav-link active" aria-current="page" href="#University">University</a> 
-                    </li> 
-                    <li class="nav-item"> 
-                        <a class="nav-link" href="login_page_plan.html">Plan</a> 
-                    </li> 
-                    <li class="nav-item"> 
-                        <a class="nav-link" href="login_page_todo.html">To-Do List</a> 
-                    </li> 
-                </ul> 
-                <button type = "button" class = "btn btn-outline-primary" ><a class="nav-link d-flex" href="login_page.html">Login</a></button>
-            </div> 
-        </div> 
-    </nav> 
-    <!-- BS navbar: start --> 
-    <section class = "hidden">
-            <div class = "row">
-                <img src = "for_figma_(Website).png">
-            </div>
-    </section>
-    <section class = "hidden" id="section1">
-        <div class="row">
-            <img src = "moreinfo.png"> 
-        </div>
-    </section>
-    <!--end of scrollsequence-->
-    <section class = "text">
-        <h2> No worries we got you covered!</h2>
-        <p>
-            At xChange we will help you choose and get the university that you want to visit!
-        </p>
-        <button type = "button" class = "btn btn-outline-primary"><a class="nav-link d-flex" href="login_page.html">Check Us Out</button>
-    </section>
-    <!--Section University-->
-    <section id = "University">
-      <hr>
-      <h1> UNIVERSITY</h1>
-      <div class = "text-center">
-      <img src = "university-building-college-svgrepo-com.svg" class = "rounded float-left " alt = "univicon">
-        A one-stop go to check for all the available universities and courses that you can go 
+  <!-- BS navbar: start -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="index.html"><img src="images/logo.jpeg" class="logo">xChange</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#University">University</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#plan">Plan</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="todo">To-Do List</a>
+          </li>
+        </ul>
+        <button type="button" class="btn btn-outline-primary">
+        <a class="nav-link d-flex" href="login_page.html">Login</a></button>
       </div>
-    </section>
+    </div>
+  </nav>
+  <!-- BS navbar: start -->
+  <section class="hidden">
+    <div class="row">
+      <img src="images/for_figma_(Website).png">
+    </div>
+  </section>
+  <section class="hidden" id="section1">
+    <div class="row">
+      <img src="images/moreinfo.png">
+    </div>
+  </section>
+  <!--end of scrollsequence-->
+  <!--Section University-->
+  <br>
+  <br>
+  <br>
+  <br>
+  <section id="University">
+    <hr>
+    <h1> UNIVERSITY</h1>
+    <img src="university-building-college-svgrepo-com.svg" class="rounded float-left " alt="univicon">
+    A one-stop go to check for all the available universities and courses that you can go
+  </section>
     <!--Section Plan-->
-    <section class = "plan">
-      
-    </section>
+  <section id="plan">
+    <hr>
+    <h1>PLAN</h1>
+    <img src = "images/plan.png">
+    We will help you with your planning!
+  </section>
+  <!--Section To do list-->
+  <section id = "todo">
+    <hr>
+    <h1>TO-DO LIST</h1>
+    <img src = "images/todo.svg">
+    With our curated to-do list you will not miss anything!
+  </section>
+  <!--End of everything-->
+  <section class="text">
+    <h2> No worries we got you covered!</h2>
+    <p>
+      At xChange we will help you choose and get the university that you want to visit!
+    </p>
+    <button type="button" class="btn btn-outline-primary"><a class="nav-link d-flex" href="login_page.html">Check Us
+        Out</a></button>
+  </section>
 
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>		
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+    crossorigin="anonymous"></script>
 </body>
 </html>
-
-
