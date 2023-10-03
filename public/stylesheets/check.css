@@ -230,7 +230,7 @@ input {
 }
 
 .overlay {
-    background-image: url("/public/images/Simple\ Black\ and\ White\ Text\ Instagram\ Post.gif");
+    background-image: url("../images/Simple\ Black\ and\ White\ Text\ Instagram\ Post.gif");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 0 0;
