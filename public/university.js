@@ -7,7 +7,7 @@ function getAllUniversities() {
     })
     .then(response => {
         for (let university of response.data) {
-            console.log(university)
+            console.log(university);
             // elements of row data and card
             let individualCard = document.createElement('div');
             let uniPhoto = document.createElement('svg');
