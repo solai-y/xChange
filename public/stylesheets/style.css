@@ -18,7 +18,7 @@ Deep Purple: #635D7D
 :root {
     --text-color: #464646;
     /* Text color is deep teal and can be adjusted */
-    --background-color: white;
+    --background-color: rgb(167, 189, 255);
     /* background color is aero blue and can be adjusted */
     --hover-color: #ADC4CE;
     /* hover color is blueish gray and can be adjusted */
@@ -32,6 +32,8 @@ Deep Purple: #635D7D
 body {
     background-color: var(--background-color);
     color: var(--text-color);
+    padding: 0px;
+    margin: 0px;
 }
 
 /* Navbar styling */
@@ -43,12 +45,7 @@ body {
 .active {
     font: weight 1500px;;
 }
-body{
-    background-color:white;
-    color: black;
-    padding: 0;
-    margin: 0;
-}
+
 section{
     
     place-items: center;
@@ -129,4 +126,6 @@ section{
 
 .login{
     text-align: center;
+}
+    width: 5px;
 }

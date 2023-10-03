@@ -1,6 +1,6 @@
 
 function getAllUniversities() {
-    axios.get('https://universities.hipolabs.com/search', {
+    axios.get('http://universities.hipolabs.com/search', {
         params: {
             
         }
