@@ -36,11 +36,35 @@ img {
 
 }
 
+.buffer {
+    width: 100%;
+    min-height: 20vh;
+    background-color: var(--text-color);
+}
+
+.parallax1 {
+    background-image: url("../images/air.jpg");
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.parallax2 {
+    background-image: url("../images/Universities.png");
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
 body {
     background-color: var(--background-color);
     color: var(--text-color);
     padding: 0px;
     margin: 0;
+
 }
 
 /* Navbar styling */
@@ -65,8 +89,7 @@ section{
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 50%;
-  }
+}
 
 .text-overlay {
     /* position: absolute; */
@@ -111,7 +134,7 @@ section{
 }
 
 #University img{
-    width:700px;
+    max-width:400px;
 }
 
 .logo {
@@ -121,9 +144,11 @@ section{
 #plan h1{
     text-align: center;
 }
+
 #plan img{
-    width: 700px;
+    max-width: 400px;
 }
+
 #plan{
     font-size: 30px;
 }
@@ -131,8 +156,9 @@ section{
 #todo h1{
     text-align: center;
 }
+
 #todo img{
-    width: 700px;
+    max-width: 400px;
 }
 #todo{
     font-size: 30px;
@@ -141,4 +167,3 @@ section{
 .login{
     text-align: center;
 }
-
