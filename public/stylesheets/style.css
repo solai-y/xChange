@@ -58,6 +58,21 @@ img {
     background-size: cover;
 }
 
+.parallax3 {
+    background-image: url("../images/air.jpg");
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.parallax4 {
+    background-image: url("../images/Universities.png");
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 
 body {
     background-color: var(--background-color);
