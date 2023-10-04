@@ -1,35 +1,3 @@
-const http = require('http');
-const httpProxy = require('http-proxy');
-
-const proxy = httpProxy.createProxyServer({});
-
-const server = http.createServer((req, res) => {
-  // Set up a rule to proxy requests to the HTTP API
-  if (req.url.startsWith('/universities')) {
-    // Make an Axios request to the external API
-    axios.get('http://universities.hipolabs.com/search' + req.url)
-      .then(apiResponse => {
-        // Forward the API response to the client
-        res.writeHead(apiResponse.status, apiResponse.headers);
-        res.end(apiResponse.data);
-      })
-      .catch(error => {
-        // Handle Axios or API request errors
-        console.error(error);
-        res.writeHead(500, { 'Content-Type': 'text/plain' });
-        res.end('Internal Server Error');
-      });
-  } else {
-    // Handle other requests as needed
-    res.writeHead(200, { 'Content-Type': 'text/plain' });
-    res.end('Hello, World!\n');
-  }
-});
-
-server.listen(3000, () => {
-  console.log('Server is running on port 3000');
-});
-
 function getAllUniversities() {
     axios.get('./universities', {
         params: {
@@ -38,7 +6,6 @@ function getAllUniversities() {
     })
     .then(response => {
         for (let university of response.data) {
-            console.log(university);
             // elements of row data and card
             let individualCard = document.createElement('div');
             let uniPhoto = document.createElement('svg');
