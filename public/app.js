@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", event => {
             //connect to a data source in firebase
             var reviewsCollection = db.collection("Reviews");
 
-            reviewsCollection.get().then(function (querySnapshot) {
+            reviewsCollection.limit(1).get().then(function (querySnapshot) {
                 querySnapshot.forEach(function (doc) {
                     // doc.data() contains the data for each document in the collection
                     var reviewData = doc.data();
