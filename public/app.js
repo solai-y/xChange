@@ -26,6 +26,7 @@ document.addEventListener("DOMContentLoaded", event => {
             // User is authenticated, you can continue with other logic
             // connect to the firebase server database
             db = firebase.firestore();
+            auth = firebase.auth();
             //connect to a data source in firebase
             var reviewsCollection = db.collection("Reviews");
 

@@ -1,5 +1,5 @@
 var registerDB = null;
-function register_form(e) {
+function register_forms(e) {
     db = firebase.firestore();
     let name = document.getElementById("name").value;
     let email = document.getElementById("email").value;
@@ -26,7 +26,28 @@ function register_form(e) {
 
     document.getElementById("registration").reset()
 }
-}
+} 
+
+const registerForm = document.getElementById("registration");
+const registerSubmitButton = document.getElementById("registerSubmit");
+registerSubmitButton.addEventListener("click", (e) => {
+    e.preventDefault();
+    // getting users inputs
+    let name = document.getElementById("name").value;
+    let email = document.getElementById("email").value;
+    let password = document.getElementById("password").value;
+    let confirmpassword = document.getElementById("confirmpassword").value;
+    auth.createUserWithEmailAndPassword(email, password).then(cred=>{
+        // sets docid ac the credential id that is automatically generated
+        return db.collection("Users").doc(cred.user.uid).set({
+            name: name,
+            // allows u to provide other input field to store in the database
+        })
+    }).then(() => {
+        // function that runs when the data successfully added to the database
+        registerForm.reset()
+    });
+});
 
 
 function account_login(e) {
@@ -35,6 +56,7 @@ function account_login(e) {
     var password = document.getElementById("password_login").value;
     var db = firebase.firestore();
     var usersCollection = db.collection("Users");
+    console.log(usersCollection.data);
 
 
     // Query Firestore to check if the email and password match
@@ -69,7 +91,3 @@ function account_login(e) {
         console.error("Error logging in: ", error);
     });
 }
-
-
-
-
