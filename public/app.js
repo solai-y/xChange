@@ -61,5 +61,4 @@ function googleLogin() {
         .catch(err => {
             console.log(err);
         })
-}
-
+};
