@@ -3,6 +3,10 @@ body {
     padding: 0;
 }
 
+h1 {
+    font-size: 39px;
+}
+
 #universityHome {
     background-image: url('../images/universityCourtyard.jpg');
     background-size: cover;
@@ -32,4 +36,30 @@ section {
 ::-webkit-scrollbar {
     display: none;
     scrollbar-width: none;
+}
+
+
+.searchBox {
+    color: black;
+    box-shadow: 0px 2px 8px 3px rgba(0, 0, 0, 0.2);
+    border-radius: 16px;
+    background-color: rgb(248, 247, 249, 0.7);
+    padding: 32px 48px 64px;
+    width: 70%;
+    margin: auto;
+}
+
+.searchBox label {
+    font-size: 30px;
+    display: flex;
+    text-align: center;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    text-align: center;
+}
+
+input[type='text']:focus {
+    border: black 1.5px solid;
+    color: black;
+    box-shadow: 0px 2px 8px 3px rgba(0, 0, 0, 0.2);
 }
