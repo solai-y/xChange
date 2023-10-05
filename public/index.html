@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>xChange</title>
-  <link rel="stylesheet" href="stylesheets/style.css">
+  
   <script defer src="scrollsequence.js"></script>
   <!-- Font Awesome -->
   <link
@@ -20,6 +20,7 @@
   />
   <!-- MDB -->
   <link rel="stylesheet" href="css/mdb.min.css" />
+  <link rel="stylesheet" href="stylesheets/style.css">
 </head>
 
 <body>
@@ -78,120 +79,113 @@
 
 
   <!-- Carousel-->
-  
-  <div
-  id="carouselVideoExample"
-  class="carousel slide carousel-fade"
-  data-mdb-ride="carousel"
->
-  <!-- Indicators -->
-  <div class="carousel-indicators">
+  <div class="container-fluid" style="padding-left:0px;padding-right:0px;">
+    <div
+    id="carouselVideo"
+    class="carousel slide carousel-fade"
+    data-mdb-ride="carousel"
+    data-mdb-interval="3000"
+    data-mdb-wrap="true"
+    data-mdb-pause="false">
+    <!-- Indicators -->
+    <div class="carousel-indicators">
+      <button
+        type="button"
+        data-mdb-target="#carouselVideo"
+        data-mdb-slide-to="0"
+        class="active"
+        aria-current="true"
+        aria-label="Slide 1"
+      ></button>
+      <button
+        type="button"
+        data-mdb-target="#carouselVideo"
+        data-mdb-slide-to="1"
+        aria-label="Slide 2"
+      ></button>
+      <button
+        type="button"
+        data-mdb-target="#carouselVideo"
+        data-mdb-slide-to="2"
+        aria-label="Slide 3"
+      ></button>
+    </div>
+    <!-- Inner -->
+    <div class="carousel-inner">
+      <!-- Single item -->
+      <div class="carousel-item active">
+          <video class="w-100" autoplay loop muted>
+            <source src="images/OSAKA.mp4" type="video/mp4">
+          </video>
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Osaka University</h5>
+            <p>
+              JAPAN
+            </p>
+        </div>
+      </div>
+      <!-- Single item -->
+      <div class="carousel-item">
+        <video class="w-100" autoplay loop muted>
+          <source src="images/Queens.mp4" type="video/mp4" />
+        </video>
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Queen's University</h5>
+          <p>
+            CANADA
+          </p>
+        </div>
+      </div>
+      <!-- Single item -->
+      <div class="carousel-item">
+        <video class="w-100" autoplay loop muted>
+          <source
+            src="images/Nanjing.mp4"
+            type="video/mp4"
+          />
+        </video>
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Nanjing University</h5>
+          <p>
+            CHINA
+          </p>
+        </div>
+      </div>
+    </div>
+    <!-- Inner -->
+    <!-- Controls -->
     <button
+      class="carousel-control-prev"
       type="button"
-      data-mdb-target="#carouselVideoExample"
-      data-mdb-slide-to="0"
-      class="active"
-      aria-current="true"
-      aria-label="Slide 1"
-    ></button>
+      data-mdb-target="#carouselVideo"
+      data-mdb-slide="prev"
+    >
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
     <button
+      class="carousel-control-next"
       type="button"
-      data-mdb-target="#carouselVideoExample"
-      data-mdb-slide-to="1"
-      aria-label="Slide 2"
-    ></button>
-    <button
-      type="button"
-      data-mdb-target="#carouselVideoExample"
-      data-mdb-slide-to="2"
-      aria-label="Slide 3"
-    ></button>
+      data-mdb-target="#carouselVideo"
+      data-mdb-slide="next"
+    >
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+    </div>
+
   </div>
-
-  <!-- Inner -->
-  <div class="carousel-inner">
-    <!-- Single item -->
-    <div class="carousel-item active">
-      <video class="img-fluid" autoplay loop muted>
-        <source src="https://mdbcdn.b-cdn.net/img/video/Tropical.mp4" type="video/mp4" />
-      </video>
-      <div class="carousel-caption d-none d-md-block">
-        <h5>First slide label</h5>
-        <p>
-          Nulla vitae elit libero, a pharetra augue mollis interdum.
-        </p>
-      </div>
-    </div>
-
-    <!-- Single item -->
-    <div class="carousel-item">
-      <video class="img-fluid" autoplay loop muted>
-        <source src="https://mdbcdn.b-cdn.net/img/video/forest.mp4" type="video/mp4" />
-      </video>
-      <div class="carousel-caption d-none d-md-block">
-        <h5>Second slide label</h5>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        </p>
-      </div>
-    </div>
-
-    <!-- Single item -->
-    <div class="carousel-item">
-      <video class="img-fluid" autoplay loop muted>
-        <source
-          src="https://mdbcdn.b-cdn.net/img/video/Agua-natural.mp4"
-          type="video/mp4"
-        />
-      </video>
-      <div class="carousel-caption d-none d-md-block">
-        <h5>Third slide label</h5>
-        <p>
-          Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-        </p>
-      </div>
-    </div>
-  </div>
-  <!-- Inner -->
-
-  <!-- Controls -->
-  <button
-    class="carousel-control-prev"
-    type="button"
-    data-mdb-target="#carouselVideoExample"
-    data-mdb-slide="prev"
-  >
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button
-    class="carousel-control-next"
-    type="button"
-    data-mdb-target="#carouselVideoExample"
-    data-mdb-slide="next"
-  >
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-</div>
   
-
-
-
-
-
-  <div class="buffer"></div>
 
   <!--Section University-->
-  <div class="parallax2">
     <div id="University" class="container-fluid">
         <br>
         <h1> UNIVERSITY</h1>
         <img src="images/GenericUniversitySVG.png" class="center">
         A one-stop go to check for all the available universities and courses that you can go
     </div>
-  </div>
 
+  <br>
   <div class="buffer"></div>
   
     <!--Section Plan-->
