@@ -1,0 +1,15 @@
+.form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .password-input {
+    align-items: center;
+  }
+
+  .password-input button {
+    display: inline-block;
+    margin-left: 2px;
+    font-size: 10px;
+  }
