@@ -24,6 +24,12 @@ section {
     margin: 0;
 }
 
-body, html {
+/* body, html {
     overflow: hidden;
+} */
+
+/* WebKit-based browsers (Chrome, Safari) */
+::-webkit-scrollbar {
+    display: none;
+    scrollbar-width: none;
 }
