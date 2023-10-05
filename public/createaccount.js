@@ -4,9 +4,10 @@ function register_form(e) {
     let name = document.getElementById("name").value;
     let email = document.getElementById("email").value;
     let password = document.getElementById("password").value;
-
-    if (name == "" || email == "" || password == "") {
+    
+    if (name == "" && email == "" && password == "") {
         // Show the warning message
+        console.log(name);
         document.getElementById("warning").style.display = "block";
         return false; // Prevent the form from submitting
     }else{
