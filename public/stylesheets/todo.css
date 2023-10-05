@@ -18,29 +18,56 @@
   /* Styling for each task card */
   .task-card {
     background-color: #fff;
-    border: 1px solid #ccc;
+    border: 1px solid rgb(128, 128, 147);
     border-radius: 5px;
     padding: 10px;
     width: 100%; /* Adjust the width as needed */
     height: 80%;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 500ms cubic-bezier(0.19, 1, 0.22, 1);
   }
-  
+
+  .task-card:hover {
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Increase box-shadow on hover */
+    transform: scale(1.05); /* Slightly scale up on hover */
+}
+
   /* Styling for the task header (name and date) */
   .task-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-  }
-  
+    transition: box-shadow 0.3s, transform 0.3s;
+}
+
   /* Styling for the task icon */
   .task-icon {
     /* Add your icon styles here */
   }
   
   /* Styling for the task body (checkbox and description) */
-  .task-body {
+  .task-body:hover {
     margin-top: 10px; /* Adjust spacing between header and body */
+    background: #309df0;
+    color: #fff;
+    transform: scale(1.1);
+    z-index: 9;   
+  }
+
+  .task-body:hover::before {
+    background: rgb(85 108 214 / 10%);
+  }
+
+  .task-body:before {content: "";
+    position: absolute;
+    background: rgb(85 108 214 / 5%);
+    width: 170px;
+    height: 400px;
+    z-index: -1;
+    transform: rotate(42deg);
+    right: -56px;
+    top: -23px;
+    border-radius: 35px;
   }
   
   /* Styling for the task checkbox */
@@ -82,7 +109,9 @@ html, body {
 
 /* Style for the strikethrough effect on completed items */
 .completed-item label {
-    text-decoration: line-through;
+    color: #888; /* Change the color to a muted gray */
+    opacity: 0.6; /* Reduce opacity to make it less prominent */
+    transition: color 0.3s, opacity 0.3s; /* Add a smooth transition effect */
 }
 
   
