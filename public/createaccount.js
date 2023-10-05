@@ -1,33 +1,5 @@
-var registerDB = null;
-function register_forms(e) {
-    db = firebase.firestore();
-    let name = document.getElementById("name").value;
-    let email = document.getElementById("email").value;
-    let password = document.getElementById("password").value;
-    if (name == "" || email || "" || password == "") {
-        // Show the warning message
-        console.log(name);
-        document.getElementById("warning").style.display = "block";
-        return false; // Prevent the form from submitting
-    }else{
 
-    var registerDB = db.collection("Users");
-    registerDB.add({
-        name: document.getElementById("name").value,
-        email: document.getElementById("email").value,
-        password: document.getElementById("password").value
-    })
-        .then((docRef) => {
-            console.log("Document written with ID: ", docRef.id);
-        })
-        .catch((error) => {
-            console.error("Error adding document: ", error);
-        });
-
-    document.getElementById("registration").reset()
-}
-} 
-
+// register
 const registerForm = document.getElementById("registration");
 const registerSubmitButton = document.getElementById("registerSubmit");
 registerSubmitButton.addEventListener("click", (e) => {
@@ -46,48 +18,42 @@ registerSubmitButton.addEventListener("click", (e) => {
     }).then(() => {
         // function that runs when the data successfully added to the database
         registerForm.reset()
+
     });
 });
 
 
-function account_login(e) {
-    console.log("account_login function is executing...");
-    var email = document.getElementById("email_login").value;
-    var password = document.getElementById("password_login").value;
-    var db = firebase.firestore();
-    var usersCollection = db.collection("Users");
-    console.log(usersCollection.data);
+// log in
+const loginForm = document.getElementById("login_page"); // Assuming you have a form with the id "login"
+const loginSubmitButton = document.getElementById("loginSubmit");
+loginSubmitButton.addEventListener("click", (e) => {
+    e.preventDefault();
 
+    // Getting user's login credentials
+    let email = document.getElementById("email_login").value;
+    let password = document.getElementById("password_login").value;
 
-    // Query Firestore to check if the email and password match
-    usersCollection.get()
-    .then((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-            var userData = doc.data();
-            var userCredentialsArray = userData.credentials; // Assuming credentials is an array in each document
-            
-            // Iterate through each set of credentials in the array
-            userCredentialsArray.forEach((credentials) => {
-                var storedEmail = credentials.email;
-                var storedPassword = credentials.password;
-            
-                // Check if the provided email and password match the stored credentials
-                if (email === storedEmail && password === storedPassword) {
-                    // Successful login
-                    var name = userData.name;
-                    
-                    console.log("Welcome, " + name + "!");
-                    // You can redirect the user to a secure page here
-                    return; // Exit the loop
-                }
-                localStorage.setItem("email",email);
-            });
+    // Authenticate the user with Firebase
+    firebase.auth().signInWithEmailAndPassword(email, password)
+        .then((userCredential) => {
+            // successful login
+            var user = userCredential.user;
+            console.log("Welcome, " + user.displayName + "!");
+            console.log(user)
+            sessionStorage.setItem('user', JSON.stringify(user));
+            // email verification
+            if (!user.emailVerified) {
+                user.sendEmailVerification().then(e=> {
+                    console.log("email verification has been sent!");
+                    // console.log(e.message);
+                }).catch(e=> {
+                    // console.log(e.message);
+                });
+            }
+        })
+        .catch((error) => {
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            console.error("Error logging in: " + errorMessage);
         });
-
-        // If the loop finishes and no match is found, it's an invalid login
-        console.error("Invalid email or password.");
-    })
-    .catch((error) => {
-        console.error("Error logging in: ", error);
-    });
-}
+});
