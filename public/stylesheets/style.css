@@ -75,7 +75,6 @@ img {
 }
 
 body {
-    background-color: var(--background-color);
     color: var(--text-color);
     padding: 0px;
     margin: 0;
@@ -86,6 +85,24 @@ body {
 .navbar {
     background-color: var(--background-color);
     border-bottom: var(--text-color) 1px solid;
+}
+
+.navbar:hover {
+    font-size: medium;
+}
+
+.nav-link:hover {
+    font-weight: 400;
+    font-size: medium;
+    color: var(black);
+    transform: scale(1.1);
+    transition: transform 0.2s;
+}
+
+.nav-item {
+    padding: 10px;
+    font-size: medium;
+    transition: transform 0.2s;
 }
 
 .active {
