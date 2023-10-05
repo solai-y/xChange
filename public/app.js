@@ -11,9 +11,14 @@ const firebaseConfig = {
 
 document.addEventListener("DOMContentLoaded", event => {
     // initialize firebase
+
+    // comment out the below line when deploying
     const app = firebase.initializeApp(firebaseConfig);
+
     // prints the firebase connection to check for bugs
+
     console.log(app);
+
     //function  to register 
     // Check the user's authentication status
     firebase.auth().onAuthStateChanged(function (user) {

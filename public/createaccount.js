@@ -9,8 +9,12 @@ registerSubmitButton.addEventListener("click", (e) => {
     let email = document.getElementById("email").value;
     let password = document.getElementById("password").value;
     let confirmpassword = document.getElementById("confirmpassword").value;
+    if (typeof auth === "undefined") {
+        auth = firebase.auth();
+    }
+
     auth.createUserWithEmailAndPassword(email, password).then(cred=>{
-        // sets docid ac the credential id that is automatically generated
+        // sets doc id ac the credential id that is automatically generated
         return db.collection("Users").doc(cred.user.uid).set({
             name: name,
             // allows u to provide other input field to store in the database
@@ -56,5 +60,11 @@ loginSubmitButton.addEventListener("click", (e) => {
             var errorCode = error.code;
             var errorMessage = error.message;
             console.error("Error logging in: " + errorMessage);
+            let newP = document.createElement("p")
+            let tnP = document.createTextNode(errorMessage);
+            newP.appendChild(tnP);
+            newP.style.fontSize = "8px";
+            newP.style.color = "red";
+            document.getElementById("errorField").appendChild(newP);
         });
 });
