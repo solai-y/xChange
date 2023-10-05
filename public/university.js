@@ -107,3 +107,5 @@ function getAllUniversitiesFirebase() {
 document.addEventListener("DOMContentLoaded", event => {
     getAllUniversitiesFirebase();
 });
+
+console.log(localStorage.getItem("email"));
