@@ -1,0 +1,29 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#universityHome {
+    background-image: url('../images/universityCourtyard.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    /* background-color: rgba(255, 255, 255, 0.7);  */
+    margin: 0;
+    padding: 0;
+    background-position: center center;
+}
+
+section {
+    padding: 0;
+    margin: 0;
+}
+
+#bg1 {
+    box-sizing: unset;
+    padding: 0;
+    margin: 0;
+}
+
+body, html {
+    overflow: hidden;
+}

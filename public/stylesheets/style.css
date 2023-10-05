@@ -105,12 +105,8 @@ body {
     transition: transform 0.2s;
 }
 
-.active {
-    font: weight 1500px;;
-}
 
 section{
-    
     place-items: center;
     align-content: center;
     height: 100vh;

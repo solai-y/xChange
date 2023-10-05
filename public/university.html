@@ -28,6 +28,7 @@
     <!-- Axios -->
     <script src='https://unpkg.com/axios/dist/axios.min.js'></script>
     <link rel="stylesheet" href="./stylesheets/style.css">
+    <link rel="stylesheet" href="./stylesheets/university.css">
 </head>
 <body>
     <script src="app.js"></script>
@@ -65,12 +66,22 @@
  
 
     <!-- Cards Header -->
-    <div class="py-5 text-center container">
-        <div class="row py-lg-5">
-            <div class="col-lg-6 col-md-8 mx-auto">
-                <h1>University</h1>
+    <div class="text-center container-fluid" id="bg1">
+        <section id="universityHome">
+            <div class="row py-lg-5">
+                <div class="col-lg-6 col-md-8 mx-auto">
+                    <h1>University</h1>
+                </div>
             </div>
-        </div>
+            <div class="row py-lg-5">
+                <div class="col-lg-6 col-md-8 mx-auto">
+                    <div class="">
+                        <label for="universityName" id="universityNameLabel">University Name</label>
+                        <input class="form-control" type="text" name="universityName" placeholder="University Name" id="universityName">
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
 
     <!-- Cards per university -->
