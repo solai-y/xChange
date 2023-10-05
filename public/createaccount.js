@@ -50,6 +50,7 @@ loginSubmitButton.addEventListener("click", (e) => {
                     // console.log(e.message);
                 });
             }
+            window.location.href = "./university.html"
         })
         .catch((error) => {
             var errorCode = error.code;
