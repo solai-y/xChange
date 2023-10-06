@@ -89,7 +89,7 @@ body {
 
 /* Navbar styling */
 .navbar {
-    background-color: var(--background-color);
+    background-color: antiquewhite; 
     border-bottom: var(--text-color) 1px solid;
 }
 
