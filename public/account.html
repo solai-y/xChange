@@ -215,6 +215,7 @@
                       <button type="button" onclick="location.href='index.html'" class="btn btn-sm btn-danger">Log Out</button>
                     </div>
                   </form>
+
                   <!-- <hr class="my-10" /> -->
                   <!-- log out button -->
                     <!-- <div class="col-md-12">
@@ -243,8 +244,14 @@
 </body>
 </html>
 
-
+  <script src="createaccount.js"></script>
+  
   <script>
+    var data = JSON.parse(sessionStorage.getItem('user'));
+    console.log(data);
+    var emailadd = data.email;
+    var emailInput = document.getElementById("email");
+    emailInput.value = emailadd;
 
     document.addEventListener("DOMContentLoaded", function () {
     const passwordInput = document.getElementById("password");
