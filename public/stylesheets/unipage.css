@@ -30,6 +30,9 @@ section {
   .container-fluid {
     min-height: auto;
   }
+  .carousel-inner {
+    min-height: 100vh;
+  }
 }
 
 @media (min-width: 601px) {
