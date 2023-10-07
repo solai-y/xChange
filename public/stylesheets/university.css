@@ -8,7 +8,7 @@ h1 {
 }
 
 #universityHome {
-    background-image: url('../images/universityCourtyard.jpg');
+    background-image: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url('../images/universityCourtyard.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     /* background-color: rgba(255, 255, 255, 0.7);  */
@@ -26,6 +26,11 @@ section {
     box-sizing: unset;
     padding: 0;
     margin: 0;
+}
+
+#universityPageCTA {
+    color: white;
+    margin-top: 70px;
 }
 
 /* body, html {
@@ -47,6 +52,7 @@ section {
     padding: 32px 48px 64px;
     width: 70%;
     margin: auto;
+    margin-top: 120px;
 }
 
 .searchBox label {
