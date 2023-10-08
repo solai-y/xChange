@@ -131,11 +131,12 @@
                         <div>
                           <div class="d-flex align-items-center">
                             <a href="#" class="avatar avatar-lg bg-warning rounded-circle text-white">
-                              <img alt="..." src="./images/logo.jpeg">
+                              <img id="profilepicture" alt="imageInput" src="./images/profile photo.jpeg" width="200" height="100">
                             </a>
                             <div class="ms-4">
                               <span class="h4 d-block mb-0">David AK</span>
-                              <button type="button" class="text-sm font-semibold text-muted">Change photo</button>
+                              <label for="profilepicture" class="text-sm font-semibold text-muted">Choose a profile picture:</label>
+                              <input type="file" id="imageInput"></input>
                             </div>
                           </div>
                         </div>
@@ -266,6 +267,21 @@
     });
   });
 
+      // JavaScript to handle image selection and update
+    const imageInput = document.getElementById("imageInput");
+    const profilepicture = document.getElementById("profilepicture");
 
+    imageInput.addEventListener("change", function() {
+        const selectedFile = imageInput.files[0];
+
+        if (selectedFile) {
+            // Create a URL for the selected image and set it as the src of the profile image
+            const imageUrl = URL.createObjectURL(selectedFile);
+            profilepicture.src = imageUrl;
+        } else {
+            // If no file is selected or the selection is canceled, you can set a default image
+            profilepicture.src = "./images/profilepicture.jpeg";
+        }
+    });
 </script>
 
