@@ -63,6 +63,7 @@ video {
     background-repeat: no-repeat;
     background-size: cover;
 }
+
 /* 
 .parallax3 {
     background-image: url("../images/air.jpg");
@@ -71,6 +72,19 @@ video {
     background-repeat: no-repeat;
     background-size: cover;
 } */
+
+div .col-4 {
+    align-items: center !important;
+}
+
+.airplane {
+        display: grid;
+        align-items: center;
+        grid-template-columns: 1fr 1fr 1fr;
+        column-gap: 5px;
+        
+}
+
 
 .parallax4 {
     background-image: url("../images/Universities.png");
@@ -89,7 +103,7 @@ body {
 
 /* Navbar styling */
 .navbar {
-    background-color: antiquewhite; 
+    background-color: antiquewhite;
     border-bottom: var(--text-color) 1px solid;
 }
 
@@ -112,11 +126,11 @@ body {
 }
 
 
-section{
+section {
     place-items: center;
     align-content: center;
     height: 100vh;
-    width:100%;
+    width: 100%;
 }
 
 .center {
@@ -130,75 +144,78 @@ section{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+    background-color: rgba(255, 255, 255, 0.8);
+    /* Semi-transparent white background */
     padding: 10px;
     opacity: 0;
     transition: opacity 0.2s ease-in-out;
 }
 
-.hidden{
+.hidden {
     opacity: 0;
     transform: translateX(-100%);
     transition: all 2s;
 
 }
 
-.show{
+.show {
     opacity: 1;
     filter: blur(0);
     transform: translateX(0);
 }
 
-.text{
+.text {
     padding: 500px;
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 50px;
 }
 
-#University h1{
-    text-align: center; 
+#University h1 {
+    text-align: center;
     font-family: Arial, Helvetica, sans-serif;
 
 }
-#University{
+
+#University {
     font-size: 30px;
     font-family: Arial, Helvetica, sans-serif;
 
 }
 
-#University img{
-    max-width:200px;
+#University img {
+    max-width: 200px;
 }
 
 .logo {
     width: 40px;
 }
 
-#plan h1{
+#plan h1 {
     text-align: center;
 }
 
-#plan img{
+#plan img {
     max-width: 200px;
 }
 
-#plan{
+#plan {
     font-size: 30px;
 }
 
-#todo h1{
+#todo h1 {
     text-align: center;
 }
 
-#todo img{
+#todo img {
     max-width: 200px;
 }
-#todo{
+
+#todo {
     font-size: 30px;
 }
 
-.login{
+.login {
     text-align: center;
 }
 
