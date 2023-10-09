@@ -42,19 +42,19 @@ video {
     min-width: 60vw;
 }
 
-.buffer {
+/* .buffer {
     width: 100%;
     min-height: 20vh;
     background-color: var(--text-color);
-}
-
+} */
+/* 
 .parallax1 {
     background-image: url("../images/air.jpg");
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-}
+} */
 
 .parallax2 {
     background-image: url("../images/Universities.png");
@@ -63,14 +63,14 @@ video {
     background-repeat: no-repeat;
     background-size: cover;
 }
-
+/* 
 .parallax3 {
     background-image: url("../images/air.jpg");
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-}
+} */
 
 .parallax4 {
     background-image: url("../images/Universities.png");
