@@ -28,7 +28,13 @@ Deep Purple: #635D7D
     /* navbar color */
 
 }
-
+.gray img{
+    width: 550px;
+    height:500px;
+}
+.insert{
+    background-image: url("images/student1.jpeg");
+}
 .center-content {
         text-align: center;
         display: flex;
@@ -259,33 +265,7 @@ div .col-4 {
     opacity: 1;
     transform: rotateY(0) scale(1.1)
 }
-.airplane {
-        display: grid;
-        align-items: center;
-        grid-template-columns: 1fr 1fr 1fr;
-        column-gap: 5px;
-        
-}
-.center{
-    height:200%;
-    width: 200%;
-}
-.container-fluid{
-    padding-left: 0px;
-    padding-right: 0px;
-}
 
-
-.mission{
-    font-size: 40px;
-    color: black;
-}
-body {
-    color: var(--text-color);
-    padding: 0px;
-    margin: 0;
-
-}
 
 /* Navbar styling */
 .navbar {

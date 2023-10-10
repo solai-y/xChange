@@ -1,25 +1,20 @@
-const carousel = document.getElementById("myCarousel");
-const images = carousel.getElementsByTagName("img");
-let currentIndex = 0;
-
-function showSlide(index) {
-    for (let i = 0; i < images.length; i++) {
-        images[i].style.display = "none";
-    }
-    images[index].style.display = "block";
-}
-
-function prevSlide() {
-    currentIndex = (currentIndex - 1 + images.length) % images.length;
-    showSlide(currentIndex);
-}
-
-function nextSlide() {
-    currentIndex = (currentIndex + 1) % images.length;
-    showSlide(currentIndex);
-}
-
-// Initially, display the first slide
-showSlide(currentIndex);
+$(document).ready(function(){
+    $(".testimonial .indicators li").click(function(){
+      var i = $(this).index();
+      var targetElement = $(".testimonial .tabs li");
+      targetElement.eq(i).addClass('active');
+      targetElement.not(targetElement[i]).removeClass('active');
+              });
+              $(".testimonial .tabs li").click(function(){
+                  var targetElement = $(".testimonial .tabs li");
+                  targetElement.addClass('active');
+                  targetElement.not($(this)).removeClass('active');
+              });
+          });
+  $(document).ready(function(){
+      $(".slider .swiper-pagination span").each(function(i){
+          $(this).text(i+1).prepend("0");
+      });
+  });
 
 
