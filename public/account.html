@@ -32,7 +32,7 @@
 </head>
 
 <body>
-    <script src="app.js"></script>
+    <script src="account.js"></script>
 
     <!-- BS navbar: start --> 
     <nav class="navbar navbar-expand-lg"> 
@@ -53,7 +53,10 @@
                         <a class="nav-link" href="./todo.html">To-Do List</a> 
                     </li> 
                 </ul> 
-                <a class="nav-link d-flex active disabled" href="./account.html">Profile</a> 
+                <a href="./account.html" class="navimage avatar-lg bg-warning rounded-circle text-white">
+                  <img class="profilepicture" alt="imageInput" src="./images/profile photo.jpeg">
+                </a> 
+                
             </div> 
         </div> 
     </nav> 
@@ -77,7 +80,7 @@
                 <!-- Toggle -->
                 <a href="#" id="sidebarAvatar" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <div class="avatar-parent-child">
-                    <img alt="Image Placeholder" src="https://images.unsplash.com/photo-1548142813-c348350df52b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80" class="avatar avatar- rounded-circle">
+                    <img alt="imageInput" src="./images/profile photo.jpeg" class="avatar avatar- rounded-circle">
                     <span class="avatar-child avatar-badge bg-success"></span>
                   </div>
                 </a>
@@ -129,14 +132,15 @@
                     <div class="card-body">
                       <div class="d-flex align-items-center">
                         <div>
-                          <div class="d-flex align-items-center">
+                          <div class="image d-flex align-items-center">
                             <a href="#" class="avatar avatar-lg bg-warning rounded-circle text-white">
-                              <img id="profilepicture" alt="imageInput" src="./images/profile photo.jpeg" width="200" height="100">
+                              <img class="profilepicture" alt="imageInput" src="./images/profile photo.jpeg">
                             </a>
                             <div class="ms-4">
                               <span class="h4 d-block mb-0">David AK</span>
                               <label for="profilepicture" class="text-sm font-semibold text-muted">Choose a profile picture:</label>
                               <input type="file" id="imageInput"></input>
+
                             </div>
                           </div>
                         </div>
@@ -152,13 +156,13 @@
                       <div class="col-md-6">
                         <div class="">
                           <label class="form-label" for="first_name">First name</label>
-                          <input type="text" class="form-control" id="first_name">
+                          <input type="text" class="form-control" id="first_name" name="first_name">
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="">
                           <label class="form-label" for="last_name">Last name</label>
-                          <input type="text" class="form-control" id="last_name">
+                          <input type="text" class="form-control" id="last_name" name="last_name">
                         </div>
                       </div>
                     </div>
@@ -166,25 +170,25 @@
                       <div class="col-md-6">
                         <div class="">
                           <label class="form-label" for="email">Email</label>
-                          <input type="email" class="form-control" id="email" required>
+                          <input type="email" class="form-control" id="email" name="email" required>
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="">
                           <label class="form-label" for="phone_number">Phone number</label>
-                          <input type="tel" class="form-control" id="phone_number">
+                          <input type="text" class="form-control" id="phone_number" name="phone_number">
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="">
                           <label class="form-label" for="primary_degree">Primary Degree</label>
-                          <input type="text" class="form-control" id="primary_degree" required>
+                          <input type="text" class="form-control" id="primary_degree" name="primary_degree" required>
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="">
                           <label class="form-label" for="secondary_degree">Secondary Degree</label>
-                          <input type="text" class="form-control" id="secondary_degree">
+                          <input type="text" class="form-control" id="secondary_degree" name="secondary_degree">
                         </div>
                       </div>
                       <div class="col-md-6">
@@ -213,7 +217,7 @@
                     </div>
                     <div class="text-end">
                       <button type="button" class="btn btn-sm btn-neutral me-2">Cancel</button>
-                      <button type="submit" class="btn btn-sm btn-primary">Save</button>
+                      <button type="submit" class="btn btn-sm btn-primary" id="save">Save</button>
                       <button type="button" onclick="location.href='index.html'" class="btn btn-sm btn-danger">Log Out</button>
                     </div>
                   </form>
@@ -244,8 +248,6 @@
     
 </body>
 </html>
-
-  <script src="createaccount.js"></script>
   
   <script>
     var data = JSON.parse(sessionStorage.getItem('user'));
@@ -269,7 +271,7 @@
 
       // JavaScript to handle image selection and update
     const imageInput = document.getElementById("imageInput");
-    const profilepicture = document.getElementById("profilepicture");
+    const profilepicture = document.getElementsByClassName("profilepicture")[0];
 
     imageInput.addEventListener("change", function() {
         const selectedFile = imageInput.files[0];
@@ -284,4 +286,3 @@
         }
     });
 </script>
-

@@ -1,0 +1,122 @@
+// Firebase Info
+const firebaseConfig = {
+    apiKey: "AIzaSyA7ogQ3Eqn-tu_2NYnzHfo-ARsYwR5hSKg",
+    authDomain: "xchange-2af7e.firebaseapp.com",
+    projectId: "xchange-2af7e",
+    storageBucket: "xchange-2af7e.appspot.com",
+    messagingSenderId: "663333771385",
+    appId: "1:663333771385:web:a0c12e9499e1d78e7adca8",
+    measurementId: "G-94L4SG8ZW0"
+};
+
+document.addEventListener("DOMContentLoaded", event => {
+    // initialize firebase
+
+
+
+    // comment out the below line when deploying
+    if (typeof app == 'undefined') {
+        const app = firebase.initializeApp(firebaseConfig);
+    }
+
+    // prints the firebase connection to check for bug
+    // console.log(app);
+    if (typeof db== 'undefined') {
+        db = firebase.firestore();
+        auth = firebase.auth();
+    }
+    //connect to a data source in firebase
+    var userCollection = db.collection("Users").doc(data.uid);
+    console.log(userCollection);
+    userCollection.get().then(function (doc) {
+        if (doc.exists) {
+            // doc.data() contains the data for the specific document
+            var reviewData = doc.data();
+            console.log(reviewData);
+            var nameInput = document.getElementById("first_name");
+            var phonenumberInput = document.getElementById("phone_number");
+            var primarydegreeInput = document.getElementById("primary_degree");
+            var secondarydegreeInput = document.getElementById("secondary_degree");
+
+            nameInput.value = reviewData.name;
+
+            if (phonenumberInput) {
+                if (typeof reviewData.phone_number !== 'undefined') {
+                  phonenumberInput.value = reviewData.phone_number;
+                } else {
+                  phonenumberInput.value = "";
+                }
+              } else {
+                phonenumberInput.value = "";
+              }
+              
+
+              if (primarydegreeInput) {
+                if (typeof reviewData.primary_degree !== 'undefined') {
+                  primarydegreeInput.value = reviewData.primary_degree;
+                } else {
+                  primarydegreeInput.value = "";
+                }
+              } else {
+                primarydegreeInput.value = "";
+              }
+              
+
+              if (secondarydegreeInput) {
+                if (typeof reviewData.secondary_degree !== 'undefined') {
+                  secondarydegreeInput.value = reviewData.secondary_degree;
+                } else {
+                  secondarydegreeInput.value = "";
+                }
+              } else {
+                secondarydegreeInput.value = "";
+              }
+              
+
+            // save data
+            var saveButton = document.getElementById("save");
+
+            saveButton.addEventListener("click", function(){
+              userCollection.update({
+                phone_number : document.getElementById("phone_number").value,
+                primary_degree : document.getElementById("primary_degree").value,
+                secondary_degree : document.getElementById("secondary_degree").value
+              })
+              .then(function() {
+                console.log("Document successfully updated!");
+                // Optionally, you can redirect or show a success message
+                
+            })
+            .catch(function(error) {
+                console.error("Error updating document: ", error);
+                // Handle the error, e.g., show an error message
+            });
+            });
+        } else {
+            // Document doesn't exist
+            console.log("Document does not exist.");
+        }
+    }).catch(function (error) {
+        console.error("Error getting the document:", error);
+    });
+
+
+
+});
+
+
+// function to log in with google account (fully functional but need to test failed)
+function googleLogin() {
+    const provider = new firebase.auth.GoogleAuthProvider();
+    // log in promise
+    firebase.auth().signInWithPopup(provider)
+        .then(result => {
+            const user = result.user;
+            document.write(`Hello ${user.displayName}`)
+            console.log(user); // tbr
+            window.location.href = "./university.html";
+        })
+        .catch(err => {
+            console.log(err);
+        })
+};

@@ -18,6 +18,8 @@ document.addEventListener("DOMContentLoaded", event => {
     // prints the firebase connection to check for bugs
 
     console.log(app);
+    db = firebase.firestore();
+    auth = firebase.auth();
 
     //function  to register 
     // Check the user's authentication status
