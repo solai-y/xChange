@@ -30,7 +30,7 @@ Deep Purple: #635D7D
 }
 
 .center-content {
-    text-align: center;
+        text-align: center;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -41,6 +41,14 @@ img {
     padding-right: 0px;
     width: 100%;
 
+}
+#wanttogo{
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height:50   vh;
+        font-size: 40px;
 }
 .video-container {
     display: flex;
