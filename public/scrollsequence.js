@@ -1,14 +1,25 @@
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-        console.log(entry)
-        if (entry.isIntersecting){
-            entry.target.classList.add('show');
-        }else{
-            entry.target.classList.remove("show");
-        }
-    });
-});
-const hiddenElements = document.querySelectorAll(".hidden");
-hiddenElements.forEach((el) => observer.observe(el));
+const carousel = document.getElementById("myCarousel");
+const images = carousel.getElementsByTagName("img");
+let currentIndex = 0;
+
+function showSlide(index) {
+    for (let i = 0; i < images.length; i++) {
+        images[i].style.display = "none";
+    }
+    images[index].style.display = "block";
+}
+
+function prevSlide() {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    showSlide(currentIndex);
+}
+
+function nextSlide() {
+    currentIndex = (currentIndex + 1) % images.length;
+    showSlide(currentIndex);
+}
+
+// Initially, display the first slide
+showSlide(currentIndex);
 
 

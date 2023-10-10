@@ -24,59 +24,233 @@ Deep Purple: #635D7D
     /* hover color is blueish gray and can be adjusted */
     --error-color: #ff0000;
     /* error color is blueish gray and can be adjusted */
-    --default-color: #EEE0C9;
+    --default-color: #ffffff;
     /* navbar color */
 
 }
 
-
+.center-content {
+    text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh; /* Adjust the height to your preference */
+}
 img {
     padding-left: 0px;
     padding-right: 0px;
     width: 100%;
 
 }
+.video-container {
+    display: flex;
+    align-items: center; /* Center vertically */
+}
 
 video {
-    max-width: 60vw;
-    min-width: 60vw;
+    width: 50%; /* Adjust the width as needed */
 }
 
-/* .buffer {
-    width: 100%;
-    min-height: 20vh;
-    background-color: var(--text-color);
-} */
-/* 
-.parallax1 {
-    background-image: url("../images/air.jpg");
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-} */
-
-.parallax2 {
-    background-image: url("../images/Universities.png");
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+.text-container {
+    flex: 1; /* Take remaining space */
+    padding: 20px; /* Adjust padding as needed */
 }
 
-/* 
-.parallax3 {
-    background-image: url("../images/air.jpg");
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-} */
 
+video {
+    max-width: 80vw;
+    min-width: 40vw;
+}
+
+.Header{
+    padding: 20px;
+    text-align: center;
+}
+
+
+
+.carousel {
+    position: relative;
+    text-align: center;
+    box-sizing: border-box;
+}
 div .col-4 {
     align-items: center !important;
 }
+.carousel {
+    position: relative;
+    text-align: center;
+    box-sizing: border-box
+}
 
+.carousel * {
+    box-sizing: border-box
+}
+
+.carousel__track {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    position: relative
+}
+
+.carousel__viewport {
+    overflow: hidden
+}
+
+.carousel__sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    border: 0
+}
+
+.carousel__pagination {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    line-height: 0;
+    margin: 10px 0 0
+}
+
+.carousel__pagination-button {
+    display: block;
+    border: 0;
+    margin: 0;
+    cursor: pointer;
+    padding: var(--vc-pgn-margin);
+    background: transparent
+}
+
+.carousel__pagination-button:after {
+    display: block;
+    content: "";
+    width: var(--vc-pgn-width);
+    height: var(--vc-pgn-height);
+    border-radius: var(--vc-pgn-border-radius);
+    background-color: var(--vc-pgn-background-color)
+}
+
+.carousel__pagination-button:hover:after,.carousel__pagination-button--active:after {
+    background-color: var(--vc-pgn-active-color)
+}
+
+.carousel__prev,.carousel__next {
+    box-sizing: content-box;
+    background: var(--vc-nav-background);
+    border-radius: var(--vc-nav-border-radius);
+    width: var(--vc-nav-width);
+    height: var(--vc-nav-height);
+    text-align: center;
+    font-size: var(--vc-nav-height);
+    padding: 0;
+    color: var(--vc-nav-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    border: 0;
+    cursor: pointer;
+    margin: 0 10px;
+    top: 50%;
+    transform: translateY(-50%)
+}
+
+.carousel__prev:hover,.carousel__next:hover {
+    color: var(--vc-nav-color-hover)
+}
+
+.carousel__next--disabled,.carousel__prev--disabled {
+    cursor: not-allowed;
+    opacity: .5
+}
+
+.carousel__prev {
+    left: 0
+}
+
+.carousel__next {
+    right: 0
+}
+
+.carousel--rtl .carousel__prev {
+    left: auto;
+    right: 0
+}
+
+.carousel--rtl .carousel__next {
+    right: auto;
+    left: 0
+}
+
+.carousel__icon {
+    width: var(--vc-icn-width);
+    height: var(--vc-icn-width);
+    fill: currentColor
+}
+
+.carousel__slide {
+    scroll-snap-stop:auto;flex-shrink: 0;
+    margin: 0;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+
+.carousel__item[data-v-36db4d5f] {
+    height: 70vh
+}
+
+.caroImg[data-v-36db4d5f] {
+    object-fit: cover;
+    width: 100%;
+    height: 100%
+}
+
+.carousel__slide[data-v-36db4d5f] {
+    padding: 5px
+}
+
+.carousel__viewport[data-v-36db4d5f] {
+    perspective: 2000px
+}
+
+.carousel__track[data-v-36db4d5f] {
+    transform-style: preserve-3d
+}
+
+.carousel__slide--sliding[data-v-36db4d5f] {
+    transition: .5s
+}
+
+.carousel__slide[data-v-36db4d5f] {
+    opacity: .9;
+    transform: rotateY(-20deg) scale(.9)
+}
+
+.carousel__slide--active~.carousel__slide[data-v-36db4d5f] {
+    transform: rotateY(20deg) scale(.9)
+}
+
+.carousel__slide--prev[data-v-36db4d5f] {
+    opacity: 1;
+    transform: rotateY(-10deg) scale(.9)
+}
+
+.carousel__slide--next[data-v-36db4d5f] {
+    opacity: 1;
+    transform: rotateY(10deg) scale(.9)
+}
+
+.carousel__slide--active[data-v-36db4d5f] {
+    opacity: 1;
+    transform: rotateY(0) scale(1.1)
+}
 .airplane {
         display: grid;
         align-items: center;
@@ -84,16 +258,20 @@ div .col-4 {
         column-gap: 5px;
         
 }
-
-
-.parallax4 {
-    background-image: url("../images/Universities.png");
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+.center{
+    height:200%;
+    width: 200%;
+}
+.container-fluid{
+    padding-left: 0px;
+    padding-right: 0px;
 }
 
+
+.mission{
+    font-size: 40px;
+    color: black;
+}
 body {
     color: var(--text-color);
     padding: 0px;
@@ -171,21 +349,6 @@ section {
     font-size: 50px;
 }
 
-#University h1 {
-    text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
-
-}
-
-#University {
-    font-size: 30px;
-    font-family: Arial, Helvetica, sans-serif;
-
-}
-
-#University img {
-    max-width: 200px;
-}
 
 .logo {
     width: 40px;
