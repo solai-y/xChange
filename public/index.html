@@ -9,6 +9,26 @@
   
   <script defer src="scrollsequence.js"></script>
   <script defer src="js/typewriter.js"></script>
+
+  <!-- update the version number as needed -->
+  <script defer src="/__/firebase/10.4.0/firebase-app-compat.js"></script>
+  <!-- include only the Firebase features as you need -->
+  <script defer src="/__/firebase/10.4.0/firebase-auth-compat.js"></script>
+  <script defer src="/__/firebase/10.4.0/firebase-database-compat.js"></script>
+  <script defer src="/__/firebase/10.4.0/firebase-firestore-compat.js"></script>
+  <script defer src="/__/firebase/10.4.0/firebase-functions-compat.js"></script>
+  <script defer src="/__/firebase/10.4.0/firebase-messaging-compat.js"></script>
+  <script defer src="/__/firebase/10.4.0/firebase-storage-compat.js"></script>
+  <script defer src="/__/firebase/10.4.0/firebase-analytics-compat.js"></script>
+  <script defer src="/__/firebase/10.4.0/firebase-remote-config-compat.js"></script>
+  <script defer src="/__/firebase/10.4.0/firebase-performance-compat.js"></script>
+  <!-- 
+    initialize the SDK after all desired features are loaded, set useEmulator to false
+    to avoid connecting the SDK to running emulators.
+  -->
+  <script defer src="/__/firebase/init.js?useEmulator=true"></script> 
+  
+
   <!-- Font Awesome -->
   <link
     rel="stylesheet"
@@ -199,33 +219,32 @@
         <h1> UNIVERSITY</h1>
         <img src="images/GenericUniversitySVG.png" class="center">
         A one-stop go to check for all the available universities and courses that you can go
+
+      <div class="album py-5 bg-light">
+        <div class="container" id="resultsContainer">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" id="uniResults">
+        </div>
+  
+  
+  
+  
+  
+        
+
+      <!-- Calls axios pull -->
+      <script src="university.js"></script>
+
+
     </div>
 
   <br>
   <div class="buffer"></div>
   
     <!--Section Plan-->
-  <div class="parallax3">
-    <div id="plan" class="container-fluid">
-      <br>
-      <h1>PLAN</h1>
-      <img src = "images/plan.png" class="center">
-      We will help you with your planning!
-    </div>
-  </div>
+
 
   <div class="buffer"></div>
 
-  <!--Section To do list-->
-  <div class="parallax4">
-    <div id = "todo" class="container-fluid">
-      <h1>TO-DO LIST</h1>
-      <img src = "images/todo.svg" class="center">
-      With our curated to-do list you will not miss anything!
-    </div>
-  </div>
-
-  <div class="buffer" style="min-height:5vh;"></div>
 
   <!--End of everything-->
   <div class="container-fluid">
