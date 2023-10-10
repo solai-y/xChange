@@ -7,43 +7,43 @@ function getAllUniversities() {
     .then(response => {
         for (let university of response.data) {
             // elements of row data and card
-            let individualCard = document.createElement('div');
-            let uniPhoto = document.createElement('svg');
-            let cardContent = document.createElement('div');
-            let uniName = document.createElement('p');
-            let viewSection = document.createElement('div');
-            let viewButton = document.createElement('div');
-            let viewName = document.createElement('button');
+            // let individualCard = document.createElement('div');
+            // let uniPhoto = document.createElement('svg');
+            // let cardContent = document.createElement('div');
+            // let uniName = document.createElement('p');
+            // let viewSection = document.createElement('div');
+            // let viewButton = document.createElement('div');
+            // let viewName = document.createElement('button');
             
 
 
-            // text nodes
-            let tnUniName = document.createTextNode(doc.name);
-            let btnName = document.createTextNode('Explore');
-            // setting card classes
-            individualCard.setAttribute('class', 'card shadow-sm');
-            uniPhoto.setAttribute('class', 'bd-placeholder-img card-img-top');
-            cardContent.setAttribute('class', 'card-body');
-            uniName.setAttribute('class', 'card-title');
-            viewSection.setAttribute('class', 'd-flex justify-content-between align-items-center');
-            viewButton.setAttribute('class', 'btn-group');
-            viewName.setAttribute('class', 'btn btn-sm btn-outline-secondary');
+            // // text nodes
+            // let tnUniName = document.createTextNode(doc.name);
+            // let btnName = document.createTextNode('Explore');
+            // // setting card classes
+            // individualCard.setAttribute('class', 'card shadow-sm');
+            // uniPhoto.setAttribute('class', 'bd-placeholder-img card-img-top');
+            // cardContent.setAttribute('class', 'card-body');
+            // uniName.setAttribute('class', 'card-title');
+            // viewSection.setAttribute('class', 'd-flex justify-content-between align-items-center');
+            // viewButton.setAttribute('class', 'btn-group');
+            // viewName.setAttribute('class', 'btn btn-sm btn-outline-secondary');
             
-            // a.setAttribute('href', university.webpages[0]);
+            // // a.setAttribute('href', university.webpages[0]);
 
-            // appending children
-            uniName.appendChild(tnUniName);
-            cardContent.appendChild(uniName);
-            individualCard.appendChild(cardContent);
-            individualCard.appendChild(uniPhoto);
-            viewName.appendChild(btnName);
-            viewButton.appendChild(viewName);
-            viewSection.appendChild(viewButton);
-            cardContent.appendChild(viewSection);
+            // // appending children
+            // uniName.appendChild(tnUniName);
+            // cardContent.appendChild(uniName);
+            // individualCard.appendChild(cardContent);
+            // individualCard.appendChild(uniPhoto);
+            // viewName.appendChild(btnName);
+            // viewButton.appendChild(viewName);
+            // viewSection.appendChild(viewButton);
+            // cardContent.appendChild(viewSection);
             
 
 
-            document.getElementById('uniResults').appendChild(individualCard)
+            // document.getElementById('uniResults').appendChild(individualCard)
 
         }
     })
@@ -57,7 +57,7 @@ function getAllUniversitiesFirebase() {
     //connect to a data source in firebase
     var uniCollection = db.collection("University");
 
-    uniCollection.limit(2).get().then(function (querySnapshot) {
+    uniCollection.limit(3).get().then(function (querySnapshot) {
         querySnapshot.forEach(function (doc) {
             console.log(doc.data().gallery);
             // doc.data() contains the data for each document in the collection
