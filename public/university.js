@@ -84,18 +84,20 @@ function getAllUniversitiesFirebase() {
             viewSection.setAttribute('class', 'd-flex justify-content-between align-items-center');
             viewButton.setAttribute('class', 'btn-group');
             viewName.setAttribute('class', 'btn btn-sm btn-outline-secondary');
-            
-            // a.setAttribute('href', university.webpages[0]);
 
             // appending children
             uniName.appendChild(tnUniName);
-            cardContent.appendChild(uniName);
-            individualCard.appendChild(cardContent);
+
+            // Appending uniPhoto before cardContent
             individualCard.appendChild(uniPhoto);
+            individualCard.appendChild(cardContent);
+
+            cardContent.appendChild(uniName);
+            cardContent.appendChild(viewSection);
             viewName.appendChild(btnName);
             viewButton.appendChild(viewName);
             viewSection.appendChild(viewButton);
-            cardContent.appendChild(viewSection);
+
             
 
 
