@@ -57,12 +57,12 @@ function getAllUniversitiesFirebase() {
     //connect to a data source in firebase
     var uniCollection = db.collection("University");
 
-    uniCollection.limit(5).get().then(function (querySnapshot) {
+    uniCollection.limit(2).get().then(function (querySnapshot) {
         querySnapshot.forEach(function (doc) {
-            console.log(doc.data());
+            console.log(doc.data().gallery);
             // doc.data() contains the data for each document in the collection
             let individualCard = document.createElement('div');
-            let uniPhoto = document.createElement('svg');
+            let uniPhoto = document.createElement('img');
             let cardContent = document.createElement('div');
             let uniName = document.createElement('p');
             let viewSection = document.createElement('div');
@@ -74,9 +74,11 @@ function getAllUniversitiesFirebase() {
             // text nodes
             let tnUniName = document.createTextNode(doc.data().name);
             let btnName = document.createTextNode('Explore');
+            let imageLink = doc.data().gallery[0]
             // setting card classes
             individualCard.setAttribute('class', 'card shadow-sm');
             uniPhoto.setAttribute('class', 'bd-placeholder-img card-img-top');
+            uniPhoto.setAttribute('src', imageLink);
             cardContent.setAttribute('class', 'card-body');
             uniName.setAttribute('class', 'card-title');
             viewSection.setAttribute('class', 'd-flex justify-content-between align-items-center');
