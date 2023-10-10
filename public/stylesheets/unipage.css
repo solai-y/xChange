@@ -1,3 +1,26 @@
+.navigation {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    z-index: 10;
+    padding: 100px 0 0 0;
+    width: 70%;
+    text-align: center;
+    overflow: hidden;
+    transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    z-index: 20000;
+}
+
+
+
+
+
+
+
+
+
+
 #universityHome {
   background-image: url("../images/universityCourtyard.jpg");
   background-size: cover;
