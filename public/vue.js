@@ -1,0 +1,63 @@
+
+// VUE
+// Import necessary Vue Composition API functions
+import { createApp, ref, watch } from 'https://cdn.jsdelivr.net/npm/vue@3.2.6/dist/vue.esm-browser.js';
+
+// VUE
+var aboutVue = ref('');
+
+const app = createApp({
+    data() {
+        return { 
+            aboutVue: aboutVue.value,
+        };
+    },
+    methods: {
+        methodName() {
+            // Your method logic here
+        }
+    }
+});
+
+// Create a watcher to update the 'about' value when it changes
+watch(aboutVue, (newValue) => {
+    app.config.globalProperties.aboutVue = newValue;
+});
+
+
+
+const vm = app.mount('#app'); 
+
+document.addEventListener("DOMContentLoaded", event => {
+    //retrieve get value
+    let url = window.location.search;
+    let docId = url.split("=")[1];
+    console.log(docId);
+
+    // retrieve data from firebase
+    if (typeof app == 'undefined') {
+        const app = firebase.initializeApp(firebaseConfig);
+    }
+
+    // prints the firebase connection to check for bug
+    // console.log(app);
+
+    // check for db existence
+    if (typeof db== 'undefined') {
+        db = firebase.firestore();
+        auth = firebase.auth();
+    }
+
+    // use get params to retrieve single data point form firestore
+    var userCollection = db.collection("University").doc(docId);
+    console.log(userCollection);
+    userCollection.get().then(function (doc) {
+        var info = doc.data();
+        console.log(info);
+        about.value = info.about;
+    })
+    .catch(function(error) {
+        console.error("Error updating document: ", error);
+        // Handle the error, e.g., show an error message
+    });
+});
