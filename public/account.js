@@ -77,6 +77,7 @@ document.addEventListener("DOMContentLoaded", event => {
             var saveButton = document.getElementById("save");
 
             saveButton.addEventListener("click", function(){
+
               userCollection.update({
                 phone_number : document.getElementById("phone_number").value,
                 primary_degree : document.getElementById("primary_degree").value,

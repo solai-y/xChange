@@ -52,65 +52,26 @@
                     <li class="nav-item"> 
                         <a class="nav-link" href="./todo.html">To-Do List</a> 
                     </li> 
-                </ul> 
-                <a href="./account.html" class="navimage avatar-lg bg-warning rounded-circle text-white">
-                  <img class="profilepicture" alt="imageInput" src="./images/profile photo.jpeg">
-                </a> 
+                    <li class="nav-item">
+                      <a class="nav-link d-flex d-lg-none" href="./account.html">Profile</a>
+                    </li>
+                    </ul>
+                <div class="navimage d-flex align-items-center">
+                  <a href="./account.html" class="avatar rounded-circle text-white d-none d-lg-flex">
+                    <img class="profilepicture" alt="imageInput" src="./images/profile photo.jpeg">
+                 </a>
+                </div>
                 
             </div> 
         </div> 
     </nav> 
+
+  
     <!-- BS navbar: start --> 
     
     <!-- Bootstrap JS bundle to be placed before the closing </body> tag -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3/dist/js/bootstrap.bundle.min.js" ></script>
-    
-    <div class=" flex-column flex-lg-row h-lg-full bg-surface-secondary">
-        <!-- Vertical Navbar -->
-        <nav class="navbar show navbar-vertical h-lg-screen navbar-expand-lg px-0 py-3 py-lg-0 navbar-light bg-light border-bottom border-bottom-lg-0 border-end-lg" id="navbarVertical">
-          <div class="container-fluid">
-            <!-- Toggler -->
-            <button class="navbar-toggler ms-n2" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarCollapse" aria-controls="sidebarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <!-- User menu (mobile) -->
-            <div class="navbar-user d-lg-none">
-              <!-- Dropdown -->
-              <div class="dropdown">
-                <!-- Toggle -->
-                <a href="#" id="sidebarAvatar" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <div class="avatar-parent-child">
-                    <img alt="imageInput" src="./images/profile photo.jpeg" class="avatar avatar- rounded-circle">
-                    <span class="avatar-child avatar-badge bg-success"></span>
-                  </div>
-                </a>
-                <!-- Menu -->
-                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="sidebarAvatar">
-                  <a href="#" class="dropdown-item">Profile</a>
-                  <a href="#" class="dropdown-item">Settings</a>
-                  <a href="#" class="dropdown-item">Billing</a>
-                  <hr class="dropdown-divider">
-                  <a href="#" class="dropdown-item">Logout</a>
-                </div>
-              </div>
-            </div>
-            <!-- Collapse -->
-            <div class="collapse navbar-collapse" id="sidebarCollapse">
-              <!-- Form -->
-              <form class="mt-4 mb-3 d-none">
-                <div x-data="{focused: false}" :class="{ 'focused': focused }">
-                  <div class="input-group input-group-sm">
-                    <span class="input-group-text border-end-0 rounded-left-pill" id="basic-addon1">
-                      <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-search" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z" />
-                        <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z" />
-                      </svg>
-                    </span>
-                    <input type="text" class="form-control border-left-0 ps-0 rounded-end-pill" placeholder="Search" aria-label="Username" aria-describedby="basic-addon1" @focus="focused = !focused" @click.away="focused = false">
-                  </div>
-                </div>
-              </form>
-             
+
         <!-- Main content -->
         <div class="h-screen flex-grow-1 overflow-y-lg-auto ">
           <!-- Header -->
@@ -133,8 +94,8 @@
                       <div class="d-flex align-items-center">
                         <div>
                           <div class="image d-flex align-items-center">
-                            <a href="#" class="avatar avatar-lg bg-warning rounded-circle text-white">
-                              <img class="profilepicture" alt="imageInput" src="./images/profile photo.jpeg">
+                            <a href="./account.html" class="avatar rounded-circle text-white">
+                              <img class="profilepicture2" alt="imageInput2" src="./images/profile photo.jpeg">
                             </a>
                             <div class="ms-4">
                               <span class="h4 d-block mb-0">David AK</span>
@@ -221,31 +182,7 @@
                       <button type="button" onclick="location.href='index.html'" class="btn btn-sm btn-danger">Log Out</button>
                     </div>
                   </form>
-                  <!-- <hr class="my-10" /> -->
-                  <!-- log out button -->
-                    <!-- <div class="col-md-12">
-                      <div class="card shadow border-0">
-                        <div class="card-body d-flex align-items-center">
-                          <div>
-                            <h5 class="text-danger mb-2">Delete account</h5>
-                            <p class="text-sm text-muted">
-                              Are you sure you want to log out?
-                            </p>
-                          </div>
-                          <div class="ms-auto">
-                            <button type="button" onclick="location.href='index.html'" class="btn btn-sm btn-danger">Log Out</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </main>
-        </div>
-      </div> -->
-    
+   
 </body>
 </html>
   
@@ -280,9 +217,29 @@
             // Create a URL for the selected image and set it as the src of the profile image
             const imageUrl = URL.createObjectURL(selectedFile);
             profilepicture.src = imageUrl;
+
         } else {
             // If no file is selected or the selection is canceled, you can set a default image
             profilepicture.src = "./images/profilepicture.jpeg";
         }
     });
+
+    const imageInput2 = document.getElementById("imageInput2");
+    const profilepicture2 = document.getElementsByClassName("profilepicture2")[0];
+
+    imageInput.addEventListener("change", function() {
+        const selectedFile = imageInput.files[0];
+
+        if (selectedFile) {
+            // Create a URL for the selected image and set it as the src of the profile image
+            const imageUrl = URL.createObjectURL(selectedFile);
+            profilepicture2.src = imageUrl;
+
+        } else {
+            // If no file is selected or the selection is canceled, you can set a default image
+            profilepicture2.src = "./images/profilepicture.jpeg";
+        }
+    });
+
+
 </script>
