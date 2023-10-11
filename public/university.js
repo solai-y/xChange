@@ -59,8 +59,10 @@ function getAllUniversitiesFirebase() {
 
     uniCollection.limit(3).get().then(function (querySnapshot) {
         querySnapshot.forEach(function (doc) {
-            console.log(doc.data().gallery);
+            let docId = doc.id;
+
             // doc.data() contains the data for each document in the collection
+            let redirection = document.createElement("a");
             let individualCard = document.createElement('div');
             let uniPhoto = document.createElement('img');
             let cardContent = document.createElement('div');
@@ -84,6 +86,7 @@ function getAllUniversitiesFirebase() {
             viewSection.setAttribute('class', 'd-flex justify-content-between align-items-center');
             viewButton.setAttribute('class', 'btn-group');
             viewName.setAttribute('class', 'btn btn-sm btn-outline-secondary');
+            redirection.setAttribute('href', `./individualunipage.html?${docId}`);
 
             // appending children
             uniName.appendChild(tnUniName);
@@ -98,10 +101,10 @@ function getAllUniversitiesFirebase() {
             viewButton.appendChild(viewName);
             viewSection.appendChild(viewButton);
 
-            
+            redirection.appendChild(individualCard);
 
 
-            document.getElementById('uniResults').appendChild(individualCard)
+            document.getElementById('uniResults').appendChild(redirection);
         });
     }).catch(function (error) {
         console.error("Error getting documents:", error);
