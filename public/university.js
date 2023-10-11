@@ -86,7 +86,7 @@ function getAllUniversitiesFirebase() {
             viewSection.setAttribute('class', 'd-flex justify-content-between align-items-center');
             viewButton.setAttribute('class', 'btn-group');
             viewName.setAttribute('class', 'btn btn-sm btn-outline-secondary');
-            redirection.setAttribute('href', `./individualunipage.html?${docId}`);
+            redirection.setAttribute('href', `./individualunipage.html?uni=${docId}`);
 
             // appending children
             uniName.appendChild(tnUniName);
