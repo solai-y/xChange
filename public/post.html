@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Forum</title>
+    <title>Post</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">		
     <link rel="stylesheet" href="stylesheets/style.css">
     <link rel="stylesheet" href="stylesheets/forum.css">
@@ -29,10 +29,10 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link active" href="university.html">HOME</a>
+                <a class="nav-link active" href="index.html">HOME</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="individualunipage.html">UNIVERSITIES</a>
+                <a class="nav-link active" aria-current="page" href="#University">UNIVERSITIES</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link active" href="#FORUM">FORUM</a>
@@ -43,49 +43,29 @@
           </div>
         </div>
       </nav>
-      <!--End of Navbar-->
-      <Header>
-        <small>Welcome to xCHange Forum!</small>
-      </Header>
-      <main>
-        <div class = "posts-header">
-            <h1> Posts</h1>
-            <button id = "show-add-post-modal-btn">
-                Add Post
-            </button>
-            
-        </div>
-        <div id = "posts-container">
-            <!--Post will load here-->
-        </div>
-      </main>
-      <!-- Addding a post-->
-      <div id ="add-post-modal">
-        <div class = "modal-content">
-            <button id = "close-modal-btn">
-                <i class = "las la-times"></i>
-            </button>
-            <form id = "add-post-form">
-                <div class = "form-group">
-                <label for ="title"> Title</label>
-                <input type = "text" id = "title" required>
-                </div>
-                <div class="form-group">
-                <label for="content">Content</label>
-                <textarea id="content" rows="10" required></textarea>
-                </div>
-                <button type = "submit">Add Post</button>
-            </form>
-           
-        </div>
-        
-      </div>
-
-
-
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
-      crossorigin="anonymous"></script>
-      <script src ="forum.js"></script> 
-</body>
-</html>
+      <body>
+        <header>
+          <small>XChange's Forum</small>
+        </header>
+    
+        <main>
+          <div id="post-detail">
+            <!-- post detail will be loaded here dynamically -->
+          </div>
+    
+          <form id="add-comment-form" data-parent-id="">
+            <textarea id="comment" rows="4" required></textarea>
+            <button type="submit">Add comment</button>
+          </form>
+    
+          <div id="comments-container">
+            <!-- post comments will be loaded here dynamically -->
+          </div>
+        </main>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+        <script src="forum.js"></script>
+      </body>
+    
+    </html>
