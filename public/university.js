@@ -60,7 +60,7 @@ function getAllUniversitiesFirebase() {
     //connect to a data source in firebase
     var uniCollection = db.collection("University");
 
-    uniCollection.limit(3).get().then(function (querySnapshot) {
+    uniCollection.get().then(function (querySnapshot) {
         querySnapshot.forEach(function (doc) {
             
             // doc.data() contains the data for each document in the collection
