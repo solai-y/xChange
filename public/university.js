@@ -123,6 +123,8 @@ document.addEventListener("DOMContentLoaded", event => {
     getAllUniversitiesFirebase();
 });
 
+
+//search processing
 const searchUniName = document.querySelector("[data-search-uni-name]");
 const searchCountryName = document.querySelector("[data-search-country-name]");
 
