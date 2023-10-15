@@ -1,3 +1,6 @@
+// for search bar
+var content = [];
+
 function getAllUniversities() {
     axios.get('./universities', {
         params: {
@@ -59,9 +62,9 @@ function getAllUniversitiesFirebase() {
 
     uniCollection.limit(3).get().then(function (querySnapshot) {
         querySnapshot.forEach(function (doc) {
-            let docId = doc.id;
-
+            
             // doc.data() contains the data for each document in the collection
+            let docId = doc.id;
             let redirection = document.createElement("a");
             let individualCard = document.createElement('div');
             let uniPhoto = document.createElement('img');
@@ -87,6 +90,11 @@ function getAllUniversitiesFirebase() {
             viewButton.setAttribute('class', 'btn-group');
             viewName.setAttribute('class', 'btn btn-sm btn-outline-secondary');
             redirection.setAttribute('href', `./individualunipage.html?uni=${docId}`);
+            redirection.setAttribute('id', docId);
+
+            // creating dictionary for content variable (later used for searching)
+            let info = {"name": doc.data().name, "country": doc.data().country, "element": redirection};
+            content.push(info);
 
             // appending children
             uniName.appendChild(tnUniName);
@@ -114,5 +122,27 @@ function getAllUniversitiesFirebase() {
 document.addEventListener("DOMContentLoaded", event => {
     getAllUniversitiesFirebase();
 });
+
+const searchUniName = document.querySelector("[data-search-uni-name]");
+const searchCountryName = document.querySelector("[data-search-country-name]");
+
+searchUniName.addEventListener("input", (e) => {
+    let uniSearchValue = e.target.value.toLowerCase();
+    // console.log(uniSearchValue);
+    content.forEach(user => {
+        let isVisible = user.name.toLowerCase().includes(uniSearchValue)
+        user.element.classList.toggle("hide", !isVisible);
+    });
+});
+searchCountryName.addEventListener("input", (e) => {
+    let countrySearchValue = e.target.value.toLowerCase();
+    // console.log(uniSearchValue);
+    content.forEach(user => {
+        let isVisible = user.country.toLowerCase().includes(countrySearchValue)
+        user.element.classList.toggle("hide", !isVisible);
+    });
+});
+
+
 
 console.log(localStorage.getItem("email"));
