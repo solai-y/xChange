@@ -37,7 +37,9 @@ document.addEventListener("DOMContentLoaded", event => {
             var phonenumberInput = document.getElementById("phone_number");
             var primarydegreeInput = document.getElementById("primary_degree");
             var secondarydegreeInput = document.getElementById("secondary_degree");
+            var headerName = document.getElementById("headerName");
 
+            headerName.textContent = reviewData.name;
             nameInput.value = reviewData.name;
 
             if (phonenumberInput) {
@@ -80,6 +82,7 @@ document.addEventListener("DOMContentLoaded", event => {
               e.preventDefault();
 
               userCollection.update({
+                first_name : document.getElementById("first_name").value,
                 phone_number : document.getElementById("phone_number").value,
                 primary_degree : document.getElementById("primary_degree").value,
                 secondary_degree : document.getElementById("secondary_degree").value

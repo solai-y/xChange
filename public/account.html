@@ -37,23 +37,23 @@
     <!-- BS navbar: start --> 
     <nav class="navbar navbar-expand-lg"> 
         <div class="container-fluid"> 
-            <a class="navbar-brand" href="./university.html"><img src="./images/logo.jpeg" class="logo">xChange</a> 
+            <a class="navbar-brand" href="./university.html"><img src="./images/logo.jpeg" class="logo"></a> 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> 
                 <span class="navbar-toggler-icon"></span> 
             </button> 
             <div class="collapse navbar-collapse" id="navbarSupportedContent"> 
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0"> 
                     <li class="nav-item"> 
-                        <a class="nav-link" aria-current="page" href="./university.html">Home</a> 
+                        <a class="nav-link active" aria-current="page" href="./university.html">Home</a> 
                     </li> 
                     <li class="nav-item"> 
-                        <a class="nav-link" href="./individualunipage.html">Universities</a> 
+                        <a class="nav-link active" href="./individualunipage.html">Universities</a> 
                     </li> 
                     <li class="nav-item"> 
-                        <a class="nav-link" href="./forum.html">Forum</a> 
+                        <a class="nav-link active" href="./forum.html">Forum</a> 
                     </li> 
                     <li class="nav-item">
-                      <a class="nav-link d-flex d-lg-none" href="./account.html">Profile</a>
+                      <a class="nav-link active d-flex d-lg-none" href="./account.html">Profile</a>
                     </li>
                     </ul>
                 <div class="navimage d-flex align-items-center">
@@ -98,9 +98,9 @@
                               <img class="profilepicture2" alt="imageInput2" src="./images/profile photo.jpeg">
                             </a>
                             <div class="ms-4">
-                              <span class="h4 d-block mb-0">David AK</span>
+                              <span class="h4 d-block mb-0" id="headerName"></span>
                               <label for="profilepicture" class="text-sm font-semibold text-muted">Choose a profile picture:</label>
-                              <input type="file" id="imageInput"></input>
+                              <input type="file" id="imageInput">
 
                             </div>
                           </div>
@@ -113,40 +113,34 @@
                     <h5 class="mb-0">Personal Information</h5>
                   </div>
                   <form class="mb-6">
-                    <div class="row mb-5">
-                      <div class="col-md-6">
+                    <div class="row mb-3">
+                      <div class="col-md-12">
                         <div class="">
                           <label class="form-label" for="first_name">First name</label>
-                          <input type="text" class="form-control" id="first_name" name="first_name">
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="">
-                          <label class="form-label" for="last_name">Last name</label>
-                          <input type="text" class="form-control" id="last_name" name="last_name">
+                          <input type="text" class="form-control custom-input" id="first_name" name="first_name">
                         </div>
                       </div>
                     </div>
-                    <div class="row g-5">
-                      <div class="col-md-6">
-                        <div class="">
-                          <label class="form-label" for="email">Email</label>
-                          <input type="email" class="form-control" id="email" name="email" required>
-                        </div>
-                      </div>
-                      <div class="col-md-6">
+                    <div class="row mb-3">
+                      <div class="col-md-12">
                         <div class="">
                           <label class="form-label" for="phone_number">Phone number</label>
                           <input type="text" class="form-control" id="phone_number" name="phone_number">
                         </div>
                       </div>
-                      <div class="col-md-6">
+                      <div class="col-md-12">
+                        <div class="">
+                          <label class="form-label" for="email">Email</label>
+                          <input type="email" class="form-control" id="email" name="email" required>
+                        </div>
+                      </div>
+                      <div class="col-md-12">
                         <div class="">
                           <label class="form-label" for="primary_degree">Primary Degree</label>
                           <input type="text" class="form-control" id="primary_degree" name="primary_degree" required>
                         </div>
                       </div>
-                      <div class="col-md-6">
+                      <div class="col-md-12">
                         <div class="">
                           <label class="form-label" for="secondary_degree">Secondary Degree</label>
                           <input type="text" class="form-control" id="secondary_degree" name="secondary_degree">
@@ -178,7 +172,6 @@
                       </div>
                     </div>
                     <div class="text-end">
-                      <button type="button" class="btn btn-sm btn-neutral me-2">Cancel</button>
                       <button type="submit" class="btn btn-sm btn-primary" id="save">Save</button>
                       <button type="button" onclick="location.href='index.html'" class="btn btn-sm btn-danger">Log Out</button>
                     </div>
