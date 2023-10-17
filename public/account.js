@@ -76,7 +76,8 @@ document.addEventListener("DOMContentLoaded", event => {
             // save data
             var saveButton = document.getElementById("save");
 
-            saveButton.addEventListener("click", function(){
+            saveButton.addEventListener("click", function(e){
+              e.preventDefault();
 
               userCollection.update({
                 phone_number : document.getElementById("phone_number").value,
@@ -101,34 +102,34 @@ document.addEventListener("DOMContentLoaded", event => {
         console.error("Error getting the document:", error);
     });
 
+    
 
-        // Assuming you have a "Forgot Password" button in your HTML with id="forgotPassword"
-const forgotPasswordButton = document.getElementById("resetPassword");
 
-// Assuming you have a form field for users to enter their email with id="resetEmail"
-const resetEmailField = document.getElementById("email");
 
-// Add a click event listener to the "Forgot Password" button
-forgotPasswordButton.addEventListener("click", (e) => {
-    e.preventDefault();
- 
-    // Get the user's email from the input field
-    const email = resetEmailField.value;
-    console.log(email);
+    const forgotPasswordButton = document.getElementById("resetPassword");
+    const resetEmailField = document.getElementById("email");
 
-    // Use Firebase's password reset functionality
-    firebase.auth().sendPasswordResetEmail(email)
-        .then(() => {
-            // Password reset email sent successfully
-            console.log("Password reset email sent. Check your email.");
-        })
-        .catch((error) => {
-            // Handle any errors that occur during the password reset process
-            console.error("Error sending password reset email:", error);
-        });
-      })
+    // Add a click event listener to the "Forgot Password" button
+    forgotPasswordButton.addEventListener("click", (e) => {
+        e.preventDefault();
+    
+        // Get the user's email from the input field
+        const email = resetEmailField.value;
+        console.log(email);
 
- });
+        // Use Firebase's password reset functionality
+        firebase.auth().sendPasswordResetEmail(email)
+            .then(() => {
+                // Password reset email sent successfully
+                console.log("Password reset email sent. Check your email.");
+            })
+            .catch((error) => {
+                // Handle any errors that occur during the password reset process
+                console.error("Error sending password reset email:", error);
+            });
+          })
+
+    });
 
 
 
