@@ -70,34 +70,32 @@
  
 
     <!-- Cards Header -->
-    <div class="text-center container-fluid" id="bg1">
-        <section id="universityHome">
-            <div class="row py-lg-5">
-                <div class="col-lg-10 col-md-8 mx-auto">
-                    <h1 id="universityPageCTA">Search for Universities</h1>
+    <div class="py-5 text-center container">
+      <div class="row py-lg-5">
+          <div class="col-lg-6 col-md-8 mx-auto">
+              <h1 class="fw-light">Search for University</h1>
+              <p class="lead text-muted">Embarking on a university exchange is a transformative adventure, broadening horizons, fostering cultural understanding, and forging lifelong connections worldwide. </p>
+              <p>
+                <div class="searchOption1">
+                  <label for="universityName" id="universityNameLabel">University Name</label>
+                  <input class="form-control" type="search" name="universityName" placeholder="University" id="universityName" data-search-uni-name>
                 </div>
-            </div>
-            <div class="searchBox">
-                <div >
-                    <div class="col-lg-6 col-md-8 mx-auto">
-                        <div class="searchOption1">
-                            <label for="universityName" id="universityNameLabel">University Name</label>
-                            <input class="form-control" type="search" name="universityName" placeholder="University" id="universityName" data-search-uni-name>
-                        </div>
-                        <div class="searchOption2">
-                            <label for="countryName" id="countryNameLabel">Country</label>
-                            <input class="form-control" type="search" name="countryName" placeholder="Country" id="countryName" data-search-country-name>
-                        </div>
-                        <br><br>
-                        <button class="btn btn-primary" id="btnSearchUni">
-                            Search 
-                        </button>
-                    </div>
+                <div class="searchOption2">
+                    <label for="countryName" id="countryNameLabel">Country</label>
+                    <input class="form-control" type="search" name="countryName" placeholder="Country" id="countryName" data-search-country-name>
                 </div>
-            </div>
-        </section>
+                <br><br>
+                <button class="btn btn-primary" id="btnSearchUni">
+                    Search 
+                </button>              
+              </p>
+          </div>
+      </div>
     </div>
 
+    
+
+    
     <!-- Cards per university -->
     <div class="album py-5 bg-light">
         <div class="container" id="resultsContainer">
