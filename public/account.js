@@ -102,8 +102,36 @@ document.addEventListener("DOMContentLoaded", event => {
     });
 
 
+        // Assuming you have a "Forgot Password" button in your HTML with id="forgotPassword"
+const forgotPasswordButton = document.getElementById("resetPassword");
 
-});
+// Assuming you have a form field for users to enter their email with id="resetEmail"
+const resetEmailField = document.getElementById("email");
+
+// Add a click event listener to the "Forgot Password" button
+forgotPasswordButton.addEventListener("click", (e) => {
+    e.preventDefault();
+ 
+    // Get the user's email from the input field
+    const email = resetEmailField.value;
+    console.log(email);
+
+    // Use Firebase's password reset functionality
+    firebase.auth().sendPasswordResetEmail(email)
+        .then(() => {
+            // Password reset email sent successfully
+            console.log("Password reset email sent. Check your email.");
+        })
+        .catch((error) => {
+            // Handle any errors that occur during the password reset process
+            console.error("Error sending password reset email:", error);
+        });
+      })
+
+ });
+
+
+
 
 
 // function to log in with google account (fully functional but need to test failed)
