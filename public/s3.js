@@ -1,7 +1,12 @@
+
+const AWS_ACCESS_KEY_ID = 'AKIAXKQEJUDLDKV45O7O';
+const AWS_SECRET_ACCESS_KEY = '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';
+const AWS_REGION = 'us-east-1';
+
 AWS.config.update({
-    accessKeyId: 'AKIAXKQEJUDLDKV45O7O',
-    secretAccessKey: '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',
-    region: 'us-east-1'
+    accessKeyId: AWS_ACCESS_KEY_ID,
+    secretAccessKey: AWS_SECRET_ACCESS_KEY,
+    region: AWS_REGION
 });
 
 const s3 = new AWS.S3();
@@ -16,6 +21,7 @@ imageButton.addEventListener("change", function () {
             Body: file
         }
         s3.upload(params, (err, data) => {
+            // console.log("loading")
             if (err) {
                 console.error('S3 upload error:', err);
             } else {
