@@ -9,6 +9,8 @@ const firebaseConfig = {
     measurementId: "G-94L4SG8ZW0"
 };
 
+// aws key info needed to be passes here
+
 AWS.config.update({
   accessKeyId: AWS_ACCESS_KEY_ID,
   secretAccessKey: AWS_SECRET_ACCESS_KEY,
@@ -50,6 +52,7 @@ document.addEventListener("DOMContentLoaded", event => {
             var imageInput1 = document.getElementsByClassName("profilepicture")[0]; // processed below
 
             if (imageInput2) {
+              // retrieves image info from database
               if (typeof reviewData.image_url !== 'undefined') {
                   // Create a URL for the selected image and set it as the src of the profile image
                   imageInput2.src = reviewData.image_url;
@@ -111,20 +114,24 @@ document.addEventListener("DOMContentLoaded", event => {
             var imageButton = document.getElementById("imageInput");
 
             imageButton.addEventListener("change", function () {
+              // when image is uploaded create a link for the image
               const file = imageInput.files[0];
               if (file) {
+                  // AWS params
                   const params = {
                       Bucket: "xchange-users",
                       Key: data.uid, // The unique key for the image might need to use UID here?
                       Body: file
                   }
+                  // send info to AWS
                   s3.upload(params, (err, data) => {
                       // console.log("loading")
                       if (err) {
                           console.error('S3 upload error:', err);
                       } else {
+                          // store the url in a hidden input field
                           document.getElementById("imageInputUrl").value = data.Location
-                          console.log('Image uploaded:', data.Location);
+                          // console.log('Image uploaded:', data.Location);
                       }
                   });
               }
