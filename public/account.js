@@ -82,12 +82,20 @@ document.addEventListener("DOMContentLoaded", event => {
               e.preventDefault();
 
               userCollection.update({
-                first_name : document.getElementById("first_name").value,
+                name : document.getElementById("first_name").value,
                 phone_number : document.getElementById("phone_number").value,
                 primary_degree : document.getElementById("primary_degree").value,
                 secondary_degree : document.getElementById("secondary_degree").value
               })
               .then(function() {
+                    // Show the notification
+                var notification = document.getElementById("notification");
+                notification.style.display = "block";
+
+                // Optionally, you can hide the notification after a few seconds
+                setTimeout(function() {
+                  notification.style.display = "none";
+                }, 3000); // Hide after 3 seconds (adjust as needed)
                 console.log("Document successfully updated!");
                 // Optionally, you can redirect or show a success message
                 
@@ -138,18 +146,21 @@ document.addEventListener("DOMContentLoaded", event => {
 
 
 
-// function to log in with google account (fully functional but need to test failed)
+//function to log in with google account (fully functional but need to test failed)
 function googleLogin() {
     const provider = new firebase.auth.GoogleAuthProvider();
     // log in promise
     firebase.auth().signInWithPopup(provider)
         .then(result => {
+          console.log(result);
             const user = result.user;
             document.write(`Hello ${user.displayName}`)
             console.log(user); // tbr
             window.location.href = "./university.html";
         })
         .catch(err => {
-            console.log(err);
+            console.log("Error during sign-in:",err);
         })
 };
+
+
