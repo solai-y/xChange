@@ -29,8 +29,7 @@ Deep Purple: #635D7D
 
 }
 .gray img{
-    width: 550px;
-    height:500px;
+    object-fit:cover;
 }
 .insert{
     background-image: url("images/student1.jpeg");
@@ -54,12 +53,11 @@ img {
         display: flex;
         justify-content: center;
         align-items: center;
-        height:50vh;
-        font-size: 40px;
+        font-size: 7vw;
 }
 .box{
-    width:400px;
-    height: 400px;
+    max-width:400px;
+    max-height: 400px;
     background: #fff;
     position: relative;
     margin-bottom: auto;
@@ -69,8 +67,8 @@ img {
 }
 .box .content{
     overflow:hidden;
-    width:400px;
-    height: 400px;
+    max-width:400px;
+    max-height: 400px;
     position:relative;    
 }
 .box .content img{
@@ -118,7 +116,7 @@ img {
 }
 .box .content .text2{
     color:black;
-    font-size:20px;
+    /* font-size:20px; */
     font-family: 'Oswald', cursive;
     position:absolute;
     left:-100px;
