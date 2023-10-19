@@ -158,20 +158,20 @@ document.addEventListener("DOMContentLoaded", event => {
                 }, 3000); // Hide after 3 seconds (adjust as needed)
                 console.log("Document successfully updated!");
                 // Optionally, you can redirect or show a success message
-                
-            })
-            .catch(function(error) {
-                console.error("Error updating document: ", error);
-                // Handle the error, e.g., show an error message
-            });
-            });
-        } else {
-            // Document doesn't exist
-            console.log("Document does not exist.");
-        }
-    }).catch(function (error) {
-        console.error("Error getting the document:", error);
-    });
+                    
+                })
+                .catch(function(error) {
+                    console.error("Error updating document: ", error);
+                    // Handle the error, e.g., show an error message
+                });
+                });
+            } else {
+                // Document doesn't exist
+                console.log("Document does not exist.");
+            }
+        }).catch(function (error) {
+            console.error("Error getting the document:", error);
+        });
 
     
 
