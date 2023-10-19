@@ -148,6 +148,7 @@ function googleLogin() {
             document.write(`Hello ${user.displayName}`)
             console.log(user); // tbr
             window.location.href = "./university.html";
+            sessionStorage.setItem("user",user);
         })
         .catch(err => {
             console.log(err);
