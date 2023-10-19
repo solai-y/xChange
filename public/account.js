@@ -9,6 +9,16 @@ const firebaseConfig = {
     measurementId: "G-94L4SG8ZW0"
 };
 
+// aws key info needed to be passes here
+
+AWS.config.update({
+  accessKeyId: AWS_ACCESS_KEY_ID,
+  secretAccessKey: AWS_SECRET_ACCESS_KEY,
+  region: AWS_REGION
+});
+
+const s3 = new AWS.S3();
+
 document.addEventListener("DOMContentLoaded", event => {
     // initialize firebase
 
@@ -38,6 +48,30 @@ document.addEventListener("DOMContentLoaded", event => {
             var primarydegreeInput = document.getElementById("primary_degree");
             var secondarydegreeInput = document.getElementById("secondary_degree");
             var headerName = document.getElementById("headerName");
+            var imageInput2 = document.getElementsByClassName("profilepicture2")[0]; // processed below
+            var imageInput1 = document.getElementsByClassName("profilepicture")[0]; // processed below
+
+            if (imageInput2) {
+              // retrieves image info from database
+              if (typeof reviewData.image_url !== 'undefined') {
+                  // Create a URL for the selected image and set it as the src of the profile image
+                  imageInput2.src = reviewData.image_url;
+              } else {
+                  // If no file is selected or the selection is canceled, you can set a default image
+                  imageInput2.src = "./images/profile photo.jpeg";
+              }
+            }
+
+            if (imageInput1) {
+              if (typeof reviewData.image_url !== 'undefined') {
+                  // Create a URL for the selected image and set it as the src of the profile image
+                  imageInput1.src = reviewData.image_url;
+              } else {
+                  // If no file is selected or the selection is canceled, you can set a default image
+                  imageInput1.src = "./images/profile photo.jpeg";
+              }
+            }
+
 
             headerName.textContent = reviewData.name;
             nameInput.value = reviewData.name;
@@ -77,33 +111,67 @@ document.addEventListener("DOMContentLoaded", event => {
 
             // save data
             var saveButton = document.getElementById("save");
+            var imageButton = document.getElementById("imageInput");
+
+            imageButton.addEventListener("change", function () {
+              // when image is uploaded create a link for the image
+              const file = imageInput.files[0];
+              if (file) {
+                  // AWS params
+                  const params = {
+                      Bucket: "xchange-users",
+                      Key: data.uid, // The unique key for the image might need to use UID here?
+                      Body: file
+                  }
+                  // send info to AWS
+                  s3.upload(params, (err, data) => {
+                      // console.log("loading")
+                      if (err) {
+                          console.error('S3 upload error:', err);
+                      } else {
+                          // store the url in a hidden input field
+                          document.getElementById("imageInputUrl").value = data.Location
+                          // console.log('Image uploaded:', data.Location);
+                      }
+                  });
+              }
+          });
 
             saveButton.addEventListener("click", function(e){
               e.preventDefault();
 
               userCollection.update({
-                first_name : document.getElementById("first_name").value,
+                name : document.getElementById("first_name").value,
                 phone_number : document.getElementById("phone_number").value,
                 primary_degree : document.getElementById("primary_degree").value,
-                secondary_degree : document.getElementById("secondary_degree").value
+                secondary_degree : document.getElementById("secondary_degree").value,
+                image_url: document.getElementById("imageInputUrl").value
               })
               .then(function() {
+                    // Show the notification
+                var notification = document.getElementById("notification");
+                notification.style.display = "block";
+
+                // Optionally, you can hide the notification after a few seconds
+                setTimeout(function() {
+                  notification.style.display = "none";
+                }, 3000); // Hide after 3 seconds (adjust as needed)
                 console.log("Document successfully updated!");
                 // Optionally, you can redirect or show a success message
-                
-            })
-            .catch(function(error) {
-                console.error("Error updating document: ", error);
-                // Handle the error, e.g., show an error message
-            });
-            });
-        } else {
-            // Document doesn't exist
-            console.log("Document does not exist.");
-        }
-    }).catch(function (error) {
-        console.error("Error getting the document:", error);
-    });
+                    
+                })
+                .catch(function(error) {
+                    console.error("Error updating document: ", error);
+                    // Handle the error, e.g., show an error message
+                });
+                });
+            } else {
+                // Document doesn't exist
+                console.log("Document does not exist.");
+            }
+        }).catch(function (error) {
+            console.error("Error getting the document:", error);
+        });
 
     
 
@@ -138,12 +206,13 @@ document.addEventListener("DOMContentLoaded", event => {
 
 
 
-// function to log in with google account (fully functional but need to test failed)
+//function to log in with google account (fully functional but need to test failed)
 function googleLogin() {
     const provider = new firebase.auth.GoogleAuthProvider();
     // log in promise
     firebase.auth().signInWithPopup(provider)
         .then(result => {
+          console.log(result);
             const user = result.user;
             document.write(`Hello ${user.displayName}`)
             console.log(user); // tbr
@@ -151,6 +220,8 @@ function googleLogin() {
             sessionStorage.setItem("user",user);
         })
         .catch(err => {
-            console.log(err);
+            console.log("Error during sign-in:",err);
         })
 };
+
+

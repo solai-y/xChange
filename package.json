@@ -7,6 +7,7 @@
     "abort-controller": "^3.0.0",
     "agentkeepalive": "^4.5.0",
     "asynckit": "^0.4.0",
+    "aws-sdk": "^2.1475.0",
     "base-64": "^0.1.0",
     "charenc": "^0.0.2",
     "combined-stream": "^1.0.8",
