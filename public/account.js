@@ -16,7 +16,7 @@ AWS_REGION: 'us-east-1'
 
 
 AWS.config.update({
-  accessKeyId: AWS_ACCESS_KEY_ID,
+  accessKeyId: 'AWS_ACCESS_KEY_ID',
   secretAccessKey: AWS_SECRET_ACCESS_KEY,
   region: AWS_REGION
 });
@@ -162,20 +162,20 @@ document.addEventListener("DOMContentLoaded", event => {
                 }, 3000); // Hide after 3 seconds (adjust as needed)
                 console.log("Document successfully updated!");
                 // Optionally, you can redirect or show a success message
-                
-            })
-            .catch(function(error) {
-                console.error("Error updating document: ", error);
-                // Handle the error, e.g., show an error message
-            });
-            });
-        } else {
-            // Document doesn't exist
-            console.log("Document does not exist.");
-        }
-    }).catch(function (error) {
-        console.error("Error getting the document:", error);
-    });
+                    
+                })
+                .catch(function(error) {
+                    console.error("Error updating document: ", error);
+                    // Handle the error, e.g., show an error message
+                });
+                });
+            } else {
+                // Document doesn't exist
+                console.log("Document does not exist.");
+            }
+        }).catch(function (error) {
+            console.error("Error getting the document:", error);
+        });
 
     
 
@@ -221,6 +221,7 @@ function googleLogin() {
             document.write(`Hello ${user.displayName}`)
             console.log(user); // tbr
             window.location.href = "./university.html";
+            sessionStorage.setItem("user",user);
         })
         .catch(err => {
             console.log("Error during sign-in:",err);
