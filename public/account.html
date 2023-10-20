@@ -189,14 +189,21 @@
                     </div>  
                     <div id="notificationForPassword" style="display: none;" class="notification">
                       An email has been sent to you to reset your password!
-                    </div>
-                                     
+                    </div>                
                     <div class="text-end">
                       <button id="resetPassword">Reset Password</button>
                       <button type="submit" class="btn btn-sm btn-primary" id="save">Save</button>
-                      <button type="button"  class="btn btn-sm btn-danger">Log Out</button>
+                      <button type="button"  onclick="showConfirmation()" class="btn btn-sm btn-danger">Log Out</button>
                     </div>
                   </form>
+
+                  <div id="confirmationModal" class="modal">
+                    <div class="modal-content">
+                        <p>Are you sure you want to log out?</p>
+                        <button id="yesButton" onclick="logout()">Yes</button>
+                        <button id="noButton" onclick="closeModal()">No</button>
+                    </div>
+                </div>
    
 </body>
 </html>
@@ -235,7 +242,7 @@
 
         } else {
             // If no file is selected or the selection is canceled, you can set a default image
-            profilepicture.src = "./images/profilepicture.jpeg";
+            profilepicture.src = "./images/profile photo.jpeg";
         }
     });
 
@@ -252,7 +259,7 @@
 
         } else {
             // If no file is selected or the selection is canceled, you can set a default image
-            profilepicture2.src = "./images/profilepicture.jpeg";
+            profilepicture2.src = "./images/profile photo.jpeg";
         }
     });
 
@@ -269,5 +276,19 @@
         notification.style.display = "none";
       }, 3000); // Hide after 3 seconds (adjust as needed)
     }
+
+    function showConfirmation() {
+    var modal = document.getElementById("confirmationModal");
+    modal.style.display = "block";
+}
+
+function closeModal() {
+    var modal = document.getElementById("confirmationModal");
+    modal.style.display = "none";
+}
+
+function logout() {
+    location.href = 'index.html'; // Perform the logout action
+}
 
 </script>
