@@ -16,7 +16,7 @@ const AWS_REGION= 'us-east-1';
 
 
 AWS.config.update({
-  accessKeyId: 'AWS_ACCESS_KEY_ID',
+  accessKeyId: AWS_ACCESS_KEY_ID,
   secretAccessKey: AWS_SECRET_ACCESS_KEY,
   region: AWS_REGION
 });
