@@ -177,6 +177,34 @@ document.addEventListener("DOMContentLoaded", event => {
             console.error("Error getting the document:", error);
         });
 
+        var removeImageButton = document.getElementById("removeImage");
+
+        var imageInput2 = document.getElementsByClassName("profilepicture2")[0]; // processed below
+        var imageInput1 = document.getElementsByClassName("profilepicture")[0]; // processed below
+
+        removeImageButton.addEventListener("click", function() {
+                // Set the image URL in the database to the default URL
+                userCollection.update({
+                    image_url: "" // Update this URL to your default image
+                })
+                .then(function() {
+                    // Update the image element to display the default image
+                    if (imageInput2) {
+                        imageInput2.src = "./images/profile photo.jpeg";
+                    }
+                    if (imageInput1) {
+                        imageInput1.src = "./images/profile photo.jpeg";
+                    }
+                    console.log("Profile photo removed and database updated!");
+                })
+                .catch(function(error) {
+                    console.error("Error updating document: ", error);
+                    // Handle the error, e.g., show an error message
+                });
+            
+        });
+        console.log(imageInput1.src);
+
     
 
 
