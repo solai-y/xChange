@@ -20,7 +20,9 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <!-- External Style sheet-->
+    <link rel="stylesheet" href="./stylesheets/style.css">
     <link rel="stylesheet" href="./stylesheets/unipage.css">
     <!-- Vue 3 -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
@@ -32,326 +34,254 @@
     </style>
 </head>
 <body>
+    <!-- BS navbar: start --> 
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">
+            <img src="images/logo.jpeg" class="logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                <a class="nav-link active" href="university.html">HOME</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="individualunipage.html">UNIVERSITIES</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link active" href="forum.html">FORUM</a>
+                </li>
+            </ul>
+            <button type="button" class="btn btn-outline-primary">
+                <a class="" href="account.html">PROFILE</a></button>
+            </div>
+        </div>
+        </nav>
+    <!-- BS navbar: end --> 
+    
     <div id="app">
-            <!-- University Section-->
+        <!-- University Section-->
         <section class="container-fluid" id="universityHome">
-            <div class="d-flex align-items-center justify-content-center vh-100">
-                <div class="row justify-content-center">
-                    <h1>{{universityVue}}</h1>
-                </div>
+            <div class="universityNameBox">
+                <h1>{{universityVue}}</h1>
             </div>
-            <div class="navigation active">
-                <ul>
-                    <li>
-                        <a href="#about">About</a>
-                    </li>
-                    <li>
-                        <a href="#modules">Modules</a>
-                    </li>
-                    <li>
-                        <a href="#reviews">Reviews</a>
-                    </li>
-                </ul>
-            </div>
-            
         </section>
 
         <!-- About Section-->
-        <div class="bg-color p-5 d-none d-md-flex d-xl-flex align-items-center justify-content-evenly vh-100 " id="about">
-            <div class="d-flex flex-column text-black">
-                <h1 class="fw-bold">About Us</h1>
-                <p class="py-5">{{aboutVue}}</p>
+        <div class="p-5 text-center text-md-start">
+            <div class="container">
+                <div class="d-md-flex align-items-center justify-content-between">
+                    <div>
+                        <h1>About us!</h1>
+                        <p class="lead">{{aboutVue}}</p>
+                    </div>
+                    <img class="img-fluid w-50 d-none d-md-block" :src="backgroundImageVue" alt="">
+                </div>
             </div>
-            <img src="../images/universityCourtyard.jpg" alt="" class="img-fluid w-50">
-        </div>
-        <div class="bg-color p-5 d-flex d-md-none d-xl-none flex-column align-items-center vh-100" id="about">
-            <div class="d-flex flex-column text-black">
-                <h1 class="fw-bold">About Us</h1>
-                <p class="py-5">{{aboutVue}}</p>
-            </div>
-            <img src="../images/universityCourtyard.jpg" alt="" class="img-fluid py-5">
         </div>
 
-        <!-- Mapping Module-->
-        <div class="container-fluid" id="modules">
-            <h1 style="text-align: center; padding-top: 5%;" class="fw-bold">Mapping Modules</h1>
-            <div class="row d-flex">
-                <div class="col-xl-3 col-lg-4 col-md-5">
-                    <div class="card m-2">
-                    <div class="card-body">
-                        <h5 class="card-title mb-3">Card 2</h5>
-                        <h6 class="card-subtitle mb-2 text-primary">Category</h6>
-                        <div class="card-text p-1 mb-3 collapse show">
-                            This is the second card.
+        <!-- Info Section -->
+        <div class="p-5">
+            <div class="container">
+                <h1 class="text-center">General Information</h1>
+                <div class="row text-center g-4">
+                    <div class="col-lg-3 col-md-6 col-sm-12">
+                        <div class="card bg-dark text-light">
+                            <div class="h1">
+                                <i class="bi bi-book"></i>
+                            </div>
+                            <h3 class="card-title">
+                                GPA Requirements
+                            </h3>
+                            <p class="card-text">
+                                10th: {{gpaVue[0]}}
+                                <br>
+                                90th: {{gpaVue[1]}}
+                            </p>
                         </div>
                     </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-4 col-md-5">
-                    <div class="card m-2">
-                    <div class="card-body">
-                        <h5 class="card-title mb-3">Card 2</h5>
-                        <h6 class="card-subtitle mb-2 text-primary">Category</h6>
-                        <div class="card-text p-1 mb-3 collapse show">
-                            This is the second card.
+                    <div class="col-lg-3 col-md-6 col-sm-12">
+                        <div class="card bg-secondary text-light">
+                            <div class="h1">
+                                <i class="bi bi-book"></i>
+                            </div>
+                            <h3 class="card-calendar">
+                                Application Window
+                            </h3>
+                            <p class="card-text">
+                                Semester 1: December
+                                <br>
+                                Semester 2: June
+                            </p>
                         </div>
                     </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-4 col-md-5">
-                    <div class="card m-2">
-                    <div class="card-body">
-                        <h5 class="card-title mb-3">Card 2</h5>
-                        <h6 class="card-subtitle mb-2 text-primary">Category</h6>
-                        <div class="card-text p-1 mb-3 collapse show">
-                            This is the second card.
+                    <div class="col-lg-3 col-md-6 col-sm-12">
+                        <div class="card bg-dark text-light">
+                            <div class="h1">
+                                <i class="bi bi-people"></i>
+                            </div>
+                            <h3 class="card-title">
+                                Number of Slots
+                            </h3>
+                            <p class="card-text">
+                                Semester 1: 10
+                                <br>
+                                Semester 2: 20
+                            </p>
                         </div>
                     </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-4 col-md-5">
-                    <div class="card m-2">
-                    <div class="card-body">
-                        <h5 class="card-title mb-3">Card 2</h5>
-                        <h6 class="card-subtitle mb-2 text-primary">Category</h6>
-                        <div class="card-text p-1 mb-3 collapse show">
-                            This is the second card.
+                    <div class="col-lg-3 col-md-6 col-sm-12">
+                        <div class="card bg-secondary text-light">
+                            <div class="h1">
+                                <i class="bi bi-info-square"></i>
+                            </div>
+                            <h3 class="card-title">
+                                About Country
+                            </h3>
+                            <p class="card-text">
+                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cupiditate, iure?
+                            </p>
                         </div>
                     </div>
-                    </div>
                 </div>
-                <div class="col-xl-3 col-lg-4 col-md-5">
-                    <div class="card m-2">
-                    <div class="card-body">
-                        <h5 class="card-title mb-3">Card 2</h5>
-                        <h6 class="card-subtitle mb-2 text-primary">Category</h6>
-                        <div class="card-text p-1 mb-3 collapse show">
-                            This is the second card.
-                        </div>
-                    </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-4 col-md-5">
-                    <div class="card m-2">
-                    <div class="card-body">
-                        <h5 class="card-title mb-3">Card 2</h5>
-                        <h6 class="card-subtitle mb-2 text-primary">Category</h6>
-                        <div class="card-text p-1 mb-3 collapse show">
-                            This is the second card.
-                        </div>
-                    </div>
-                    </div>
-                </div>
-
             </div>
         </div>
+        
+        <!-- Mapping Modules -->
+        <div class="p-5">
+            <div class="container">
+                <h1 class="text-center">Modules Mapping</h1>
+                <p class="lead text-center">Here are the possible modules that are mappable. 
+                    Select the basket and you will find the modules that are available. 
+                    <br> <br>
+                    <select v-model="selectedModule">
+                        <option v-for="(modulesName, category) in modulesVue" :key="category" :value="category">{{category}}</option>
+                    </select>
+                </p>
+            </div>
+            <div class="album py-3">
+                <div class="container justify-content-center">
+                    <div class="row justify-content-center" v-if="selectedModule">
+                        <div class="col-lg-3 col-md-6 col-sm-12 card m-2" v-for="subject in modulesVue[selectedModule]">
+                            <div class="card-body">
+                                <h4 class="card-title mb-3">{{ subject }}</h4>
+                                <h5 class="card-subtitle mb-2 text-primary"> {{ selectedModule }}</h5>
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+            </div>
+        </div>
+        
+        <!-- Gallery -->
+        <div class="p-5">
+            <div class="container">
+                <h1 class="text-center">Gallery</h1>
+                <!-- BS carousel: start -->
+                <div id="carouselExampleControls" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item" v-for="(image, index) in galleryVue" :class="{'active': index === 0}">
+                            <img :src="image" class="d-block w-100" alt="">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+        
+        
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>   
+                </div>     
+                <!-- BS carousel: end -->  
+            </div>
+        </div>
+        
         <!-- Reviews -->
-        <div class="container-fluid bg-color" id="reviews">
-            <h1 class="fw-bold" style="padding-top: 5%; text-align: center;">Reviews</h1>
-                <!-- BS carousel: start --> 
-            <div id="carouselExampleControls" class="carousel slide" > 
-                <div class="carousel-inner"> 
-                    <div class="carousel-item active"> 
-                        <!-- BS card: Start --> 
-                        <div class="card"> 
-                            <div class="img-wrapper">
-                                <img src="..." alt="...">
-                            </div>
-                            <div class="card-body"> 
-                                <h5 class="card-title">Card title</h5> 
-                                <p class="card-text">Some quick example text to make up the bulk of the card's content.</p>  
-                            </div> 
-                        </div> 
-                        <!-- BS card: End --> 
+        <div class="p-5">
+            <div class="container">
+                <div class="row">
+                    <h1 class="text-center">Reviews</h1>
+                    <p class="lead text-center">Here are the reviews of {{universityVue}} from past seniors
+                        who exchanged there.
+                    </p>
+                    <h5 class="text-center">
+                        <a href="login_page.html">login in</a>
+                        <span> to be able to leave a review</span>
+                    </h5>
+                </div>
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 col-sm-12">
                         
-                    </div> 
-                    <div class="carousel-item"> 
-                        
-                        <!-- BS card: Start --> 
-                        <div class="card"> 
-                            <div class="img-wrapper">
-                                <img src="..." alt="...">
-                            </div>
-                            <div class="card-body"> 
-                                <h5 class="card-title">Card title</h5> 
-                                <p class="card-text">Some quick example text to make up the bulk of the card's content.</p>  
-                            </div> 
-                        </div> 
-                        <!-- BS card: End --> 
-                        
-                    </div> 
-                    <div class="carousel-item"> 
-                        
-                        <!-- BS card: Start --> 
-                        <div class="card"> 
-                            <div class="img-wrapper">
-                                <img src="..." alt="...">
-                            </div>
-                            <div class="card-body"> 
-                                <h5 class="card-title">Card title</h5> 
-                                <p class="card-text">Some quick example text to make up the bulk of the card's content.</p>  
-                            </div> 
-                        </div> 
-                        <!-- BS card: End --> 
-                        
-                    </div> 
-                    <div class="carousel-item"> 
-                        
-                        <!-- BS card: Start --> 
-                        <div class="card"> 
-                            <div class="img-wrapper">
-                                <img src="..." alt="...">
-                            </div>
-                            <div class="card-body"> 
-                                <h5 class="card-title">Card title</h5> 
-                                <p class="card-text">Some quick example text to make up the bulk of the card's content.</p>  
-                            </div> 
-                        </div> 
-                        <!-- BS card: End --> 
-                        
-                    </div> 
-                    <div class="carousel-item"> 
-                        
-                        <!-- BS card: Start --> 
-                        <div class="card"> 
-                            <div class="img-wrapper">
-                                <img src="..." alt="...">
-                            </div>
-                            <div class="card-body"> 
-                                <h5 class="card-title">Card title</h5> 
-                                <p class="card-text">Some quick example text to make up the bulk of the card's content.</p>  
-                            </div> 
-                        </div> 
-                        <!-- BS card: End --> 
-                        
-                    </div> 
-                    <div class="carousel-item"> 
-                        
-                        <!-- BS card: Start --> 
-                        <div class="card"> 
-                            <div class="img-wrapper">
-                                <img src="..." alt="...">
-                            </div>
-                            <div class="card-body"> 
-                                <h5 class="card-title">Card title</h5> 
-                                <p class="card-text">Some quick example text to make up the bulk of the card's content.</p>  
-                            </div> 
-                        </div> 
-                        <!-- BS card: End --> 
-                        
-                    </div> 
-                    <div class="carousel-item"> 
-                        
-                        <!-- BS card: Start --> 
-                        <div class="card"> 
-                            <div class="img-wrapper">
-                                <img src="..." alt="...">
-                            </div>
-                            <div class="card-body"> 
-                                <h5 class="card-title">Card title</h5> 
-                                <p class="card-text">Some quick example text to make up the bulk of the card's content.</p>  
-                            </div> 
-                        </div> 
-                        <!-- BS card: End --> 
-                        
-                    </div> 
-                    <div class="carousel-item"> 
-                        
-                        <!-- BS card: Start --> 
-                        <div class="card"> 
-                            <div class="img-wrapper">
-                                <img src="..." alt="...">
-                            </div>
-                            <div class="card-body"> 
-                                <h5 class="card-title">Card title</h5> 
-                                <p class="card-text">Some quick example text to make up the bulk of the card's content.</p>  
-                            </div> 
-                        </div> 
-                        <!-- BS card: End --> 
-                        
-                    </div> 
-                    <div class="carousel-item"> 
-                        
-                        <!-- BS card: Start --> 
-                        <div class="card"> 
-                            <div class="img-wrapper">
-                                <img src="..." alt="...">
-                            </div>
-                            <div class="card-body"> 
-                                <h5 class="card-title">Card title</h5> 
-                                <p class="card-text">Some quick example text to make up the bulk of the card's content.</p>  
-                            </div> 
-                        </div> 
-                        <!-- BS card: End --> 
-                        
-                    </div> 
-                </div> 
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev"> 
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span> 
-                    <span class="visually-hidden">Previous</span> 
-                </button> 
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">  
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span> 
-                    <span class="visually-hidden">Next</span> 
-                </button> 
-            </div> 
-            <!-- BS carousel: end -->   
+                    </div>
+                </div>
+            </div>
         </div>
+
+        <!-- FAQ -->
+        <div class="p-5">
+            <div class="container">
+                <h1 class="text-center mb-4">Frequently Asked Questions</h1>
+                <div class="accordion" id="accordionExample">
+                    <div class="accordion-item">
+                      <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                          Accordion Item #1
+                        </button>
+                      </h2>
+                      <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                          <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                        </div>
+                      </div>
+                    </div>
+                    <div class="accordion-item">
+                      <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                          Accordion Item #2
+                        </button>
+                      </h2>
+                      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                          <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                        </div>
+                      </div>
+                    </div>
+                    <div class="accordion-item">
+                      <h2 class="accordion-header" id="headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                          Accordion Item #3
+                        </button>
+                      </h2>
+                      <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                          <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+        </div>
+
     </div>
         
         
     
 
 
-    <!-- Gallery-->
 
 
 
-    <!-- Map -->
-
-
-
-
-
-
-    <!--J-query-->
-    <!-- <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script> -->
 
     <!-- Bootstrap JS bundle to be placed before the closing </body> tag -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3/dist/js/bootstrap.bundle.min.js" ></script> 
-    <script>
-        var multipleCardCarousel = document.querySelector(
-        "#carouselExampleControls"
-        );
-        if (window.matchMedia("(min-width: 768px)").matches) {
-        var carousel = new bootstrap.Carousel(multipleCardCarousel, {
-            interval: false,
-            wrap: false,
-        });
-        // see if the below is needed
-        // var carouselWidth = $(".carousel-inner")[0].scrollWidth;
-        // console.log(carouselWidth);
-        var cardWidth = $(".carousel-item").width();
-        var scrollPosition = 0;
-        $("#carouselExampleControls .carousel-control-next").on("click", function () {
-            if (scrollPosition < (carouselWidth - cardWidth * 4)) {
-            scrollPosition += cardWidth;
-            $("#carouselExampleControls .carousel-inner").animate(
-                { scrollLeft: scrollPosition }, 600);
-            }
-        });
-        $("#carouselExampleControls .carousel-control-prev").on("click", function () {
-            if (scrollPosition > 0) {
-            scrollPosition -= cardWidth;
-            $("#carouselExampleControls .carousel-inner").animate(
-                { scrollLeft: scrollPosition }, 600);
-            }
-        });
-        } else {
-            // see if this is needed
-            // $(multipleCardCarousel).addClass("slide");  
-        }
-    </script>
+
     <script type="module" src="./vue.js"></script>
     </body>
 </html>

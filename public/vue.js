@@ -7,6 +7,10 @@ import { createApp, ref, watch } from 'https://cdn.jsdelivr.net/npm/vue@3.2.6/di
 var aboutVue = ref('Loading...');
 var universityVue = ref('University');
 var gpaVue = ref('X.X');
+var backgroundImageVue = ref('bgimage');
+var aboutImageVue = ref('abtimage');
+var modulesVue = ref('basket');
+var galleryVue = ref('gallery');
 
 const app = createApp({
     data() {
@@ -14,11 +18,19 @@ const app = createApp({
             aboutVue: aboutVue.value,
             universityVue: universityVue.value,
             gpaVue: gpaVue.value,
+            backgroundImageVue: backgroundImageVue.value,
+            aboutImageVue: aboutImageVue.value,
+            modulesVue: modulesVue.value,
+            selectedModule: null,
+            galleryVue: galleryVue.value,
+            
         };
     },
     methods: {
         methodName() {
             // Your method logic here
+
+        
         },
         fetchData() {
             document.addEventListener("DOMContentLoaded", event => {
@@ -55,6 +67,10 @@ const app = createApp({
                     this.aboutVue = info.about;
                     this.universityVue = info.name;
                     this.gpaVue = info.gpa;
+                    this.backgroundImageVue = info.gallery[0];
+                    this.aboutImageVue = info.gallery[1];
+                    this.modulesVue = info.modules;
+                    this.galleryVue = info.gallery;     
                 })
                 .catch(function(error) {
                     console.error("Error updating document: ", error);
@@ -62,7 +78,8 @@ const app = createApp({
                 });
             });
         }
-    }, 
+        
+    },
     mounted() {
         this.fetchData();
     },

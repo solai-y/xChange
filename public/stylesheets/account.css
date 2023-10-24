@@ -33,13 +33,31 @@
   border-radius: 50%;
 }
 
-input, select {	
-position:relative;
-font-size: 1.5em;
-padding: 3px;
-display: inline-block;
-border-radius: 9999em;
-	
+.inputBox, select {	
+  position: relative;
+  width: 100%;
+  color: #4ecca3;
+
+}
+
+.inputBox input {
+  padding: 10px;
+  border: 2px solid #4ecca3;
+  border-radius: 5px;
+  outline: none;
+  font-size: 1em;
+  transition: 0.5s;
+  font-family: var(--bs-body-font-family);
+}
+
+.inputBox select {
+  padding: 10px;
+  border: 2px solid #4ecca3;
+  border-radius: 5px;
+  outline: none;
+  font-size: 1em;
+  transition: 0.5s;
+  font-family: var(--bs-body-font-family);
 }
 
 #imageInput {
@@ -107,5 +125,7 @@ border-radius: 9999em;
   width: 15%;
 }
 
-
+.header-photo {
+  width: 20%;
+}
 
