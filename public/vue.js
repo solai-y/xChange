@@ -21,7 +21,7 @@ const app = createApp({
             backgroundImageVue: backgroundImageVue.value,
             aboutImageVue: aboutImageVue.value,
             modulesVue: modulesVue.value,
-            selectedModule: null,
+            selectedModule: 'Managing',
             galleryVue: galleryVue.value,
             
         };

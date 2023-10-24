@@ -18,7 +18,7 @@ Deep Purple: #635D7D
 :root {
     --text-color: #464646;
     /* Text color is deep teal and can be adjusted */
-    --background-color: rgb(167, 189, 255);
+    --background-color: rgb(251, 252, 255);
     /* background color is aero blue and can be adjusted */
     --hover-color: #ADC4CE;
     /* hover color is blueish gray and can be adjusted */
@@ -36,12 +36,44 @@ Deep Purple: #635D7D
 }
 
 .center-content {
-        text-align: center;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 60vh; /* Adjust the height to your preference */
+    position: relative; /* Make the container a positioning context */
+    text-align: center; /* Center-align the text within the container */
 }
+
+.center-content img {
+    width: 100%; /* Ensure the image covers the entire container */
+    max-height: 70vh; /* Maintain aspect ratio */
+}
+
+.center-content .content {
+    position: absolute; /* Position the content element */
+    top: 50%; /* Align content vertically in the middle */
+    left: 50%; /* Align content horizontally in the middle */
+    transform: translate(-50%, -50%); /* Center the content element */
+    background: rgba(255, 255, 255, 0.8); /* Semi-transparent white background for text */
+    padding: 20px;
+    font-family: Montserrat, sans-serif;
+    font-size: 30px;
+    max-width: 80%;
+    color: #4ecca3;
+}
+
+.explore {
+    color: #000000;
+}
+
+.explore:hover {
+    color: #4ecca3;
+}
+
+.typewrite {
+    color: #000000;
+}
+
+.typewrite:hover {
+    color: #4ecca3;
+}
+  
 img {
     padding-left: 0px;
     padding-right: 0px;
@@ -54,6 +86,7 @@ img {
         justify-content: center;
         align-items: center;
         font-size: 7vw;
+        color: #4ecca3;
 }
 .box{
     max-width:400px;
@@ -411,11 +444,17 @@ section {
     width: 100%;
 }
 
-.center {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
+
+
+.carousel-item video {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+
+#carouselVideo {
+    height: 100%;
+  }
 
 .text-overlay {
     /* position: absolute; */
@@ -486,4 +525,144 @@ section {
     display: none;
     scrollbar-width: none;
 }
+
+.header-photo {
+    width: 20%;
+  }
+  
+.footer-links label {
+    color: black;
+    cursor: pointer;
+}
+
+.socials label {
+    color: #000000;
+    cursor: pointer;
+}
+
+.footer h6 {
+    color: #4ecca3;
+}
+
+.text-center label {
+    color: #4ecca3;
+}
+
+strong {
+    color: #4ecca3;
+}
+
+.ag-format-container {
+    width: 100%;
+    margin: 0 auto;
+  }
+ 
+  .ag-courses_box {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around; /* Distribute the boxes evenly in two columns */
+    gap: 10px; /* Adjust the gap between boxes as needed */
+    padding: 50px 0;
+  }
+  
+  .ag-courses_item {
+    -ms-flex-preferred-size: calc(33.33333% - 30px);
+    flex-basis: calc(33.33333% - 30px);
+  
+    margin: 0 15px 20px;
+  
+    overflow: hidden;
+  
+    border-radius: 28px;
+  }
+  .ag-courses-item_link {
+    display: block;
+    padding: 30px 20px;
+    background-color: #000000;
+  
+    overflow: hidden;
+  
+    position: relative;
+  }
+  .ag-courses-item_link:hover,
+  .ag-courses-item_link:hover .ag-courses-item_date {
+    text-decoration: none;
+  }
+  .ag-courses-item_link:hover .ag-courses-item_bg {
+    -webkit-transform: scale(10);
+    -ms-transform: scale(10);
+    transform: scale(10);
+  }
+  .ag-courses-item_title {
+    min-height: 100px;
+    margin: 0 0 25px;
+  
+    overflow: hidden;
+  
+    font-weight: bold;
+    font-size: 30px;
+    color: #FFF;
+    text-decoration: none;
+  
+    z-index: 2;
+    position: relative;
+  }
+  .ag-courses-item_date-box {
+    font-size: 18px;
+    color: #FFF;
+  
+    z-index: 2;
+    position: relative;
+  }
+  .ag-courses-item_bg {
+    height: 128px;
+    width: 128px;
+    background-color: #4ecca3;
+  
+    z-index: 1;
+    position: absolute;
+    top: -75px;
+    right: -75px;
+  
+    border-radius: 50%;
+  
+    -webkit-transition: all .5s ease;
+    -o-transition: all .5s ease;
+    transition: all .5s ease;
+  }
+    
+  @media only screen and (max-width: 979px) {
+    .ag-courses_item {
+      -ms-flex-preferred-size: calc(50% - 30px);
+      flex-basis: calc(50% - 30px);
+    }
+    .ag-courses-item_title {
+      font-size: 24px;
+
+    }
+  }
+  
+  @media only screen and (max-width: 767px) {
+    .ag-format-container {
+      width: 96%;
+    }
+  
+  }
+  @media only screen and (max-width: 639px) {
+    .ag-courses_item {
+      -ms-flex-preferred-size: 100%;
+      flex-basis: 100%;
+    }
+    .ag-courses-item_title {
+      min-height: 72px;
+      line-height: 1;
+      font-size: 24px;
+    }
+    .ag-courses-item_link {
+      padding: 22px 40px;
+    }
+  }
+
+
+
 
