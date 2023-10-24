@@ -1,3 +1,5 @@
+
+
 .form-group {
     display: flex;
     flex-direction: column;
@@ -36,13 +38,12 @@
 .inputBox, select {	
   position: relative;
   width: 100%;
-  color: #4ecca3;
-
+  color: #000000;
 }
 
 .inputBox input {
   padding: 10px;
-  border: 2px solid #4ecca3;
+  border: 2px solid #000000;
   border-radius: 5px;
   outline: none;
   font-size: 1em;
@@ -50,14 +51,26 @@
   font-family: var(--bs-body-font-family);
 }
 
+.inputBox input:focus {
+  outline: 0;
+  border: 2px solid #4ecca3;
+  box-shadow: none;
+}
+
 .inputBox select {
   padding: 10px;
-  border: 2px solid #4ecca3;
+  border: 2px solid #000000;
   border-radius: 5px;
   outline: none;
   font-size: 1em;
   transition: 0.5s;
   font-family: var(--bs-body-font-family);
+}
+
+.inputBox select:focus {
+  outline: none;
+  border: 2px solid #4ecca3;
+  box-shadow: none;
 }
 
 #imageInput {
@@ -73,7 +86,7 @@
   position: fixed;
   top: 10px;
   right: 10px;
-  background-color: #4CAF50;
+  background-color: #4ecca3;
   color: white;
   padding: 15px;
   border-radius: 5px;
@@ -89,7 +102,7 @@
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0,0,0,0.4);
+  background-color: rgba(0,0,0,0.0);
 }
 
 /* Styles for the modal content */
@@ -107,7 +120,7 @@
 }
 
 #yesButton {
-  background-color: #007BFF;
+  background-color: #4ecca3;
   color: white;
   border: 5px;
   padding: 10px 20px;
@@ -127,5 +140,23 @@
 
 .header-photo {
   width: 20%;
+}
+
+.footer-links label {
+  color: black;
+  cursor: pointer;
+}
+
+.socials label {
+  color: #000000;
+  cursor: pointer;
+}
+
+h6 {
+  color: #4ecca3;
+}
+
+.text-center label {
+  color: #4ecca3;
 }
 
