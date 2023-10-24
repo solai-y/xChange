@@ -33,6 +33,12 @@ header{
 .new_forum {
   cursor: pointer;
   transition: background 0.5s;
+  display: none;
+}
+.new_forum.active{
+  display: block;
+  opacity: 1;
+  transform: translateX(0);
 }
 #forum a{
   color: white;
