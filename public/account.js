@@ -249,7 +249,7 @@ function googleLogin() {
             document.write(`Hello ${user.displayName}`)
             console.log(user); // tbr
             window.location.href = "./university.html";
-            sessionStorage.setItem("user",user);
+            sessionStorage.setItem("user",user.displayName);
         })
         .catch(err => {
             console.log("Error during sign-in:",err);

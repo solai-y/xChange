@@ -40,7 +40,7 @@
 <body>
   <nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
-      <a class="navbar-brand" href="index.html">
+      <a class="navbar-brand" href="university.html">
         <img src="images/logo.jpeg" class="logo">
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -73,9 +73,9 @@
     <div class="forum-container">
       <!--Forum list-->
       <section class="forum forum-info">
-        <div class="forum-list">
-          <h1>Forums!</h1>
-          <div class="new_forum" id = "sg" onclick="newchat()">#Singapore_forum</div>
+        <div onload="load_forum()" class="forum-list">
+          <h1 id = "forum"><a href = "forum.html">Forums!</a></h1>
+          <div class="new_forum" id = "singapore_forum" onclick="check_forum(this.id)">#singapore_forum</div>
         </div>
         <input type="text" id="newForumName" placeholder="Enter forum name">
         <button class = "btn btn-primary" id="addForumButton" onclick="addNewForum()">Add Forum</button>
@@ -87,7 +87,7 @@
             <!-- Posts for Singapore_forum will appear here -->
           </div>
           <div class="post-form">
-            <h1> Welcome!</h1>
+            <h1 id = "textontop" style="display: block;" > Welcome!</h1>
             <div class="post">
               <div class="post_avatar">
               
@@ -105,27 +105,41 @@
               </h3>
             </div>
             <div class="post_headerDescription">
+    
+              
               
             </div>
+            <button id = "reply" class="btn btn-primary" style = "display:none" onclick="lets_reply()">Reply</button>
           </div>
-          <!-- <div class="post_footer">
+          <div id = "linefooter" class="post_footer"style="display: none;">
             <span class="material_icons"></span>
             <span class="material_icons"></span>
           </div>
-        </div> -->
-        <!---End of it -->
-        <!-- <div class = "feed">
+        </div> 
+        
+        <div class = "feed">
           <div class = "feed_header">
   
-        <div class="postBox"  onload="account_load()">
+        <div id = "postBox" class="postBox" style="display: none;" >
           <form>
             <div class="postBox_input"> 
-              
-              <input type="text" placeholder="What's on your mind?">
+            <input type="text"  id ="post_text" placeholder="What's on your mind?">
             </div>
-            <button id="addPostButton" onclick="addNewPost()">Add Post</button>
+            <button id="addPostButton" onclick="NewChat()">Add Post</button>
           </form>
-        </div> -->
+        </div>
+  
+        <div class = "createPost" style="display: none" id = "create_post">
+          <form>        
+            <div class = "postBox_input">  
+            <input type="text"  id ="create_text" placeholder="What's on your mind?">
+            </div>
+            <button class = "btn btn-primary" onclick="Create_post()">Create Post</button>
+          </form>
+        </div>
+      
+          </form>
+        </div>
 
     </div>
     </div>

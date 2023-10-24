@@ -23,10 +23,26 @@ header{
   background-color: #2C2F33;
   color: #ffffff;
 }
-
+#textontop{
+  text-align: center;
+}
+#reply{
+  position: relative;
+  float: right;
+}
 .new_forum {
   cursor: pointer;
-  transition: background 0.2s;
+  transition: background 0.5s;
+}
+#forum a{
+  color: white;
+  text-decoration: none;
+}
+#forum:hover {
+  cursor: pointer;
+  background-color: #7289DA;
+  text-decoration: none;
+
 }
 
 .new_forum:hover {
@@ -35,15 +51,14 @@ header{
 
 .forum-content {
   padding: 20px;
-}
+}#7289DA
 
-.posts {
-  /* Styles for posts go here */
-}
+
 
 .post-form  h1{
   margin-top: 20px;
   text-align: center;
+  
 }
 
 
