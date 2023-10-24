@@ -22,13 +22,20 @@
     border-radius: 50%;
   }
 
+  .account {
+    color: #4ecca3;
+  }
+
+  h5 {
+    color: #4ecca3;
+  }
+
  .image img{
     width: 100px;
     height: 100px;
     border-radius: 50%;
   }
 
-/* Add this CSS to your stylesheet */
 .navimage {
   width: 50px;
   height: 50px;
@@ -114,7 +121,7 @@
   transform: translate(-50%, -50%);
   background-color: white;
   padding: 20px;
-  padding-left: 450px;
+  padding-left: 600px;
   border-radius: 5px;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }

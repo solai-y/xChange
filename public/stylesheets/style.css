@@ -18,7 +18,7 @@ Deep Purple: #635D7D
 :root {
     --text-color: #464646;
     /* Text color is deep teal and can be adjusted */
-    --background-color: rgb(167, 189, 255);
+    --background-color: rgb(251, 252, 255);
     /* background color is aero blue and can be adjusted */
     --hover-color: #ADC4CE;
     /* hover color is blueish gray and can be adjusted */
@@ -556,12 +556,7 @@ strong {
     width: 100%;
     margin: 0 auto;
   }
-  
-  
-  body {
-    background-color: #000;
-  }
-  
+ 
   .ag-courses_box {
     display: flex;
     flex-wrap: wrap;
