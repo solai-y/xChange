@@ -33,7 +33,7 @@ header{
 .new_forum {
   cursor: pointer;
   transition: background 0.5s;
-  display: none;
+  /* display: none; */
 }
 .new_forum.active{
   display: block;
