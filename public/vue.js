@@ -38,6 +38,8 @@ const app = createApp({
       comment: comment.value,
       username: username.value,
       image_url: image_url.value,
+      usernameComment: "",
+      imageComment: "",
     };
   },
   methods: {
@@ -53,39 +55,41 @@ const app = createApp({
 
     submitReview: function () {
       var userData = db.collection("Users").doc(this.userVue); // undefined here
-      userData.get().then(function (doc) {
+      const vueInstance = this;
+      userData.get().then((doc) => {
         let userInfo = doc.data();
-        this.username = userInfo["name"];
+        this.usernameComment = userInfo["name"];
+        console.log(this.usernameComment);
         if (typeof userInfo.image_url != "undefined") {
-          this.image_url = userInfo.image_url;
+            this.imageComment = userInfo.image_url;
         } else {
-          this.image_url = "./images/profile photo.jpeg";
+            this.imageComment = "./images/profile photo.jpeg";
         }
-      });
-      //   console.log(userData);
 
-      // Capture the 'this' context
-      //   const vueInstance = this;
-
-      //   userData.get().then((doc) => {
-      //     let x = doc.data;
-      //     console.log(x);
-      //     this.username = doc.data().name;
-      //     if (typeof doc.data.image_url != "undefined") {
-      //       this.image_url = doc.data().image_url;
-      //     } else {
-      //       this.image_url = "./images/profile photo.jpeg";
-      //     }
-      //   });
-      db.collection("University")
+        db.collection("University")
         .doc(this.docIdVue)
         .update({
           review: firebase.firestore.FieldValue.arrayUnion({
-            username: this.username,
-            image_url: this.image_url,
+            username: this.usernameComment,
+            image_url: this.imageComment,
             comment: this.comment,
           }),
         });
+      });
+      // userData.get().then(function (doc) {
+      //   let userInfo = doc.data();
+      //   this.usernameComment= userInfo["name"]; // setting properties of undefined error here
+      //   if (typeof userInfo.image_url != "undefined") {
+      //     this.imageComment = userInfo.image_url;
+      //   } else {
+      //     this.imageComment = "./images/profile photo.jpeg";
+      //   }
+      // });
+      //   console.log(userData);
+
+      // Capture the 'this' context
+
+      
 
       // Clear form inputs
       this.comment = "";
