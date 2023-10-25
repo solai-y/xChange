@@ -9,6 +9,7 @@ function getAllUniversities() {
     })
     .then(response => {
         for (let university of response.data) {
+            console.log(response.data);
             // elements of row data and card
             // let individualCard = document.createElement('div');
             // let uniPhoto = document.createElement('svg');
@@ -58,6 +59,7 @@ function getAllUniversities() {
 function getAllUniversitiesFirebase() {
     db = firebase.firestore();
     var uniCollection = db.collection("University");
+    var isFirstItem = true;
 
     uniCollection.get().then(function (querySnapshot) {
         querySnapshot.forEach(function (doc) {
@@ -65,11 +67,15 @@ function getAllUniversitiesFirebase() {
             let individualCard = document.createElement('div');
             individualCard.classList.add('carousel-item');
 
+            if (isFirstItem) {
+                individualCard.classList.add('active');
+                isFirstItem = false;
+              }
+
             // Create an image element
             let uniPhoto = document.createElement('img');
-            uniPhoto.classList.add('bd-placeholder-img', 'card-img-top');
+            uniPhoto.classList.add('bd-placeholder-img', 'card-img-top', 'w-30', 'h-30');
             uniPhoto.src = doc.data().gallery[0]; // Assuming the first image in the gallery is used
-            console.log(uniPhoto.src);
 
             // Create a div for the caption
             let cardContent = document.createElement('div');
@@ -91,10 +97,14 @@ function getAllUniversitiesFirebase() {
 
             // Append the carousel item to the #picture div
             document.getElementById('picture').appendChild(individualCard);
+
         });
+
     }).catch(function (error) {
         console.error("Error getting documents:", error);
     });
+
+    
 }
 
 // Call the function when the DOM is ready
