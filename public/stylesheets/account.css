@@ -1,4 +1,25 @@
+body {
+  margin: 0;
+  padding: 0;
+}
 
+
+main {
+  min-height: 100vh;
+  width: 100%;
+
+  
+}
+
+main, .container {
+  box-sizing: border-box;
+}
+
+.navbar {
+  /* Set the border style, color, and width */
+  border-bottom: 2px solid #4ecca3; /* Replace #FF0000 with the desired color code */
+  border-radius: 5px; /* Optional: Adds rounded corners to the border */
+}
 
 .form-group {
     display: flex;
@@ -149,6 +170,11 @@
   width: 20%;
 }
 
+.footer  {
+  background-color: #CCCCCC;
+  width: 100%;
+}
+
 .footer-links label {
   color: black;
   cursor: pointer;
@@ -166,4 +192,10 @@ h6 {
 .text-center label {
   color: #4ecca3;
 }
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
 
