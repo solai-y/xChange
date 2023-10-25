@@ -1,3 +1,5 @@
+
+
 const user_session = sessionStorage.getItem("user");
 
 const firebaseConfig = {
@@ -24,65 +26,65 @@ document.addEventListener("DOMContentLoaded", event => {
   load_forum()
 });
 var x = "";
-function Create_post() {
-
+document.getElementById("yourDocumentID").addEventListener("click", Create_post);
+function Create_post(event) {
+  event.preventDefault();
   const docRef = db.collection("Users");
-  var uid = String(sessionStorage.getItem("user"));
+  var user = sessionStorage.getItem("user");
+  var userObject = JSON.parse(user);
+  var uid = userObject.uid;
+  console.log(uid)
   var post = document.getElementById("create_text").value;
-  console.log(post);
+
   docRef.get().then(function (querySnapshot) {
     querySnapshot.forEach(function (doc) {
       var docId = doc.id;
-
-
-
+      console.log(docId);
       if (docId == uid) {
-        var data = doc.data()
-        var data = db.collection("Users").doc(uid);
-        var first_name = data.name;
-        var picture = data.image_url;
-        reply = "";
-      }
-      const dataRef = db.collection("forum").doc(x);
-      data_to_insert = {
-        chat: {
-          chat: post,
-          name: first_name,
-          picture: picture,
-          replied: {
-            name: "",
-            picture: "",
+        const userRef = db.collection("Users").doc(uid);
+        userRef.get().then((doc) => {
+          if (doc.exists) {
+            var first_name = doc.data().name;
+            console.log(first_name)
+            var image_url = doc.data().image_url || "./images/profile photo.jpeg";
+            var reply = "";
           }
-        }
-      };
-      dataRef.update(data_to_insert).then(() => {
-        console.log("data is inside");
-        // location.reload();
-      }).catch(function (error) {
-        console.error("Error updating data:", error);
+          const dataRef = db.collection("forum").doc(x);
+          data_to_insert = {
+            chat: {
+              chat: post,
+              name: first_name,
+              picture: image_url,
+              replied: {
+                name: "",
+                picture: "",
+              }
+            }
+          };
+          dataRef.update(data_to_insert).then(() => {
+            console.log("data is inside");
+
+          }).catch(function (error) {
+            console.error("Error updating data:", error);
+          }
+          )
+        })
       }
-      )
+
     })
   })
-  window.onload = load_forum
+  document.getElementById("create").reset();
+  window.location.reload();
 };
 
 
-
+//  
 
 var history_arr = [];
 function check_forum(docId) {
-  var uid = String(sessionStorage.getItem("user"));
-  const data = db.collection("Users").doc(uid);
-  data.get().then((doc) => {
-  console.log("data is inside");
-  console.log(doc.data())
-  })
   x = docId;
   history_arr.push(x);
-  console.log(history_arr)
   const forumElements = document.querySelectorAll(".new_forum");
-  console.log(forumElements);
   const docRef = db.collection("forum").doc(docId);
   docRef.get().then((doc) => {
     if (doc.exists) {
@@ -105,17 +107,19 @@ function check_forum(docId) {
       createElement.setAttribute("class", docId);
       var dis_element = document.getElementById(docId);
       dis_element.style.display = "block";
+
       const things = doc.data();
-      console.log(things);
       for (thing in things) {
         var chats = things[thing].chat;
-        console.log(chats)
         var uid = things[thing].name;
         if (typeof chats === "undefined" || typeof uid === "undefined" || typeof things[thing].chat == "" || chats == "") {
           var createElement = document.createElement("p");
           var txt = document.createTextNode("Insert your first post here!");
           createElement.appendChild(txt);
           insert_post.appendChild(createElement);
+          var reply_class = document.getElementById("reply");
+          reply_class.style.display = "none";
+
 
         } else {
 
@@ -133,8 +137,8 @@ function check_forum(docId) {
           reply_class.style.display = "block";
           const userRef = db.collection("Users").doc(uid);
           userRef.get().then((doc) => {
-            var things = doc.data();
-            var name1 = things["name"];
+            // var things = doc.data();
+            var name1 = doc.data().name;
             console.log(name1);
             var picture = things["picture"]
             var picture_ref = document.querySelector(".post_avatar");
@@ -159,7 +163,6 @@ function check_forum(docId) {
       userRef.get().then((doc) => {
         var things = doc.data();
         var name1 = things["name"];
-        console.log(name1);
         var picture = things["picture"]
         var picture_ref = document.querySelector(".post_avatar");
         var create_image = document.createElement("img");
@@ -216,15 +219,10 @@ function page_rest(element) {
       var dis_element = document.getElementsByClassName(last_curr_page)[0];
       console.log(dis_element)
       dis_element.style.display = "none";
-    } else {
-      var CountElement = document.getElementsByClassName(cur_page);
-      if (CountElement.length > 1) {
-        console.log(CountElement)
-        for (var i = 1; i < CountElement.length; i++) {
-          CountElement[i].style.display = "none";
-        }
-      }
-
+    }
+    var CountElement = document.getElementsByClassName(cur_page);
+    for (var i = 0; i < CountElement.length; i++) {
+      CountElement[i].style.display = "none";
     }
   }
 }
@@ -237,8 +235,6 @@ function load_forum() {
   docRef.get().then(function (querySnapshot) {
     querySnapshot.forEach(function (doc) {
       let docId = doc.id;
-      console.log(doc.data().chat.name);
-      console.log(docId);
       let forum_name = document.createTextNode("#" + docId);
       var createElement = document.createElement("div");
       createElement.setAttribute("class", "new_forum");
@@ -254,14 +250,14 @@ function load_forum() {
       });
 
 
-      
+
     })
   }).catch(function (error) {
     console.error("Error loading forum:", error);
   });
 
   // This code will execute when the page is fully loaded
-  
+
 };
 
 
@@ -269,7 +265,6 @@ function load_forum() {
 function addNewForum() {
   var forum = document.getElementById("newForumName").value;
   docRef = db.collection('forum');
-
   docRef.get().then(function (querySnapshot) {
     querySnapshot.forEach(function (doc) {
       let docId = doc.id;
@@ -302,46 +297,62 @@ function addNewForum() {
   })
 }
 
-
-function NewChat() {
+document.getElementById("addPostButton").addEventListener("click", NewChat);
+function NewChat(event) {
+  event.preventDefault();
   const docRef = db.collection("Users");
-  var uid = String(sessionStorage.getItem("user"));
+  var user = sessionStorage.getItem("user");
+  var userObject = JSON.parse(user);
+  var uid = userObject.uid;
   var new_post = document.getElementById("post_text").value;
   //find who is this user name///
-  docRef.get().then(function(querySnapshot) {
+  docRef.get().then(function (querySnapshot) {
     querySnapshot.forEach(function (doc) {
       var docId = doc.id;
+      console.log(docId);
       if (docId == uid) {
-        const data = db.collection("Users").doc(uid);
-        console.log(data)
-        var first_name = data.name;
-        var picture = data.image_url;
-      }
-      const forumRef = db.collection("forum").doc(x);
-      data_to_insert = {
-        chat: {
-          chat: new_post,
-          name: first_name,
-          picture: picture,
-          timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-          replied: {
-            chat: "",
-            name: "",
-            picture: ""
+        const userRef = db.collection("Users").doc(uid);
+        userRef.get().then((doc) => {
+          if (doc.exists) {
+            var first_name = doc.data().name;
+            var image_url = doc.data().image_url || "./images/profile photo.jpeg";
+
+            var reply = "";
+            var chat = "chat" + (count)
           }
-        }
-      };
-      forumRef.update(data_to_insert).then(() => {
-        console.log("new post is added")
-      });
+          const dataRef = db.collection("forum").doc(x);
+          var data_to_insert = {};
+          var count = doc.data().name;
+          data_to_insert[count] = {
+            chat: new_post,
+            name: first_name,
+            picture: image_url,
+            timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+            replied: {
+              name: "",
+              picture: "",
+            }
+          };
 
-    }
-    )
+          dataRef.update(data_to_insert).then(() => {
+            console.log("data is inside");
+
+
+          }).catch(function (error) {
+            console.error("Error updating data:", error);
+          }
+          )
+        })
+      }
+
+    })
   })
+  document.getElementById("post_box").reset();
+  window.location.reload()
 
-}
+};
 
-function showReply(docId) {
+function lets_reply(docId) {
   const docRef = db.collection("forum").doc(docId);
   if (docRef) {
     docRef.get().then((doc) => {

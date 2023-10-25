@@ -83,6 +83,9 @@ header{
   align-items: flex-start;
   border-bottom: 1px;
   padding-bottom: 10px;
+    /* border: solid 2px;
+    border-radius: 5px; */
+
 }
 
 .post_footer{
