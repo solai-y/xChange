@@ -52,13 +52,10 @@ const app = createApp({
     },
 
     submitReview: function () {
-      var uid = this.userVue;
-      // Save review to Firebase Firestore
-      // use get params to retrieve single data point form firestore
-      var userData = db.collection("Users").doc(uid);
+      var userData = db.collection("Users").doc(this.userVue); // undefined here
       userData.get().then(function (doc) {
-        let userInfo = doc.data;
-        this.username = userInfo.name;
+        let userInfo = doc.data();
+        this.username = userInfo["name"];
         if (typeof userInfo.image_url != "undefined") {
           this.image_url = userInfo.image_url;
         } else {
