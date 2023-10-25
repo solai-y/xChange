@@ -283,4 +283,12 @@ html, body {
   padding: 0;
 }
 
+h1.account {
+  text-align: center;
+}
+
+h5 {
+  padding-left: 240px;
+}
+
 

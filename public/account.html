@@ -228,7 +228,7 @@
                     An email has been sent to you to reset your password!
                 </div>
                 <div class="text-end">
-                    <button id="resetPassword">Reset Password</button>
+                    <button id="resetPasswordButton">Reset Password</button>
                     <button type="submit" class="btn btn-sm btn-primary" id="save">Save</button>
                     <button type="button" onclick="showConfirmation()" class="btn btn-sm btn-danger">Log Out</button>
                 </div>
@@ -401,7 +401,7 @@
         }
     });
 
-    var changePassword = document.getElementById("resetPassword");
+    var changePassword = document.getElementById("resetPasswordButton");
 
     changePassword.addEventListener("click", reset);
 
