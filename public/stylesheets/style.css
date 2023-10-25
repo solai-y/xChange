@@ -16,18 +16,13 @@ Deep Purple: #635D7D
 
 */
 :root {
-    --text-color: #464646;
-    /* Text color is deep teal and can be adjusted */
-    --background-color: rgb(251, 252, 255);
-    /* background color is aero blue and can be adjusted */
-    --hover-color: #ADC4CE;
-    /* hover color is blueish gray and can be adjusted */
-    --error-color: #ff0000;
-    /* error color is blueish gray and can be adjusted */
-    --default-color: #ffffff;
-    /* navbar color */
-
+    --text: #393e46;
+    --background: #d6d6d6;
+    --primary: #4dcba1;
+    --secondary: #dbd9d1;
+    --accent: #767674;
 }
+
 .gray img{
     object-fit:cover;
 }
