@@ -205,11 +205,13 @@ document.addEventListener("DOMContentLoaded", event => {
         });
         console.log(imageInput1.src);
 
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Enter") {
+              e.preventDefault();
+          }
+      });
     
-
-
-
-    const forgotPasswordButton = document.getElementById("resetPassword");
+    const forgotPasswordButton = document.getElementById("resetPasswordButton");
     const resetEmailField = document.getElementById("email");
 
     // Add a click event listener to the "Forgot Password" button
@@ -221,6 +223,7 @@ document.addEventListener("DOMContentLoaded", event => {
         console.log(email);
 
         // Use Firebase's password reset functionality
+        if (email){
         firebase.auth().sendPasswordResetEmail(email)
             .then(() => {
                 // Password reset email sent successfully
@@ -230,8 +233,7 @@ document.addEventListener("DOMContentLoaded", event => {
                 // Handle any errors that occur during the password reset process
                 console.error("Error sending password reset email:", error);
             });
-          })
-
+        }
     });
 
 
@@ -256,4 +258,4 @@ function googleLogin() {
         })
 };
 
-
+});

@@ -1,320 +1,384 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>xChange</title>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>xChange</title>
 
-    <!-- update the version number as needed -->
-    <script defer src="/__/firebase/10.4.0/firebase-app-compat.js"></script>
-    <!-- include only the Firebase features as you need -->
-    <script defer src="/__/firebase/10.4.0/firebase-auth-compat.js"></script>
-    <script defer src="/__/firebase/10.4.0/firebase-database-compat.js"></script>
-    <script defer src="/__/firebase/10.4.0/firebase-firestore-compat.js"></script>
-    <script defer src="/__/firebase/10.4.0/firebase-functions-compat.js"></script>
-    <script defer src="/__/firebase/10.4.0/firebase-messaging-compat.js"></script>
-    <script defer src="/__/firebase/10.4.0/firebase-storage-compat.js"></script>
-    <script defer src="/__/firebase/10.4.0/firebase-analytics-compat.js"></script>
-    <script defer src="/__/firebase/10.4.0/firebase-remote-config-compat.js"></script>
-    <script defer src="/__/firebase/10.4.0/firebase-performance-compat.js"></script>
+        <!-- update the version number as needed -->
+        <script defer src="/__/firebase/10.4.0/firebase-app-compat.js"></script>
+        <!-- include only the Firebase features as you need -->
+        <script defer src="/__/firebase/10.4.0/firebase-auth-compat.js"></script>
+        <script defer src="/__/firebase/10.4.0/firebase-database-compat.js"></script>
+        <script defer src="/__/firebase/10.4.0/firebase-firestore-compat.js"></script>
+        <script defer src="/__/firebase/10.4.0/firebase-functions-compat.js"></script>
+        <script defer src="/__/firebase/10.4.0/firebase-messaging-compat.js"></script>
+        <script defer src="/__/firebase/10.4.0/firebase-storage-compat.js"></script>
+        <script defer src="/__/firebase/10.4.0/firebase-analytics-compat.js"></script>
+        <script defer src="/__/firebase/10.4.0/firebase-remote-config-compat.js"></script>
+        <script defer src="/__/firebase/10.4.0/firebase-performance-compat.js"></script>
 
-    <!-- AWS  -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aws-sdk/2.1119.0/aws-sdk.min.js"></script>
-    <!-- 
+        <!-- AWS  -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/aws-sdk/2.1119.0/aws-sdk.min.js"></script>
+        <!-- 
       initialize the SDK after all desired features are loaded, set useEmulator to false
       to avoid connecting the SDK to running emulators.
     -->
-    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3/dist/css/bootstrap.min.css" rel="stylesheet"> 
-    <!-- Axios -->
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <link rel="stylesheet" href="./stylesheets/style.css">
-    <link rel="stylesheet" href="./stylesheets/account.css">
-</head>
+        <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+        <!-- Axios -->
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <link rel="stylesheet" href="./stylesheets/style.css" />
+        <link rel="stylesheet" href="./stylesheets/account.css" />
+    </head>
 
-<body>
-    <script src="account.js"></script>
+    <body>
+        <script src="account.js"></script>
 
-    <!-- BS navbar: start --> 
-    <nav class="navbar navbar-expand-lg"> 
-        <div class="container-fluid"> 
-            <a class="navbar-brand" href="./university.html"><img src="./images/logo.jpeg" class="logo"></a> 
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> 
-                <span class="navbar-toggler-icon"></span> 
-            </button> 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent"> 
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0"> 
-                    <li class="nav-item"> 
-                        <a class="nav-link active" aria-current="page" href="./university.html">Home</a> 
-                    </li> 
-          
-                    <li class="nav-item"> 
-                        <a class="nav-link active" href="./forum.html">Forum</a> 
-                    </li> 
-                    <li class="nav-item">
-                      <a class="nav-link active d-flex d-lg-none" href="./account.html">Profile</a>
-                    </li>
+        <!-- BS navbar: start -->
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="./university.html"><img src="./images/logo.jpeg" class="logo" /></a>
+                <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="./university.html">Home</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link active" href="./forum.html">Forum</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active d-flex d-lg-none" href="./account.html">Profile</a>
+                        </li>
                     </ul>
-                <div class="navimage d-flex align-items-center">
-                  <a href="./account.html" class="avatar rounded-circle text-white d-none d-lg-flex">
-                    <img class="profilepicture" alt="imageInput" src="./images/profile photo.jpeg">
-                 </a>
+                    <div class="navimage d-flex align-items-center">
+                        <a href="./account.html" class="avatar rounded-circle text-white d-none d-lg-flex">
+                            <img class="profilepicture" alt="imageInput" src="./images/profile photo.jpeg" />
+                        </a>
+                    </div>
                 </div>
-                
-            </div> 
-        </div> 
-    </nav> 
+            </div>
+        </nav>
 
-  
-    <!-- BS navbar: start --> 
-    
-    <!-- Bootstrap JS bundle to be placed before the closing </body> tag -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3/dist/js/bootstrap.bundle.min.js" ></script>
+        <!-- BS navbar: start -->
+
+        <!-- Bootstrap JS bundle to be placed before the closing </body> tag -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3/dist/js/bootstrap.bundle.min.js"></script>
 
         <!-- Main content -->
-        <div class="h-screen flex-grow-1 overflow-y-lg-auto ">
-          <!-- Header -->
-          <header class="bg-surface-primary border-bottom pt-6">
-            <div class="container-fluid">
-              <div class="mb-npx">
-                <div class="row align-items-center">
-                    <!-- Title -->
-                    <div class="col-sm-6 col-12 mb-4 mb-sm-0">
-                        <h1 class="h2 mb-0 ls-tight account">Account Settings</h1>
-                    </div>
-                </div>
-              </div>
-            </div>
-          </header>
-        </div>
-          <!-- Main -->
-          <main class="py-6 bg-surface-secondary">
-            <div class="container-fluid">
-              <div class="row">
-                <div class="col-xl-7 mx-auto">
-                  <!-- Profile picture -->
-                  <div>
-                    <div class="card-body">
-                      <div class="d-flex align-items-center">
-                        <div>
-                          <div class="image d-flex align-items-center">
-                            <a href="./account.html" class="avatar rounded-circle text-white">
-                              <img class="profilepicture2" alt="imageInput2" src="./images/profile photo.jpeg">
-                            </a>
-                            <div class="ms-4">
-                              <span class="h4 d-block mb-0" id="headerName"></span>    
-                              <input type="file" id="imageInput">
-                              <input type="text" id="imageInputUrl" style="display: none;">
-                              <label for="imageInput" id="imageInputLabel">Edit Profile Picture</label>
-                              <div>
-                                <button id="removeImage" >Remove</button>
-                              </div>
+        <div class="h-screen flex-grow-1 overflow-y-lg-auto">
+            <!-- Header -->
+            <header class="bg-surface-primary pt-6">
+                <div class="container-fluid">
+                    <div class="mb-npx">
+                        <div class="row align-items-center">
+                            <!-- Title -->
+                            <div class="col-sm-6 col-12 mb-4 mb-sm-0">
+                                <h1 class="h2 mb-0 ls-tight account">Account Settings</h1>
                             </div>
-                          </div>
                         </div>
-                      </div>
                     </div>
-                  </div>
                 </div>
-              </div>
+            </header>
+        </div>
+        <!-- Main -->
+        <main class="py-6 bg-surface-secondary">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xl-7 mx-auto">
+                        <!-- Profile picture -->
+                        <div>
+                            <div class="card-body">
+                                <div class="d-flex align-items-center">
+                                    <div>
+                                        <div class="image d-flex align-items-center">
+                                            <a href="./account.html" class="avatar rounded-circle text-white">
+                                                <img
+                                                    class="profilepicture2"
+                                                    alt="imageInput2"
+                                                    src="./images/profile photo.jpeg" />
+                                            </a>
+                                            <div class="ms-4">
+                                                <span class="h4 d-block mb-0" id="headerName"></span>
+                                                <input type="file" id="imageInput" />
+                                                <input type="text" id="imageInputUrl" style="display: none" />
+                                                <label for="imageInput" id="imageInputLabel"
+                                                    >Edit Profile Picture</label
+                                                >
+                                                <div>
+                                                    <button id="removeImage">Remove</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-                  <!-- Form -->
-                  <div class="mb-5">
-                    <h5 class="mb-0">Personal Information</h5>
-                  </div>
-                  <form class="mb-6">
-                    <div class="row mb-3 justify-content-center">
-                      <div class="col-md-6">
+            <!-- Form -->
+            <div class="mb-5">
+                <h5 class="mb-0">Personal Information</h5>
+            </div>
+            <form class="mb-6">
+                <div class="row mb-3 justify-content-center">
+                    <div class="col-md-6">
                         <div class="inputBox">
-                          <label class="form-label" for="first_name">Name</label>
-                          <input type="text" class="form-control" id="first_name" name="first_name">
+                            <label class="form-label" for="first_name">Name</label>
+                            <input type="text" class="form-control" id="first_name" name="first_name" />
                         </div>
-                      </div>
                     </div>
-                    <div class="row mb-3 justify-content-center">
-                      <div class="col-md-6">
+                </div>
+                <div class="row mb-3 justify-content-center">
+                    <div class="col-md-6">
                         <div class="inputBox">
-                          <label class="form-label" for="phone_number">Phone Number</label>
-                          <input type="text" class="form-control" id="phone_number" name="phone_number">
+                            <label class="form-label" for="phone_number">Phone Number</label>
+                            <input type="text" class="form-control" id="phone_number" name="phone_number" />
                         </div>
-                      </div>
                     </div>
-                    <div class="row mb-3 justify-content-center">
-                      <div class="col-md-6">
+                </div>
+                <div class="row mb-3 justify-content-center">
+                    <div class="col-md-6">
                         <div class="inputBox">
-                          <label class="form-label" for="email">Email</label>
-                          <input type="email" class="form-control" id="email" name="email" required>
+                            <label class="form-label" for="email">Email</label>
+                            <input type="email" class="form-control" id="email" name="email" required />
                         </div>
-                      </div>
                     </div>
-                    <div class="row mb-3 justify-content-center">
-                      <div class="col-md-6">
+                </div>
+                <div class="row mb-3 justify-content-center">
+                    <div class="col-md-6">
                         <div class="inputBox">
-                          <label class="form-label" for="primary_degree">Primary Degree</label>
-                          <select type="dropdown" class="form-control" id="primary_degree" name="primary_degree" required>
-                            <option disabled></option>
-                            <option>Accountancy</option>
-                            <option>College of Integrative Studies</option>
-                            <option>Business</option>
-                            <option>Economics</option>
-                            <option>Computing and Information Systems</option>
-                            <option>Law</option>
-                            <option>Social Sciences</option>
-                          </select>
+                            <label class="form-label" for="primary_degree">Primary Degree</label>
+                            <select
+                                type="dropdown"
+                                class="form-control"
+                                id="primary_degree"
+                                name="primary_degree"
+                                required>
+                                <option disabled></option>
+                                <option>Accountancy</option>
+                                <option>College of Integrative Studies</option>
+                                <option>Business</option>
+                                <option>Economics</option>
+                                <option>Computing and Information Systems</option>
+                                <option>Law</option>
+                                <option>Social Sciences</option>
+                            </select>
                         </div>
-                      </div>
                     </div>
-                    <div class="row mb-3 justify-content-center">
-                      <div class="col-md-6">
+                </div>
+                <div class="row mb-3 justify-content-center">
+                    <div class="col-md-6">
                         <div class="inputBox">
-                          <label class="form-label" for="secondary_degree">Secondary Degree</label>
-                          <select type="dropdown" class="form-control" id="secondary_degree" name="secondary_degree">
-                            <option></option>
-                            <option>Accountancy</option>
-                            <option>College of Integrative Studies</option>
-                            <option>Business</option>
-                            <option>Economics</option>
-                            <option>Computing and Information Systems</option>
-                            <option>Law</option>
-                            <option>Social Sciences</option>
-                          </select>
+                            <label class="form-label" for="secondary_degree">Secondary Degree</label>
+                            <select type="dropdown" class="form-control" id="secondary_degree" name="secondary_degree">
+                                <option></option>
+                                <option>Accountancy</option>
+                                <option>College of Integrative Studies</option>
+                                <option>Business</option>
+                                <option>Economics</option>
+                                <option>Computing and Information Systems</option>
+                                <option>Law</option>
+                                <option>Social Sciences</option>
+                            </select>
                         </div>
-                      </div>
                     </div>
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <div class="password-input">
-                          <label class="form-label" for="password">Password</label>
-                          <input type="password" class="form-control" id="password">
-                          <button type="button" id="togglePassword">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-slash" viewBox="0 0 16 16">
-                              <path d="M13.359 11.238C15.06 9.72 16 8 16 8s-3-5.5-8-5.5a7.028 7.028 0 0 0-2.79.588l.77.771A5.944 5.944 0 0 1 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.134 13.134 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755-.165.165-.337.328-.517.486l.708.709z"/>
-                              <path d="M11.297 9.176a3.5 3.5 0 0 0-4.474-4.474l.823.823a2.5 2.5 0 0 1 2.829 2.829l.822.822zm-2.943 1.299.822.822a3.5 3.5 0 0 1-4.474-4.474l.823.823a2.5 2.5 0 0 0 2.829 2.829z"/>
-                              <path d="M3.35 5.47c-.18.16-.353.322-.518.487A13.134 13.134 0 0 0 1.172 8l.195.288c.335.48.83 1.12 1.465 1.755C4.121 11.332 5.881 12.5 8 12.5c.716 0 1.39-.133 2.02-.36l.77.772A7.029 7.029 0 0 1 8 13.5C3 13.5 0 8 0 8s.939-1.721 2.641-3.238l.708.709zm10.296 8.884-12-12 .708-.708 12 12-.708.708z"/>
-                            </svg>
-                          </button>
-                          </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <div class="password-input">
+                            <label class="form-label" for="password">Password</label>
+                            <input type="password" class="form-control" id="password" />
+                            <button type="button" id="togglePassword">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="16"
+                                    height="16"
+                                    fill="currentColor"
+                                    class="bi bi-eye-slash"
+                                    viewBox="0 0 16 16">
+                                    <path
+                                        d="M13.359 11.238C15.06 9.72 16 8 16 8s-3-5.5-8-5.5a7.028 7.028 0 0 0-2.79.588l.77.771A5.944 5.944 0 0 1 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.134 13.134 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755-.165.165-.337.328-.517.486l.708.709z" />
+                                    <path
+                                        d="M11.297 9.176a3.5 3.5 0 0 0-4.474-4.474l.823.823a2.5 2.5 0 0 1 2.829 2.829l.822.822zm-2.943 1.299.822.822a3.5 3.5 0 0 1-4.474-4.474l.823.823a2.5 2.5 0 0 0 2.829 2.829z" />
+                                    <path
+                                        d="M3.35 5.47c-.18.16-.353.322-.518.487A13.134 13.134 0 0 0 1.172 8l.195.288c.335.48.83 1.12 1.465 1.755C4.121 11.332 5.881 12.5 8 12.5c.716 0 1.39-.133 2.02-.36l.77.772A7.029 7.029 0 0 1 8 13.5C3 13.5 0 8 0 8s.939-1.721 2.641-3.238l.708.709zm10.296 8.884-12-12 .708-.708 12 12-.708.708z" />
+                                </svg>
+                            </button>
                         </div>
-                      </div>
-
-                    <div id="notification" style="display: none;" class="notification">
-                      Changes have been saved!
-                    </div>  
-                    <div id="notificationForPassword" style="display: none;" class="notification">
-                      An email has been sent to you to reset your password!
-                    </div>                
-                    <div class="text-end">
-                      <button id="resetPassword">Reset Password</button>
-                      <button type="submit" class="btn btn-sm btn-primary" id="save">Save</button>
-                      <button type="button"  onclick="showConfirmation()" class="btn btn-sm btn-danger">Log Out</button>
-                    </div>
-                  </form>
-
-                  <div id="confirmationModal" class="modal">
-                    <div class="modal-content">
-                        <p>Are you sure you want to log out?</p>
-                        <button id="yesButton" onclick="logout()">Yes</button>
-                        <button id="noButton" onclick="closeModal()">No</button>
                     </div>
                 </div>
 
-                <hr>
-                 <!-- Site footer -->
-                <footer class="footer">
-                  <div class="container">
-                    <div class="row">
-                      <div class="col-md-3">
-                        <h6>
-                          <img src="./images/logo.jpeg" class="header-photo">
-                        </h6>
-                        <p class="text-justify">xChange aims to be a one stop platform for students to plan for their exchange with ease.</p>
-                      </div>
-                      <div class="col-md-3">
-                        <h6>Socials</h6>
-                        <ul class="socials">
-                          <li><a class="facebook" href="#"><label for="facebook"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
-                            <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
-                          </svg></label></a></li>
-                          <li><a class="x" href="#"><label for="facebook"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-twitter-x" viewBox="0 0 16 16">
-                            <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865l8.875 11.633Z"/>
-                          </svg></label></a></li>
-                          <li><a class="linkedin" href="#"><label for="facebook"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-linkedin" viewBox="0 0 16 16">
-                            <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/>
-                          </svg></label></a></li>   
-                        </ul>
-                      </div>
-                  
-                      <div class="col-md-3">
-                        <h6>Quick Links</h6>
-                        <ul class="footer-links">
-                          <li><a href="./university.html"><label>Home</label></a></li>
-                          <li><a href="./forum.html"><label>Forum</label></a></li>
-                          <li><a href="./account.html"><label>Profile</label></a></li>
-                        </ul>
-                      </div>
+                <div id="notification" style="display: none" class="notification">Changes have been saved!</div>
+                <div id="notificationForPassword" style="display: none" class="notification">
+                    An email has been sent to you to reset your password!
+                </div>
+                <div class="text-end">
+                    <button id="resetPasswordButton">Reset Password</button>
+                    <button type="submit" class="btn btn-sm btn-primary" id="save">Save</button>
+                    <button type="button" onclick="showConfirmation()" class="btn btn-sm btn-danger">Log Out</button>
+                </div>
+            </form>
 
-                      <div class="col-md-3">
-                        <h6>Account</h6>
-                        <ul class="footer-links">
-                          <li><a href="./login_page.html"><label>Log In</label></a></li>
-                          <li><a href="./login_page.html"><label>Register</label></a></li>
-                        </ul>
-                      </div>
-                    </div>
-                    </div>
-                  
-                
-                    <hr>
-                  <div class="container">
-                    <div class="row">
-                      <div class="text-center">
-                        <p class="copyright-text">Copyright &copy; 2023 All Rights Reserved by 
-                            <a href="#"><label>xChange</label></a>.
-                        </p>
-                      </div>
-                      </div>
-                  </div>
-                </footer>
+            <div id="confirmationModal" class="modal">
+                <div class="modal-content">
+                    <p>Are you sure you want to log out?</p>
+                    <button id="yesButton" onclick="logout()">Yes</button>
+                    <button id="noButton" onclick="closeModal()">No</button>
+                </div>
+            </div>
 
-                    
-              </main> 
-</body>
+            <!-- Site footer -->
+            <footer class="footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <h6>
+                                <img src="./images/logo.jpeg" class="header-photo" />
+                            </h6>
+                            <p class="text-justify">
+                                xChange aims to be a one stop platform for students to plan for their exchange with
+                                ease.
+                            </p>
+                        </div>
+                        <div class="col-md-3">
+                            <h6>Socials</h6>
+                            <ul class="socials">
+                                <li>
+                                    <a class="facebook" href="#"
+                                        ><label for="facebook"
+                                            ><svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                width="20"
+                                                height="20"
+                                                fill="currentColor"
+                                                class="bi bi-facebook"
+                                                viewBox="0 0 16 16">
+                                                <path
+                                                    d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z" /></svg></label
+                                    ></a>
+                                </li>
+                                <li>
+                                    <a class="x" href="#"
+                                        ><label for="facebook"
+                                            ><svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                width="20"
+                                                height="20"
+                                                fill="currentColor"
+                                                class="bi bi-twitter-x"
+                                                viewBox="0 0 16 16">
+                                                <path
+                                                    d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865l8.875 11.633Z" /></svg></label
+                                    ></a>
+                                </li>
+                                <li>
+                                    <a class="linkedin" href="#"
+                                        ><label for="facebook"
+                                            ><svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                width="20"
+                                                height="20"
+                                                fill="currentColor"
+                                                class="bi bi-linkedin"
+                                                viewBox="0 0 16 16">
+                                                <path
+                                                    d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z" /></svg></label
+                                    ></a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="col-md-3">
+                            <h6>Quick Links</h6>
+                            <ul class="footer-links">
+                                <li>
+                                    <a href="./university.html"><label>Home</label></a>
+                                </li>
+                                <li>
+                                    <a href="./forum.html"><label>Forum</label></a>
+                                </li>
+                                <li>
+                                    <a href="./account.html"><label>Profile</label></a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="col-md-3">
+                            <h6>Account</h6>
+                            <ul class="footer-links">
+                                <li>
+                                    <a href="./login_page.html"><label>Log In</label></a>
+                                </li>
+                                <li>
+                                    <a href="./login_page.html"><label>Register</label></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <hr />
+                <div class="container">
+                    <div class="row">
+                        <div class="text-center">
+                            <p class="copyright-text">
+                                Copyright &copy; 2023 All Rights Reserved by <a href="#"><label>xChange</label></a
+                                >.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </main>
+    </body>
 </html>
-  
-  <script>
-    var data = JSON.parse(sessionStorage.getItem('user'));
+
+<script>
+    var data = JSON.parse(sessionStorage.getItem("user"));
     console.log(data);
     var emailadd = data.email;
     var emailInput = document.getElementById("email");
     emailInput.value = emailadd;
 
     document.addEventListener("DOMContentLoaded", function () {
-    const passwordInput = document.getElementById("password");
-    const toggleButton = document.getElementById("togglePassword");
+        const passwordInput = document.getElementById("password");
+        const toggleButton = document.getElementById("togglePassword");
 
-    toggleButton.addEventListener("click", function () {
-      if (passwordInput.type === "password") {
-        passwordInput.type = "text";
-      } else {
-        passwordInput.type = "password";
-      }
+        toggleButton.addEventListener("click", function () {
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+            } else {
+                passwordInput.type = "password";
+            }
+        });
     });
-  });
 
-      // JavaScript to handle image selection and update
+    // JavaScript to handle image selection and update
     const imageInput = document.getElementById("imageInput");
     const profilepicture = document.getElementsByClassName("profilepicture")[0];
 
-    imageInput.addEventListener("change", function() {
+    imageInput.addEventListener("change", function () {
         const selectedFile = imageInput.files[0];
 
         if (selectedFile) {
             // Create a URL for the selected image and set it as the src of the profile image
             const imageUrl = URL.createObjectURL(selectedFile);
             profilepicture.src = imageUrl;
-
         } else {
             // If no file is selected or the selection is canceled, you can set a default image
             profilepicture.src = "./images/profile photo.jpeg";
@@ -324,46 +388,44 @@
     const imageInput2 = document.getElementById("imageInput2");
     const profilepicture2 = document.getElementsByClassName("profilepicture2")[0];
 
-    imageInput.addEventListener("change", function() {
+    imageInput.addEventListener("change", function () {
         const selectedFile = imageInput.files[0];
 
         if (selectedFile) {
             // Create a URL for the selected image and set it as the src of the profile image
             const imageUrl = URL.createObjectURL(selectedFile);
             profilepicture2.src = imageUrl;
-
         } else {
             // If no file is selected or the selection is canceled, you can set a default image
             profilepicture2.src = "./images/profile photo.jpeg";
         }
     });
 
-    var changePassword = document.getElementById("resetPassword");
+    var changePassword = document.getElementById("resetPasswordButton");
 
     changePassword.addEventListener("click", reset);
 
-    function reset(){
-      var notification = document.getElementById("notificationForPassword");
-      notification.style.display = "block";
+    function reset() {
+        var notification = document.getElementById("notificationForPassword");
+        notification.style.display = "block";
 
-      // Optionally, you can hide the notification after a few seconds
-      setTimeout(function() {
-        notification.style.display = "none";
-      }, 3000); // Hide after 3 seconds (adjust as needed)
+        // Optionally, you can hide the notification after a few seconds
+        setTimeout(function () {
+            notification.style.display = "none";
+        }, 3000); // Hide after 3 seconds (adjust as needed)
     }
 
     function showConfirmation() {
-    var modal = document.getElementById("confirmationModal");
-    modal.style.display = "block";
-}
+        var modal = document.getElementById("confirmationModal");
+        modal.style.display = "block";
+    }
 
-function closeModal() {
-    var modal = document.getElementById("confirmationModal");
-    modal.style.display = "none";
-}
+    function closeModal() {
+        var modal = document.getElementById("confirmationModal");
+        modal.style.display = "none";
+    }
 
-function logout() {
-    location.href = 'index.html'; // Perform the logout action
-}
-
+    function logout() {
+        location.href = "index.html"; // Perform the logout action
+    }
 </script>

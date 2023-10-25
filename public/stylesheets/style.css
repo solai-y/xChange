@@ -16,18 +16,14 @@ Deep Purple: #635D7D
 
 */
 :root {
-    --text-color: #464646;
-    /* Text color is deep teal and can be adjusted */
-    --background-color: rgb(251, 252, 255);
-    /* background color is aero blue and can be adjusted */
-    --hover-color: #ADC4CE;
-    /* hover color is blueish gray and can be adjusted */
-    --error-color: #ff0000;
-    /* error color is blueish gray and can be adjusted */
-    --default-color: #ffffff;
-    /* navbar color */
+    --text: #393e46;
+    --background: #FFFAEB;
+    --primary: #4dcba1;
+    --secondary: #dbd9d1;
+    --accent: #767674;
+    --font: -apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif;
+  }
 
-}
 .gray img{
     object-fit:cover;
 }
@@ -86,12 +82,21 @@ img {
         justify-content: center;
         align-items: center;
         font-size: 7vw;
-        color: #4ecca3;
+        color: var(--text);
+        background-color: var(--background);
+}
+
+.aboutus {
+    background-color: var(--background);
+}
+
+.carouselBack {
+    background-color: var(--background);
 }
 .box{
     max-width:400px;
     max-height: 400px;
-    background: #fff;
+    background: var(--background);
     position: relative;
     margin-bottom: auto;
     margin-left: auto;
@@ -127,7 +132,7 @@ img {
     opacity:1;
 }
 .box .content .text1{
-    color:black;
+    color:var(--text);
     font-size:40px;
     font-family: 'Oswald', cursive;
     position:absolute;
@@ -148,7 +153,7 @@ img {
         transition-timing-function: cubic-bezier(0.000, 0.440, 0.000, 0.795);    
 }
 .box .content .text2{
-    color:black;
+    color:var(--text);
     /* font-size:20px; */
     font-family: 'Oswald', cursive;
     position:absolute;
@@ -414,8 +419,8 @@ div .col-4 {
 
 /* Navbar styling */
 .navbar {
-    background-color: white;
-    border-bottom: var(--text-color) 1px solid;
+    background-color: var(--background);
+    height: 60px;
 }
 
 .navbar:hover {
@@ -536,20 +541,20 @@ section {
 }
 
 .socials label {
-    color: #000000;
+    color: var(--text);
     cursor: pointer;
 }
 
 .footer h6 {
-    color: #4ecca3;
+    color: var(--text);
 }
 
 .text-center label {
-    color: #4ecca3;
+    color: var(--text);
 }
 
 strong {
-    color: #4ecca3;
+    color: var(--text);
 }
 
 .ag-format-container {
@@ -663,6 +668,11 @@ strong {
     }
   }
 
+  .footer  {
+    background-color: var(--secondary);
+    width: 100%;
+    padding-top: 25px;
+  }
 
 
 
