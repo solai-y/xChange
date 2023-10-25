@@ -54,49 +54,41 @@ const app = createApp({
     },
 
     submitReview: function () {
-      var userData = db.collection("Users").doc(this.userVue); // undefined here
+      var userData = db.collection("Users").doc(this.userVue);
       const vueInstance = this;
-      userData.get().then((doc) => {
+    
+      userData.get().then(function (doc) {
         let userInfo = doc.data();
-        this.usernameComment = userInfo["name"];
-        console.log(this.usernameComment);
-        if (typeof userInfo.image_url != "undefined") {
-            this.imageComment = userInfo.image_url;
-        } else {
-            this.imageComment = "./images/profile photo.jpeg";
+    
+        if (userInfo) {
+          vueInstance.usernameComment = userInfo["name"];
+    
+          if (userInfo.image_url) {
+            vueInstance.imageComment = userInfo.image_url;
+          } else {
+            vueInstance.imageComment = "./images/profile photo.jpeg";
+          }
+    
+          // Update the database here, inside the callback
+          db.collection("University")
+            .doc(vueInstance.docIdVue)
+            .update({
+              review: firebase.firestore.FieldValue.arrayUnion({
+                username: vueInstance.usernameComment,
+                image_url: vueInstance.imageComment,
+                comment: vueInstance.comment,
+              }),
+            });
+    
+          // Clear form inputs
+          vueInstance.comment = "";
+    
+          // Hide the form after submission
+          vueInstance.closePopup();
         }
-
-        db.collection("University")
-        .doc(this.docIdVue)
-        .update({
-          review: firebase.firestore.FieldValue.arrayUnion({
-            username: this.usernameComment,
-            image_url: this.imageComment,
-            comment: this.comment,
-          }),
-        });
       });
-      // userData.get().then(function (doc) {
-      //   let userInfo = doc.data();
-      //   this.usernameComment= userInfo["name"]; // setting properties of undefined error here
-      //   if (typeof userInfo.image_url != "undefined") {
-      //     this.imageComment = userInfo.image_url;
-      //   } else {
-      //     this.imageComment = "./images/profile photo.jpeg";
-      //   }
-      // });
-      //   console.log(userData);
-
-      // Capture the 'this' context
-
-      
-
-      // Clear form inputs
-      this.comment = "";
-
-      // Hide the form after submission
-      this.closePopup();
     },
+      
     methodName() {
       // Your method logic here
     },
