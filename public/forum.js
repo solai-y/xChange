@@ -302,7 +302,7 @@ function NewChat() {
   var uid = sessionStorage.getItem("user");
   var new_post = document.getElementById("post_text").value;
   //find who is this user name///
-  docRef.get().then(function (querySnapshot) {
+  docRef.get().then(function(querySnapshot) {
     querySnapshot.forEach(function (doc) {
       var docId = doc.id;
       if (docId == uid) {
