@@ -12,6 +12,7 @@ const firebaseConfig = {
 document.addEventListener("DOMContentLoaded", event => {
   if (typeof app == 'undefined') {
     const app = firebase.initializeApp(firebaseConfig);
+    console.log(app)
   }
 
   // prints the firebase connection to check for bug
@@ -20,12 +21,13 @@ document.addEventListener("DOMContentLoaded", event => {
     db = firebase.firestore();
     auth = firebase.auth();
   }
+  load_forum()
 });
 var x = "";
 function Create_post() {
 
   const docRef = db.collection("Users");
-  var uid = sessionStorage.getItem("user");
+  var uid = String(sessionStorage.getItem("user"));
   var post = document.getElementById("create_text").value;
   console.log(post);
   docRef.get().then(function (querySnapshot) {
@@ -70,14 +72,18 @@ function Create_post() {
 
 var history_arr = [];
 function check_forum(docId) {
+  var uid = String(sessionStorage.getItem("user"));
+  const data = db.collection("Users").doc(uid);
+  data.get().then((doc) => {
+  console.log("data is inside");
+  console.log(doc.data())
+  })
   x = docId;
   history_arr.push(x);
   console.log(history_arr)
   const forumElements = document.querySelectorAll(".new_forum");
   console.log(forumElements);
   const docRef = db.collection("forum").doc(docId);
-
-
   docRef.get().then((doc) => {
     if (doc.exists) {
       const chatData = doc.data().chat;
@@ -248,17 +254,17 @@ function load_forum() {
       });
 
 
-
+      
     })
   }).catch(function (error) {
     console.error("Error loading forum:", error);
   });
 
   // This code will execute when the page is fully loaded
-
+  
 };
 
-window.onload = load_forum
+
 
 function addNewForum() {
   var forum = document.getElementById("newForumName").value;
@@ -299,7 +305,7 @@ function addNewForum() {
 
 function NewChat() {
   const docRef = db.collection("Users");
-  var uid = sessionStorage.getItem("user");
+  var uid = String(sessionStorage.getItem("user"));
   var new_post = document.getElementById("post_text").value;
   //find who is this user name///
   docRef.get().then(function(querySnapshot) {
@@ -307,6 +313,7 @@ function NewChat() {
       var docId = doc.id;
       if (docId == uid) {
         const data = db.collection("Users").doc(uid);
+        console.log(data)
         var first_name = data.name;
         var picture = data.image_url;
       }
