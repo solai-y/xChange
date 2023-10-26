@@ -14,7 +14,10 @@ var backgroundImageVue = ref("bgimage");
 var aboutImageVue = ref("abtimage");
 var modulesVue = ref("basket");
 var galleryVue = ref("gallery");
-var userVue = JSON.parse(sessionStorage.getItem("user")).uid;
+var uidVue = JSON.parse(sessionStorage.getItem("user"));
+if (uidVue != null){
+  var userVue = uidVue.uid;
+}
 var reviewVue = ref("review");
 var docIdVue = ref("temp");
 var comment = document.getElementById("comment");
@@ -38,6 +41,8 @@ const app = createApp({
       comment: comment.value,
       username: username.value,
       image_url: image_url.value,
+      usernameComment: "",
+      imageComment: "",
     };
   },
   methods: {
@@ -52,47 +57,41 @@ const app = createApp({
     },
 
     submitReview: function () {
-      var userData = db.collection("Users").doc(this.userVue); // undefined here
+      var userData = db.collection("Users").doc(this.userVue);
+      const vueInstance = this;
+    
       userData.get().then(function (doc) {
         let userInfo = doc.data();
-        this.username = userInfo["name"];
-        if (typeof userInfo.image_url != "undefined") {
-          this.image_url = userInfo.image_url;
-        } else {
-          this.image_url = "./images/profile photo.jpeg";
+    
+        if (userInfo) {
+          vueInstance.usernameComment = userInfo["name"];
+    
+          if (userInfo.image_url) {
+            vueInstance.imageComment = userInfo.image_url;
+          } else {
+            vueInstance.imageComment = "./images/profile photo.jpeg";
+          }
+    
+          // Update the database here, inside the callback
+          db.collection("University")
+            .doc(vueInstance.docIdVue)
+            .update({
+              review: firebase.firestore.FieldValue.arrayUnion({
+                username: vueInstance.usernameComment,
+                image_url: vueInstance.imageComment,
+                comment: vueInstance.comment,
+              }),
+            });
+    
+          // Clear form inputs
+          vueInstance.comment = "";
+    
+          // Hide the form after submission
+          vueInstance.closePopup();
         }
       });
-      //   console.log(userData);
-
-      // Capture the 'this' context
-      //   const vueInstance = this;
-
-      //   userData.get().then((doc) => {
-      //     let x = doc.data;
-      //     console.log(x);
-      //     this.username = doc.data().name;
-      //     if (typeof doc.data.image_url != "undefined") {
-      //       this.image_url = doc.data().image_url;
-      //     } else {
-      //       this.image_url = "./images/profile photo.jpeg";
-      //     }
-      //   });
-      db.collection("University")
-        .doc(this.docIdVue)
-        .update({
-          review: firebase.firestore.FieldValue.arrayUnion({
-            username: this.username,
-            image_url: this.image_url,
-            comment: this.comment,
-          }),
-        });
-
-      // Clear form inputs
-      this.comment = "";
-
-      // Hide the form after submission
-      this.closePopup();
     },
+      
     methodName() {
       // Your method logic here
     },

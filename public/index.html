@@ -27,6 +27,8 @@
 
   <script defer src="scrollsequence.js"></script>
   <script defer src="js/typewriter.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
   <!-- Google Fonts Roboto -->
@@ -96,14 +98,14 @@
 
   <!--Section University-->
 
-  <div class="container-fluid aboutus">
+  <div class="container-fluid about">
     <div class="row">
       <div class="col-6">
         <div class="left-side">
-          <h5 class="mbr-section-title mbr-fonts-style display-2">
+          <h5>
             <strong>ABOUT US</strong>
           </h5>
-          <p class="text-wrap">
+          <p class="text-wrap fill-entire-column">
             Our mission is to simplify the exchange process.
             <br>
             We get how difficult it is to compile material that is dispersed over the world because we are students ourselves.
@@ -172,7 +174,7 @@
       <source src="images/take-off.mp4">
     </video>
   </div> -->
-    <div class = "col-md-12">
+    <div class = "col-md-12" id="go">
     <p id="wanttogo">Where do you want to go?</p>
   </div>
   </div>
@@ -181,8 +183,6 @@
 
   <div class="container-fluid carouselBack">
     <div class="col-12" >
-      <div id="carouselVideo" class="carousel slide carousel-fade" data-mdb-ride="carousel" data-mdb-interval="3000"
-        data-mdb-wrap="true" data-mdb-pause="false" >
         <!-- Indicators -->
         <!-- <div class="carousel-indicators">
           <button type="button" data-mdb-target="#carouselVideo" data-mdb-slide-to="0" class="active"
@@ -191,9 +191,8 @@
           <button type="button" data-mdb-target="#carouselVideo" data-mdb-slide-to="2" aria-label="Slide 3"></button>
         </div> -->
         <!-- Inner -->
-        <div class="carousel-inner" id="picture">
+        <div class="carousel-inner" data-bs-ride="carousel" id="picture">
           <!-- Single item -->
-           <div class="carousel-item" >
             <!--  <img src="images/OSAKA.mp4" type="video/mp4">
             <div class="carousel-caption d-none d-md-block">
               <h3>Osaka University</h3>
@@ -237,9 +236,8 @@
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Next</span>
         </button> -->
-      </div>
-    </div>
-  </div>
+        </div>
+
 
 
     <!-- <div class="col-12">
@@ -299,10 +297,8 @@
           </div>
         </div>
         </div>
-      </div>
     
         <hr>
-      </div>
       <div class="container">
         <div class="row">
           <div class="text-center">
@@ -311,12 +307,20 @@
             </p>
           </div>
           </div>
+      </div>
 </footer>
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
       crossorigin="anonymous"></script>
+      <script>
+        $(document).ready(function() {
+          // Activate the carousel
+          $('#carouselExample').carousel();
+        });
+      </script>
+      
 
 </body>
 

@@ -24,6 +24,8 @@ Deep Purple: #635D7D
     --font: -apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif;
   }
 
+
+
 .gray img{
     object-fit:cover;
 }
@@ -77,22 +79,44 @@ img {
 
 }
 #wanttogo{
-        text-align: center;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 7vw;
-        color: var(--text);
-        background-color: var(--background);
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 35px;
+    color: var(--text);
+    background-color: var(--background);
+    padding-bottom: 20px;
+    margin-bottom: 0px;
+}
+
+.about {
+    background-color: var(--background);
+}
+
+.fill-entire-column {
+    color: var(--text);
+    height: 100%; /* Set the height to fill the entire column */
+    line-height: 1.5; /* Adjust line height for better text alignment */
+    text-align: justify; /* Justify the text within the container */
+    font-size: 25px;
 }
 
 .aboutus {
-    background-color: var(--background);
+    font-size: 35px;
+    color: var(--text);
+}
+
+#go {
+    padding: 0px;
 }
 
 .carouselBack {
     background-color: var(--background);
+    padding-left: 0px !important;
+    padding-right: 0px !important;
 }
+
 .box{
     max-width:400px;
     max-height: 400px;
@@ -231,16 +255,10 @@ video {
     text-align: center;
 }
 
-
-
-.carousel {
-    position: relative;
-    text-align: center;
-    box-sizing: border-box;
-}
 div .col-4 {
     align-items: center !important;
 }
+
 .carousel {
     position: relative;
     text-align: center;
@@ -489,7 +507,7 @@ section {
 .text {
     padding: 500px;
     text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: var(--font);
     font-size: 50px;
 }
 
@@ -535,26 +553,17 @@ section {
     width: 20%;
   }
   
-.footer-links label {
-    color: black;
-    cursor: pointer;
-}
-
-.socials label {
-    color: var(--text);
-    cursor: pointer;
-}
-
-.footer h6 {
-    color: var(--text);
-}
-
 .text-center label {
     color: var(--text);
 }
 
 strong {
     color: var(--text);
+    font-size: 35px;
+}
+
+h5 {
+    padding-top: 20px;
 }
 
 .ag-format-container {
@@ -672,6 +681,22 @@ strong {
     background-color: var(--secondary);
     width: 100%;
     padding-top: 25px;
+    margin-top: 20px;
+  }
+  
+  .footer-links label {
+    color: var(--text);
+    cursor: pointer;
+  }
+  
+  .socials label {
+    color: var(--text);
+    cursor: pointer;
+  }
+
+  html, body {
+    margin: 0;
+    padding: 0;
   }
 
 

@@ -211,7 +211,7 @@
                     <p class="lead text-center">Here are the reviews of {{universityVue}} from past seniors
                         who exchanged there.
                     </p>
-                    <h5 class="text-center" v-if="userVue === null">
+                    <h5 class="text-center" v-if="userVue == undefined">
                         <a href="login_page.html">Login</a>
                         <span> to be able to leave a review</span>
                     </h5>
@@ -234,8 +234,8 @@
                                         
                 </div>
                 <div class="row">
-                    <div class="col-lg-3 col-md-6 col-sm-12" v-for="review in reviewVue">
-                        <div class="card" style="width: 18rem;">
+                    <div class="col-lg-3 col-md-4 col-sm-12" v-for="review in reviewVue">
+                        <div class="card">
                             <img :src="review.image_url" class="card-img-top" alt="">
                             <div class="card-body">
                               <h5 class="card-title">{{review.username}}</h5>
