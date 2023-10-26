@@ -695,6 +695,7 @@ h5 {
     background-color: var(--secondary);
     width: 100%;
     padding-top: 25px;
+    margin-top: 20px;
   }
   
   .footer-links label {
