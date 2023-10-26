@@ -553,20 +553,6 @@ section {
     width: 20%;
   }
   
-.footer-links label {
-    color: black;
-    cursor: pointer;
-}
-
-.socials label {
-    color: var(--text);
-    cursor: pointer;
-}
-
-.footer h6 {
-    color: var(--text);
-}
-
 .text-center label {
     color: var(--text);
 }
