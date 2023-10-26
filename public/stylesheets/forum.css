@@ -7,6 +7,11 @@ header{
   text-align: center;
 }
 
+#submitReplyButton{
+  position: relative;
+  right: 10px;
+}
+
 
 .forum-container {
   display: flex;
@@ -57,8 +62,12 @@ header{
 
 .forum-content {
   padding: 20px;
-}#7289DA
+}
 
+#create_text{
+  display: flex;
+  text-align: center;
+}
 
 
 .post-form  h1{
@@ -66,23 +75,40 @@ header{
   text-align: center;
   
 }
+.post_text{
+  width: 80%; 
+  margin: 0 auto; 
+  display: block;
+}
+/* .postBox_input{
 
+} */
+
+.postBox_input input[type="text"] {
+  width: 80%; /* Adjust the width as needed */
+  padding: 10px; /* Adjust the padding as needed */
+  font-size: 18px; /* Adjust the font size as needed */
+  text-align: center; /* Center the text within the input */
+}
 
 /* Adjust styling as needed */
 /*post*/
 .post_avatar img{
   border-radius: 50%;
-  height: 50px;
+  height: 100px;
   width: auto;
+  float: left;
 }
 .post_avatar{
   display: flex;
+  align-items: center;
 }
 .post{
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   border-bottom: 1px;
   padding-bottom: 10px;
+
     /* border: solid 2px;
     border-radius: 5px; */
 
@@ -109,11 +135,25 @@ header{
   font-size: 15px;
   margin-bottom: 5px;
 }
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; /* This moves the button to the right */
+}
 
 .post_headerDescription{
-  
+
+  font-size: 30px;
+  padding-left: 20px;
   margin-bottom: 10px;
-  font-size: 15px;
+
+}
+
+.post_headerDescription #replyButton{
+  
+    justify-content: end;
+    align-items: center;
+  
 }
 .post_body{
   flex:1px;
@@ -132,11 +172,12 @@ header{
 .postBox_input{
   display: flex;
   padding: 20px;
- 
+
 }
+
 .postBox_input input{
   flex:1;
-  margin-left: 20px;
+  margin-left: -75px;
   font-size: 20px;
   border: none;
   outline: none;

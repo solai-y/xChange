@@ -1,0 +1,150 @@
+function check_forum(docId) {
+
+  x = docId;
+  history_arr.push(x);
+  const docRef = db.collection("forum").doc(docId);
+  var count = 0;
+  docRef.get().then((doc) => {
+    if (doc.exists) {
+      // Document data is in doc.data(
+      var insert_post = document.querySelector(".post_headerDescription");
+      var createElement = document.createElement("p");
+      createElement.setAttribute("class", docId);
+      var dis_element = document.getElementById(docId);
+      dis_element.style.display = "block";
+      var button_id = document.getElementById("replyButton");
+      button_id.style.display = "flex";
+      const things = doc.data();
+      for (thing in things) {
+        count +=1 
+        var chats = things[thing].chat;
+        var uid = things[thing].name;
+        var image = things[thing].picture;
+        if (typeof chats === "undefined" || typeof uid === "undefined" || typeof things[thing].chat == "" || chats == "") {
+          var createElement = document.createElement("p");
+          var txt = document.createTextNode("Insert your first post here!");
+          var button_id = document.getElementById("replyButton");
+          button_id.style.display = "none";
+          createElement.setAttribute("class", x);
+          createElement.appendChild(txt);
+          insert_post.appendChild(createElement);
+          var addPostButton = document.getElementById("postBox");
+          addPostButton.style.display = "none";
+          var post_class = document.getElementById("create_post");
+          post_class.style.display = "block";
+
+        } else {
+          //showing the person avatar
+          var picture_ref = document.querySelector(".post_avatar");
+          var create_image = document.createElement("img");
+          create_image.setAttribute("src", image);
+          create_image.setAttribute("id", x + "Picture")
+          picture_ref.appendChild(create_image);
+
+          //showing the person's name
+          var header_name = document.querySelector(".post_headerText");
+          var create_div_tag = document.createElement("div")
+          create_div_tag.setAttribute("class", "user")
+          var header_text = document.createTextNode(uid);
+          create_div_tag.appendChild(header_text)
+          header_name.appendChild(create_div_tag)
+
+          //showing the person chat
+          var text = document.createTextNode(chats);
+          createElement.appendChild(text);
+          insert_post.appendChild(createElement);
+
+          //not displaying the Welcome
+          var textontop = document.getElementById("textontop");
+          textontop.style.display = "none";
+
+          //displaying the add box
+          var addPostButton = document.getElementById("postBox");
+          addPostButton.style.display = "block";
+
+          //displaying the grey line footer
+          var linefooter = document.getElementById("linefooter");
+          linefooter.style.display = "block";
+          //display the reply button
+          var reply_class = document.getElementById("reply");
+          reply_class.style.display = "flex";
+          //off display the create post button
+          var post_class = document.getElementById("create_post");
+          post_class.style.display = "none";
+          
+          
+          
+
+          //showing the data
+          const userRef = db.collection("Users").doc(uid);
+          userRef.get().then((doc) => {
+            // var things = doc.data();
+            var person_name = doc.data().name;
+            var person_picture = doc.data().picture;
+
+            //show the person picture
+            var picture_ref = document.querySelector(".post_avatar");
+            var create_image = document.createElement("img");
+            create_image.setAttribute("src", person_picture)
+            create_image.setAttribute("id", x + "picture")
+            picture_ref.appendChild(create_image);
+
+            //the person's name
+            var header_name = document.querySelector(".post_headerSpecial");
+            var name_ref = document.createElement("p");
+            var txt = document.createTextNode(person_name);
+            var reply_class = document.getElementById("reply");
+            reply_class.style.display = "none";
+            console.log(txt)
+            name_ref.appendChild(txt);
+            header_name.appendChild(name_ref);
+            //off display
+            var post_class = document.getElementById("create_post");
+          post_class.style.display = "none";
+          })
+        }
+
+      }
+      const userRef = db.collection("Users").doc(uid);
+      userRef.get().then((doc) => {
+        var person_name = doc.data().name;
+        var person_picture = doc.data().picture;
+
+        //show the person picture
+        var picture_ref = document.querySelector(".post_avatar");
+        var create_image = document.createElement("img");
+        create_image = setAttribute("src", person_picture)
+        picture_ref.appendChild(create_image);
+
+        //the person's name
+        var header_name = document.querySelector(".post_headerSpecial");
+        var name_ref = document.createElement("p");
+        var txt = document.createTextNode(person_name);
+        var reply_class = document.getElementById("reply");
+        reply_class.style.display = "none";
+        console.log(txt)
+        name_ref.appendChild(txt);
+        header_name.appendChild(name_ref);
+      })
+      if (typeof chats === "undefined") {
+        chats = "";
+      }
+      var text = document.createTextNode(chats);
+      createElement.appendChild(text);
+      insert_post.appendChild(createElement);
+      // Display the "Add Post" button
+      var textontop = document.getElementById("textontop");
+      textontop.style.display = "none";
+      var addPostButton = document.getElementById("postBox");
+      addPostButton.style.display = "block";
+      var linefooter = document.getElementById("linefooter");
+      linefooter.style.display = "block";
+      var reply_class = document.getElementById("replyButton");
+      reply_class.style.display = "none";
+      var post_class = document.getElementById("create_post");
+      post_class.style.display = "none";
+
+    }
+  })
+  page_reset(x)
+}

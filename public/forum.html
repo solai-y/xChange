@@ -63,7 +63,7 @@
   </nav>
   <!--End of Navbar-->
   <Header>
-    <small>Welcome to xChange Forum!</small>
+    <small id="welcomeText" >Welcome to xChange Forum!</small>
   </Header>
   <main>
 
@@ -71,11 +71,11 @@
       <!--Forum list-->
       <section class="forum forum-info">
         <div onload="load_forum()" class="forum-list">
-          <h1 id = "forum"><a href = "forum.html">Forums!</a></h1>
-          <div class="new_forum" id = "singapore_forum" onclick="check_forum(this.id)">#singapore_forum</div>
+          <h1 id="forum"><a href="forum.html">Forums!</a></h1>
+          <div class="new_forum" id="singapore_forum" onclick="check_forum(this.id)"></div>
         </div>
         <input type="text" id="newForumName" placeholder="Enter forum name">
-        <button class = "btn btn-primary" id="addForumButton" onclick="addNewForum()">Add Forum</button>
+        <button class="btn btn-primary" id="addForumButton" onclick="addNewForum()">Add Forum</button>
       </section>
       <!--Forum posts-->
       <section class="forum-posts">
@@ -84,58 +84,65 @@
             <!-- Posts for Singapore_forum will appear here -->
           </div>
           <div class="post-form">
-            <h1 id = "textontop" style="display: block;" > Welcome!</h1>
+            <h1 id="textontop" style="display: block;"> Welcome!</h1>
             <div class="post">
               <div class="post_avatar">
-                <div class="post_body">
-                  <div class="post_header">
-                    <div class="post_headerText">
-                    </div>
+              </div>
+              <div class="post_body">
+                <div class="post_header">
+                  <div class="post_headerText">
                   </div>
                 </div>
               </div>
-              <h3>
-                <span class="post_headerSpecial">
-                  <span class="user_account"> </span>
-                </span>
-              </h3>
             </div>
-            <div class="post_headerDescription">
+            <h3>
+              <span class="post_headerSpecial">
+                <span class="user_account"> </span>
+              </span>
+            </h3>
+          </div>
+          <div class="post_headerDescription">
+
+
+
+          </div>
+          <div class="container">
+        <div id="replyInputContainer" style="display: none;">
+          <input type="text" id="replyInput" placeholder="Enter your reply">
+          <button class="btn btn-success" id="submitReplyButton" onclick="lets_reply()">Submit Reply</button>
+        </div>
+      </div>
+        <div id="linefooter" class="post_footer" style="display: none;">
+          <span class="material_icons"></span>
+          <span class="material_icons"></span>
+        </div>
+        <div class="feed">
+          <div class="feed_header">
     
-              
-              
+            <div id="postBox" class="postBox" style="display: none;">
+              <form id="post_box">
+                <div class="postBox_input">
+                  <input type="text" id="post_text" placeholder="What's on your mind?">
+                </div>
+                <button id="addPostButton" onclick="NewChat()">+</button>
+              </form>
             </div>
-            <button id = "reply" class="btn btn-primary" style = "display:none" onclick="lets_reply()">Reply</button>
+          
+            <div class="container">
+            <div class="createPost" style="display: none" id="create_post">
+              <form id="create">
+                <div class="postBox_input">
+                  <input type="text" id="create_text" placeholder="Create your first Post!">
+                </div>
+                <button id="yourDocumentID" class="btn btn-primary" onclick="Create_post()">Create Post</button>
+              </form>
+            </div>
+            </div>
+    
+            </form>
           </div>
-          <div id = "linefooter" class="post_footer"style="display: none;">
-            <span class="material_icons"></span>
-            <span class="material_icons"></span>
-          </div>
-        </div> 
-        
-        <div class = "feed">
-          <div class = "feed_header">
-  
-        <div id = "postBox" class="postBox" style="display: none;" >
-          <form id = "post_box">
-            <div class="postBox_input"> 
-            <input type="text"  id ="post_text" placeholder="What's on your mind?">
-            </div>
-            <button id="addPostButton" onclick="NewChat()">Add Post</button>
-          </form>
-        </div>
-  
-        <div class = "createPost" style="display: none" id = "create_post">
-          <form id = "create">        
-            <div class = "postBox_input">  
-            <input type="text"  id ="create_text" placeholder="What's on your mind?">
-            </div>
-            <button id = "yourDocumentID" class = "btn btn-primary" onclick="Create_post()" >Create Post</button>
-          </form>
-        </div>
-      
-          </form>
-        </div>
+      </div>
+
 
     </div>
     </div>
