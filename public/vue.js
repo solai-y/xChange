@@ -14,7 +14,10 @@ var backgroundImageVue = ref("bgimage");
 var aboutImageVue = ref("abtimage");
 var modulesVue = ref("basket");
 var galleryVue = ref("gallery");
-var userVue = JSON.parse(sessionStorage.getItem("user")).uid;
+var uidVue = JSON.parse(sessionStorage.getItem("user"));
+if (uidVue != null){
+  var userVue = uidVue.uid;
+}
 var reviewVue = ref("review");
 var docIdVue = ref("temp");
 var comment = document.getElementById("comment");
