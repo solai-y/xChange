@@ -760,5 +760,35 @@ a {
     color: var(--text) !important;
 }
 
+.navbar {
+    /* Set the border style, color, and width */
+    border-bottom: 2px solid var(--secondary); /* Replace #FF0000 with the desired color code */
+    border-radius: 5px; /* Optional: Adds rounded corners to the border */
+    background-color: var(--background);
+    height: 60px;
+  }
+
+  .carousel-container {
+    overflow: hidden;
+    width: 100%;
+  }
+  
+  .carousel {
+    display: flex;
+    transition: transform 0.5s ease; /* Use CSS transition for smooth animation */
+  }
+  
+  .card {
+    width: calc(100% / 3); /* Set card width to 33.33% for 3 cards in a row */
+    flex-shrink: 0; /* Prevent cards from shrinking */
+    text-align: center;
+  }
+  
+
+  h2 {
+    font-size: 20px !important;
+  }
+  
+
 
 
