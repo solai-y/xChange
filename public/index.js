@@ -111,3 +111,41 @@ function getAllUniversitiesFirebase() {
 document.addEventListener("DOMContentLoaded", event => {
     getAllUniversitiesFirebase();
 });
+
+function updateTypewriterText() {
+    db = firebase.firestore();
+    var uniCollection = db.collection("University");
+  
+    uniCollection.get().then(function (querySnapshot) {
+      const dynamicTextElement = document.getElementById("dynamicText");
+  
+      querySnapshot.forEach(function (doc) {
+        // Assuming you have a field in your Firebase document named 'text'
+        const dynamicText = doc.data().name;
+  
+        // Split the text into an array of phrases, assuming phrases are separated by commas
+        const phrases = dynamicText.split(',');
+  
+        // Initialize index and type speed
+        let index = 0;
+        let period = 2000;
+  
+        // Function to update the text dynamically
+        function updateText() {
+          dynamicTextElement.textContent = phrases[index];
+          index = (index + 1) % phrases.length;
+        }
+  
+        // Call the function to start the typewriter effect
+        setInterval(updateText, period);
+      });
+    }).catch(function (error) {
+      console.error("Error getting documents:", error);
+    });
+  }
+  
+  // Call the function when the DOM is ready
+  document.addEventListener("DOMContentLoaded", event => {
+    updateTypewriterText();
+  });
+  

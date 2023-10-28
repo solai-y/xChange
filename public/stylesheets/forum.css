@@ -236,3 +236,17 @@ header{
   min-width: fit-content;
   overflow-y: scroll;
 }
+
+.profilepicture {
+  width: 50px; 
+  height: 50px;
+  border-radius: 50%;
+}
+
+.navbar {
+  /* Set the border style, color, and width */
+  border-bottom: 2px solid var(--secondary); /* Replace #FF0000 with the desired color code */
+  border-radius: 5px; /* Optional: Adds rounded corners to the border */
+  background-color: var(--background);
+  height: 60px;
+}
