@@ -81,61 +81,47 @@
         <!-- Main content -->
         <div class="h-screen flex-grow-1 overflow-y-lg-auto">
             <!-- Header -->
-            <header class="bg-surface-primary pt-6">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="row align-items-center">
-                            <!-- Title -->
-                            <div class="col-12">
-                                <h1 class="h2 mb-0 ls-tight account">Account Settings</h1>
-                            </div>
-                        </div>
-                    </div>
+            <div class="container text-center" style="padding-top:4px">
+                <div class="row mx-auto">
+                    <h1>Account Settings</h1>
                 </div>
-            </header>
+            </div>     
         </div>
         <!-- Main -->
-            <main class="py-6 bg-surface-secondary">
-                <div class="container-fluid">
-                    <div class="row">
-                        <!-- Profile picture -->
-                        <div class="col-md-6">
-                            <div class="card-body">
-                                <div class="d-flex align-items-center">
-                                    <div>
-                                        <div class="image d-flex align-items-center">
-                                            <a href="./account.html" class="avatar rounded-circle text-white">
-                                                <img
-                                                    class="profilepicture2"
-                                                    alt="imageInput2"
-                                                    src="./images/profile photo.jpeg" />
-                                            </a>
-                                            <div class="ms-4">
-                                                <span class="h4 d-block mb-0" id="headerName"></span>
-                                                <input type="file" id="imageInput" />
-                                                <input type="text" id="imageInputUrl" style="display: none" />
-                                                <label for="imageInput" id="imageInputLabel"
-                                                    >Edit Profile Picture</label
-                                                >
-                                                <div>
-                                                    <button id="removeImage">Remove</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+        <main class="py-6 bg-surface-secondary">
+            <div class="container-fluid text-center">
+                <div class="row mx-auto">
+                    <!-- Profile picture -->
+                    <div class="image py-4">
+                        <a href="./account.html" class="avatar rounded-circle mb-3 text-white">
+                            <img
+                                class="profilepicture2"
+                                alt="imageInput2"
+                                src="./images/profile photo.jpeg" />
+                        </a>
+                    </div>
+                    <div>
+                        <h3 id="headerName"></h3>
+                        <input type="file" id="imageInput" />
+                        <input type="text" id="imageInputUrl" style="display: none" />
+                        <button class="btn btn-secondary" for="imageInput" id="imageInputLabel">Edit Profile Picture</button>
+                        <button class="btn btn-primary" id="removeImage">Remove</button>
                     </div>
                 </div>
-            <!-- Form -->
-            <div class="col-md-6">
-                <div class="mb-5">
-                    <h5>Personal Information</h5>
-                </div>
             </div>
+        
+            <!-- Form -->
+            <div class="container-fluid">
+                <div class="row mx-auto">
+                    <div class="col"></div>
+                    <div class="col-6 p-1" style="text-align: left;">
+                        <h3>Personal Information</h3>
+                    </div>
+                    <div class="col"></div>
+                </div>
+            </div>            
             <form class="mb-6">
-                <div class="row mb-3 justify-content-center">
+                <div class="row mx-auto justify-content-center">
                     <div class="col-md-6">
                         <div class="inputBox">
                             <label class="form-label" for="first_name">Name</label>
@@ -143,7 +129,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row mb-3 justify-content-center">
+                <div class="row mx-auto justify-content-center">
                     <div class="col-md-6">
                         <div class="inputBox">
                             <label class="form-label" for="phone_number">Phone Number</label>
@@ -151,7 +137,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row mb-3 justify-content-center">
+                <div class="row mx-auto justify-content-center">
                     <div class="col-md-6">
                         <div class="inputBox">
                             <label class="form-label" for="email">Email</label>
@@ -159,7 +145,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row mb-3 justify-content-center">
+                <div class="row mx-auto justify-content-center">
                     <div class="col-md-6">
                         <div class="inputBox">
                             <label class="form-label" for="primary_degree">Primary Degree</label>
@@ -181,7 +167,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row mb-3 justify-content-center">
+                <div class="row mx-auto justify-content-center">
                     <div class="col-md-6">
                         <div class="inputBox">
                             <label class="form-label" for="secondary_degree">Secondary Degree</label>
