@@ -63,7 +63,7 @@
   </nav>
   <!--End of Navbar-->
   <Header>
-    <small id="welcomeText" >Welcome to xChange Forum!</small>
+    <large id="welcomeText" >Welcome to xChange Forum!</large>
   </Header>
   <main>
 
@@ -71,11 +71,15 @@
       <!--Forum list-->
       <section class="forum forum-info">
         <div onload="load_forum()" class="forum-list">
-          <h1 id="forum"><a href="forum.html">Forums!</a></h1>
+          <h1 id="forum"><a href="forum.html">Current Forums</a></h1>
           <div class="new_forum" id="singapore_forum" onclick="check_forum(this.id)"></div>
         </div>
-        <input type="text" id="newForumName" placeholder="Enter forum name">
-        <button class="btn btn-primary" id="addForumButton" onclick="addNewForum()">Add Forum</button>
+        <div class="input-group mb-3">
+        <input class = "form-control" class = "responsiveInput" type="text" id="newForumName" placeholder="Create a new Forum!" aria-describedby="basic-addon2">
+        <div class="input-group-append">
+        <button class="btn btn-outline-secondary" id="addForumButton" onclick="addNewForum()">Add Forum</button>
+        </div>
+        </div>
       </section>
       <!--Forum posts-->
       <section class="forum-posts">
@@ -84,11 +88,9 @@
             <!-- Posts for Singapore_forum will appear here -->
           </div>
           <div class="post-form">
-            <h1 id="textontop" style="display: block;"> Welcome!</h1>
+            <h3 id="textontop" style="display:block">Hello xChange users! This is our forum page where you can ask any questions and share information about the places you're planning to visit.  </h3>
             <div class="post">
-              <div class="post_avatar">
-              </div>
-              <div class="post_body">
+              <div>
                 <div class="post_header">
                   <div class="post_headerText">
                   </div>
@@ -101,6 +103,8 @@
               </span>
             </h3>
           </div>
+          <section>
+          <div class = partition>
           <div class="post_headerDescription">
 
 
@@ -111,6 +115,8 @@
           <input type="text" id="replyInput" placeholder="Enter your reply">
           <button class="btn btn-success" id="submitReplyButton" onclick="lets_reply()">Submit Reply</button>
         </div>
+      </div> 
+      </section>
       </div>
         <div id="linefooter" class="post_footer" style="display: none;">
           <span class="material_icons"></span>

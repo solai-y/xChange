@@ -27,6 +27,7 @@ header{
 .forum-info {
   background-color: #2C2F33;
   color: #ffffff;
+  border-radius: 5px;
 }
 #textontop{
   text-align: center;
@@ -136,16 +137,28 @@ header{
   margin-bottom: 5px;
 }
 .container {
+  background-color: white;
   display: flex;
   align-items: center;
   justify-content: flex-end; /* This moves the button to the right */
 }
+.forum-posts{
+  background-color: lightgrey;
+}
+.user {
+  font-size: 14px;;
+}
+.partition{
+  background-color: white;
+  border-radius: 5px;
+}
+
 
 .post_headerDescription{
-
   font-size: 30px;
   padding-left: 20px;
   margin-bottom: 10px;
+  padding-bottom: 20px;
 
 }
 
@@ -162,11 +175,29 @@ header{
 .postBox{
   padding-bottom: 10px;
   padding-right: 10px;
-
-
 }
 .postBox form {
   font-family: Arial, Helvetica, sans-serif;
+}
+#newForumName{
+  margin-top: 20px;
+  border-radius: 3px;
+}
+#addForumButton{
+  margin-top: 14px;
+  position: sticky;
+  padding:10px;
+  
+}
+#textontop{
+  background-color: #FFFAEB;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.responsiveInput{
+  padding: 10px; /* Add padding for spacing inside the input */
+  box-sizing: border-box; 
+  border: 1px solid #ccc; /* Add a border for visual separation */
+  border-radius: 5px; /* Add rounded corners for a modern look */
 }
 
 .postBox_input{

@@ -167,6 +167,10 @@ function check_forum(docId) {
         var image = data[nums].picture
         const picture_ref = document.querySelector(".post_avatar");
         var create_image = document.createElement("img");
+        var spn = document.createElement("span");
+        var txt = document.createTextNode(person_name)
+        spn.appendChild(txt);
+        create_image.appendChild(spn);
         create_image.setAttribute("style", "width:70px")
         create_image.setAttribute("src", image)
         create_image.setAttribute("id", x + "Picture")
