@@ -9,19 +9,83 @@ header{
 
 #submitReplyButton{
   position: relative;
-  right: 10px;
+  position: relative;
+  right: -105px;
+  bottom: 41px;
 }
-
+.backButton{
+  background: transparent;
+  outline: none;
+  border:none;
+}
+.reply_stion{
+  background-color: lightgrey;
+}
+.load_avatar{
+  background-color: white;
+}
 
 .forum-container {
   display: flex;
 }
-
+#ld_name{
+  margin-left: 6px;
+  margin-top: 23px;
+}
 .forum {
   width: 30%; /* Each forum section takes half of the available width */
   border: 1px solid #ddd;
   box-sizing: border-box;
   padding: 20px;
+}
+.users_reply{
+  background-color: white;
+  padding: 20px;
+  margin: 20px;
+  border-radius: 5px;
+}
+.postBox_input img {
+  border-radius: 50%;
+  width: 30px;
+  position: relative;
+  right: 653px;
+  /* left: 0px; */
+}
+modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .forum-info {
@@ -31,10 +95,19 @@ header{
 }
 #textontop{
   text-align: center;
+  border-radius: 5px;
+}
+.reply_text{
+  position: relative;
+  top:30px
 }
 #reply{
+  background: transparent;
+  border: none;
+  outline: none;
   position: relative;
-  float: right;
+  top: -28px;
+  left: 40px;
 }
 .new_forum {
   cursor: pointer;
@@ -84,14 +157,15 @@ header{
 /* .postBox_input{
 
 } */
-
-.postBox_input input[type="text"] {
-  width: 80%; /* Adjust the width as needed */
-  padding: 10px; /* Adjust the padding as needed */
-  font-size: 18px; /* Adjust the font size as needed */
-  text-align: center; /* Center the text within the input */
+.postBox_input input:focus {
+  background-color: white;
+  /* Add any other styles you want for the focused state */
 }
 
+#ld_image{
+  display: flex;
+   align-items: center;
+}
 /* Adjust styling as needed */
 /*post*/
 .post_avatar img{
@@ -137,7 +211,7 @@ header{
   margin-bottom: 5px;
 }
 .container {
-  background-color: white;
+  background-color: lightgray;
   display: flex;
   align-items: center;
   justify-content: flex-end; /* This moves the button to the right */
@@ -146,14 +220,34 @@ header{
   background-color: lightgrey;
 }
 .user {
-  font-size: 14px;;
+  font-size: 14px;
+  display: flex;
+  margin-left: 80px;
+  margin-top: -40px;
 }
 .partition{
   background-color: white;
   border-radius: 5px;
+  border:solid;
+}
+#loading{
+  background-color: white;
+  padding: 30px;
+  border-radius: 5px;
+  margin:20px;
 }
 
 
+.likebutton{
+  background:transparent;
+  border: none;
+  font-size: 20px;
+  outline: none;
+  color: #12850a; 
+}
+.likebutton i:hover{
+  cursor: pointer;
+}
 .post_headerDescription{
   font-size: 30px;
   padding-left: 20px;
@@ -161,6 +255,12 @@ header{
   padding-bottom: 20px;
 
 }
+p{
+  margin-top: 30px;
+  margin-bottom: 1rem;
+  margin-left: 75px;
+}
+
 
 .post_headerDescription #replyButton{
   
@@ -172,9 +272,23 @@ header{
   flex:1px;
   padding: 10px;
 }
+/* #title{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; 
+  overflow-x: hidden;
+  overflow-wrap: break-word;
+  margin-left: 39px;
+  margin-top: 20px;
+   */
+
+
 .postBox{
   padding-bottom: 10px;
   padding-right: 10px;
+  background-color: white;
+  border-radius: 5px;
 }
 .postBox form {
   font-family: Arial, Helvetica, sans-serif;
@@ -201,9 +315,33 @@ header{
 }
 
 .postBox_input{
-  display: flex;
+  display: block;
   padding: 20px;
 
+}
+textarea{
+  font-family: inherit;
+  font-size: 100%;
+  line-height: 1.15;
+  margin: 0;
+  text-align: center;
+}
+textarea#replyInput{
+  width: 100%;
+    height: 100px;
+    position: relative;
+    right: 222px;
+    border-radius: 5px;
+}
+
+.postBox_input input[type="text"] {
+  position: relative;
+  width: 80%;
+  left: 107px;
+  top: 0px;
+  padding: 20px;
+  text-align: center;
+  background: transparent;
 }
 
 .postBox_input input{
@@ -235,4 +373,9 @@ header{
   border-right: 1px solid var(background);
   min-width: fit-content;
   overflow-y: scroll;
+  padding-bottom: 20px;
 }
+.feed_header{
+  border-radius: 5px;
+}
+

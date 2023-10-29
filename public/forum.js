@@ -1,7 +1,4 @@
 
-
-const user_session = sessionStorage.getItem("user");
-
 const firebaseConfig = {
   apiKey: "AIzaSyA7ogQ3Eqn-tu_2NYnzHfo-ARsYwR5hSKg",
   authDomain: "xchange-2af7e.firebaseapp.com",
@@ -24,6 +21,9 @@ document.addEventListener("DOMContentLoaded", event => {
     auth = firebase.auth();
   }
   load_forum()
+  personImage()
+  load_reply_forum()
+  
 });
 var x = ""; //its the forum 
 document.getElementById("yourDocumentID").addEventListener("click", Create_post);
@@ -94,6 +94,32 @@ function Create_post(event) { //just updating that first forum data chat
 
 
 //  
+function personImage(){
+  const docRef = db.collection("Users");
+  var user = sessionStorage.getItem("user");
+  var userObject = JSON.parse(user);
+  var uid = userObject.uid;
+  docRef.get().then(function (querySnapshot) {
+    querySnapshot.forEach(function (doc) {
+      var docId = doc.id;
+      if (docId == uid) {
+        const userRef = db.collection("Users").doc(uid);
+        userRef.get().then((doc) => {
+          if (doc.exists) {
+            console.log(doc.data().image_url)
+            var image_url = doc.data().image_url || "/images/profile photo.jpeg";
+            var pic_ref = document.querySelector(".person_image");
+            var create_div = document.createElement("img");
+            create_div.setAttribute("style", "width:70px")
+            create_div.setAttribute("src", image_url)
+            pic_ref.insertAdjacentElement("beforeend",create_div)
+          }
+        })
+      }
+    })
+  })
+}
+
 
 var history_arr = [];
 function check_forum(docId) {
@@ -185,18 +211,34 @@ function check_forum(docId) {
         //adding grey line
         var linefooter = document.getElementById("linefooter");
         linefooter.style.display = "block";
+        //showing the likes button 
+        var create_like = document.createElement("button");
+        create_like.setAttribute("class","likebutton");
+        create_like.setAttribute("id","likebtn");
+        create_like.setAttribute("style","display:flex");
+        create_like.setAttribute("onclick","like()");
+        var heart_link = document.createElement("i");
+        heart_link.setAttribute("class","fa-regular fa-heart")
+        create_like.appendChild(heart_link);
         //showing the reply button
         var create_reply_btn = document.createElement("button");
         create_reply_btn.setAttribute("id", "reply");
         create_reply_btn.setAttribute("class", "btn btn-primary");
         create_reply_btn.setAttribute("style", "display:block");
-        create_reply_btn.setAttribute("onclick", "lets_reply()");
-        create_reply_btn.innerText = "Reply";
+        create_reply_btn.setAttribute("onclick", "open_reply_box()");
+        var reply_link = document.createElement("i");
+        reply_link.setAttribute("style","color: #12850a")
+        reply_link.setAttribute("class","fa-solid fa-reply")
+        create_reply_btn.appendChild(reply_link)
         //must make sure its not showing up
         var post_class = document.getElementById("create_post");
         post_class.style.display = "none";
+        //partition1 up
+        var partition1 = document.getElementById("partition1");
+        partition1.style.display= "block";
         //testing area
         cont.appendChild(create_p_tag);
+        cont.appendChild(create_like);
         cont.appendChild(create_reply_btn)
         insert_post.appendChild(cont)
 
@@ -233,6 +275,8 @@ function page_reset(element) {
     addPostButton.style.display = "none";
     var post_class = document.getElementById("create_post");
     post_class.style.display = "none";
+    var create_like = document.getElementById("likebtn");
+    create_like.style.display = "none";
 
   }
 }
@@ -361,22 +405,21 @@ function NewChat(event) {
 }
 
 
+function open_reply_box(){
+    var contact = document.getElementById("replyInputContainer");
+    contact.style.display = "block";
+    // Set the flag to true to indicate it's open 
+  }
+function cancel_btn(){
+  var contact = document.getElementById("replyInputContainer");
+  contact.style.display = "None";
+}
 
-
-
-var replyContainerOpen = false;
-
-document.getElementById("submitReplyButton").addEventListener("click", lets_reply);
 
 function lets_reply(event) {
   // Capture the reply text from the input field (e.g., with id "reply_text")
     // Check if the reply container is not already open
-    if (!replyContainerOpen) {
-      var contact = document.getElementById("replyInputContainer");
-      contact.style.display = "block";
-      replyContainerOpen = true; // Set the flag to true to indicate it's open 
-    }
-    
+  
   
   var replyText = document.getElementById("replyInput").value;
   // Check if there's a reply text (you can add more validation)
@@ -423,7 +466,11 @@ function lets_reply(event) {
             //update the docref
             docRef.update(data_to_insert).then(() => {
               console.log("Reply added to the post.");
-
+              var contact = document.getElementById("replyInputContainer");
+              contact.style.display = "none";
+              window.location.href = "reply.html";
+              localStorage.setItem("forum",x)
+              localStorage.setItem("chat",chat)
             }).catch((error) => {
               console.error("Error adding the reply:", error);
             });
@@ -436,4 +483,109 @@ function lets_reply(event) {
   document.getElementById("replyInput").value = ""
 }
 
+window.onload = function() {
+  // Check if the unique identifier is present on the current page
+  var bodyElement = document.querySelector('body[data-load-reply="true"]');
+  if (bodyElement) {
+    console.log(bodyElement)
+    // The identifier is present, so call the function
+    load_reply_forum();
+  }
+};
 
+function load_reply_forum() {
+  var from_chat = localStorage.getItem("chat");
+  var forum_number = localStorage.getItem("forum")
+  var chats = from_chat
+  const forumRef = db.collection("forum").doc(forum_number);
+  forumRef.get().then((doc) => {
+      const data = doc.data();
+      //load the person we are replying to 
+      var image = data[chats].picture;
+      var fname = data[chats].name.toString();
+      var load_txt = data[chats].chat;
+      var timestamp = data[chats].timestamp;
+      //load the replies
+      var image_reply = data[chats].replied.picture;
+      var reply_name = data[chats].replied.name;
+      var the_reply = data[chats].replied.reply;
+      var reply_timestamp = data[chats].replied.timestamp;
+      //show image
+      var image_ref = document.getElementById("ld_image");
+      var create_img_tag = document.createElement("img");
+      create_img_tag.setAttribute("src",image);
+      create_img_tag.setAttribute("style", "width:70px")
+      image_ref.insertAdjacentElement("afterbegin",create_img_tag);
+      //show the name 
+      var header_ref = document.getElementById("ld_name");
+      var name_div = document.createElement("div");
+      var txtnode = document.createTextNode(fname);
+      name_div.setAttribute("class","reply_user");
+      name_div.appendChild(txtnode);
+      header_ref.insertAdjacentElement("afterbegin",name_div);
+      //show the reply
+      var txt_ref = document.getElementById("load_text");
+      var div_tag1 = document.createElement("div");
+      div_tag1.setAttribute("class","reply_text");
+      var txtnode = document.createTextNode(load_txt);
+      div_tag1.appendChild(txtnode);
+      txt_ref.appendChild(div_tag1);
+      //user reply
+      var header_ref = document.getElementById("reply_of_users");
+      var name_div = document.createElement("div");
+      var txtnode = document.createTextNode(the_reply);
+      name_div.setAttribute("class","replyUsers");
+      name_div.appendChild(txtnode);
+      header_ref.insertAdjacentElement("afterbegin",name_div);
+      //user image
+      var image_ref = document.getElementById("imageofusers");
+      var create_img_tag = document.createElement("img");
+      create_img_tag.setAttribute("src",image_reply);
+      create_img_tag.setAttribute("style", "width:70px")
+      image_ref.insertAdjacentElement("afterbegin",create_img_tag);   
+      //user name
+      var header_ref = document.getElementById("reply_name");
+      var name_div = document.createElement("div");
+      var txtnode = document.createTextNode(reply_name);
+      name_div.setAttribute("class","reply_user");
+      name_div.appendChild(txtnode);
+      header_ref.insertAdjacentElement("afterbegin",name_div);
+      //time stamp
+
+      
+      
+
+
+
+})
+}
+
+
+function goBack() {
+  window.history.back();
+}
+
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("submitReplyButton");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the button, open the modal
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
