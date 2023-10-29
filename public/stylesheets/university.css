@@ -1,6 +1,16 @@
+:root {
+  --text: #393e46;
+  --background: #FFFAEB;
+  --primary: #4dcba1;
+  --secondary: #dbd9d1;
+  --accent: #767674;
+  --font: -apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif;
+}
+
 body {
     margin: 0;
     padding: 0;
+    background-color: var(--background);
 }
 
 h1 {
@@ -223,4 +233,27 @@ a {
 
 .inputBox input:focus {
     border: 2px solid #4ecca3;
+}
+
+.profilepicture {
+  width: 50px; 
+  height: 50px;
+  border-radius: 50%;
+}
+
+.footer1 {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+#resultsContainer {
+  background-color: var(--background);
+}
+
+.navbar {
+  /* Set the border style, color, and width */
+  border-bottom: 2px solid var(--secondary); /* Replace #FF0000 with the desired color code */
+  border-radius: 5px; /* Optional: Adds rounded corners to the border */
+  background-color: var(--background);
+  height: 60px;
 }

@@ -56,58 +56,131 @@ function getAllUniversities() {
     });
 }
 
-function getAllUniversitiesFirebase() {
-    db = firebase.firestore();
-    var uniCollection = db.collection("University");
-    var isFirstItem = true;
+// function getAllUniversitiesFirebase() {
+//     db = firebase.firestore();
+//     var uniCollection = db.collection("University");
+//     var isFirstItem = true;
 
-    uniCollection.get().then(function (querySnapshot) {
-        querySnapshot.forEach(function (doc) {
-            // Create a new carousel item
-            let individualCard = document.createElement('div');
-            individualCard.classList.add('carousel-item');
+//     uniCollection.get().then(function (querySnapshot) {
+//         querySnapshot.forEach(function (doc) {
+//             // Create a new carousel item
+//             let individualCard = document.createElement('div');
+//             individualCard.classList.add('carousel-item');
 
-            if (isFirstItem) {
-                individualCard.classList.add('active');
-                isFirstItem = false;
-              }
+//             if (isFirstItem) {
+//                 individualCard.classList.add('active');
+//                 isFirstItem = false;
+//               }
 
-            // Create an image element
-            let uniPhoto = document.createElement('img');
-            uniPhoto.classList.add('bd-placeholder-img', 'card-img-top', 'w-30', 'h-30');
-            uniPhoto.src = doc.data().gallery[0]; // Assuming the first image in the gallery is used
+//             // Create an image element
+//             let uniPhoto = document.createElement('img');
+//             uniPhoto.classList.add('bd-placeholder-img', 'card-img-top', 'w-10', 'h-10');
+//             uniPhoto.src = doc.data().gallery[0]; // Assuming the first image in the gallery is used
 
-            // Create a div for the caption
-            let cardContent = document.createElement('div');
-            cardContent.classList.add('carousel-caption', 'd-none', 'd-md-block');
+//             // Create a div for the caption
+//             let cardContent = document.createElement('div');
+//             cardContent.classList.add('carousel-caption', 'd-none', 'd-md-block');
 
-            // Create elements for name and country
-            let uniName = document.createElement('h3');
-            let uniCountry = document.createElement('p');
+//             // Create elements for name and country
+//             let uniName = document.createElement('h3');
+//             let uniCountry = document.createElement('p');
 
-            // Set text content for name and country
-            uniName.textContent = doc.data().name;
-            uniCountry.textContent = doc.data().country;
+//             // Set text content for name and country
+//             uniName.textContent = doc.data().name;
+//             uniCountry.textContent = doc.data().country;
 
-            // Append the image, caption, name, and country to the carousel item
-            individualCard.appendChild(uniPhoto);
-            individualCard.appendChild(cardContent);
-            cardContent.appendChild(uniName);
-            cardContent.appendChild(uniCountry);
+//             // Append the image, caption, name, and country to the carousel item
+//             individualCard.appendChild(uniPhoto);
+//             individualCard.appendChild(cardContent);
+//             cardContent.appendChild(uniName);
+//             cardContent.appendChild(uniCountry);
 
-            // Append the carousel item to the #picture div
-            document.getElementById('picture').appendChild(individualCard);
+//             // Append the carousel item to the #picture div
+//             document.getElementById('picture').appendChild(individualCard);
 
-        });
+//         });
 
-    }).catch(function (error) {
-        console.error("Error getting documents:", error);
-    });
+//     }).catch(function (error) {
+//         console.error("Error getting documents:", error);
+//     });
 
     
-}
+// }
 
-// Call the function when the DOM is ready
-document.addEventListener("DOMContentLoaded", event => {
-    getAllUniversitiesFirebase();
-});
+// // Call the function when the DOM is ready
+// document.addEventListener("DOMContentLoaded", event => {
+//     getAllUniversitiesFirebase();
+// });
+
+
+
+    // Your existing code for Firebase Firestore query
+// Initialize Firebase (if not done already)
+// Replace with your own Firebase configuration
+document.addEventListener("DOMContentLoaded", function() {
+    const db = firebase.firestore();
+    const uniCollection = db.collection("University");
+    const carousel = document.querySelector('.carousel');
+  
+    // Set the number of cards to display at once
+    const cardsPerPage = 3;
+    const transitionInterval = 3000; // Transition every 3 seconds
+  
+    let currentIndex = 0;
+  
+    function createCard(name, country, imageUrl) {
+      const card = document.createElement('div');
+      card.classList.add('card');
+      card.innerHTML = `
+        <img src="${imageUrl}" alt="${name} Image">
+        <h2>${name}</h2>
+        <p>${country}</p>
+      `;
+      return card;
+    }
+  
+    function populateCarousel(querySnapshot) {
+      const cards = [];
+      querySnapshot.forEach((doc) => {
+        cards.push(createCard(doc.data().name, doc.data().country, doc.data().gallery[0]));
+      });
+  
+      const totalCards = cards.length;
+  
+      function updateCarousel() {
+        const start = currentIndex % totalCards;
+        const end = (currentIndex + cardsPerPage) % totalCards;
+        const visibleCards = cards.slice(start, end);
+  
+        // Clear and populate the carousel
+        carousel.innerHTML = '';
+        visibleCards.forEach(card => carousel.appendChild(card));
+  
+        // Update currentIndex
+        currentIndex = (currentIndex + 1) % totalCards;
+  
+        // Schedule the next update
+        setTimeout(updateCarousel, transitionInterval);
+      }
+  
+      // Start the continuous loop
+      updateCarousel();
+    }
+  
+    // Fetch data from Firestore and populate the carousel
+    uniCollection.get().then((querySnapshot) => {
+      populateCarousel(querySnapshot);
+    }).catch((error) => {
+      console.error("Error getting documents: ", error);
+    });
+  });
+  
+  
+  
+  
+  
+
+ 
+
+
+  

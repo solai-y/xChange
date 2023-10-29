@@ -12,6 +12,7 @@
 body {
   padding: 0;
   margin: 0;
+  background-color: var(--background);
 }
 
 .universityNameBox {
@@ -121,4 +122,18 @@ body {
   background-color: rgba(0, 128, 128, 0.7);
   color: #ffffff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.profilepicture {
+  width: 50px; 
+  height: 50px;
+  border-radius: 50%;
+}
+
+.navbar {
+  /* Set the border style, color, and width */
+  border-bottom: 2px solid var(--secondary); /* Replace #FF0000 with the desired color code */
+  border-radius: 5px; /* Optional: Adds rounded corners to the border */
+  background-color: var(--background);
+  height: 60px;
 }

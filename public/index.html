@@ -58,32 +58,41 @@
   <!-- Custom scripts -->
   <script type="text/javascript"></script>
   <script src="index.js"></script>
-  <!-- BS navbar: start -->
-  <nav class="navbar navbar-expand-lg">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="index.html">
-        <img src="images/logo.jpeg" class="logo">
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" href="index.html">HOME</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" href="#FORUM">FORUM</a>
-          </li>
-        </ul>
-        <button type="button" class="btn btn-outline-primary">
-          <a class="" href="login_page.html">Sign Up</a></button>
-        <button type="button" class="btn btn-outline-primary">
-          <a class="" href="login_page.html">Log In</a></button>
-      </div>
-    </div>
-  </nav>
+
+        <!-- BS navbar: start -->
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="./university.html"><img src="./images/logo.jpeg" class="logo" /></a>
+                <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="./university.html">Home</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link active" href="./forum.html">Forum</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active d-flex d-lg-none" href="./account.html">Profile</a>
+                        </li>
+                    </ul>
+                    <button type="button" class="signup">
+                      <a href="login_page.html">Sign Up</a></button>
+                    <button type="button" class="login">
+                      <a href="login_page.html">Log In</a></button>
+                  </div>
+                </div>
+              </nav>
   <!---End of Navbar-->
   <!--start of the wrap bar-->
   <div class="center-content">
@@ -91,9 +100,8 @@
     <div class="content">
       <span>
         EXPLORE THE UNIVERSITY OF YOUR CHOICE:
-        <a href="" class="typewrite" data-period="2000"
-          data-type='[ "Australian Academy of Hospitality Management", "Capilano University", "Hull York Medical School", "London Metropolitan University","Plymouth University","Singapore Management University" ]'>
-          <span class="wrap"></span>
+        <a href="" class="typewrite" data-period="2000">
+          <span id="dynamicText" class="wrap"></span>
         </a>
         <div class="flex flex-row">
           <button type="button" class="btn">
@@ -117,11 +125,11 @@
             <strong>ABOUT US</strong>
           </h5>
           <p class="text-wrap fill-entire-column">
-            Our mission is to simplify the exchange process.
+            Our goal is to make it simple for you.
             <br>
-            We get how difficult it is to compile material that is dispersed over the world because we are students
-            ourselves.
-            All the information is now easily available thanks to xChange, your one-stop gateway for university
+            We know how difficult it is to look for information to plan for your exchange.
+            <br>
+            All the information is now readily available thanks to xChange, your one-stop gateway for university
             exchange.
           </p>
         </div>
@@ -197,14 +205,14 @@
     </video>
   </div> -->
       <div class="col-md-12" id="go">
-        <p id="wanttogo">Where do you want to go?</p>
+        <p id="wanttogo">There's always a place for you!</p>
       </div>
     </div>
   </div>
 
 
-  <div class="container-fluid carouselBack">
-    <div class="col-12">
+  <!-- <div class="container-fluid carouselBack">
+    <div class="col-12"> -->
       <!-- Indicators -->
       <!-- <div class="carousel-indicators">
           <button type="button" data-mdb-target="#carouselVideo" data-mdb-slide-to="0" class="active"
@@ -213,7 +221,7 @@
           <button type="button" data-mdb-target="#carouselVideo" data-mdb-slide-to="2" aria-label="Slide 3"></button>
         </div> -->
       <!-- Inner -->
-      <div class="carousel-inner" data-bs-ride="carousel" id="picture">
+      <!-- <div class="carousel-inner" data-bs-ride="carousel" id="picture"> -->
         <!-- Single item -->
         <!--  <img src="images/OSAKA.mp4" type="video/mp4">
             <div class="carousel-caption d-none d-md-block">
@@ -258,7 +266,9 @@
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Next</span>
         </button> -->
-      </div>
+      <!-- </div>
+    </div>
+    </div> -->
 
 
 
@@ -273,6 +283,14 @@
         </div>
     </div>
   </div> -->
+
+  <div class="carousel-container">
+    <div class="carousel">
+      <!-- Dynamically generated cards will go here -->
+    </div>
+  </div>
+  
+
 
 
       <!-- Site footer -->
