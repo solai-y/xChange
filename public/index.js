@@ -129,15 +129,30 @@ document.addEventListener("DOMContentLoaded", function() {
     let currentIndex = 0;
   
     function createCard(name, country, imageUrl) {
-      const card = document.createElement('div');
-      card.classList.add('card');
-      card.innerHTML = `
-        <img src="${imageUrl}" alt="${name} Image">
-        <h2>${name}</h2>
-        <p>${country}</p>
-      `;
-      return card;
-    }
+        const card = document.createElement('div');
+        card.classList.add('card');
+      
+        const cardImage = document.createElement('img');
+        cardImage.src = imageUrl;
+        cardImage.alt = `${name} Image`;
+      
+        const cardContent = document.createElement('div');
+        cardContent.classList.add('card-content');
+      
+        const cardTitle = document.createElement('h2');
+        cardTitle.textContent = name;
+      
+        const cardCountry = document.createElement('p');
+        cardCountry.textContent = country;
+      
+        cardContent.appendChild(cardTitle);
+        cardContent.appendChild(cardCountry);
+      
+        card.appendChild(cardImage);
+        card.appendChild(cardContent);
+      
+        return card;
+      }
   
     function populateCarousel(querySnapshot) {
       const cards = [];
