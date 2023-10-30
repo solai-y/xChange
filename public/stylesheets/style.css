@@ -40,7 +40,7 @@ Deep Purple: #635D7D
 
 .center-content img {
     width: 100%; /* Ensure the image covers the entire container */
-    max-height: 70vh; /* Maintain aspect ratio */
+    max-height: 90vh; /* Maintain aspect ratio */
 }
 
 .center-content .content {
@@ -783,11 +783,41 @@ a {
     flex-shrink: 0; /* Prevent cards from shrinking */
     text-align: center;
   }
+
+  .card img {
+    width: 100%; /* Set the image width to 100% of the card's width */
+    height: 100%; /* Set the image height to 100% of the card's height */
+    object-fit: cover; /* Ensure the image covers the entire card, cropping as needed */
+    object-position: center; /* Center the image within the card */
+  }
   
 
   h2 {
     font-size: 20px !important;
   }
+
+  .circle-btn {
+    position: relative;
+    display: inline-flex;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    align-items: center;
+    line-height: 50px; 
+    color: #fff; 
+    font-size: 30px;
+    justify-content: center;
+    border: 3px solid #fff;
+    text-shadow: 3px 3px #e4e4e441;
+    box-shadow: 2px 2px #e4e4e456;
+    bottom: 5%; /* Position at the bottom of the section */
+    left: 50%; /* Horizontally center the button */
+    transform: translateX(-50%);
+    z-index: 2;
+
+}
+ 
+
   
 
 
