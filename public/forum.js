@@ -22,6 +22,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
   load_forum();
   personImage();
   load_reply_forum();
+  homepage_forum();
 });
 var x = ""; //its the forum
 document
@@ -126,6 +127,7 @@ var history_arr = [];
 function check_forum(docId) {
   x = docId; //forum identification
   history_arr.push(x); //to use for the page rest
+  localStorage.setItem("forum",x);
   const forumRef = db.collection("forum").doc(docId);
 
   // this count is for looping the data if possible so to be able to showcase everything
@@ -174,6 +176,7 @@ function check_forum(docId) {
         //create a container instead
         var cont = document.createElement("div");
         cont.setAttribute("class", "containerX");
+        cont.setAttribute("onclick","gotoreply()");
         var txt = document.createTextNode(chats); //data is in the text
         const insert_post = document.querySelector(".post_headerDescription"); //inserting in this section
         var create_p_tag = document.createElement("p"); //create the p tag for the data in
@@ -189,6 +192,9 @@ function check_forum(docId) {
         var Welcome_txt = document.getElementById("textontop");
         Welcome_txt.style.display = "none";
         //adding the picture
+        //homepageforum
+        var homepage_forum = document.getElementById("allforums");
+        homepage_forum.style.display = "none"
         var image = data[nums].picture;
         const picture_ref = document.querySelector(".post_avatar");
         var create_image = document.createElement("img");
@@ -564,3 +570,147 @@ document.addEventListener("DOMContentLoaded", function () {
     window.location.href = "reply.html"; // Replace with your desired URL
   });
 });
+
+function homepage_forum(){ //basically this function allows for the page to come up
+  //forum reference
+  const ForumRef = db.collection("forum"); 
+  //do the loop to showcase all the forums 
+  var count = 0;
+  ForumRef.get().then(function (querySnapshot) {
+    querySnapshot.forEach(function (doc) {
+      if (doc.data().chat == "" && doc.data().name == "") {
+        const insert_post = document.querySelector(".post_headerDescription");
+        //create a container instead
+        const cont = document.createElement("div");
+        //adding the create post
+        var post_class = document.getElementById("create_post");
+        post_class.style.display = "block";
+        //create empty text node to tell them to insert their first post here!
+        var createPtag = document.createElement("p");
+        createPtag.setAttribute("class", docId);
+        var txt = document.createTextNode("Insert your first post here!");
+        createPtag.appendChild(txt);
+        cont.appendChild(createPtag)
+        insert_post.appendChild(cont);
+        
+      }
+      //testnumber
+      var documentID = doc.id;
+      var data = doc.data(doc.id)
+      //chat
+      var num = "chat"
+      var nums = num + count
+      var forum_chat = data[nums].chat;
+      
+      //timestamp
+      var timestamp = data[nums].timestamp;
+      const nanoseconds  = timestamp.nanoseconds;
+      const seconds = timestamp.seconds
+      const timestamps = new Date(seconds * 1000 + nanoseconds / 1000000);
+      //name
+      var person_name = data[nums].name;
+      //picture
+      var user_picture = data[nums].picture || "/images/profile photo.jpeg"
+      //create the div 
+      var create_div_tag = document.createElement("div");
+      create_div_tag.setAttribute("class", "containerX");
+      var txt = document.createTextNode(forum_chat); //data is in the text
+      const insert_post = document.querySelector(".homepage_forum"); //inserting in this section
+      var create_p_tag = document.createElement("p"); //create the p tag for the data in
+      create_p_tag.setAttribute("id", "users");
+      create_p_tag.setAttribute("class", "documentId"); //set the p tag to p class = docId
+      create_p_tag.appendChild(txt);
+      //having the timestamp
+      var create_div_tsamp  = document.createElement("div");
+      create_div_tsamp.setAttribute("class", "timestamp");
+      var txtnode = document.createTextNode(timestamps);
+      create_div_tsamp.appendChild(txtnode);
+      //create the doc id
+      var documentId_number = document.createElement("h1");
+      documentId_number.setAttribute("class","documentID");
+      var txtnode = document.createTextNode("#"+ documentID);
+      documentId_number.appendChild(txtnode)
+      //display the "Add Post" Button
+      var create_image = document.createElement("img");
+      var spn = document.createElement("span");
+      var txt = document.createTextNode(person_name);
+      spn.appendChild(txt);
+      create_image.appendChild(spn);
+      create_image.setAttribute("style", "width:70px");
+      create_image.setAttribute("src", user_picture);
+      create_image.setAttribute("id", x + "Picture");
+      
+      //adding the name
+      var create_div = document.createElement("div");
+      create_div.setAttribute("id", "homepage_users");
+      create_div.setAttribute("class", "home_user");
+      var header_text = document.createTextNode(person_name);
+      create_div.appendChild(header_text);
+      //like button
+      var create_like = document.createElement("button");
+      create_like.setAttribute("class", "likebutton");
+      create_like.setAttribute("id", "likebtn");
+      create_like.setAttribute("style", "display:flex");
+      create_like.setAttribute("onclick", "like()");
+      var heart_link = document.createElement("i");
+      heart_link.setAttribute("class", "fa-regular fa-heart");
+      create_like.appendChild(heart_link);
+      //showing the reply button
+      var create_reply_btn = document.createElement("button");
+      create_reply_btn.setAttribute("id", "reply");
+      create_reply_btn.setAttribute("class", "btn btn-primary");
+      create_reply_btn.setAttribute("style", "display:block");
+      create_reply_btn.setAttribute("onclick", "open_reply_box()");
+      var reply_link = document.createElement("i");
+      reply_link.setAttribute("style", "color: #12850a");
+      reply_link.setAttribute("class", "fa-solid fa-reply");
+      create_reply_btn.appendChild(reply_link);
+      //must make sure its not showing up
+      var post_class = document.getElementById("create_post");
+      post_class.style.display = "none";
+      //partition1 up
+      var partition1 = document.getElementById("partition1");
+      partition1.style.display = "block";
+      //testing area
+      create_div_tag.appendChild(documentId_number);
+      create_div_tag.appendChild(create_div_tsamp)
+      create_div_tag.appendChild(create_div);
+      create_div_tag.appendChild(create_image)
+      create_div_tag.appendChild(create_p_tag);
+      create_div_tag.appendChild(create_like);
+      create_div_tag.appendChild(create_reply_btn);
+      
+      console.log(create_div_tag)
+      insert_post.appendChild(create_div_tag);
+      count++;
+})
+})
+}
+function gotoreply(){
+  window.location.href = "reply.html";
+}
+
+const likeButton = document.getElementById("like-button");
+
+// Initialize the like count
+let colorchange = false;
+var count = 0;
+// Event listener for the like button
+likeButton.addEventListener("click", like())
+function like(){
+  if(colorchange == false){
+  count++;
+  colorchange = true
+  localStorage.setItem("count_likes",count)
+  var btn = document.getElementById("likebtn");
+  btn.style.color = "red"
+  btn.appendChild(count);
+}else{
+  count--;
+  colorchange = false
+  localStorage.setItem("count_likes",count)
+  var btn = document.getElementById("likebtn");
+  btn.style.color = "green";
+  btn.appendChild(count);
+}
+}

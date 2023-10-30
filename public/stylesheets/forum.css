@@ -31,8 +31,19 @@ header{
 .containerX{
   border-radius:5px ;
   margin-bottom: 20px;
-  margin-left: -18px;
+  margin-left: 0px;
   background-color: white;
+}
+.timestamp{
+  position: relative;
+  margin-left: 559px;
+  bottom: 50px;
+}
+#Picture{
+  width: 70px;
+  position: relative;
+  bottom: 55px;
+  margin-left: 20px;
 }
 #ld_name{
   margin-left: 6px;
@@ -80,11 +91,29 @@ modal {
 }
 
 /* The Close Button */
+.documentID {
+  text-align: left !important;
+  font-family:'Times New Roman', Times, serif;
+  font-style: italic;
+  border-bottom: solid;
+  cursor: pointer;
+}
+.documentId{
+  position: relative;
+  margin-left: 90px;
+  bottom: 60px;
+}
 .close {
   color: #aaa;
   float: right;
   font-size: 28px;
   font-weight: bold;
+}
+.home_user{
+  bottom: 10px;
+  margin-left: 90px;
+  position: relative;
+  font-style: italic
 }
 
 .close:hover,
@@ -383,6 +412,7 @@ textarea#replyInput{
 }
 .feed_header{
   border-radius: 5px;
+  margin-left: 20px;
 }
 
 
