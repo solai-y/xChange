@@ -28,6 +28,12 @@ header{
 .forum-container {
   display: flex;
 }
+.containerX{
+  border-radius:5px ;
+  margin-bottom: 20px;
+  margin-left: -18px;
+  background-color: white;
+}
 #ld_name{
   margin-left: 6px;
   margin-top: 23px;
@@ -106,8 +112,8 @@ modal {
   border: none;
   outline: none;
   position: relative;
-  top: -28px;
-  left: 40px;
+  top: -30px;
+  left: 110px;
 }
 .new_forum {
   cursor: pointer;
@@ -226,9 +232,8 @@ modal {
   margin-top: -40px;
 }
 .partition{
-  background-color: white;
   border-radius: 5px;
-  border:solid;
+  cursor: pointer;
 }
 #loading{
   background-color: white;
@@ -242,6 +247,7 @@ modal {
   background:transparent;
   border: none;
   font-size: 20px;
+  margin-left: 70px;
   outline: none;
   color: #12850a; 
 }
