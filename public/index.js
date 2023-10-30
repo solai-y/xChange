@@ -174,13 +174,80 @@ document.addEventListener("DOMContentLoaded", function() {
       console.error("Error getting documents: ", error);
     });
   });
-  
-  
-  
-  
-  
 
- 
+// Your existing code for Firebase Firestore query
+// Initialize Firebase (if not done already)
+// Replace with your own Firebase configuration
+// Your existing code for Firebase Firestore query
+// Initialize Firebase (if not done already)
+// Replace with your own Firebase configuration
+document.addEventListener("DOMContentLoaded", function() {
+  const db = firebase.firestore();
+  const uniCollection = db.collection("University");
 
+  const dynamicTextElement = document.getElementById('dynamicText');
 
+  // Initialize an array to store university names
+  const universityNames = [];
+  let currentIndex = 0;
+  let currentText = '';
+  let typingInterval;
   
+  uniCollection.get().then(function (querySnapshot) {
+      querySnapshot.forEach(function (doc) {
+          universityNames.push(doc.data().name);
+      });
+
+      if (universityNames.length > 0) {
+          // Start typing effect
+          typingInterval = setInterval(function () {
+              const name = universityNames[currentIndex];
+              if (currentText.length < name.length) {
+                  currentText += name[currentText.length];
+                  dynamicTextElement.textContent = currentText;
+              } else {
+                  // Text is fully typed, wait for a moment, then clear it
+                  clearInterval(typingInterval);
+                  setTimeout(function () {
+                      eraseText();
+                  }, 1000); // Adjust the pause before erasing text if needed
+              }
+          }, 100); // Adjust the typing speed (in milliseconds) if needed
+      } else {
+          dynamicTextElement.textContent = "No universities found.";
+      }
+  }).catch(function (error) {
+      console.error("Error getting documents:", error);
+  });
+
+  function eraseText() {
+      // Start erasing the text
+      typingInterval = setInterval(function () {
+          if (currentText.length > 0) {
+              currentText = currentText.slice(0, -1);
+              dynamicTextElement.textContent = currentText;
+          } else {
+              // Text is fully erased, move to the next name
+              clearInterval(typingInterval);
+              currentIndex = (currentIndex + 1) % universityNames.length;
+              setTimeout(function () {
+                  dynamicTextElement.textContent = ''; // Clear the text before typing the next name
+                  typingInterval = setInterval(function () {
+                      const name = universityNames[currentIndex];
+                      if (currentText.length < name.length) {
+                          currentText += name[currentText.length];
+                          dynamicTextElement.textContent = currentText;
+                      } else {
+                          // Text is fully typed, wait for a moment, then clear it
+                          clearInterval(typingInterval);
+                          setTimeout(function () {
+                              eraseText();
+                          }, 1000); // Adjust the pause before erasing text if needed
+                      }
+                  }, 100); // Adjust the typing speed (in milliseconds) if needed
+              }, 1000); // Adjust the pause before typing the next name if needed
+          }
+      }, 100); // Adjust the erasing speed (in milliseconds) if needed
+  }
+});
+
