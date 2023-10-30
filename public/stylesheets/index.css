@@ -262,7 +262,10 @@ div .col-4 {
 .carousel {
     position: relative;
     text-align: center;
-    box-sizing: border-box
+    box-sizing: border-box;
+    display: flex;
+    transition: transform 0.5s cubic-bezier(0.45, 0, 0.55, 1);
+    background-color: var(--accent);
 }
 
 .carousel * {
@@ -699,7 +702,144 @@ h5 {
     padding: 0;
   }
 
+.signup {
+    appearance: button;
+    backface-visibility: hidden;
+    background-color: var(--secondary);
+    border-radius: 6px;
+    border-width: 0;
+    box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset,rgba(50, 50, 93, .1) 0 2px 5px 0,rgba(0, 0, 0, .07) 0 1px 1px 0;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    font-family: var(--text);
+    font-size: 100%;
+    height: 44px;
+    line-height: 1.15;
+    margin: 0px 0 0;
+    outline: none;
+    overflow: hidden;
+    padding: 0 25px;
+    position: relative;
+    text-align: center;
+    text-transform: none;
+    transform: translateZ(0);
+    transition: all .2s,box-shadow .08s ease-in;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
 
+.login {
+    appearance: button;
+    backface-visibility: hidden;
+    background-color: var(--secondary);
+    border-radius: 6px;
+    border-width: 0;
+    box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset,rgba(50, 50, 93, .1) 0 2px 5px 0,rgba(0, 0, 0, .07) 0 1px 1px 0;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    font-family: var(--text);
+    font-size: 100%;
+    height: 44px;
+    line-height: 1.15;
+    margin: 0px 0 0;
+    outline: none;
+    overflow: hidden;
+    padding: 0 25px;
+    position: relative;
+    text-align: center;
+    text-transform: none;
+    transform: translateZ(0);
+    transition: all .2s,box-shadow .08s ease-in;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+a {
+    text-decoration: none !important;
+    color: var(--text) !important;
+}
+
+.navbar {
+    /* Set the border style, color, and width */
+    border-bottom: 2px solid var(--secondary); /* Replace #FF0000 with the desired color code */
+    border-radius: 5px; /* Optional: Adds rounded corners to the border */
+    background-color: var(--background);
+    height: 60px;
+  }
+
+  .carousel-container {
+    overflow: hidden; /* Hide overflow to create the sliding effect */
+    width: 100%; /* Set the width of the container */
+    position: relative; /* Enable absolute positioning inside */
+  }
+  
+  .card {
+    width: calc(100% / 3); /* Set card width to 33.33% for 3 cards in a row */
+    flex-shrink: 0; /* Prevent cards from shrinking */
+    text-align: center;
+    margin-right: 10px; /* Add right margin to create a gap between cards */
+    margin-left: 70px;
+    height: 380px;
+    width: 380px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: var(--secondary) !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+  }
+
+  .card:hover {
+    transform: scale(1.05); /* Slightly scale the card on hover */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Add a box shadow on hover */
+  }
+
+  .card img {
+    width: 100%; /* Set the image width to 100% of the card's width */
+    height: 100%; /* Set the image height to 100% of the card's height */
+    object-fit: cover; /* Ensure the image covers the entire card, cropping as needed */
+    object-position: center; /* Center the image within the card */
+  }
+
+  .card .card-content {
+    position: absolute; /* Position the content absolutely inside the card */
+    bottom: 0; 
+    left: 50%;
+    transform: translateX(-50%);
+    color: white; /* Set the text color to white */
+    padding: 10px; /* Add some padding to the content for spacing */
+    z-index: 1; /* Ensure the content is above the image */
+    text-align: center;
+  }
+  
+
+  h2 {
+    font-size: 20px !important;
+  }
+
+  .circle-btn {
+    position: relative;
+    display: inline-flex;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    align-items: center;
+    line-height: 50px; 
+    color: #fff; 
+    font-size: 30px;
+    justify-content: center;
+    border: 3px solid #fff;
+    text-shadow: 3px 3px #e4e4e441;
+    box-shadow: 2px 2px #e4e4e456;
+    bottom: 5%; /* Position at the bottom of the section */
+    left: 50%; /* Horizontally center the button */
+    transform: translateX(-50%);
+    z-index: 2;
+}
+  
  
 
   
