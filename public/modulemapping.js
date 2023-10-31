@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded',  (event) => {
     methods: {
       btnSearchClick() {
         this.search = true
-        console.log(this.selectedModuleNames);
+        
       }
     }, 
     computed: {
