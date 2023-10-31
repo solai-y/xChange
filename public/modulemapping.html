@@ -77,7 +77,7 @@
               <label for="searchMod">What baskets do you need to clear on exchange?</label>
               <div class="col2" v-for="module in moduleList">
                 <input type="checkbox" :value="module" :id="module">
-                <label :for="module">{{module}}</label>
+                <label class="btn" id="checkboxLabel" :for="module">{{module}}</label>
               </div>
               <button id="primaryButton" value="search" @click="btnSearchClick()">Search</button>
             </div>
