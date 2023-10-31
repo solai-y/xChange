@@ -97,27 +97,35 @@
               </nav>
   <!---End of Navbar-->
   <!--start of the wrap bar-->
-  <div class="center-content">
-    <img src="./images/universityCourtyard.jpg">
-    <div class="content">
-      <span>
-        EXPLORE THE UNIVERSITY OF YOUR CHOICE:
-        <a href="" class="typewrite" data-period="2000">
-          <span id="dynamicText" class="wrap"></span>
-        </a>
-        <div class="flex flex-row">
-          <button type="button" class="btn">
-            <a href="university.html" class="flex-none -mt-1 explore">Explore Now!</a>
-          </button>
+<div class="container header">
+  <div class="row">
+    <div class="col-6">
+      <div class="container d-flex text-center explore1">
+        <div class="container explore">
+          <div class="d-flex flex-column justify-content-center align-items-center">
+            <p>
+              EXPLORE THE UNIVERSITY OF YOUR CHOICE:
+              <a href="" class="typewrite" data-period="2000">
+                <span id="dynamicText" class="wrap"></span>
+              </a>
+            </p>
+            <div class="flex flex-row">
+              <button type="button" class="btn">
+                <a href="university.html" class="flex-none -mt-1 explore">Explore Now!</a>
+              </button>
+            </div>
+          </div>
         </div>
-      </span>
-      <a class="btn scrollto" id="scroll-icon" href="#about">
-        <div class="circle-btn">
-          <i class="fa fa-angle-double-down" style="font-size: 20px;"></i>
-        </div>
-      </a>
-    </div>
+      </div>
+      
   </div>
+  <div class="col-6">
+    <img src="./images/universityCourtyard.jpg">
+  </div>
+  </div>
+</div>
+
+
 
 
   <!-- Carousel-->
@@ -291,14 +299,34 @@
     </div>
   </div> -->
 
-  <div class="carousel-container">
-    <div class="carousel">
-      <!-- Dynamically generated cards will go here -->
-    </div>
+  <div class="track-wrapper">
+    <ul class="track" id="trackItem">
+        <!-- Dynamically generated cards will go here -->
+    </ul>
   </div>
+
+
+
+  <!-- <div class="container">
+		<div >
+			<div id="recipeCarousel" class="carousel slide" data-bs-ride="carousel">
+				<div class="carousel-inner" role="listbox">
+                <!-- Dynamically generated cards will go here -->
+        <!-- </div>
+        <a class="carousel-control-prev" href="#recipeCarousel" role="button" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#recipeCarousel" role="button" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+      </a>
+      </div>
+    </div>
+  </div> --> 
+
+
   
-
-
 
       <!-- Site footer -->
       <footer class="footer">
