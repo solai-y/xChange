@@ -269,6 +269,10 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 });
 
+$(document).ready(function () {
+    $('#imageCarousel').carousel(); // Start the carousel
+  });
+
 
 
 
