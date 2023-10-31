@@ -53,6 +53,14 @@ document.addEventListener('DOMContentLoaded',  (event) => {
           }
         })
         console.log(this.filteredUniList)
+      },
+      toggleCheckbox(module) {
+        const backendName = this.moduleList[module];
+        if (this.selectedModuleNames.includes(backendName)) {
+          this.selectedModuleNames = this.selectedModuleNames.filter(name => name !== backendName);
+        } else {
+          this.selectedModuleNames.push(backendName);
+        }
       }
     }, 
     computed: {

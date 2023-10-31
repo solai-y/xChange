@@ -35,24 +35,43 @@ a {
   background-color: var(--primary);
 }
 
-.checkbox-button {
-  display: inline-block;
-  padding: 8px 16px;
-  border: 1px solid #ccc;
-  background-color: #98c1d9;
-  cursor: pointer;
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 10px; /* Adjust the gap between cards */
 }
 
-.checkbox-button input[type="checkbox"] {
+.checkbox-box {
+  width: 150px;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  background-color: #98c1d9;
+  cursor: pointer; /* Add pointer cursor for better UX */
+}
+
+.checkbox-box input[type="checkbox"] {
   display: none;
 }
 
-.checkbox-button input[type="checkbox"]:checked + label {
+.checkbox-box input[type="checkbox"]:checked + div {
   background-color: #3d5a80;
   color: white;
-  border: 1px solid #3d5a80;
+  width: 150px;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #ccc;
+  border-radius: 10px;
 }
 
-body {
-  background-color: var(--background);
+.checkbox-box div {
+  text-align: center;
+  font-size: 18px;
 }
+
+
