@@ -266,3 +266,20 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 });
 
+// JavaScript to handle the scroll event
+window.addEventListener('scroll', () => {
+    const parallaxContainer = document.querySelector('.parallax-container');
+    const parallaxContent = document.querySelector('.parallax-content');
+    
+    // Calculate how far the user has scrolled
+    const scrollPosition = window.scrollY;
+    
+    // Add or remove the 'scroll' class to trigger the effect
+    if (scrollPosition > parallaxContainer.offsetHeight) {
+      parallaxContainer.classList.add('scroll');
+    } else {
+      parallaxContainer.classList.remove('scroll');
+    }
+  });
+  
+
