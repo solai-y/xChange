@@ -52,3 +52,7 @@ a {
   color: white;
   border: 1px solid #3d5a80;
 }
+
+body {
+  background-color: var(--background);
+}

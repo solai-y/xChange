@@ -87,6 +87,21 @@
         </div>
       </div>
       <div class="results" v-else>
+        <div class="container-fluid" id="resultsSection">
+          <div class="row" v-for="uni in filteredUniList">
+            <a :href="'./individualunipage.html?uni=' + uni[1]">
+              <div class="card" style="width: 18rem;">
+                <img :src="uni[0].gallery[0]" class="card-img-top" :alt="uni[0].name">
+                <div class="card-body">
+                  <h5 class="card-title">{{uni[0].name}}</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item" v-for="selectedModule in selectedModuleNames">{{uni[0].selectedModule}}</li>
+                </ul>
+              </div>
+            </a>
+          </div>
+        </div>
       </div>
     </div>
 

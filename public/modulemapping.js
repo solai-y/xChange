@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded',  (event) => {
         btnSearch: "",  // key: value
         uniList: [],
         selectedModuleNames:[],
-        filteredUniLst: [],
+        filteredUniList: [],
         search: false,
       };
     }, 
@@ -39,20 +39,20 @@ document.addEventListener('DOMContentLoaded',  (event) => {
       btnSearchClick() {
         this.search = true
         console.log(this.selectedModuleNames)
-        let filterList = [];
         this.uniList.forEach((info)=>{
           let uniState = true;
           this.selectedModuleNames.forEach((moduleName)=> {
-            if (moduleName in info) {
+            if (moduleName in info[0]) {
 
             } else {
               uniState = false;
             }
           })
           if (uniState){
-            console.log(info)
+            this.filteredUniList.push(info);
           }
         })
+        console.log(this.filteredUniList)
       }
     }, 
     computed: {
@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded',  (event) => {
         const listToBeReturned = {};
         this.uniList.forEach((info) => {
           // Step 3: Extract and check module properties
-          for (let key in info) {
+          for (let key in info[0]) {
             // Check if the property starts with 'module_' to identify module-related properties
             if (key.startsWith('module_')) {
               let moduleName = key.slice(7); // Extract the module name (remove 'module_')
@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded',  (event) => {
           querySnapshot.forEach((doc) => {
             // Process each document in the collection
             data.push(
-              doc.data(),
+              [doc.data(), doc.id]
             );
           });
           console.log('Retrieved data:', data);
@@ -105,4 +105,5 @@ document.addEventListener('DOMContentLoaded',  (event) => {
     },
   });
   const vm = appVue.mount('#appVue'); 
+
 });
