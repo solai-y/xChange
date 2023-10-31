@@ -29,7 +29,6 @@ const app = createApp({
     return {
       aboutVue: aboutVue.value,
       universityVue: universityVue.value,
-      // universityURL: "https://www.google.com/maps/embed/v1/search?key=AIzaSyALAMytvRCzbd_txEXw0QQwJh0GzSINQt0&q="+universityVue.value + "&zoom=15&maptype=satellite",
       gpaVue: gpaVue.value,
       backgroundImageVue: backgroundImageVue.value,
       aboutImageVue: aboutImageVue.value,
@@ -54,7 +53,7 @@ const app = createApp({
       popup.style.display = "block";
     },
     universityURL(){
-      return "https://www.google.com/maps/embed/v1/search?key=AIzaSyALAMytvRCzbd_txEXw0QQwJh0GzSINQt0&q="+ this.universityVue + "&zoom=15&maptype=satellite";
+      return "https://www.google.com/maps/embed/v1/search?key={API-KEY}&q="+ this.universityVue + "&zoom=15&maptype=satellite";
     },
 
     closePopup: function () {
