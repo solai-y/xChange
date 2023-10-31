@@ -31,13 +31,28 @@ document.addEventListener('DOMContentLoaded',  (event) => {
         btnSearch: "",  // key: value
         uniList: [],
         selectedModuleNames:[],
+        filteredUniLst: [],
         search: false,
       };
     }, 
     methods: {
       btnSearchClick() {
         this.search = true
+        console.log(this.selectedModuleNames)
+        let filterList = [];
+        this.uniList.forEach((info)=>{
+          let uniState = true;
+          this.selectedModuleNames.forEach((moduleName)=> {
+            if (moduleName in info) {
 
+            } else {
+              uniState = false;
+            }
+          })
+          if (uniState){
+            console.log(info)
+          }
+        })
       }
     }, 
     computed: {
