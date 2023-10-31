@@ -34,3 +34,21 @@ a {
 #primaryButton {
   background-color: var(--primary);
 }
+
+.checkbox-button {
+  display: inline-block;
+  padding: 8px 16px;
+  border: 1px solid #ccc;
+  background-color: #98c1d9;
+  cursor: pointer;
+}
+
+.checkbox-button input[type="checkbox"] {
+  display: none;
+}
+
+.checkbox-button input[type="checkbox"]:checked + label {
+  background-color: #3d5a80;
+  color: white;
+  border: 1px solid #3d5a80;
+}

@@ -71,21 +71,22 @@
     <!---End of Navbar-->
     <div id="appVue">
       <div class="container-fluid" v-if="!search">
-        <div class="row justify-content-center">
-          <div class="col-6">
-            <div class="inputBox">
-              <label for="searchMod">What baskets do you need to clear on exchange?</label>
-              <div class="col2" v-for="(module, backendName) in moduleList">
+        <div class="row">
+          <h1 class="text-center">
+            What baskets do you need to clear on exchange?
+          </h1>
+          <div class="inputBox">
+            <div class="row">
+              <div class="col-lg-3 col-md-4 col-sm-12 py-1" v-for="(module, backendName) in moduleList">
                 <input type="checkbox" :value="backendName" :id="module" v-model="selectedModuleNames">
-                <label class="btn" id="checkboxLabel" :for="module">{{module}}</label>
+                <label class="btn checkbox-button" id="checkboxLabel" :for="module">{{module}}</label>
               </div>
-              <button id="primaryButton" value="search" @click="btnSearchClick()">Search</button>
             </div>
+            <button id="primaryButton" value="search" @click="btnSearchClick()">Search</button>
           </div>
         </div>
       </div>
       <div class="results" v-else>
-
       </div>
     </div>
 
