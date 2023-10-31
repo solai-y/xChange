@@ -37,12 +37,12 @@ document.addEventListener('DOMContentLoaded',  (event) => {
     methods: {
       btnSearchClick() {
         this.search = true
-        
+
       }
     }, 
     computed: {
       moduleList() {
-        const listToBeReturned = [];
+        const listToBeReturned = {};
         this.uniList.forEach((info) => {
           // Step 3: Extract and check module properties
           for (let key in info) {
@@ -53,8 +53,10 @@ document.addEventListener('DOMContentLoaded',  (event) => {
               let formattedModuleName = words.map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' '); // Capitalize the first letter of each word
               
               // Step 4: Add to the uniqueModules array if not already present
-              if (!listToBeReturned.includes(formattedModuleName)) {
-                listToBeReturned.push(formattedModuleName);
+              if (key in listToBeReturned) {
+                
+              } else {
+                listToBeReturned[key] = formattedModuleName;
               }
             }
           }
