@@ -41,6 +41,12 @@ a {
   gap: 10px; /* Adjust the gap between cards */
 }
 
+.checkbox-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .checkbox-box {
   width: 150px;
   height: 150px;
