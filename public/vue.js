@@ -43,12 +43,17 @@ const app = createApp({
       image_url: image_url.value,
       usernameComment: "",
       imageComment: "",
+      
     };
   },
   methods: {
     reviewForm: function () {
       var popup = document.getElementById("reviewPopup");
+      
       popup.style.display = "block";
+    },
+    universityURL(){
+      return "https://www.google.com/maps/embed/v1/search?key={API-KEY}&q="+ this.universityVue + "&zoom=15&maptype=satellite";
     },
 
     closePopup: function () {
@@ -94,7 +99,9 @@ const app = createApp({
       
     methodName() {
       // Your method logic here
+
     },
+
     fetchData() {
       document.addEventListener("DOMContentLoaded", (event) => {
         //retrieve get value
@@ -139,6 +146,7 @@ const app = createApp({
             this.galleryVue = info.gallery;
             this.reviewVue = info.review;
             this.docIdVue = docId;
+            
           })
           .catch(function (error) {
             console.error("Error updating document: ", error);
@@ -160,3 +168,4 @@ watch(aboutVue, (newValue) => {
 // component must be declared before app.mount(...)
 
 const vm = app.mount("#app");
+
