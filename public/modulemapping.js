@@ -30,13 +30,14 @@ document.addEventListener('DOMContentLoaded',  (event) => {
       return { 
         btnSearch: "",  // key: value
         uniList: [],
-        selectedModuleNames:"",
+        selectedModuleNames:[],
         search: false,
       };
     }, 
     methods: {
       btnSearchClick() {
         this.search = true
+        console.log(this.selectedModuleNames);
       }
     }, 
     computed: {
@@ -48,9 +49,12 @@ document.addEventListener('DOMContentLoaded',  (event) => {
             // Check if the property starts with 'module_' to identify module-related properties
             if (key.startsWith('module_')) {
               let moduleName = key.slice(7); // Extract the module name (remove 'module_')
+              let words = moduleName.split(/(?=[A-Z])/); // Split at uppercase letters
+              let formattedModuleName = words.map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' '); // Capitalize the first letter of each word
+              
               // Step 4: Add to the uniqueModules array if not already present
-              if (!listToBeReturned.includes(moduleName)) {
-                listToBeReturned.push(moduleName);
+              if (!listToBeReturned.includes(formattedModuleName)) {
+                listToBeReturned.push(formattedModuleName);
               }
             }
           }
