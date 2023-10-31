@@ -75,8 +75,8 @@
           <div class="col-6">
             <div class="inputBox">
               <label for="searchMod">What baskets do you need to clear on exchange?</label>
-              <div class="col2" v-for="module in moduleList">
-                <input type="checkbox" :value="module" :id="module" v-model="selectedModuleNames">
+              <div class="col2" v-for="(module, backendName) in moduleList">
+                <input type="checkbox" :value="backendName" :id="module" v-model="selectedModuleNames">
                 <label class="btn" id="checkboxLabel" :for="module">{{module}}</label>
               </div>
               <button id="primaryButton" value="search" @click="btnSearchClick()">Search</button>
@@ -85,7 +85,7 @@
         </div>
       </div>
       <div class="results" v-else>
-        
+
       </div>
     </div>
 
