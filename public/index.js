@@ -117,78 +117,81 @@ function getAllUniversities() {
     // Your existing code for Firebase Firestore query
 // Initialize Firebase (if not done already)
 // Replace with your own Firebase configuration
+// Your existing code for Firebase Firestore query
+// Initialize Firebase (if not done already)
+// Replace with your own Firebase configuration
 document.addEventListener("DOMContentLoaded", function() {
     const db = firebase.firestore();
     const uniCollection = db.collection("University");
-    const carousel = document.querySelector('.carousel');
-  
-    // Set the number of cards to display at once
-    const cardsPerPage = 3;
-    const transitionInterval = 3000; // Transition every 3 seconds
-  
-    let currentIndex = 0;
-  
+    const track = document.getElementById('trackItem'); // Get the ul element for the list
+
     function createCard(name, country, imageUrl) {
-        const card = document.createElement('div');
-        card.classList.add('card');
-      
+        const listItem = document.createElement('li'); // Create a list item for the card
+        listItem.classList.add('card'); // Add appropriate classes for styling
+
         const cardImage = document.createElement('img');
         cardImage.src = imageUrl;
         cardImage.alt = `${name} Image`;
-      
+
         const cardContent = document.createElement('div');
         cardContent.classList.add('card-content');
-      
+
         const cardTitle = document.createElement('h2');
         cardTitle.textContent = name;
-      
+
         const cardCountry = document.createElement('p');
         cardCountry.textContent = country;
-      
+
         cardContent.appendChild(cardTitle);
         cardContent.appendChild(cardCountry);
-      
-        card.appendChild(cardImage);
-        card.appendChild(cardContent);
-      
-        return card;
-      }
-  
-    function populateCarousel(querySnapshot) {
-      const cards = [];
-      querySnapshot.forEach((doc) => {
-        cards.push(createCard(doc.data().name, doc.data().country, doc.data().gallery[0]));
-      });
-  
-      const totalCards = cards.length;
-  
-      function updateCarousel() {
-        const start = currentIndex % totalCards;
-        const end = (currentIndex + cardsPerPage) % totalCards;
-        const visibleCards = cards.slice(start, end);
-  
-        // Clear and populate the carousel
-        carousel.innerHTML = '';
-        visibleCards.forEach(card => carousel.appendChild(card));
-  
-        // Update currentIndex
-        currentIndex = (currentIndex + 1) % totalCards;
-  
-        // Schedule the next update
-        setTimeout(updateCarousel, transitionInterval);
-      }
-  
-      // Start the continuous loop
-      updateCarousel();
+
+        listItem.appendChild(cardImage);
+        listItem.appendChild(cardContent);
+
+        return listItem;
     }
-  
-    // Fetch data from Firestore and populate the carousel
+
+    function populateList(querySnapshot) {
+        querySnapshot.forEach((doc) => {
+            const card = createCard(doc.data().name, doc.data().country, doc.data().gallery[0]);
+            track.appendChild(card); // Append the card to the list
+        });
+    }
+
+    // Fetch data from Firestore and populate the list
     uniCollection.get().then((querySnapshot) => {
-      populateCarousel(querySnapshot);
+        populateList(querySnapshot);
+        startContinuousLoop();
     }).catch((error) => {
-      console.error("Error getting documents: ", error);
+        console.error("Error getting documents: ", error);
     });
-  });
+
+    function startContinuousLoop() {
+        const cardWidth = track.querySelector('.card').offsetWidth;
+
+        const cloneCount = Math.ceil(track.offsetWidth / cardWidth);
+        const totalWidth = cloneCount * cardWidth;
+
+        track.style.animation = `scroll ${totalWidth / 300}px linear infinite`;
+
+        // Clone the list items to create a continuous loop
+        const cardListItems = track.querySelectorAll('.card');
+        for (let i = 0; i < cloneCount; i++) {
+            for (const card of cardListItems) {
+                const clonedCard = card.cloneNode(true);
+                track.appendChild(clonedCard);
+            }
+        }
+    }
+});
+
+
+
+
+
+
+
+
 
 // Your existing code for Firebase Firestore query
 // Initialize Firebase (if not done already)
@@ -266,20 +269,8 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 });
 
-// JavaScript to handle the scroll event
-window.addEventListener('scroll', () => {
-    const parallaxContainer = document.querySelector('.parallax-container');
-    const parallaxContent = document.querySelector('.parallax-content');
-    
-    // Calculate how far the user has scrolled
-    const scrollPosition = window.scrollY;
-    
-    // Add or remove the 'scroll' class to trigger the effect
-    if (scrollPosition > parallaxContainer.offsetHeight) {
-      parallaxContainer.classList.add('scroll');
-    } else {
-      parallaxContainer.classList.remove('scroll');
-    }
-  });
-  
+
+
+
+
 

@@ -777,20 +777,7 @@ a {
     position: relative; /* Enable absolute positioning inside */
   }
   
-  .card {
-    width: calc(100% / 3); /* Set card width to 33.33% for 3 cards in a row */
-    flex-shrink: 0; /* Prevent cards from shrinking */
-    text-align: center;
-    margin-right: 10px; /* Add right margin to create a gap between cards */
-    margin-left: 70px;
-    height: 380px;
-    width: 380px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    background-color: var(--secondary) !important;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    position: relative;
-  }
+ 
 
   .card:hover {
     transform: scale(1.05); /* Slightly scale the card on hover */
@@ -840,44 +827,62 @@ a {
     z-index: 2;
 }
 
-.parallax-container {
-    height: 100vh;
-    overflow: hidden;
-    position: relative;
-    background: url('./images/universityCourtyard.jpg') center center;
-    background-size: cover;
-  }
-  
-  .parallax-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    color: white;
-    z-index: 1;
-    opacity: 1;
-    transition: opacity 0.3s;
-    background: rgba(0, 0, 0, 0.7);
-    padding: 20px;
-  }
-  
-  .parallax-container.scroll {
-    height: 100vh;
-    background-attachment: fixed;
-    overflow: hidden;
-  }
-  
-  .parallax-container.scroll .parallax-content {
-    opacity: 0;
-  }
-
   #scroll-icon {
     position: absolute;
 
     bottom: 0;
     left: 47%;
   }
+
+  .track-wrapper {
+    width: 100%; /* Set a fixed width for the container */
+    overflow: hidden; /* Hide any overflowing content */
+    display: flex; /* Ensure the container expands to hold all items */
+    background-color: var(--secondary);
+    padding-top: 20px;
+}
+
+.track {
+    list-style: none; /* Remove default list styles */
+    padding: 0; /* Remove default padding */
+    display: flex; /* Display list items as flex items */
+    animation: scroll 1500s linear infinite; /* Continuous scrolling animation */
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%); /* Adjust the percentage based on your card width */
+    }
+}
+
+.track:hover {
+    animation-play-state: paused; /* Pause the animation on hover to allow user interaction */
+}
+
+.card {
+    /* Style your cards as needed */
+    width: 300px; /* Set a fixed width for each card */
+    height: 300px;
+    margin-right: 10px; /* Add spacing between cards (optional) */
+}
+
+.header {
+    background-color: var(--background);
+    margin: 0px !important;
+    padding: 0px !important;
+    width: auto;
+}
+
+
+
+
+
+
+
+
   
   
  
