@@ -60,6 +60,7 @@ header{
   border: 1px solid #ddd;
   box-sizing: border-box;
   padding: 20px;
+  font-family: 'Times New Roman', Times, serif;
 }
 .users_reply{
   background-color: white;
@@ -130,9 +131,11 @@ modal {
 }
 
 .forum-info {
-  background-color: #2C2F33;
+  background-color: #097805;
+  height: auto;
   color: #ffffff;
   border-radius: 5px;
+
 }
 #textontop{
   text-align: center;
@@ -153,7 +156,27 @@ modal {
 .new_forum {
   cursor: pointer;
   transition: background 0.5s;
-  /* display: none; */
+  padding:10px;
+
+}
+
+
+/* when the post is empty*/
+.Empty_post{
+  background-color: white;
+  font-size: 20px;
+  text-align: center;
+  padding: 40px;
+  border-radius: 5px;
+}
+/*Create post button*/
+#create_post_btn{
+  position: relative;
+  height: auto;
+  width: auto;
+  border-radius: 50%;
+  left: 1250px;
+  bottom: 95px;
 }
 .new_forum.active{
   display: block;
@@ -163,11 +186,14 @@ modal {
 #forum a{
   color: white;
   text-decoration: none;
+
 }
 #forum:hover {
   cursor: pointer;
-  background-color: #7289DA;
+  background-color: black;
   text-decoration: none;
+  border-radius: 5px;
+  
 
 }
 

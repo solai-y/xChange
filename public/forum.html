@@ -25,7 +25,9 @@
 
   <!--Icon-->
   <script src="https://kit.fontawesome.com/63bb0d4085.js" crossorigin="anonymous"></script>
-
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <script defer src="/__/firebase/init.js?useEmulator=true"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
@@ -84,41 +86,64 @@
   <main>
 
     <div class="forum-container">
-      <!--Forum list-->
+      <!--Forum section-->
       <section class="forum forum-info">
-        <div onload="load_forum()" class="forum-list">
-          <h1 id="forum"><a href="forum.html">Current Forums</a></h1>
-          <div class="new_forum" id="singapore_forum" onclick="check_forum(this.id)"></div>
-        </div>
-        <div class="input-group mb-3">
-          <input class="form-control" class="responsiveInput" type="text" id="newForumName"
-            placeholder="Create a new Forum!" aria-describedby="basic-addon2">
-          <div class="input-group-append">
-            <button class="btn btn-outline-secondary" id="addForumButton" onclick="addNewForum()">+</button>
+
+        <div class="modal fade bd-example-modal-lg" id ="myModal" tabindex ="-1" role = "dialog" aria-labelledby="myLargeModalLabel" aria-hidden = "true">
+          <div class="modal-dialog modal-lg">
+            <div class = "modal-content">
+              <!--Modal content-->
+              <input class="form-control" class="responsiveInput" type="text" id="newForumName"placeholder="Create a new Forum!" aria-describedby="basic-addon2">
+              <textarea class="forum_description" class = "descriptionoftheforum" type ="text" id="fDescription" placeholder="Describe this forum" aria-describedby="basic-addon2"></textarea>
+              <button class="btn btn-outline-secondary" id="addForumButton" onclick="addNewForum()">+</button>
+            </div>
           </div>
         </div>
+        
+
+        <div onload="load_forum()" class="forum-list">
+          <h1 id="forum"><a href="forum.html">CURRENTLY OPEN</a></h1>
+          <div class="new_forum" id="singapore_forum" onclick="check_forum(this.id)"></div>
+        </div>
+        <button type = "button" class = "btn btn-outline-primary" data-toggle="modal" data-target = ".bd-example-modal-lg">Create New Forum</button>
+
+
+        
+
       </section>
       <!--Forum posts-->
       <section class="forum-posts">
+
         <div class="forum-content">
-          <div class="posts" id="singaporePosts">
-            <!-- Posts for Singapore_forum will appear here -->
-          </div>
           <div class="post-form">
             <h3 id="textontop" style="display:block">Hello xChange users! This is our forum page where you can ask any
               questions and share information about the places you're planning to visit. </h3>
-              <div class = "homepage_forum" id = "allforums" style = "display: block;">
+              <div class = "homepage_forum" id = "allforums" style = "display: block;"></div>
               
-              </div>
-              
-            <div class="post">
-              <div>
-                <div class="post_header">
-                  <div class="post_headerText">
+            <div class="Empty_post" style="display:none">
+              <div class="createPost"  id="create_post">
+                  <div class="postBox_input">
+                    <div class="modal post fade bd-example-modal-lg" id ="post_button" tabindex ="-1" role = "dialog" aria-labelledby="myLargeModalLabel2" aria-hidden = "true">
+                      <div class="modal-dialog modal-lg">
+                        <div class = "modal-content">
+                          <!--Modal content-->
+                          <textarea type="text" id="create_text_in_modal" placeholder="Create your first Post!" aria-describedby="basic-addon2"></textarea>></textarea>
+                          <button id="yourDocumentID" class="btn btn-primary" onclick="Create_post()"  aria-describedby="basic-addon2"></button>>Create Post</button>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                </div>
               </div>
             </div>
+            <button style="display:none" type = "button" class = "btn btn-outline-primary" id = "create_post_btn" data-toggle="modal" data-target = "#post_button">+</button>
+
+            
+        
+          
+
+          
+
+
             <h3>
               <span class="post_headerSpecial">
                 <span class="user_account"> </span>
@@ -142,7 +167,7 @@
               </div>
             </div>
             <div class=partition id="partition1" style="display:none" id="clickableDiv">
-              <div class="post_headerDescription">
+              <div id="content_post">
                 <div class="container">
                   
                 </div>
@@ -163,21 +188,16 @@
     
   
     <section class="forum forum-info">
-      <div class="new_forum" id="singapore_forum" onclick="check_forum(this.id)"></div>
+      <div class="new_forum" id="just_forum" onclick="check_forum(this.id)"></div>
       <div class="input-group mb-3">
         <div class="input-group-append">
         </div>
       </div>
-      <div class="container">
-        <div class="createPost" style="display: none" id="create_post">
-          <form id="create">
-            <div class="postBox_input">
-              <input type="text" id="create_text" placeholder="Create your first Post!">
-            </div>
-            <button id="yourDocumentID" class="btn btn-primary" onclick="Create_post()">Create Post</button>
-          </form>
-        </div>
-      </div>
+
+
+     
+
+
       </div>
     </section>
   </div>

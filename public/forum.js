@@ -25,32 +25,41 @@ document.addEventListener("DOMContentLoaded", event => {
   load_reply_forum()
   homepage_forum()
 });
-var x = ""; //its the forum 
+// A global variable so that the forum can be called when the user is on that page
+var x = ""; 
 document.getElementById("yourDocumentID").addEventListener("click", Create_post);
+// this is the function to create post 
 function Create_post(event) { //just updating that first forum data chat
   event.preventDefault();
+  //database referencing to the users
   const docRef = db.collection("Users");
+  //getting the user from the sessionStorage
   var user = sessionStorage.getItem("user");
   var userObject = JSON.parse(user);
   var uid = userObject.uid;
+  //getting the post from the create_text
   var post = document.getElementById("create_text").value;
-
+  //referencing the data inside 
   docRef.get().then(function (querySnapshot) {
     querySnapshot.forEach(function (doc) {
+      //getting the user UID in the USER DOCUMENT
       var docId = doc.id;
+      //Checking if the document ID has this UID 
       if (docId == uid) {
         const userRef = db.collection("Users").doc(uid);
         userRef.get().then((doc) => {
-          if (doc.exists) {
-            var first_name = doc.data().name;
+      //if this document exits
+          if (doc.exists){
+            // we take the name 
+            var first_name = doc.data().name || "randomUser";
+            //we take the image
             var image_url = doc.data().image_url || "./images/profile photo.jpeg";
           }
+        //forum reference
           const dataRef = db.collection("forum").doc(x);
-          dataRef.get().then((doc) => {
-            data_to_insert = {}
-            var dataSize = Object.keys(doc.data()).length
-            var nums = parseInt(dataSize) + 1
-            data_to_insert["chat0"] = {
+          //The data we putting inside
+          data_to_insert = {}
+          data_to_insert["chat0"] = {
               chat: post,
               name: first_name,
               picture: image_url,
@@ -60,38 +69,38 @@ function Create_post(event) { //just updating that first forum data chat
                 picture: "",
               }
             }
-            dataRef.update(data_to_insert).then(() => {
-              console.log("data is inside");
-              var area_text = document.getElementsByClassName("post_headerDescription")[0];
-              area_text.innerHTML = `<p> ${post} </p>`;
-              var picture_ref = document.querySelector(".post_avatar");
-              var create_image = document.createElement("img");
-              create_image.setAttribute("src", image_url)
-              create_image.setAttribute("id", x + "picture")
-              picture_ref.appendChild(create_image);
-              var header_name = document.querySelector(".post_headerText");
-              var create_div_tag = document.createElement("div")
-              create_div_tag.setAttribute("class", "user")
-              var header_text = document.createTextNode(first_name);
-              create_div_tag.appendChild(header_text)
-              header_name.appendChild(create_div_tag)
-
-            }).catch(function (error) {
+          //update the data
+          dataRef.update(data_to_insert).then(() => {
+          console.log("data is inside");
+          //This is for the live data to show up 
+          //we are showing the content
+          var first_post = document.getElementById("content_post");
+          //we create an attribute so that easier for us to do CSS
+          first_post.setAttribute("class","content_post");
+          //DO not forget to append the post!
+          //since now we have a content post, we can focus on making the image
+          //since we are appending above the text 
+          var user_create = document.getElementById("content_post");
+          //create image
+          var create_image = document.createElement("img");
+          create_image.setAttribute("src", image_url)
+          create_image.setAttribute("id", x + "picture")
+          // we need to make the name is also beside the picture;
+          var create_name = document.createTextNode(first_name)
+          //append image
+          user_create.appendChild(create_image);
+          //append the name
+          user_create.appendChild(create_name);
+          }) //error
+          .catch(function (error) {
               console.error("Error updating data:", error);
-            })
+          })
           });
-        })
-      }
-    }
-
-    )
-  })
-
-
-  document.getElementById("create").reset();
-
-};
-
+        }})
+      })
+      document.getElementById("create").reset();
+    };
+//Create_post function got
 
 //  
 function personImage() {
@@ -106,7 +115,6 @@ function personImage() {
         const userRef = db.collection("Users").doc(uid);
         userRef.get().then((doc) => {
           if (doc.exists) {
-            console.log(doc.data().image_url)
             var image_url = doc.data().image_url || "/images/profile photo.jpeg";
             var pic_ref = document.querySelector(".person_image");
             var create_div = document.createElement("img");
@@ -120,16 +128,16 @@ function personImage() {
   })
 }
 
-
+//this global scope is to use for the page reset 
 var history_arr = [];
 function check_forum(docId) {
-
+  //for this first part of the code we are looking if the page is empty
   x = docId; //forum identification 
   history_arr.push(x); //to use for the page rest
   const forumRef = db.collection("forum").doc(docId);
+  //putting it on the local storage so that it is easier to receive
   localStorage.setItem("forum", x);
   // this count is for looping the data if possible so to be able to showcase everything
-
   //get the data from the forum 
   forumRef.get().then((doc) => {
     const data = doc.data() // inside here is all the data from the firebase
@@ -138,19 +146,28 @@ function check_forum(docId) {
     wlcText.textContent = `Welcome to the #${docId} forum`;
     //testing area
     //first condition: If the forum is new
-    if (data["chat0"].chat == "" && data["chat0"].name == "") {
-      const insert_post = document.querySelector(".post_headerDescription");
-      //create a container instead
-      const cont = document.createElement("div");
+    //why chat0? because its the first one ah if its empty
+    if (data["chat0"].chat == ""  &&  data["chat0"].name == "") {
+      //remove the posts from the main homepage forum
+      var homepage_forum_posts = document.getElementsByClassName("containerX");
+      Array.from(homepage_forum_posts).forEach(function(element) {
+        element.remove();
+      });
+      //
+      var insert_post = document.querySelector(".Empty_post");
       //adding the create post
-      var post_class = document.getElementById("create_post");
+      //empty post block
+      var abovePostClass = document.getElementsByClassName("Empty_post")[0];
+      abovePostClass.style.display="block"
+      //button
+      var post_class = document.getElementById("create_post_btn");
       post_class.style.display = "block";
       //create empty text node to tell them to insert their first post here!
-      var createPtag = document.createElement("p");
+      var createPtag = document.createElement("div");
       createPtag.setAttribute("class", docId);
       var txt = document.createTextNode("Insert your first post here!");
       createPtag.appendChild(txt);
-      insert_post.appendChild(createPtag);
+      insert_post.insertAdjacentElement("afterbegin",createPtag);
       //hide the welcome text
       var Welcome_txt = document.getElementById("textontop");
       Welcome_txt.style.display = "none";
@@ -162,6 +179,7 @@ function check_forum(docId) {
       linefooter.style.display = "none";
       var reply_class = document.getElementById("replyButton");
       reply_class.style.display = "none";
+      $('#myModal').modal('hide');
 
     } else {
       //need to create loop already so can individually add the data
@@ -288,14 +306,19 @@ function page_reset(element) {
 
 
 
-
+//Load forum is when you click on the page forum and all the data is out
 function load_forum() {
-
+  //calling the forum database because you want the forum name
   const docRef = db.collection("forum");
+  //loop it to get the data
+  //this part of this function is to load forum name
   docRef.get().then(function (querySnapshot) {
     querySnapshot.forEach(function (doc) {
+      //the docId is the forum name
       let docId = doc.id;
+      //get the forum name so that I can press on it
       let forum_name = document.createTextNode("#" + docId);
+      //div in the forum 
       var createElement = document.createElement("div");
       createElement.setAttribute("class", "new_forum");
       createElement.setAttribute("onclick", "check_forum()")
@@ -303,8 +326,13 @@ function load_forum() {
       var forum_ref = document.querySelector(".new_forum");
       createElement.appendChild(forum_name);
       forum_ref.insertAdjacentElement('afterend', createElement);
+      //hide the singapore ID idk why is it there but i just scared of screwing up the whole code
+      var singaporeID = document.getElementById("singapore_forum");
+      singaporeID.style.display = "none";
+      // pointing the forum
       var forum_id = document.getElementById(docId);
       forum_id.style.cursor = "pointer";
+      //when the user click on the forum name they go to that section 
       createElement.addEventListener("click", function (event) {
         check_forum(docId); // Pass the clicked forum's ID
       });
@@ -319,22 +347,32 @@ function load_forum() {
   // This code will execute when the page is fully loaded
 
 };
+//the load forum has no issue working perfectly fine
 
-
-
+//this function is to create new forum 
 function addNewForum() {
+  //get the value from the input class
   var forum = document.getElementById("newForumName").value;
+  // Clear the input field
+  document.getElementById("newForumName").value = "";
+  //take in the description
+  var description = document.getElementById("fDescription").value;
+  document.getElementById("fDescription").value = "";
+  //Hide the modal
+  $('#myModal').modal('hide');
+  //reference the document we going to have the forum name in the document id inside
   docRef = db.collection('forum');
   docRef.get().then(function (querySnapshot) {
     querySnapshot.forEach(function (doc) {
+      //check to see if the document ID has the forum name already
       let docId = doc.id;
       console.log(docId);
       if (forum != "") {
-        var chat = {};
+        // if forum is not the same so it is unique
         if (forum != docId) {
-
           chat = {
             chat0: {
+              description: description,
               chat: "",
               name: "",
               picture: "",
@@ -346,7 +384,10 @@ function addNewForum() {
               }
             }
           }
+        }else{
+          alert("this forum name has been taken")
         }
+        //update the forum
         db.collection("forum").doc(forum).set(chat).then(() => {
           console.log("data is inside");
           location.reload();
@@ -354,10 +395,12 @@ function addNewForum() {
           console.error("sth wrong", error);
         });
       }
-
     })
   })
 }
+//no issue with the adding of the forum name
+
+
 
 document.getElementById("addPostButton").addEventListener("click", NewChat);
 function NewChat(event) {
