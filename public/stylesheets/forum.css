@@ -24,12 +24,15 @@ header{
 .load_avatar{
   background-color: white;
 }
-/* #another_id{
-  background-color: white;
-  padding: 20px;
-  margin: 20px;
-  border-radius: 5px;
-} */
+
+/*this is for the post box */
+.picturearea{
+  display: flex;
+}
+
+/* CSS for expanding the textarea */
+
+/*---*/
 
 .forum-container {
   display: flex;
@@ -178,6 +181,9 @@ modal {
   left: 1250px;
   bottom: 95px;
 }
+#create_post_btn{
+  cursor: pointer;
+}
 .new_forum.active{
   display: block;
   opacity: 1;
@@ -217,16 +223,14 @@ modal {
   
 }
 .post_text{
-  width: 80%; 
+  width: 100%; 
+  text-align: center;
   margin: 0 auto; 
   display: block;
 }
-/* .postBox_input{
+.txtarea{
+  text-align: center;
 
-} */
-.postBox_input input:focus {
-  background-color: white;
-  /* Add any other styles you want for the focused state */
 }
 
 #ld_image{
@@ -381,11 +385,6 @@ p{
   border-radius: 5px; /* Add rounded corners for a modern look */
 }
 
-.postBox_input{
-  display: block;
-  padding: 20px;
-
-}
 textarea{
   font-family: inherit;
   font-size: 100%;

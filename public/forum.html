@@ -121,14 +121,14 @@
               <div class = "homepage_forum" id = "allforums" style = "display: block;"></div>
               
             <div class="Empty_post" style="display:none">
-              <div class="createPost"  id="create_post">
-                  <div class="postBox_input">
+              <div class="createPost" style ="display:block" id="create_post">
+                  <div class="postBox_input" id = "inputput" style="display:block">
                     <div class="modal post fade bd-example-modal-lg" id ="post_button" tabindex ="-1" role = "dialog" aria-labelledby="myLargeModalLabel2" aria-hidden = "true">
                       <div class="modal-dialog modal-lg">
                         <div class = "modal-content">
                           <!--Modal content-->
-                          <textarea type="text" id="create_text_in_modal" placeholder="Create your first Post!" aria-describedby="basic-addon2"></textarea>></textarea>
-                          <button id="yourDocumentID" class="btn btn-primary" onclick="Create_post()"  aria-describedby="basic-addon2"></button>>Create Post</button>
+                          <textarea type="text" id="create_text_in_modal" placeholder="Create your first Post!" aria-describedby="basic-addon2"></textarea>
+                          <button id="yourDocumentID" class="btn btn-primary" onclick="Create_post()"  aria-describedby="basic-addon2">Create Post</button>
                         </div>
                       </div>
                     </div>
@@ -137,11 +137,21 @@
             </div>
             <button style="display:none" type = "button" class = "btn btn-outline-primary" id = "create_post_btn" data-toggle="modal" data-target = "#post_button">+</button>
 
-            
-        
-          
+              <div class="feed">
+                <div class="feed_header">
+                  <div id="postBox" class="postBox" style="display: none;">
+                    <div class = "picturearea">
+                      <div class ="txtarea" onload="personImage()" class = "mb-3">
+                        <textarea class="form-control" type="text" width="200px" rows="3"style="word-wrap:break-word;" id="post_text"placeholder="What's on your mind?"></textarea>
+                        <button id="addPostButton" onclick="NewChat()">Post</button>
+                      </div>
+                    </div>
+                  </div>                  
+                </div>
+              </div>
 
-          
+
+
 
 
             <h3>
@@ -149,23 +159,10 @@
                 <span class="user_account"> </span>
               </span>
             </h3>
+            
+
           </div>
           <section>
-            <div class="feed">
-              <div class="feed_header">
-                <div id="postBox" class="postBox" style="display: none;">
-                  <form id="post_box">
-                    <div class="postBox_input">
-                      <div class="person_image" id="pImage" onload="personImage()">
-                        <input type="text" width="200px" style="word-wrap:break-word;" id="post_text"
-                          placeholder="What's on your mind?">
-                        <button id="addPostButton" onclick="NewChat()">Post</button>
-                      </div>
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </div>
             <div class=partition id="partition1" style="display:none" id="clickableDiv">
               <div id="content_post">
                 <div class="container">
@@ -180,10 +177,6 @@
           </div>
           </section>
         </div>
-        <div id="linefooter" class="post_footer" style="display: none;">
-          <span class="material_icons"></span>
-          <span class="material_icons"></span>
-        </div>
       </section>
     
   
@@ -194,8 +187,6 @@
         </div>
       </div>
 
-
-     
 
 
       </div>
