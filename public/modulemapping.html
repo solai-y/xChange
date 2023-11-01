@@ -100,6 +100,10 @@
               <div class="searchCountry" >
                 <input type="text" data-search-country-name v-model="btnSearchCountry">
               </div>
+              <div>
+                <button>Search</button>
+                <button @click="btnEditSearch()">Edit search</button>
+              </div>
             </div>
           </div>
           <div class="row" v-for="uni in filteredUniList">

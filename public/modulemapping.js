@@ -37,6 +37,9 @@ document.addEventListener('DOMContentLoaded',  (event) => {
       };
     }, 
     methods: {
+      btnEditSearch() {
+        this.search = false;
+      },  
       btnSearchClick() {
         this.search = true
         this.uniList.forEach((info)=>{
