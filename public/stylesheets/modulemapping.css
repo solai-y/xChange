@@ -80,4 +80,15 @@ a {
   font-size: 18px;
 }
 
+.modName {
+  background-color: var(--secondary);
+  border: 1px black solid;
+}
 
+.visible {
+  display: block;
+}
+
+.hide {
+  display: none;
+}
