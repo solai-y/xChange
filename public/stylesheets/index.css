@@ -78,7 +78,7 @@ img {
     width: 100%;
 
 }
-#wanttogo{
+#wheretogo{
     text-align: center;
     display: flex;
     justify-content: center;
@@ -109,12 +109,6 @@ img {
 
 #go {
     padding: 0px;
-}
-
-.carouselBack {
-    background-color: var(--background);
-    padding-left: 0px !important;
-    padding-right: 0px !important;
 }
 
 .box{
@@ -250,11 +244,6 @@ video {
     min-width: 40vw;
 }
 
-.Header{
-    padding: 20px;
-    text-align: center;
-}
-
 div .col-4 {
     align-items: center !important;
 }
@@ -268,181 +257,14 @@ div .col-4 {
     background-color: var(--accent);
 }
 
-.carousel * {
-    box-sizing: border-box
-}
-
-.carousel__track {
-    display: flex;
-    margin: 0;
-    padding: 0;
-    position: relative
-}
-
-.carousel__viewport {
-    overflow: hidden
-}
-
-.carousel__sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    border: 0
-}
-
-.carousel__pagination {
-    display: flex;
-    justify-content: center;
-    list-style: none;
-    line-height: 0;
-    margin: 10px 0 0
-}
-
-.carousel__pagination-button {
-    display: block;
-    border: 0;
-    margin: 0;
-    cursor: pointer;
-    padding: var(--vc-pgn-margin);
-    background: transparent
-}
-
-.carousel__pagination-button:after {
-    display: block;
-    content: "";
-    width: var(--vc-pgn-width);
-    height: var(--vc-pgn-height);
-    border-radius: var(--vc-pgn-border-radius);
-    background-color: var(--vc-pgn-background-color)
-}
-
-.carousel__pagination-button:hover:after,.carousel__pagination-button--active:after {
-    background-color: var(--vc-pgn-active-color)
-}
-
-.carousel__prev,.carousel__next {
-    box-sizing: content-box;
-    background: var(--vc-nav-background);
-    border-radius: var(--vc-nav-border-radius);
-    width: var(--vc-nav-width);
-    height: var(--vc-nav-height);
-    text-align: center;
-    font-size: var(--vc-nav-height);
-    padding: 0;
-    color: var(--vc-nav-color);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    border: 0;
-    cursor: pointer;
-    margin: 0 10px;
-    top: 50%;
-    transform: translateY(-50%)
-}
-
-.carousel__prev:hover,.carousel__next:hover {
-    color: var(--vc-nav-color-hover)
-}
-
-.carousel__next--disabled,.carousel__prev--disabled {
-    cursor: not-allowed;
-    opacity: .5
-}
-
-.carousel__prev {
-    left: 0
-}
-
-.carousel__next {
-    right: 0
-}
-
-.carousel--rtl .carousel__prev {
-    left: auto;
-    right: 0
-}
-
-.carousel--rtl .carousel__next {
-    right: auto;
-    left: 0
-}
-
-.carousel__icon {
-    width: var(--vc-icn-width);
-    height: var(--vc-icn-width);
-    fill: currentColor
-}
-
-.carousel__slide {
-    scroll-snap-stop:auto;flex-shrink: 0;
-    margin: 0;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center
-}
-
-.carousel__item[data-v-36db4d5f] {
-    height: 70vh
-}
-
-.caroImg[data-v-36db4d5f] {
-    object-fit: cover;
-    width: 100%;
-    height: 100%
-}
-
-.carousel__slide[data-v-36db4d5f] {
-    padding: 5px
-}
-
-.carousel__viewport[data-v-36db4d5f] {
-    perspective: 2000px
-}
-
-.carousel__track[data-v-36db4d5f] {
-    transform-style: preserve-3d
-}
-
-.carousel__slide--sliding[data-v-36db4d5f] {
-    transition: .5s
-}
-
-.carousel__slide[data-v-36db4d5f] {
-    opacity: .9;
-    transform: rotateY(-20deg) scale(.9)
-}
-
-.carousel__slide--active~.carousel__slide[data-v-36db4d5f] {
-    transform: rotateY(20deg) scale(.9)
-}
-
-.carousel__slide--prev[data-v-36db4d5f] {
-    opacity: 1;
-    transform: rotateY(-10deg) scale(.9)
-}
-
-.carousel__slide--next[data-v-36db4d5f] {
-    opacity: 1;
-    transform: rotateY(10deg) scale(.9)
-}
-
-.carousel__slide--active[data-v-36db4d5f] {
-    opacity: 1;
-    transform: rotateY(0) scale(1.1)
-}
-
-
 /* Navbar styling */
 .navbar {
+    /* Set the border style, color, and width */
+    border-bottom: 2px solid var(--secondary); /* Replace #FF0000 with the desired color code */
+    border-radius: 5px; /* Optional: Adds rounded corners to the border */
     background-color: var(--background);
     height: 60px;
-}
+  }
 
 .navbar:hover {
     font-size: medium;
@@ -470,17 +292,6 @@ section {
     width: 100%;
 }
 
-
-
-.carousel-item video {
-    object-fit: cover;
-    width: 100%;
-    height: 100%;
-  }
-
-#carouselVideo {
-    height: 100%;
-  }
 
 .text-overlay {
     /* position: absolute; */
@@ -551,10 +362,6 @@ section {
     display: none;
     scrollbar-width: none;
 }
-
-.header-photo {
-    width: 20%;
-  }
   
 .text-center label {
     color: var(--text);
@@ -624,17 +431,11 @@ h5 {
     z-index: 2;
     position: relative;
   }
-  .ag-courses-item_date-box {
-    font-size: 18px;
-    color: #FFF;
-  
-    z-index: 2;
-    position: relative;
-  }
+
   .ag-courses-item_bg {
     height: 128px;
     width: 128px;
-    background-color: #4ecca3;
+    background-color: var(--primary);
   
     z-index: 1;
     position: absolute;
@@ -702,82 +503,11 @@ h5 {
     padding: 0;
   }
 
-.signup {
-    appearance: button;
-    backface-visibility: hidden;
-    background-color: var(--secondary);
-    border-radius: 6px;
-    border-width: 0;
-    box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset,rgba(50, 50, 93, .1) 0 2px 5px 0,rgba(0, 0, 0, .07) 0 1px 1px 0;
-    box-sizing: border-box;
-    color: #fff;
-    cursor: pointer;
-    font-family: var(--text);
-    font-size: 100%;
-    height: 44px;
-    line-height: 1.15;
-    margin: 0px 0 0;
-    outline: none;
-    overflow: hidden;
-    padding: 0 25px;
-    position: relative;
-    text-align: center;
-    text-transform: none;
-    transform: translateZ(0);
-    transition: all .2s,box-shadow .08s ease-in;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-}
-
-.login {
-    appearance: button;
-    backface-visibility: hidden;
-    background-color: var(--secondary);
-    border-radius: 6px;
-    border-width: 0;
-    box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset,rgba(50, 50, 93, .1) 0 2px 5px 0,rgba(0, 0, 0, .07) 0 1px 1px 0;
-    box-sizing: border-box;
-    color: #fff;
-    cursor: pointer;
-    font-family: var(--text);
-    font-size: 100%;
-    height: 44px;
-    line-height: 1.15;
-    margin: 0px 0 0;
-    outline: none;
-    overflow: hidden;
-    padding: 0 25px;
-    position: relative;
-    text-align: center;
-    text-transform: none;
-    transform: translateZ(0);
-    transition: all .2s,box-shadow .08s ease-in;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-}
 
 a {
     text-decoration: none !important;
     color: var(--text) !important;
 }
-
-.navbar {
-    /* Set the border style, color, and width */
-    border-bottom: 2px solid var(--secondary); /* Replace #FF0000 with the desired color code */
-    border-radius: 5px; /* Optional: Adds rounded corners to the border */
-    background-color: var(--background);
-    height: 60px;
-  }
-
-  .carousel-container {
-    overflow: hidden; /* Hide overflow to create the sliding effect */
-    width: 100%; /* Set the width of the container */
-    position: relative; /* Enable absolute positioning inside */
-  }
-  
- 
 
   .card:hover {
     transform: scale(1.05); /* Slightly scale the card on hover */
@@ -812,26 +542,32 @@ a {
     display: inline-flex;
     width: 50px;
     height: 50px;
-    border-radius: 50%;
+    border: none;
     align-items: center;
     line-height: 50px; 
-    color: #fff; 
+    color: var(--font); 
     font-size: 30px;
     justify-content: center;
-    border: 3px solid #fff;
     text-shadow: 3px 3px #e4e4e441;
-    box-shadow: 2px 2px #e4e4e456;
     bottom: 5%; /* Position at the bottom of the section */
     left: 50%; /* Horizontally center the button */
     transform: translateX(-50%);
     z-index: 2;
 }
 
+.circle-btn i {
+    transition: all 0.3s ease; /* Add a transition for all properties */
+}
+
+.circle-btn:hover i {
+    color: var(--primary); /* Change the color on hover */
+    transform: scale(1.2); /* Scale the icon on hover */
+}
+
   #scroll-icon {
     position: absolute;
-
-    bottom: 0;
-    left: 47%;
+    top: 550px;
+    left: 49%;
   }
 
   .track-wrapper {
@@ -869,12 +605,25 @@ a {
     margin-right: 10px; /* Add spacing between cards (optional) */
 }
 
-.header {
+#header {
     background-color: var(--background);
     margin: 0px !important;
     padding: 0px !important;
-    width: auto;
+    height: 60vh;
 }
+
+#exploreInner p {
+    color: var(--primary);
+    font-size: 50px;
+    font-family: var(--font);
+}
+
+.carousel img {
+    height: 60vh;
+}
+
+
+
 
 
 

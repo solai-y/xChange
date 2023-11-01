@@ -71,22 +71,41 @@
     <!---End of Navbar-->
     <div id="appVue">
       <div class="container-fluid" v-if="!search">
-        <div class="row">
-          <h1 class="text-center">
-            What baskets do you need to clear on exchange?
-          </h1>
-          <div class="inputBox">
-            <div class="row">
-              <div class="col-lg-3 col-md-4 col-sm-12 py-1" v-for="(module, backendName) in moduleList">
+        <h1 class="text-center">
+          What baskets do you need to clear on exchange?
+        </h1>
+        <div class="inputBox">
+          <div class="card-container">
+            <div class="checkbox-row" v-for="(module, backendName) in moduleList">
+              <label class="checkbox-box">
                 <input type="checkbox" :value="backendName" :id="module" v-model="selectedModuleNames">
-                <label class="btn checkbox-button" id="checkboxLabel" :for="module">{{module}}</label>
-              </div>
+                <div>
+                  {{module}}
+                </div>
+              </label>
             </div>
+          </div>
+          <div class="py-2 text-end">
             <button id="primaryButton" value="search" @click="btnSearchClick()">Search</button>
           </div>
         </div>
       </div>
       <div class="results" v-else>
+        <div class="container-fluid" id="resultsSection">
+          <div class="row" v-for="uni in filteredUniList">
+            <a :href="'./individualunipage.html?uni=' + uni[1]">
+              <div class="card" style="width: 18rem;">
+                <img :src="uni[0].gallery[0]" class="card-img-top" :alt="uni[0].name">
+                <div class="card-body">
+                  <h5 class="card-title">{{uni[0].name}}</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item" v-for="selectedModule in selectedModuleNames">{{uni[0].selectedModule}}</li>
+                </ul>
+              </div>
+            </a>
+          </div>
+        </div>
       </div>
     </div>
 
