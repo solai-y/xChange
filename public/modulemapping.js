@@ -41,6 +41,7 @@ document.addEventListener('DOMContentLoaded',  (event) => {
         this.search = false;
       },  
       btnSearchClick() {
+        this.filteredUniList = [];
         this.search = true
         this.uniList.forEach((info)=>{
           let uniState = true;

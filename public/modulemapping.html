@@ -101,11 +101,12 @@
                 <input type="text" data-search-country-name v-model="btnSearchCountry">
               </div>
               <div>
-                <button>Search</button>
+                <button href="#scrollSearch">Search</button>
                 <button @click="btnEditSearch()">Edit search</button>
               </div>
             </div>
           </div>
+          <div id="scrollSearch"></div>
           <div class="row" v-for="uni in filteredUniList">
             <a :href="'./individualunipage.html?uni=' + uni[1]" :id="uni[1]" class="uniNames" v-if="shouldShowUni(uni)">
               <div class="card" style="width: 40rem;">
