@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", event => {
   homepage_forum()
 });
 // A global variable so that the forum can be called when the user is on that page
-var x = ""; 
+var x = "";
 document.getElementById("yourDocumentID").addEventListener("click", Create_post);
 // this is the function to create post 
 function Create_post(event) { //just updating that first forum data chat
@@ -48,59 +48,60 @@ function Create_post(event) { //just updating that first forum data chat
       if (docId == uid) {
         const userRef = db.collection("Users").doc(uid);
         userRef.get().then((doc) => {
-      //if this document exits
-          if (doc.exists){
+          //if this document exits
+          if (doc.exists) {
             // we take the name 
             var first_name = doc.data().name || "randomUser";
             //we take the image
             var image_url = doc.data().image_url || "./images/profile photo.jpeg";
           }
-        //forum reference
+          //forum reference
           const dataRef = db.collection("forum").doc(x);
           //The data we putting inside
           data_to_insert = {}
           data_to_insert["chat0"] = {
-              chat: post,
-              name: first_name,
-              picture: image_url,
-              timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-              replied: {
-                name: "",
-                picture: "",
-              }
+            chat: post,
+            name: first_name,
+            picture: image_url,
+            timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+            replied: {
+              name: "",
+              picture: "",
             }
+          }
           //update the data
           dataRef.update(data_to_insert).then(() => {
-          console.log("data is inside");
-          //This is for the live data to show up 
-          //we are showing the content
-          var first_post = document.getElementById("content_post");
-          //we create an attribute so that easier for us to do CSS
-          first_post.setAttribute("class","content_post");
-          //DO not forget to append the post!
-          //since now we have a content post, we can focus on making the image
-          //since we are appending above the text 
-          var user_create = document.getElementById("content_post");
-          //create image
-          var create_image = document.createElement("img");
-          create_image.setAttribute("src", image_url)
-          create_image.setAttribute("id", x + "picture")
-          // we need to make the name is also beside the picture;
-          var create_name = document.createTextNode(first_name)
-          //append image
-          user_create.appendChild(create_image);
-          //append the name
-          user_create.appendChild(create_name);
+            console.log("data is inside");
+            //This is for the live data to show up 
+            //we are showing the content
+            var first_post = document.getElementById("content_post");
+            //we create an attribute so that easier for us to do CSS
+            first_post.setAttribute("class", "content_post");
+            //DO not forget to append the post!
+            //since now we have a content post, we can focus on making the image
+            //since we are appending above the text 
+            var user_create = document.getElementById("content_post");
+            //create image
+            var create_image = document.createElement("img");
+            create_image.setAttribute("src", image_url)
+            create_image.setAttribute("id", x + "picture")
+            // we need to make the name is also beside the picture;
+            var create_name = document.createTextNode(first_name)
+            //append image
+            user_create.appendChild(create_image);
+            //append the name
+            user_create.appendChild(create_name);
           }) //error
-          .catch(function (error) {
+            .catch(function (error) {
               console.error("Error updating data:", error);
-          })
-          });
-        }})
-      })
-      document.getElementById("create").reset();
-    };
-//Create_post function got
+            })
+        });
+      }
+    })
+  })
+  document.getElementById("create").reset();
+};
+//Create_post function got issue in creating the post out
 
 //  
 function personImage() {
@@ -116,11 +117,11 @@ function personImage() {
         userRef.get().then((doc) => {
           if (doc.exists) {
             var image_url = doc.data().image_url || "/images/profile photo.jpeg";
-            var pic_ref = document.querySelector(".person_image");
+            var pic_ref = document.querySelector(".picturearea");
             var create_div = document.createElement("img");
             create_div.setAttribute("style", "width:70px")
             create_div.setAttribute("src", image_url)
-            pic_ref.insertAdjacentElement("beforeend", create_div)
+            pic_ref.insertAdjacentElement("afterbegin", create_div)
           }
         })
       }
@@ -147,27 +148,31 @@ function check_forum(docId) {
     //testing area
     //first condition: If the forum is new
     //why chat0? because its the first one ah if its empty
-    if (data["chat0"].chat == ""  &&  data["chat0"].name == "") {
+    if (data["chat0"].chat == "" && data["chat0"].name == "") {
       //remove the posts from the main homepage forum
       var homepage_forum_posts = document.getElementsByClassName("containerX");
-      Array.from(homepage_forum_posts).forEach(function(element) {
+      Array.from(homepage_forum_posts).forEach(function (element) {
         element.remove();
       });
       //
+      var elx = document.getElementById("create_post");
+      elx.style.display="block";
       var insert_post = document.querySelector(".Empty_post");
       //adding the create post
       //empty post block
       var abovePostClass = document.getElementsByClassName("Empty_post")[0];
-      abovePostClass.style.display="block"
+      abovePostClass.style.display = "block"
       //button
       var post_class = document.getElementById("create_post_btn");
       post_class.style.display = "block";
+      var get_box = document.getElementById("inputput");
+      get_box.style.display="block"
       //create empty text node to tell them to insert their first post here!
       var createPtag = document.createElement("div");
       createPtag.setAttribute("class", docId);
       var txt = document.createTextNode("Insert your first post here!");
       createPtag.appendChild(txt);
-      insert_post.insertAdjacentElement("afterbegin",createPtag);
+      insert_post.insertAdjacentElement("afterbegin", createPtag);
       //hide the welcome text
       var Welcome_txt = document.getElementById("textontop");
       Welcome_txt.style.display = "none";
@@ -179,9 +184,11 @@ function check_forum(docId) {
       linefooter.style.display = "none";
       var reply_class = document.getElementById("replyButton");
       reply_class.style.display = "none";
-      $('#myModal').modal('hide');
+      // Select the create post element
+      $('post_button').modal('hide');
 
     } else {
+      //if the data is not empty 
       //need to create loop already so can individually add the data
       var dataSize = Object.keys(data).length //here inside size of the data
 
@@ -193,8 +200,9 @@ function check_forum(docId) {
         //create a container instead
         var cont = document.createElement("div");
         cont.setAttribute('class', 'containerX')
+        cont.setAttribute("id","removal_easy")
         var txt = document.createTextNode(chats); //data is in the text
-        const insert_post = document.querySelector(".post_headerDescription"); //inserting in this section
+        const insert_post = document.querySelector(".post_headerSpecial"); //inserting in this section
         cont.setAttribute("onclick", "gotoreply()");
         var create_p_tag = document.createElement("p"); //create the p tag for the data in
         create_p_tag.setAttribute("id", nums)
@@ -209,8 +217,7 @@ function check_forum(docId) {
         var Welcome_txt = document.getElementById("textontop");
         Welcome_txt.style.display = "none";
         //adding the picture 
-        var image = data[nums].picture
-        const picture_ref = document.querySelector(".post_avatar");
+        var image = data[nums].picture;
         //homepageforum
         var homepage_forum = document.getElementById("allforums");
         homepage_forum.style.display = "none";
@@ -231,9 +238,6 @@ function check_forum(docId) {
         var header_text = document.createTextNode(person_name);
         create_div_tag.appendChild(header_text)
         cont.appendChild(create_div_tag)
-        //adding grey line
-        var linefooter = document.getElementById("linefooter");
-        linefooter.style.display = "block";
         //showing the likes button 
         var create_like = document.createElement("button");
         create_like.setAttribute("class", "likebutton");
@@ -300,9 +304,17 @@ function page_reset(element) {
     post_class.style.display = "none";
     var create_like = document.getElementById("likebtn");
     create_like.style.display = "none";
+    var remov = document.getElementById("removal_easy");
+    remov.remove();
+}else{
+  var elementsToRemove = document.querySelectorAll(".removal_easy");
+  elementsToRemove.forEach(function (element) {
+  element.remove();
+});
 
-  }
 }
+}
+
 
 
 
@@ -384,7 +396,7 @@ function addNewForum() {
               }
             }
           }
-        }else{
+        } else {
           alert("this forum name has been taken")
         }
         //update the forum
@@ -405,10 +417,12 @@ function addNewForum() {
 document.getElementById("addPostButton").addEventListener("click", NewChat);
 function NewChat(event) {
   event.preventDefault();
+  //document of the users
   const docRef = db.collection("Users");
   var user = sessionStorage.getItem("user");
   var userObject = JSON.parse(user);
   var uid = userObject.uid;
+  //getting the post from the post box
   var new_post = document.getElementById("post_text").value;
 
   docRef.get().then(function (querySnapshot) {
@@ -462,12 +476,12 @@ function cancel_btn() {
   contact.style.display = "None";
 }
 var check = document.getElementById("submitReplyButton");
-check.addEventListener("click",lets_reply)
+check.addEventListener("click", lets_reply)
 function lets_reply(event) {
   // Capture the reply text from the input field (e.g., with id "reply_text")
   // Check if the reply container is not already open
 
-  
+
   var replyText = document.getElementById("replyInput").value;
   // Check if there's a reply text (you can add more validation)
   if (!replyText) {
@@ -479,7 +493,7 @@ function lets_reply(event) {
   var userObject = JSON.parse(user);
   var uid = userObject.uid;
   var submittedReply = document.getElementById("replyInput").value;
-  var element = document.querySelector(".user"); // Select the element using a class, or any other selector
+  var element = document.querySelector(".reply_user"); // Select the element using a class, or any other selector
   var chat = element.getAttribute("id"); // Get the chat  
   //calling the user
   UserRef.get().then(function (querySnapshot) {
@@ -608,31 +622,31 @@ function load_reply_forum() {
     var reply = localStorage.getItem("reply")
     const replyRef = db.collection("reply").doc(documentId);
     replyRef.get().then((doc) => {
-        const data = doc.data();
-        for(dts in data){
-      //checking if the data is in this forum;
-      if (data[dts].forum == forum_number) {
-        var constant_div = document.createElement("div")
-        constant_div.setAttribute("id",dts)
-        constant_div.setAttribute("style","margin-bottom:20px;background-color: white;padding: 20px;margin: 20px;border-radius: 5px;")
-        var fname = data[dts].name;
-        var p_reply = data[dts].reply
-        var p_image = data[dts].picture
-        //load the person we are replying to
-        var new_part = document.getElementById("another_id");
-        var text_nod = document.createTextNode(fname);
-        //create another div tag for the p tag
-        var p_tag = document.createElement("p")
-        var txt_nod_of_reply = document.createTextNode(p_reply);
-        p_tag.appendChild(txt_nod_of_reply);
-        var imgJ = document.createElement("img");
-        imgJ.setAttribute("src",p_image);
-        imgJ.setAttribute("style", "width:70px")
-        constant_div.appendChild(imgJ);
-        constant_div.appendChild(text_nod);
-        constant_div.appendChild(p_tag);
-        new_part.appendChild(constant_div);
-      }
+      const data = doc.data();
+      for (dts in data) {
+        //checking if the data is in this forum;
+        if (data[dts].forum == forum_number) {
+          var constant_div = document.createElement("div")
+          constant_div.setAttribute("id", dts)
+          constant_div.setAttribute("style", "margin-bottom:20px;background-color: white;padding: 20px;margin: 20px;border-radius: 5px;")
+          var fname = data[dts].name;
+          var p_reply = data[dts].reply
+          var p_image = data[dts].picture
+          //load the person we are replying to
+          var new_part = document.getElementById("another_id");
+          var text_nod = document.createTextNode(fname);
+          //create another div tag for the p tag
+          var p_tag = document.createElement("p")
+          var txt_nod_of_reply = document.createTextNode(p_reply);
+          p_tag.appendChild(txt_nod_of_reply);
+          var imgJ = document.createElement("img");
+          imgJ.setAttribute("src", p_image);
+          imgJ.setAttribute("style", "width:70px")
+          constant_div.appendChild(imgJ);
+          constant_div.appendChild(text_nod);
+          constant_div.appendChild(p_tag);
+          new_part.appendChild(constant_div);
+        }
       }
     })
   })
@@ -685,6 +699,7 @@ function homepage_forum() { //basically this function allows for the page to com
       //create the div 
       var create_div_tag = document.createElement("div");
       create_div_tag.setAttribute("class", "containerX");
+      create_div_tag.setAttribute("id","removal_easy")
       var txt = document.createTextNode(forum_chat); //data is in the text
       const insert_post = document.querySelector(".homepage_forum"); //inserting in this section
       var create_p_tag = document.createElement("p"); //create the p tag for the data in
@@ -759,6 +774,8 @@ function homepage_forum() { //basically this function allows for the page to com
 }
 function gotoreply() {
   window.location.href = "reply.html";
+  var doc = document.getElementById(x).value;
+  localStorage.setItem("reply",doc)
 }
 
 const likeButton = document.getElementById("like-button");
