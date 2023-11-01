@@ -45,7 +45,7 @@
 
 </head>
 
-<body data-load-reply="true">
+<body>
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
             <a class="navbar-brand" href="university.html">
@@ -74,69 +74,21 @@
     <Header>
     </Header>
     <main>
+        <div id="post-detail">
+            <!-- post detail will be loaded here dynamically -->
+          </div>
+    
+          <form id="add-comment-form" data-parent-id="">
+            <textarea id="comment" rows="4" required></textarea>
+            <button type="button" onclick="handleAddCommentFormSubmit()">Add comment</button>
+          </form>
+    
+          <div id="comments-container">
+            <!-- post comments will be loaded here dynamically -->
+          </div>
+        </main>
 
-        <div class="forum-container">
-            <!--Forum list-->
-            <section class="forum forum-info">
-                <div onload="load_forum()" class="forum-list">
-                    <h1 id="forum"><a href="forum.html">Current Forums</a></h1>
-                    <div class="new_forum" id="singapore_forum" onclick="check_forum(this.id)"></div>
-                </div>
-                <div class="input-group mb-3">
-                    <input class="form-control" class="responsiveInput" type="text" id="newForumName"
-                        placeholder="Create a new Forum!" aria-describedby="basic-addon2">
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-secondary" id="addForumButton" onclick="addNewForum()">+</button>
-                    </div>
-                </div>
-
-            </section>
-            <!--Reply-->
-            <section class="reply_stion">
-                <section>
-                    <button class="backButton" onclick="goBack()"><i class="fa-solid fa-arrow-left"
-                            style="color: #5aa201;"></i></button>
-                    <div class="post_area">
-                        <section class = "person_post">
-                            <div id="loading" class="col md-12 load_thepagearea">
-                                <div id="ld_image" class="col md-6 load_image">
-                                    <div id="ld_name" class="load_name">
-                                        <div id="load_text">
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        <div class = "users_reply">
-                            <div id = "imageofusers">
-                                <div id="reply_of_users">
-                                    <div id = "reply_name">
-        
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div id = "another_id">
-                        </div>
-                        <div class = "cont_reply">
-                            <form id = ContRply>
-                                    <label id = "cont_reply_id" for="reply">Your Reply:</label><br>
-                                    <textarea id="reply" name="reply" rows="4" cols="50"></textarea><br>
-                                    <input id = "contReply" type="button" onclick = "continous_reply()" value="Submit Reply">
-                            </form>
-                        </div>
-                    </div>
-                </section>
-            </section>
-            <section class="forum forum-info">
-                    <div class="new_forum" id="singapore_forum" onclick="check_forum(this.id)"></div>
-                        <div class="input-group mb-3">
-                            <div class="input-group-append">
-                            </div>
-                        </div>
-                    </div>
-            </section>
-    </section>
+       
     
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
