@@ -60,6 +60,7 @@ document.addEventListener("DOMContentLoaded", event => {
               if (typeof reviewData.image_url !== 'undefined') {
                   // Create a URL for the selected image and set it as the src of the profile image
                   imageInput2.src = reviewData.image_url;
+                  localStorage.setItem('userImageURL', reviewData.image_url);
               } else {
                   // If no file is selected or the selection is canceled, you can set a default image
                   imageInput2.src = "./images/profile photo.jpeg";
@@ -70,6 +71,7 @@ document.addEventListener("DOMContentLoaded", event => {
               if (typeof reviewData.image_url !== 'undefined') {
                   // Create a URL for the selected image and set it as the src of the profile image
                   imageInput1.src = reviewData.image_url;
+                  localStorage.setItem('userImageURL2', reviewData.image_url);
               } else {
                   // If no file is selected or the selection is canceled, you can set a default image
                   imageInput1.src = "./images/profile photo.jpeg";

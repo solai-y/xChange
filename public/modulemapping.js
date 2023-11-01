@@ -15,7 +15,6 @@
 document.addEventListener('DOMContentLoaded',  (event) => {
   if (typeof app == "undefined") {
     const app = firebase.initializeApp(firebaseConfig);
-    console.log(app);
   }
   
   // prints the firebase connection to check for bug
@@ -33,12 +32,17 @@ document.addEventListener('DOMContentLoaded',  (event) => {
         selectedModuleNames:[],
         filteredUniList: [],
         search: false,
+        btnSearch: "", 
+        btnSearchCountry: "",
       };
     }, 
     methods: {
+      btnEditSearch() {
+        this.search = false;
+      },  
       btnSearchClick() {
+        this.filteredUniList = [];
         this.search = true
-        console.log(this.selectedModuleNames)
         this.uniList.forEach((info)=>{
           let uniState = true;
           this.selectedModuleNames.forEach((moduleName)=> {
@@ -52,7 +56,6 @@ document.addEventListener('DOMContentLoaded',  (event) => {
             this.filteredUniList.push(info);
           }
         })
-        console.log(this.filteredUniList)
       },
       toggleCheckbox(module) {
         const backendName = this.moduleList[module];
@@ -61,6 +64,17 @@ document.addEventListener('DOMContentLoaded',  (event) => {
         } else {
           this.selectedModuleNames.push(backendName);
         }
+      }, 
+      shouldShowUni(uni) {
+        const uniSearchValue = this.btnSearch.toLowerCase();
+        const countrySearchValue = this.btnSearchCountry.toLowerCase();
+    
+        // Check if the university name or country matches the search criteria
+        const nameMatches = uni[0].name.toLowerCase().includes(uniSearchValue);
+        const countryMatches = uni[0].country.toLowerCase().includes(countrySearchValue);
+    
+        // Return true if either the name or country matches the search criteria
+        return nameMatches && countryMatches;
       }
     }, 
     computed: {
@@ -84,7 +98,6 @@ document.addEventListener('DOMContentLoaded',  (event) => {
             }
           }
         });
-        console.log("list",listToBeReturned);
         return listToBeReturned;
       }
     },  
@@ -103,7 +116,6 @@ document.addEventListener('DOMContentLoaded',  (event) => {
               [doc.data(), doc.id]
             );
           });
-          console.log('Retrieved data:', data);
           vueInstance.uniList = data; // Update myList with the retrieved data
         })
         .catch((error) => {
@@ -114,4 +126,29 @@ document.addEventListener('DOMContentLoaded',  (event) => {
   });
   const vm = appVue.mount('#appVue'); 
 
+});
+
+
+//search processing
+const searchUniName = document.querySelector("[data-search-uni-name]");
+const searchCountryName = document.querySelector("[data-search-country-name]");
+
+searchUniName.addEventListener("input", (e) => {
+    let uniSearchValue = e.target.value.toLowerCase();
+    let unis = document.getElementsByClassName("uniName");
+    console.log(uniSearchValue, unis)
+    // console.log(uniSearchValue);
+    unis.forEach(uni => {
+        let isVisible = user.name.toLowerCase().includes(uniSearchValue)
+        uni.element.classList.toggle("hide", !isVisible);
+    });
+});
+searchCountryName.addEventListener("input", (e) => {
+    let countrySearchValue = e.target.value.toLowerCase();
+    let unis = document.getElementsByClassName("uniName")
+    // console.log(uniSearchValue);
+    unis.forEach(uni => {
+        let isVisible = user.country.toLowerCase().includes(countrySearchValue)
+        uni.element.classList.toggle("hide", !isVisible);
+    });
 });
