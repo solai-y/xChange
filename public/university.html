@@ -34,6 +34,9 @@
       domain: "www.chatbase.co"
     }
   </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aws-sdk/2.1063.0/aws-sdk.min.js"></script>
+  <script src="account.js"></script>
+
 
   <!-- Axios -->
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
@@ -42,8 +45,7 @@
 </head>
 
 <body>
-  <script src="app.js"></script>
-  <script src="account.js"></script>
+
 
 
         <!-- BS navbar: start -->
@@ -70,18 +72,33 @@
                           <a class="nav-link active" href="./forum.html">Forum</a>
                       </li>
                       <li class="nav-item">
-                          <a class="nav-link active d-flex d-lg-none" href="./account.html">Profile</a>
+                          <a class="nav-link active " href="./modulemapping.html">Module Mapping</a>
                       </li>
                   </ul>
                   <div class="navimage d-flex align-items-center">
                       <a href="./account.html" class="avatar rounded-circle text-white d-none d-lg-flex">
-                          <img class="profilepicture" alt="imageInput" src="./images/profile photo.jpeg" />
+                          <img id="userImage" class="profilepicture" alt="imageInput1" src="./images/profile photo.jpeg" />
                       </a>
                   </div>
               </div>
           </div>
-      </nav>
-  <!-- BS navbar: start -->
+      </nav> 
+      <script>
+        // Retrieve the user's image URL from localStorage
+        const userImageURL = localStorage.getItem('userImageURL');
+      
+        // Find the img element by its id
+        const userImage = document.getElementById('userImage');
+      
+        // Check if the userImageURL is not null or empty, and set the src attribute
+        if (userImageURL) {
+          userImage.src = userImageURL;
+        } else {
+          // Set a default image source if userImageURL is not available
+          userImage.src = './images/profile photo.jpeg';
+        }
+      </script>
+
 
 
 
@@ -365,6 +382,7 @@
   <script src="university.js"></script>
   <!-- Bootstrap JS bundle to be placed before the closing </body> tag -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3/dist/js/bootstrap.bundle.min.js"></script>
+  
 
 </body>
 
