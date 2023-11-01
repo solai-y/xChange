@@ -75,29 +75,15 @@
                           <a class="nav-link active " href="./modulemapping.html">Module Mapping</a>
                       </li>
                   </ul>
-                  <div class="navimage d-flex align-items-center">
-                      <a href="./account.html" class="avatar rounded-circle text-white d-none d-lg-flex">
+                  <div class="navimage d-flex align-items-center" id="signUpLogInImage">
+                      <!-- <a href="./account.html" class="avatar rounded-circle text-white d-none d-lg-flex">
                           <img id="userImage" class="profilepicture" alt="imageInput1" src="./images/profile photo.jpeg" />
-                      </a>
+                      </a> -->
                   </div>
               </div>
           </div>
       </nav> 
-      <script>
-        // Retrieve the user's image URL from localStorage
-        const userImageURL = localStorage.getItem('userImageURL');
-      
-        // Find the img element by its id
-        const userImage = document.getElementById('userImage');
-      
-        // Check if the userImageURL is not null or empty, and set the src attribute
-        if (userImageURL) {
-          userImage.src = userImageURL;
-        } else {
-          // Set a default image source if userImageURL is not available
-          userImage.src = './images/profile photo.jpeg';
-        }
-      </script>
+      <script script="./navbarLogo.js"></script>
 
 
 
