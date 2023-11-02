@@ -225,7 +225,7 @@ function load_reply_post(){
     var postReply = document.createElement("div");
     postReply.innerHTML= `
         <div class="reply-content">
-          <img src = "${data[reply].picture}" id= "userimage" "> ${data.user}
+          <img src = "${data[reply].picture}" id= "userimage" "> ${data[reply].user}
           <p>${data[reply].reply}</p>
           <div class = "post-details">
           <div class = "post-date-time">${formattedDate} ${formattedTime} </div>
