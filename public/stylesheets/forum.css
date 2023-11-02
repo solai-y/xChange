@@ -181,6 +181,22 @@ header small {
   padding: 20px;
   border-radius: 5px;
   border:solid;
+  margin-top: 10px;
+}
+.post-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.replies {
+  text-align: right;
+  /* You can add additional styling as needed */
+}
+#userimage{
+  width: 70px;
+  height: auto;
+  border-radius: 50%;
 }
 .comment-content{
   background-color: white;
@@ -303,7 +319,7 @@ header small {
 }
 
 #add-post-form .form-group:last-of-type {
-  flex: 1;
+  flex: 0;
 }
 
 #add-post-form .form-group label {

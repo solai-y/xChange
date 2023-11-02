@@ -30,7 +30,7 @@ const modal = document.querySelector("#add-post-modal");
 const closeBtn = document.querySelector("#close-modal-btn");
 addPostButton.addEventListener("click", function (event) {
   event.preventDefault();
-  modal.style.display = "block";
+  modal.style.display = "flex";
 });
 closeBtn.addEventListener("click", function () {
   modal.style.display = "none";
@@ -79,7 +79,8 @@ function new_forum(event) {
             .set(data_to_insert)
             .then(() => {
               console.log("data is inside");
-              $('#add-pst-modal').modal('hide');
+              $('#add-post-modal').modal('hide');
+              location.reload();
             });
         });
       }
@@ -94,11 +95,21 @@ function showing_post() {
     querySnapshot.forEach(function (doc) {
       const data = doc.data();
       var forum_name = doc.id;
+      let numberOfFields = Object.keys(data).length;
+      var noOfReply = parseInt(numberOfFields) - 4
       var postElements = document.createElement("div");
+      var time = data.timestamp.toDate();
+      const formattedDate = time.toLocaleDateString('en-Sg',{day: 'numeric',month: 'short'}); 
+      const formattedTime = time.toLocaleTimeString('en-Sg',{hour:'2-digit',minute:'2-digit'}); 
       postElements.innerHTML = postElements.innerHTML = `
         <div class="post-content" onclick="goComment('${forum_name}')">
+        <img src = "${data.picture}" id= "userimage" "> ${data.user}
           <h2 id =forumName>#${forum_name}</h2>
           <p>${data.description}</p>
+          <div class = "post-details">
+            <div class = "post-date-time">${formattedDate} ${formattedTime} </div>
+            <div class =  "replies">${noOfReply} replies </div>
+          </div>
         </div>
       `;
       const postContainer = document.getElementById("posts-container"); // Replace with the actual container element ID
@@ -116,11 +127,18 @@ function post_to_load() {
   const forumRef = db.collection("post").doc(post_I_replyingto);
   forumRef.get().then((doc) => {
     const data = doc.data();
+    var time = data.timestamp.toDate();
+    const formattedDate = time.toLocaleDateString('en-Sg',{day: 'numeric',month: 'short'}); 
+    const formattedTime = time.toLocaleTimeString('en-Sg',{hour:'2-digit',minute:'2-digit'}); 
     var postElements = document.createElement("div");
     postElements.innerHTML = postElements.innerHTML = `
         <div class="post-content">
+        <img src = "${data.picture}" id= "userimage" "> ${data.user}
           <h2 id =forumName>#${post_I_replyingto}</h2>
           <p>${data.description}</p>
+          <div class = "post-details">
+            <div class = "post-date-time">${formattedDate} ${formattedTime} </div>
+          </div>
         </div>
       `;
     const replyContainer = document.getElementById("post-detail");
@@ -149,30 +167,37 @@ function handleAddCommentFormSubmit() {
             var post_I_replyingto = localStorage.getItem("postId");
             const commentTextarea = document.getElementById("comment");
             const commentContent = commentTextarea.value;
-            
+            const userdata = doc.data()
+            var user_pic = userdata.image_url || "/images/profile photo.jpeg";
+            var fname = userdata.name
             //store it in database
             const forumRef = db.collection("post").doc(post_I_replyingto);
             // call the addComment function with a null parentCommentId for top-level comments
             forumRef.get().then((doc) => {
+              var currentTime = new Date()
               let dataSize = Object.keys(doc.data()).length;
               var reply = "reply" +dataSize
               const data = doc.data();
               var data_to_insert = {}
               data_to_insert[reply] = {
                 reply: commentContent,
-                picture: data.picture,
-                timestamp: data.timestamp,
-                user: data.user,
+                picture: user_pic,
+                user: fname,
                 timestamp:firebase.firestore.FieldValue.serverTimestamp(),
               };
               forumRef.update(data_to_insert).then(() => {
                 console.log("Reply added to the post.");
                 const comment_cont = document.getElementById("comments-container");
+                const formattedDate = currentTime.toLocaleDateString('en-Sg',{day: 'numeric',month: 'short'}); 
+                const formattedTime = currentTime.toLocaleTimeString('en-Sg',{hour:'2-digit',minute:'2-digit'});
                 var commentElements = document.createElement("div");
                   commentElements.innerHTML = commentElements.innerHTML = `
                     <div class="comment-content">
-                      <h2 id =${reply}>${data.user}</h2>
+                    <img src = "${user_pic}" id= "userimage" "> ${fname}
                       <p>${commentContent}</p>
+                      <div class = "post-details">
+                      <div class = "post-date-time">${formattedDate} ${formattedTime} </div>
+                      </div>
                     </div>`
                 comment_cont.appendChild(commentElements)
                 commentTextarea.value ="";
@@ -194,17 +219,25 @@ function load_reply_post(){
     var dataSize = Object.keys(doc.data()).length;
     for(i=4; i <= dataSize; i++){
     var reply = "reply" +i
-    console.log(reply)
-    console.log(data[reply])
+    var time = data[reply].timestamp.toDate();
+    const formattedDate = time.toLocaleDateString('en-Sg',{day: 'numeric',month: 'short'}); 
+    const formattedTime = time.toLocaleTimeString('en-Sg',{hour:'2-digit',minute:'2-digit'});
     var postReply = document.createElement("div");
     postReply.innerHTML= `
         <div class="reply-content">
-          <h2 id =replyName>#${data[reply].user}</h2>
+          <img src = "${data[reply].picture}" id= "userimage" "> ${data.user}
           <p>${data[reply].reply}</p>
+          <div class = "post-details">
+          <div class = "post-date-time">${formattedDate} ${formattedTime} </div>
+          </div>
         </div>
       `;
     var replyContainer = document.getElementById("comments-container");
     replyContainer.appendChild(postReply);
     }
   })
+}
+
+function goback(){
+  window.location.href = "forum.html";
 }
