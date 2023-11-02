@@ -44,6 +44,7 @@
 </head>
 
 <body>
+
         <!-- BS navbar: start -->
         <nav class="navbar navbar-expand-lg">
           <div class="container-fluid">
@@ -85,20 +86,36 @@
   <!--End of Navbar-->
   <Header>
     <large id="welcomeText">Welcome to xChange Forum!</large>
+    <!-- <div id="google_translate_element"></div>
+    <script type="text/javascript">
+      function googleTranslateElementInit() {
+        new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'es,fr', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+      }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script> -->
+  
   </Header>
 
   <main>
-  <div class = "posts-header">
-      <h1>Posts</h1>
-      <button id = "show-add-post-modal-btn">
-        Create Post
-      </button>
-  </div>
+    
+      <div class = "posts-header">
+          <h1>Posts</h1>
+          <select id="filter-select">
+            <option value="all">All</option>
+            <option value="Recent">Recent</option>
+            <option value="Most Replied">Most Replied</option>
+          </select>
+          <button class = "btn btn-outline-secondary" id = "show-add-post-modal-btn">
+            Create Post
+          </button>
+      </div>
 
   <!--where the post will come out-->
-    <div id = "posts-container" >
+      <div id = "posts-container" >
 
-    </div>
+      </div>
+      
+    
   </main>
 
   <!--creatng a modal for adding a post in-->
@@ -124,39 +141,6 @@
       </form>
     </div>
   </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -229,6 +213,7 @@
           </div>
         </div>
       </footer>   
+
 
   </main>
 

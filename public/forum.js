@@ -192,7 +192,7 @@ function handleAddCommentFormSubmit() {
                 const formattedTime = currentTime.toLocaleTimeString('en-Sg',{hour:'2-digit',minute:'2-digit'});
                 var commentElements = document.createElement("div");
                   commentElements.innerHTML = commentElements.innerHTML = `
-                    <div class="comment-content">
+                    <div class="comment-content" id="${postId}">
                     <img src = "${user_pic}" id= "userimage" "> ${fname}
                       <p>${commentContent}</p>
                       <div class = "post-details">
@@ -224,7 +224,7 @@ function load_reply_post(){
     const formattedTime = time.toLocaleTimeString('en-Sg',{hour:'2-digit',minute:'2-digit'});
     var postReply = document.createElement("div");
     postReply.innerHTML= `
-        <div class="reply-content">
+        <div class="reply-content" id="${reply}">
           <img src = "${data[reply].picture}" id= "userimage" "> ${data[reply].user}
           <p>${data[reply].reply}</p>
           <div class = "post-details">

@@ -10,15 +10,48 @@ body {
   font-size: var(--font-reg);
   line-height: 1.5;
   background-color: var(--background);
+ 
 }
 
 main {
   max-width: 960px;
   margin: 24px auto;
   padding: 0 16px;
+  
+
 }
+select {
+  /* Reset */
+  appearance: none;
+  border: 0;
+  outline: 0;
+  font: inherit;
+  /* Personalize */
+  width: 10rem;
+  padding: 1rem 1rem 1rem 1rem;
+  background: var(--arrow-icon) no-repeat right 0.8em center / 1.4em,
+    linear-gradient(to left, var(--arrow-bg) 3em, var(--select-bg) 3em);
+  color: rgb(0, 0, 0);
+  border-radius: 0.25em;
+  box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  /* Remove IE arrow */
+  &::-ms-expand {
+    display: none;
+  }
+  /* Remove focus outline */
+  &:focus {
+    outline: none;
+  }
+  /* <option> colors */
+  option {
+    color: inherit;
+    background-color: var(--option-bg);
+  }
+}
+
 button {
-  background-color: blue;
+  background-color: transparent;
   padding: 8px 12px;
   border-radius: 8px;
   border: 0;
@@ -30,7 +63,7 @@ button {
   transition: background-color 300ms ease-in-out;
 }
 button:hover {
-  background-color: green;
+  background-color: rgb(80, 88, 80);
 }
 a {
   color: green;
