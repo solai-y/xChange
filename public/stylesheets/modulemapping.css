@@ -1,3 +1,20 @@
+/*
+:root {
+  --text: #393e46;
+  --background: #FFFAEB;
+  --primary: #4dcba1;
+  --secondary: #dbd9d1;
+  --accent: #767674;
+  --font: -apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--background);
+}
+*/
+
 button {
   appearance: button;
   backface-visibility: hidden;
@@ -83,6 +100,7 @@ a {
 .modName {
   background-color: var(--secondary);
   border: 1px black solid;
+  margin-right: 5px;
 }
 
 .visible {
@@ -95,4 +113,145 @@ a {
 
 .searchOption {
   background-color: var(--primary);
+}
+
+/* Search css */
+
+.head{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction:column;
+}
+
+.inputBox {
+  position: relative;
+  width: 100%;
+}
+
+.inputBox input {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #232931;
+  border-radius: 5px;
+  outline: none;
+  font-size: 1em;
+  transition: 0.5s;
+  font-family: var(--bs-body-font-family);
+
+}
+
+.inputBox span {
+  color: #232931;
+  position: absolute;
+  left: 0;
+  padding: 10px;
+  pointer-events: none;
+  text-transform: uppercase;
+  transition: 0.5s;
+  font-family: var(--bs-body-font-family);
+
+}
+
+.inputBox input:focus ~ span {
+  color: #4ecca3;
+  transform: translateX(10px) translateY(-7px);
+  font-size: 0.8em;
+  padding: 0 10px;
+  background: #ffffff;
+  border-left: 1px solid #4ecca3;
+  border-right: 1px solid #4ecca3;
+  letter-spacing: 0.2em;
+}
+
+.inputBox input:focus {
+  border: 2px solid #4ecca3;
+}
+
+.title .text{
+  padding: 0px;
+  font-size: 3em;
+  animation:changeColor 1.5s linear infinite;
+  font-family: var(--bs-body-font-family);
+
+}
+
+.title{
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+/* Display Results */
+.card {
+  flex-direction: row;
+  margin-bottom: 10px;
+}
+
+.card img {
+  width: 33%; /* Set the desired width */
+  height: 280px; /* Set the desired height */
+  object-fit: cover; /* This property ensures the image covers the entire space without stretching */
+  border-radius: 0.3em;
+  margin: auto;
+}
+
+.card-body {
+  display: flex;
+  justify-content: space-between;
+}
+
+.text-section {
+  max-width: 67%;
+}
+
+.cta-section {
+  max-width: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.cta-section btn {
+  padding: 0.3em 0.5em;
+}
+
+@media screen and (max-width: 900px) {
+  .card {
+    flex-direction: column; /* Change flex direction to column */
+    align-items: center; /* Center the items horizontally */
+    text-align: center; /* Center the text */
+  }
+
+  .card img {
+    width: 100%; /* Make the image fill the width of the card */
+    max-height: 280px; /* Set maximum height */
+    object-fit: cover; /* This property ensures the image covers the entire space without stretching */
+    border-radius: 0.3em;
+  }
+
+  .card-body {
+    width: 100%; /* Make the card body fill the width of the card */
+    padding: 1em; /* Add some padding for spacing */
+  }
+
+  .text-section {
+    max-width: none; /* Remove max-width restriction */
+  }
+
+  .cta-section {
+    max-width: none; /* Remove max-width restriction */
+  }
+
+  .cta-section btn {
+    margin-top: 0.5em; /* Add some spacing between the button and other content */
+  }
+}
+
+.footer {
+  background-color: var(--secondary);
+  width: 100%;
+  padding-top: 25px;
+  margin-top: 0px;
 }
