@@ -459,6 +459,10 @@ div .col-4 {
     transition: transform 0.2s;
 }
 
+.custom-dropdown-bg {
+    background-color: var(--background); /* Replace with your desired background color */
+}
+
 
 section {
     place-items: center;

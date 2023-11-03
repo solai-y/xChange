@@ -84,6 +84,26 @@
           </div>
       </nav> 
       <script script="./navbarLogo.js"></script>
+      <script>
+        const navbar = document.querySelector('.navbar');
+
+        // Add an event listener to the navbar when it shows
+        navbar.addEventListener('show.bs.collapse', function () {
+            const dropdown = this.querySelector('.navbar-collapse');
+            if (dropdown) {
+                dropdown.classList.add('custom-dropdown-bg');
+            }
+        });
+
+        // Remove the custom class when the dropdown is hidden
+        navbar.addEventListener('hide.bs.collapse', function () {
+            const dropdown = this.querySelector('.navbar-collapse');
+            if (dropdown) {
+                dropdown.classList.remove('custom-dropdown-bg');
+            }
+        });
+
+      </script>
 
 
 
