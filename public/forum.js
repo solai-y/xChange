@@ -148,7 +148,7 @@ function post_to_load() {
 
 
 function handleAddCommentFormSubmit() {
-  
+  var postId = localStorage.getItem("postId")
   var user = sessionStorage.getItem("user");
   var userObject = JSON.parse(user);
   var uid = userObject.uid;
