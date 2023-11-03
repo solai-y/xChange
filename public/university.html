@@ -35,7 +35,6 @@
     }
   </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aws-sdk/2.1063.0/aws-sdk.min.js"></script>
-  <script src="account.js"></script>
 
 
   <!-- Axios -->
@@ -83,7 +82,26 @@
               </div>
           </div>
       </nav> 
-      <script script="./navbarLogo.js"></script>
+      <script>
+        const navbar = document.querySelector('.navbar');
+
+        // Add an event listener to the navbar when it shows
+        navbar.addEventListener('show.bs.collapse', function () {
+            const dropdown = this.querySelector('.navbar-collapse');
+            if (dropdown) {
+                dropdown.classList.add('custom-dropdown-bg');
+            }
+        });
+
+        // Remove the custom class when the dropdown is hidden
+        navbar.addEventListener('hide.bs.collapse', function () {
+            const dropdown = this.querySelector('.navbar-collapse');
+            if (dropdown) {
+                dropdown.classList.remove('custom-dropdown-bg');
+            }
+        });
+
+      </script>
 
 
 

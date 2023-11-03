@@ -44,42 +44,63 @@
 </head>
 
 <body>
-        <!-- BS navbar: start -->
-        <nav class="navbar navbar-expand-lg">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="./university.html"><img src="./images/logo.jpeg" class="logo" /></a>
-                <button
-                    class="navbar-toggler"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent"
-                    aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="./university.html">Home</a>
-                        </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link active" href="./forum.html">Forum</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active d-flex d-lg-none" href="./account.html">Profile</a>
-                        </li>
-                    </ul>
-                    <div class="navimage d-flex align-items-center">
-                        <a href="./account.html" class="avatar rounded-circle text-white d-none d-lg-flex">
-                            <img class="profilepicture" alt="imageInput" src="./images/profile photo.jpeg" />
-                        </a>
-                    </div>
+    <!-- BS navbar: start -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="./university.html"><img src="./images/logo.jpeg" class="logo" /></a>
+            <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="./university.html">Home</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" href="./forum.html">Forum</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active " href="./modulemapping.html">Module Mapping</a>
+                    </li>
+                </ul>
+                <div class="navimage d-flex align-items-center" id="signUpLogInImage">
+                    <!-- <a href="./account.html" class="avatar rounded-circle text-white d-none d-lg-flex">
+                        <img id="userImage" class="profilepicture" alt="imageInput1" src="./images/profile photo.jpeg" />
+                    </a> -->
                 </div>
             </div>
-        </nav>
-    <!-- BS navbar: end -->
+        </div>
+    </nav> 
+    <script>
+      const navbar = document.querySelector('.navbar');
+
+      // Add an event listener to the navbar when it shows
+      navbar.addEventListener('show.bs.collapse', function () {
+          const dropdown = this.querySelector('.navbar-collapse');
+          if (dropdown) {
+              dropdown.classList.add('custom-dropdown-bg');
+          }
+      });
+
+      // Remove the custom class when the dropdown is hidden
+      navbar.addEventListener('hide.bs.collapse', function () {
+          const dropdown = this.querySelector('.navbar-collapse');
+          if (dropdown) {
+              dropdown.classList.remove('custom-dropdown-bg');
+          }
+      });
+
+    </script>
+
 
     <div id="app">
         <!-- University Section-->
@@ -288,19 +309,26 @@
 
         <!-- Google Map-->
 
-        
+        <!-- width="450"
+        height="250" -->
         <!-- src="https://www.google.com/maps/embed/v1/search?key=AIzaSyALAMytvRCzbd_txEXw0QQwJh0GzSINQt0&q=Yale University&zoom=15&maptype=satellite" -->
         
-        <div class="container">
-            <iframe
-                width="450"
-                height="250"
-                frameborder="0" style="border:0"
-                referrerpolicy="no-referrer-when-downgrade"
-                :src="universityURL()"
-                allowfullscreen>
-            </iframe>
+        <div class="p-5" >
+            <div class="container">
+                <div class="row">
+                    <div class="ratio ratio-16x9">
+                        <iframe
+                    
+                            referrerpolicy="no-referrer-when-downgrade"
+                            :src="universityURL()"
+                            style="max-height: 400px;"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+            </div>
         </div>
+
 
         <!-- FAQ -->
         <div class="p-5">
