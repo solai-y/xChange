@@ -51,11 +51,11 @@ select {
 }
 
 button {
-  background-color: transparent;
+  background-color:gray;
   padding: 8px 12px;
   border-radius: 8px;
   border: 0;
-  color: #fff;
+  color: var(--secondary);
   font-weight: 600;
   text-transform: uppercase;
   font-size: var(--font-small);
