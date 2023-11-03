@@ -234,6 +234,11 @@ header small {
   height: 50px;
   border-radius: 50%;
 }
+#replyimage{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
 .comment-content{
   background-color: white;
   border: solid;

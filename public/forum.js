@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
   showing_post();
   post_to_load();
   load_reply_post();
-  
+
 });
 // For the modal to show up
 const addPostButton = document.querySelector("#show-add-post-modal-btn");
@@ -99,8 +99,8 @@ function showing_post() {
       var noOfReply = parseInt(numberOfFields) - 4
       var postElements = document.createElement("div");
       var time = data.timestamp.toDate();
-      const formattedDate = time.toLocaleDateString('en-Sg',{day: 'numeric',month: 'short'}); 
-      const formattedTime = time.toLocaleTimeString('en-Sg',{hour:'2-digit',minute:'2-digit'}); 
+      const formattedDate = time.toLocaleDateString('en-Sg', { day: 'numeric', month: 'short' });
+      const formattedTime = time.toLocaleTimeString('en-Sg', { hour: '2-digit', minute: '2-digit' });
       postElements.innerHTML = postElements.innerHTML = `
         <div class="post-content" onclick="goComment('${forum_name}')">
         <img src = "${data.picture}" id= "userimage" "> ${data.user}
@@ -119,7 +119,7 @@ function showing_post() {
 }
 function goComment(element) {
   window.location.href = "reply.html";
-  localStorage.setItem("postId", element); 
+  localStorage.setItem("postId", element);
 }
 //for comment
 function post_to_load() {
@@ -128,8 +128,8 @@ function post_to_load() {
   forumRef.get().then((doc) => {
     const data = doc.data();
     var time = data.timestamp.toDate();
-    const formattedDate = time.toLocaleDateString('en-Sg',{day: 'numeric',month: 'short'}); 
-    const formattedTime = time.toLocaleTimeString('en-Sg',{hour:'2-digit',minute:'2-digit'}); 
+    const formattedDate = time.toLocaleDateString('en-Sg', { day: 'numeric', month: 'short' });
+    const formattedTime = time.toLocaleTimeString('en-Sg', { hour: '2-digit', minute: '2-digit' });
     var postElements = document.createElement("div");
     postElements.innerHTML = postElements.innerHTML = `
         <div class="post-content">
@@ -176,22 +176,22 @@ function handleAddCommentFormSubmit() {
             forumRef.get().then((doc) => {
               var currentTime = new Date()
               let dataSize = Object.keys(doc.data()).length;
-              var reply = "reply" +dataSize
+              var reply = "reply" + dataSize
               const data = doc.data();
               var data_to_insert = {}
               data_to_insert[reply] = {
                 reply: commentContent,
                 picture: user_pic,
                 user: fname,
-                timestamp:firebase.firestore.FieldValue.serverTimestamp(),
+                timestamp: firebase.firestore.FieldValue.serverTimestamp(),
               };
               forumRef.update(data_to_insert).then(() => {
                 console.log("Reply added to the post.");
                 const comment_cont = document.getElementById("comments-container");
-                const formattedDate = currentTime.toLocaleDateString('en-Sg',{day: 'numeric',month: 'short'}); 
-                const formattedTime = currentTime.toLocaleTimeString('en-Sg',{hour:'2-digit',minute:'2-digit'});
+                const formattedDate = currentTime.toLocaleDateString('en-Sg', { day: 'numeric', month: 'short' });
+                const formattedTime = currentTime.toLocaleTimeString('en-Sg', { hour: '2-digit', minute: '2-digit' });
                 var commentElements = document.createElement("div");
-                  commentElements.innerHTML = commentElements.innerHTML = `
+                commentElements.innerHTML = commentElements.innerHTML = `
                     <div class="comment-content" id="${postId}">
                     <img src = "${user_pic}" id= "userimage" "> ${fname}
                       <p>${commentContent}</p>
@@ -200,7 +200,7 @@ function handleAddCommentFormSubmit() {
                       </div>
                     </div>`
                 comment_cont.appendChild(commentElements)
-                commentTextarea.value ="";
+                commentTextarea.value = "";
               });
             });
           }
@@ -210,34 +210,110 @@ function handleAddCommentFormSubmit() {
   });
 }
 
-function load_reply_post(){
+function load_reply_post() {
   var postId = localStorage.getItem("postId");
   const forumRef = db.collection("post").doc(postId);
-  
+
   forumRef.get().then((doc) => {
     const data = doc.data();
+    console.log(data)
     var dataSize = Object.keys(doc.data()).length;
-    for(i=4; i <= dataSize; i++){
-    var reply = "reply" +i
-    var time = data[reply].timestamp.toDate();
-    const formattedDate = time.toLocaleDateString('en-Sg',{day: 'numeric',month: 'short'}); 
-    const formattedTime = time.toLocaleTimeString('en-Sg',{hour:'2-digit',minute:'2-digit'});
-    var postReply = document.createElement("div");
-    postReply.innerHTML= `
-        <div class="reply-content" id="${reply}">
-          <img src = "${data[reply].picture}" id= "userimage" "> ${data[reply].user}
+    for (i = 4; i <= 100; i++) {
+      var reply = "reply" + i
+      if(data[reply] != undefined){
+      var time = data[reply].timestamp.toDate();
+      const formattedDate = time.toLocaleDateString('en-Sg', { day: 'numeric', month: 'short' });
+      const formattedTime = time.toLocaleTimeString('en-Sg', { hour: '2-digit', minute: '2-digit' });
+      localStorage.setItem("username",`${data[reply].user}`)
+      var postReply = document.createElement("div");
+      postReply.innerHTML = `
+        <div class="reply-content" style="display:block" id="${reply}" onclick = "showdeletebutton(this.id)">
+          <img src = "${data[reply].picture}" id= "userimage" class = "reply_avatar"> ${data[reply].user}
           <p>${data[reply].reply}</p>
           <div class = "post-details">
           <div class = "post-date-time">${formattedDate} ${formattedTime} </div>
           </div>
         </div>
       `;
-    var replyContainer = document.getElementById("comments-container");
-    replyContainer.appendChild(postReply);
+      var replyContainer = document.getElementById("comments-container");
+      replyContainer.appendChild(postReply);
+      }else{
+        continue
+      }
     }
   })
 }
 
-function goback(){
+function goback() {
   window.location.href = "forum.html";
 }
+
+function delete_post(reply) {
+  var postDocId = localStorage.getItem("postId")
+  const replyRef = db.collection("post").doc(postDocId)
+  var bye_reply = document.getElementById(reply)
+  bye_reply.style.display = "none";
+  const fieldtodelete = {};
+  fieldtodelete[reply] = firebase.firestore.FieldValue.delete();
+  return replyRef.update(fieldtodelete)
+    .then(() => {
+      console.log(`Field '${fieldName}' successfully deleted from the document.`);
+      
+    })
+    .catch((error) => {
+      console.error("Error deleting field: ", error);
+    });
+}
+
+
+function showdeletebutton(reply) {
+  // Check if the delete button is already present
+  console.log(reply)
+  var deleteBtn = document.getElementById("deletebtn-" + reply);
+  var postId = localStorage.getItem("postId")
+  var user = sessionStorage.getItem("user");
+  var userObject = JSON.parse(user);
+  var uid = userObject.uid;
+  const docRef = db.collection("Users");
+  docRef.get().then(function (querySnapshot) {
+    querySnapshot.forEach(function (doc) {
+      //getting the user UID in the USER DOCUMENT
+      var docId = doc.id;
+      //Checking if the document ID has this UID
+      if (docId == uid) {
+        const data = doc.data()
+        var fname = data.name;
+        const replyRef = db.collection("post").doc(postId)
+        replyRef.get().then((doc) =>{
+          const data_ref = doc.data()
+          var post_name = data_ref[reply].user;
+        if (fname == post_name) {
+          if (deleteBtn == undefined) {
+            var deleteButton = document.createElement('button');
+            deleteButton.setAttribute("type","button");
+            deleteButton.id = 'deletebtn-' + reply;
+            deleteButton.className = 'delete-button';
+            deleteButton.setAttribute("onclick", "delete_post('" + reply + "')")
+            deleteButton.innerHTML = 'Delete';
+            let replyContent = document.getElementById(reply);
+            replyContent.appendChild(deleteButton);
+
+            // Show the delete button
+            deleteButton.style.display = 'block';
+
+          } else {
+            // Toggle the visibility of the delete button
+            deleteBtn.style.display = (deleteBtn.style.display === "block") ? "none" : "block";
+          }
+        }else{
+          deleteBtn.style.display = "none"
+        }
+      })
+      }
+    })
+  })
+}
+
+
+
+
