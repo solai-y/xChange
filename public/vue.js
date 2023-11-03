@@ -67,7 +67,7 @@ const app = createApp({
     
       userData.get().then(function (doc) {
         let userInfo = doc.data();
-    
+
         if (userInfo) {
           vueInstance.usernameComment = userInfo["name"];
     
@@ -76,7 +76,12 @@ const app = createApp({
           } else {
             vueInstance.imageComment = "./images/profile photo.jpeg";
           }
-    
+
+          if (Array.isArray(vueInstance.reviewVue)) {
+            vueInstance.reviewVue.push({"comment": vueInstance.comment, "username": vueInstance.usernameComment, "image_url": vueInstance.imageComment});
+          } else {
+            vueInstance.reviewVue = {"comment": vueInstance.comment, "username": vueInstance.usernameComment, "image_url": vueInstance.imageComment};
+          }
           // Update the database here, inside the callback
           db.collection("University")
             .doc(vueInstance.docIdVue)
