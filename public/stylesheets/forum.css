@@ -227,8 +227,8 @@ header small {
   /* You can add additional styling as needed */
 }
 #userimage{
-  width: 70px;
-  height: auto;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
 }
 .comment-content{
