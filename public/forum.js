@@ -20,9 +20,6 @@ document.addEventListener("DOMContentLoaded", (event) => {
     auth = firebase.auth();
   }
   showing_post();
-  post_to_load();
-  load_reply_post();
-
 });
 // For the modal to show up
 const addPostButton = document.querySelector("#show-add-post-modal-btn");
@@ -44,15 +41,14 @@ function new_forum(event) {
   var userObject = JSON.parse(user);
   var uid = userObject.uid;
   var storage = firebase.storage();
-  var storRef = storage.ref(uid);
+  var storRef = storage.ref();
   var getImg = document.getElementById("image").files[0];
   var Uploadimg = storRef.put(getImg);
-  Uploadimg.on('state_changed',
-  function(snapshot) {
+  Uploadimg.on("state_changed", function (snapshot) {
     // Progress monitoring (optional)
     var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-    console.log('Upload is ' + progress + '% done');
-  })
+    console.log("Upload is " + progress + "% done");
+  });
   docRef.get().then(function (querySnapshot) {
     querySnapshot.forEach(function (doc) {
       //getting the user UID in the USER DOCUMENT
@@ -89,7 +85,7 @@ function new_forum(event) {
             .set(data_to_insert)
             .then(() => {
               console.log("data is inside");
-              $('#add-post-modal').modal('hide');
+              $("#add-post-modal").modal("hide");
               location.reload();
             });
         });
@@ -97,7 +93,6 @@ function new_forum(event) {
     });
   });
 }
-
 function showing_post() {
   //database
   const forumRef = db.collection("post");
@@ -106,14 +101,20 @@ function showing_post() {
       const data = doc.data();
       var forum_name = doc.id;
       let numberOfFields = Object.keys(data).length;
-      var noOfReply = parseInt(numberOfFields) - 4
+      var noOfReply = parseInt(numberOfFields) - 4;
       var postElements = document.createElement("div");
       var time = data.timestamp.toDate();
-      const formattedDate = time.toLocaleDateString('en-Sg', { day: 'numeric', month: 'short' });
-      const formattedTime = time.toLocaleTimeString('en-Sg', { hour: '2-digit', minute: '2-digit' });
-      postElements.innerHTML = postElements.innerHTML = `
+      const formattedDate = time.toLocaleDateString("en-Sg", {
+        day: "numeric",
+        month: "short",
+      });
+      const formattedTime = time.toLocaleTimeString("en-Sg", {
+        hour: "2-digit",
+        minute: "2-digit",
+      });
+      postElements.innerHTML = `
         <div class="post-content" onclick="goComment('${forum_name}')">
-        <img src = "${data.picture}" id= "userimage" "> ${data.user}
+        <img src = "${data.picture}" id= "userimage" "> ${data.user} 
           <h2 id =forumName>#${forum_name}</h2>
           <p>${data.description}</p>
           <div class = "post-details">
@@ -124,206 +125,149 @@ function showing_post() {
       `;
       const postContainer = document.getElementById("posts-container"); // Replace with the actual container element ID
       postContainer.appendChild(postElements);
+      // currently this is the filter when it changes
+      //first condition
     });
   });
+
+  const filterSelect = document.getElementById("filter-select");
+  filterSelect.addEventListener("change", () => {
+    const selectedFilter = filterSelect.value;
+    const postContainer = document.getElementById("posts-container");
+    postContainer.innerHTML = "";
+    
+
+    if (selectedFilter == "all") {
+      forumRef.get().then(function (querySnapshot) {
+        querySnapshot.forEach(function (doc) {
+          const data = doc.data();
+          var forum_name = doc.id;
+          let numberOfFields = Object.keys(data).length;
+          var noOfReply = parseInt(numberOfFields) - 4;
+          var postElements = document.createElement("div");
+          var time = data.timestamp.toDate();
+          const formattedDate = time.toLocaleDateString("en-Sg", {
+            day: "numeric",
+            month: "short",
+          });
+          const formattedTime = time.toLocaleTimeString("en-Sg", {
+            hour: "2-digit",
+            minute: "2-digit",
+          });
+          postElements.innerHTML = `
+        <div class="post-content" onclick="goComment('${forum_name}')">
+        <img src = "${data.picture}" id= "userimage" "> ${data.user}
+          <h2 id =forumName>#${forum_name}</h2>
+          <p>${data.description}</p>
+          <div class = "post-details">
+            <div class = "post-date-time">${formattedDate} ${formattedTime} </div>
+            <div class =  "replies">${noOfReply} replies </div>
+          </div>
+        </div>
+      `;
+          const postContainer = document.getElementById("posts-container"); // Replace with the actual container element ID
+          postContainer.appendChild(postElements);
+        });
+      });
+    } else if (selectedFilter == "Most Replied") {
+      const sortedPosts = [];
+      forumRef.get().then(function (querySnapshot) {
+        querySnapshot.forEach(function (doc) {
+          const data = doc.data();
+          var forum_name = doc.id;
+          let numberOfFields = Object.keys(data).length;
+          var noOfReply = parseInt(numberOfFields) - 4;
+          // Only include posts with replies (comments)
+          if (noOfReply > 0) {
+            sortedPosts.push({ forum_name, data, noOfReply });
+          }
+        });
+
+        // Sort the posts by the number of replies in descending order
+        sortedPosts.sort((a, b) => b.noOfReply - a.noOfReply);
+
+        // Display posts based on the selected filter
+        sortedPosts.forEach(({ forum_name, data, noOfReply }) => {
+          var postElements = document.createElement("div");
+          var time = data.timestamp.toDate();
+          const formattedDate = time.toLocaleDateString("en-SG", {
+            day: "numeric",
+            month: "short",
+          });
+          const formattedTime = time.toLocaleTimeString("en-SG", {
+            hour: "2-digit",
+            minute: "2-digit",
+          });
+
+          postElements.innerHTML = `
+        <div class="post-content" onclick="goComment('${forum_name}')">
+          <img src="${data.picture}" id="userimage"> ${data.user} 
+          <h2 id="forumName">#${forum_name}</h2>
+          <p>${data.description}</p>
+          <div class="post-details">
+            <div class="post-date-time">${formattedDate} ${formattedTime}</div>
+            <div class="replies">${noOfReply} replies</div>
+    
+          </div>
+        `;
+          postContainer.appendChild(postElements);
+        });
+      });
+    } else {
+      const currentTime = new Date();
+      const recentThreshold = new Date(currentTime);
+      recentThreshold.setDate(currentTime.getDate() - 1);
+      forumRef
+        .orderBy("timestamp", "desc")
+        .get()
+        .then(function (querySnapshot) {
+          querySnapshot.forEach(function (doc) {
+            const data = doc.data();
+            var forum_name = doc.id;
+            let numberOfFields = Object.keys(data).length;
+            var noOfReply = parseInt(numberOfFields) - 4;
+            var postElements = document.createElement("div");
+            var time = data.timestamp.toDate();
+            const formattedDate = time.toLocaleDateString("en-Sg", {
+              day: "numeric",
+              month: "short",
+            });
+            const formattedTime = time.toLocaleTimeString("en-Sg", {
+              hour: "2-digit",
+              minute: "2-digit",
+            });
+            postElements.innerHTML = `
+          <div class="post-content" onclick="goComment('${forum_name}')">
+          <img src = "${data.picture}" id= "userimage" "> ${data.user} 
+            <h2 id =forumName>#${forum_name}</h2>
+            <p>${data.description}</p>
+            <div class = "post-details">
+              <div class = "post-date-time">${formattedDate} ${formattedTime} </div>
+              <div class =  "replies">${noOfReply} replies </div>
+      
+            </div>
+          </div>
+        `;
+            const postContainer = document.getElementById("posts-container"); // Replace with the actual container element ID
+            postContainer.appendChild(postElements);
+          });
+        });
+    }
+  });
 }
+
 function goComment(element) {
   window.location.href = "reply.html";
   localStorage.setItem("postId", element);
 }
 //for comment
-function post_to_load() {
-  var post_I_replyingto = localStorage.getItem("postId");
-  const forumRef = db.collection("post").doc(post_I_replyingto);
-  forumRef.get().then((doc) => {
-    const data = doc.data();
-    var time = data.timestamp.toDate();
-    const formattedDate = time.toLocaleDateString('en-Sg', { day: 'numeric', month: 'short' });
-    const formattedTime = time.toLocaleTimeString('en-Sg', { hour: '2-digit', minute: '2-digit' });
-    var postElements = document.createElement("div");
-    postElements.innerHTML = postElements.innerHTML = `
-        <div class="post-content">
-        <img src = "${data.picture}" id= "userimage" "> ${data.user}
-          <h2 id =forumName>#${post_I_replyingto}</h2>
-          <p>${data.description}</p>
-          <div class = "post-details">
-            <div class = "post-date-time">${formattedDate} ${formattedTime} </div>
-          </div>
-        </div>
-      `;
-    const replyContainer = document.getElementById("post-detail");
-    replyContainer.appendChild(postElements);
-  });
-}
 
 
-function handleAddCommentFormSubmit() {
-  var postId = localStorage.getItem("postId")
-  var user = sessionStorage.getItem("user");
-  var userObject = JSON.parse(user);
-  var uid = userObject.uid;
-  const docRef = db.collection("Users");
-  docRef.get().then(function (querySnapshot) {
-    querySnapshot.forEach(function (doc) {
-      //getting the user UID in the USER DOCUMENT
-      var docId = doc.id;
-      //Checking if the document ID has this UID
-      if (docId == uid) {
-        const userRef = db.collection("Users").doc(uid);
-        userRef.get().then((doc) => {
-          //if this document exits
-          if (doc.exists) {
-            // we take the name
-            var post_I_replyingto = localStorage.getItem("postId");
-            const commentTextarea = document.getElementById("comment");
-            const commentContent = commentTextarea.value;
-            const userdata = doc.data()
-            var user_pic = userdata.image_url || "/images/profile photo.jpeg";
-            var fname = userdata.name
-            //store it in database
-            const forumRef = db.collection("post").doc(post_I_replyingto);
-            // call the addComment function with a null parentCommentId for top-level comments
-            forumRef.get().then((doc) => {
-              var currentTime = new Date()
-              let dataSize = Object.keys(doc.data()).length;
-              var reply = "reply" + dataSize
-              const data = doc.data();
-              var data_to_insert = {}
-              data_to_insert[reply] = {
-                reply: commentContent,
-                picture: user_pic,
-                user: fname,
-                timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-              };
-              forumRef.update(data_to_insert).then(() => {
-                console.log("Reply added to the post.");
-                const comment_cont = document.getElementById("comments-container");
-                const formattedDate = currentTime.toLocaleDateString('en-Sg', { day: 'numeric', month: 'short' });
-                const formattedTime = currentTime.toLocaleTimeString('en-Sg', { hour: '2-digit', minute: '2-digit' });
-                var commentElements = document.createElement("div");
-                commentElements.innerHTML = commentElements.innerHTML = `
-                    <div class="comment-content" id="${postId}">
-                    <img src = "${user_pic}" id= "userimage" "> ${fname}
-                      <p>${commentContent}</p>
-                      <div class = "post-details">
-                      <div class = "post-date-time">${formattedDate} ${formattedTime} </div>
-                      </div>
-                    </div>`
-                comment_cont.appendChild(commentElements)
-                commentTextarea.value = "";
-              });
-            });
-          }
-        });
-      }
-    });
-  });
-}
 
-function load_reply_post() {
-  var postId = localStorage.getItem("postId");
-  const forumRef = db.collection("post").doc(postId);
 
-  forumRef.get().then((doc) => {
-    const data = doc.data();
-    console.log(data)
-    var dataSize = Object.keys(doc.data()).length;
-    for (i = 4; i <= 100; i++) {
-      var reply = "reply" + i
-      if(data[reply] != undefined){
-      var time = data[reply].timestamp.toDate();
-      const formattedDate = time.toLocaleDateString('en-Sg', { day: 'numeric', month: 'short' });
-      const formattedTime = time.toLocaleTimeString('en-Sg', { hour: '2-digit', minute: '2-digit' });
-      localStorage.setItem("username",`${data[reply].user}`)
-      var postReply = document.createElement("div");
-      postReply.innerHTML = `
-        <div class="reply-content" style="display:block" id="${reply}" onclick = "showdeletebutton(this.id)">
-          <img src = "${data[reply].picture}" id= "userimage" class = "reply_avatar"> ${data[reply].user}
-          <p>${data[reply].reply}</p>
-          <div class = "post-details">
-          <div class = "post-date-time">${formattedDate} ${formattedTime} </div>
-          </div>
-        </div>
-      `;
-      var replyContainer = document.getElementById("comments-container");
-      replyContainer.appendChild(postReply);
-      }else{
-        continue
-      }
-    }
-  })
-}
 
 function goback() {
   window.location.href = "forum.html";
 }
-
-function delete_post(reply) {
-  var postDocId = localStorage.getItem("postId")
-  const replyRef = db.collection("post").doc(postDocId)
-  var bye_reply = document.getElementById(reply)
-  bye_reply.style.display = "none";
-  const fieldtodelete = {};
-  fieldtodelete[reply] = firebase.firestore.FieldValue.delete();
-  return replyRef.update(fieldtodelete)
-    .then(() => {
-      console.log(`Field '${fieldName}' successfully deleted from the document.`);
-      
-    })
-    .catch((error) => {
-      console.error("Error deleting field: ", error);
-    });
-}
-
-
-function showdeletebutton(reply) {
-  // Check if the delete button is already present
-  console.log(reply)
-  var deleteBtn = document.getElementById("deletebtn-" + reply);
-  var postId = localStorage.getItem("postId")
-  var user = sessionStorage.getItem("user");
-  var userObject = JSON.parse(user);
-  var uid = userObject.uid;
-  const docRef = db.collection("Users");
-  docRef.get().then(function (querySnapshot) {
-    querySnapshot.forEach(function (doc) {
-      //getting the user UID in the USER DOCUMENT
-      var docId = doc.id;
-      //Checking if the document ID has this UID
-      if (docId == uid) {
-        const data = doc.data()
-        var fname = data.name;
-        const replyRef = db.collection("post").doc(postId)
-        replyRef.get().then((doc) =>{
-          const data_ref = doc.data()
-          var post_name = data_ref[reply].user;
-        if (fname == post_name) {
-          if (deleteBtn == undefined) {
-            var deleteButton = document.createElement('button');
-            deleteButton.setAttribute("type","button");
-            deleteButton.id = 'deletebtn-' + reply;
-            deleteButton.className = 'delete-button';
-            deleteButton.setAttribute("onclick", "delete_post('" + reply + "')")
-            deleteButton.innerHTML = 'Delete';
-            let replyContent = document.getElementById(reply);
-            replyContent.appendChild(deleteButton);
-
-            // Show the delete button
-            deleteButton.style.display = 'block';
-
-          } else {
-            // Toggle the visibility of the delete button
-            deleteBtn.style.display = (deleteBtn.style.display === "block") ? "none" : "block";
-          }
-        }else{
-          deleteBtn.style.display = "none"
-        }
-      })
-      }
-    })
-  })
-}
-
-
 
 
