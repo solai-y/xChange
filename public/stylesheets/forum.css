@@ -217,6 +217,10 @@ header small {
   padding: 20px;
   border-radius: 5px;
   border:solid;
+  position: relative;
+}
+.post-content :hover{
+  cursor: pointer;
 }
 .post-details {
   display: flex;
@@ -237,6 +241,14 @@ header small {
   width: 50px;
   height: 50px;
   border-radius: 50%;
+}
+.ellipsis {
+  position: absolute;
+  right: 10px;
+}
+.ellipsis:hover{
+  cursor: pointer;
+
 }
 .comment-content{
   background-color: white;

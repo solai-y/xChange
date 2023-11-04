@@ -95,6 +95,7 @@ function new_forum(event) {
 }
 function showing_post() {
   //database
+  var post_id = localStorage.getItem("postId");
   const forumRef = db.collection("post");
   forumRef.get().then(function (querySnapshot) {
     querySnapshot.forEach(function (doc) {
@@ -113,7 +114,8 @@ function showing_post() {
         minute: "2-digit",
       });
       postElements.innerHTML = `
-        <div class="post-content" onclick="goComment('${forum_name}')">
+        <div class="post-content" id = "${forum_name}" onclick="goComment('${forum_name}')">
+        <div class ="ellipsis" onmouseover="edit_forum('${forum_name}')"><i class="fa-solid fa-ellipsis"></i>,</div>
         <img src = "${data.picture}" id= "userimage" "> ${data.user} 
           <h2 id =forumName>#${forum_name}</h2>
           <p>${data.description}</p>
@@ -122,6 +124,7 @@ function showing_post() {
             <div class =  "replies">${noOfReply} replies </div>
           </div>
         </div>
+      
       `;
       const postContainer = document.getElementById("posts-container"); // Replace with the actual container element ID
       postContainer.appendChild(postElements);
@@ -155,7 +158,8 @@ function showing_post() {
             minute: "2-digit",
           });
           postElements.innerHTML = `
-        <div class="post-content" onclick="goComment('${forum_name}')">
+        <div class="post-content" id = "${forum_name}" onclick="goComment('${forum_name}')">
+        <div class ="ellipsis" onmouseover="edit_forum('${forum_name}')"> ><i class="fa-solid fa-ellipsis"></i>,</div>
         <img src = "${data.picture}" id= "userimage" "> ${data.user}
           <h2 id =forumName>#${forum_name}</h2>
           <p>${data.description}</p>
@@ -200,7 +204,8 @@ function showing_post() {
           });
 
           postElements.innerHTML = `
-        <div class="post-content" onclick="goComment('${forum_name}')">
+        <div class="post-content"id = "${forum_name}"  onclick="goComment('${forum_name}')">
+        <div class ="ellipsis" onmouseover="edit_forum('${forum_name}')">><i class="fa-solid fa-ellipsis"></i>,</div>
           <img src="${data.picture}" id="userimage"> ${data.user} 
           <h2 id="forumName">#${forum_name}</h2>
           <p>${data.description}</p>
@@ -237,14 +242,14 @@ function showing_post() {
               minute: "2-digit",
             });
             postElements.innerHTML = `
-          <div class="post-content" onclick="goComment('${forum_name}')">
+          <div class="post-content" id = "${forum_name}" onclick="goComment('${forum_name}')">
+          <div class ="ellipsis" onmouseover="edit_forum('${forum_name}')">><i class="fa-solid fa-ellipsis"></i>,</div>
           <img src = "${data.picture}" id= "userimage" "> ${data.user} 
             <h2 id =forumName>#${forum_name}</h2>
             <p>${data.description}</p>
             <div class = "post-details">
               <div class = "post-date-time">${formattedDate} ${formattedTime} </div>
               <div class =  "replies">${noOfReply} replies </div>
-      
             </div>
           </div>
         `;
@@ -271,3 +276,80 @@ function goback() {
 }
 
 
+
+function edit_forum(forum_name){
+  var deleteBtn = document.getElementById("deletebtn-" + forum_name);
+  if (!deleteBtn) {
+  var user = sessionStorage.getItem("user");
+  var userObject = JSON.parse(user);
+  var uid = userObject.uid;
+  const docRef = db.collection("Users");
+  docRef.get().then(function (querySnapshot) {
+    querySnapshot.forEach(function (doc) {
+      //getting the user UID in the USER DOCUMENT
+      var docId = doc.id;
+      //Checking if the document ID has this UID
+      if (docId == uid) {
+        const data = doc.data();
+        var fname = data.name;
+        const replyRef = db.collection("post").doc(forum_name);
+        replyRef.get().then((doc) => {
+          const data_ref = doc.data();
+          var post_name = data_ref.user;
+          if (fname == post_name) {
+            if (deleteBtn == undefined) {
+              var editbutton = document.createElement("button");
+              var deleteButton = document.createElement("button");
+              deleteButton.setAttribute("type", "button");
+              deleteButton.id = "deletebtn-" + forum_name;
+              deleteButton.className = "delete-button";
+              deleteButton.setAttribute(
+                "onmouseover",
+                "delete_post_load('" + forum_name + "')"
+              );
+              deleteButton.innerHTML = "Delete";
+              let replyContent = document.getElementById(forum_name);
+              replyContent.appendChild(deleteButton);
+
+              // Show the delete button
+              deleteButton.style.display = "block";
+              // show the edit button
+            } else {
+              // Toggle the visibility of the delete button
+              deleteBtn.style.display =
+                deleteBtn.style.display === "block" ? "none" : "block";
+            }
+          } else {
+            if (deleteBtn) {
+              deleteBtn.style.display = "none";
+            }
+          }
+        });
+      }
+    });
+  });
+} else {
+  // Toggle the visibility of the delete button
+  deleteBtn.style.display = deleteBtn.style.display === "block" ? "none" : "block";
+}
+}
+
+function delete_post_load(post_element){
+  const replyRef = db.collection("post").doc(post_element);
+  return replyRef
+    .delete()
+    .then(() => {
+      console.log(
+        `Field '${post_element}' successfully deleted from the document.`
+      );
+      var fname = document.getElementById(post_element);
+      fname.style.display = "none";
+    })
+    .catch((error) => {
+      console.error("Error deleting field: ", error);
+    });
+}
+
+function edit_post_load(post_element){
+
+}
