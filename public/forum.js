@@ -43,6 +43,16 @@ function new_forum(event) {
   var user = sessionStorage.getItem("user");
   var userObject = JSON.parse(user);
   var uid = userObject.uid;
+  var storage = firebase.storage();
+  var storRef = storage.ref(uid);
+  var getImg = document.getElementById("image").files[0];
+  var Uploadimg = storRef.put(getImg);
+  Uploadimg.on('state_changed',
+  function(snapshot) {
+    // Progress monitoring (optional)
+    var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+    console.log('Upload is ' + progress + '% done');
+  })
   docRef.get().then(function (querySnapshot) {
     querySnapshot.forEach(function (doc) {
       //getting the user UID in the USER DOCUMENT
