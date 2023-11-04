@@ -125,9 +125,12 @@ document.addEventListener("DOMContentLoaded", function() {
     const uniCollection = db.collection("University");
     const track = document.getElementById('trackItem'); // Get the ul element for the list
 
-    function createCard(name, country, imageUrl) {
+    function createCard(link, name, country, imageUrl) {
         const listItem = document.createElement('li'); // Create a list item for the card
         listItem.classList.add('card'); // Add appropriate classes for styling
+
+        const redirection = document.createElement('a');
+        redirection.href = `./individualunipage.html?uni=${link}`;
 
         const cardImage = document.createElement('img');
         cardImage.src = imageUrl;
@@ -144,16 +147,18 @@ document.addEventListener("DOMContentLoaded", function() {
 
         cardContent.appendChild(cardTitle);
         cardContent.appendChild(cardCountry);
-
+        
         listItem.appendChild(cardImage);
         listItem.appendChild(cardContent);
+        listItem.appendChild(redirection);
 
+       
         return listItem;
     }
 
     function populateList(querySnapshot) {
         querySnapshot.forEach((doc) => {
-            const card = createCard(doc.data().name, doc.data().country, doc.data().gallery[0]);
+            const card = createCard(doc.id, doc.data().name, doc.data().country, doc.data().gallery[0]);
             track.appendChild(card); // Append the card to the list
         });
     }
