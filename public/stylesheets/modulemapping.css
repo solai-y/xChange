@@ -100,7 +100,9 @@ a {
 .modName {
   background-color: var(--secondary);
   border: 1px black solid;
-  margin-right: 5px;
+  margin: 10px;
+  padding: 5px;
+  border-radius: 5px;
 }
 
 .visible {
@@ -186,6 +188,7 @@ a {
 .card {
   flex-direction: row;
   margin-bottom: 10px;
+  margin-left: 10px;
 }
 
 .card img {
@@ -202,7 +205,7 @@ a {
 }
 
 .text-section {
-  max-width: 67%;
+  max-width: 90%;
 }
 
 .cta-section {

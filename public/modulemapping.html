@@ -134,7 +134,7 @@
             <div class="container">
               <div class="row" v-for="uni in filteredUniList">
                 <a :href="'./individualunipage.html?uni=' + uni[1]" :id="uni[1]" class="uniNames" v-if="shouldShowUni(uni)">
-                  <div class="card">
+                  <div class="card cardcss">
                     <img :src="uni[0].gallery[0]" :alt="uni[0].name">                    
                     <div class="card-body">
                       <div class="text-section">
@@ -143,7 +143,10 @@
                           <ul class="list-group list-group-flush">
                             <li class="list-group-item" v-for="selectedModule in selectedModuleNames">
                               <h6>For {{selectedModule.slice(7).split(/(?=[A-Z])/).map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}} you can take these mods:</h6>
-                              <span class="modName" v-for="mod in uni[0][selectedModule]">{{mod}} </span> 
+                              <ul>
+                                <li class="modList" v-for="mod in uni[0][selectedModule]">{{mod}}</li>
+                              </ul>
+                              <!-- <span class="modName" v-for="mod in uni[0][selectedModule]">{{mod}} <br></span> -->
                             </li>
                           </ul>
                         </p>  
