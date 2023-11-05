@@ -435,3 +435,48 @@ header small {
   background-color: var(--background);
   height: 60px;
 }
+
+/* input field css */
+.inputBox {
+  position: relative;
+  width: 50%;
+}
+
+.inputBox input {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #232931;
+  border-radius: 5px;
+  outline: none;
+  font-size: 1em;
+  transition: 0.5s;
+  font-family: var(--bs-body-font-family);
+
+}
+
+.inputBox span {
+  color: #232931;
+  position: absolute;
+  left: 0;
+  padding: 10px;
+  pointer-events: none;
+  text-transform: uppercase;
+  transition: 0.5s;
+  font-family: var(--bs-body-font-family);
+
+}
+
+.inputBox input:focus ~ span {
+  color: #4ecca3;
+  transform: translateX(10px) translateY(-7px);
+  font-size: 0.8em;
+  padding: 0 10px;
+  background: #ffffff;
+  border-left: 1px solid #4ecca3;
+  border-right: 1px solid #4ecca3;
+  letter-spacing: 0.2em;
+}
+
+.inputBox input:focus {
+  border: 2px solid #4ecca3;
+}
