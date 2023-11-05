@@ -297,7 +297,7 @@
       <div class="row">
         <div class="col-md-3">
           <h6>
-            <img src="./images/logo.jpeg" class="header-photo">
+            <img src="./images/logo.jpeg" id="header-photo">
           </h6>
           <p class="text-justify">xChange aims to be a one stop platform for students to plan for their exchange
             with ease.</p>
@@ -327,8 +327,8 @@
           <h6>Quick Links</h6>
           <ul class="footer-links">
             <li><a href="./university.html"><label>Home</label></a></li>
-            <li><a href="./individualunipage.html"><label>Universities</label></a></li>
             <li><a href="./forum.html"><label>Forum</label></a></li>
+            <li><a href="./modulemapping.html"><label>Module Mapping</label></a></li>
             <li><a href="./account.html"><label>Profile</label></a></li>
           </ul>
         </div>
@@ -336,10 +336,17 @@
         <div class="col-md-3">
           <h6>Account</h6>
           <ul class="footer-links">
-            <li><a href="./login_page.html"><label>Log In</label></a></li>
-            <li><a href="./login_page.html"><label>Register</label></a></li>
+              <li id="login_footer">
+                  <a href="./login_page.html"><label>Log In</label></a>
+              </li>
+              <li id="register_footer">
+                  <a href="./login_page.html"><label>Register</label></a>
+              </li>
+              <li id="logout_footer">
+                  <a onclick="logout()"><label>Log Out</label></a>
+              </li>
           </ul>
-        </div>
+      </div>
       </div>
     </div>
 
@@ -354,6 +361,27 @@
       </div>
     </div>
   </footer>
+
+  <script>
+    var data = ""
+
+data = JSON.parse(sessionStorage.getItem("user"));
+if(data == ""){
+  document.getElementById("login_footer").hidden= false;
+  document.getElementById("logout_footer").hidden= true;
+  document.getElementById("register_footer").hidden= false;
+}else{
+  document.getElementById("login_footer").hidden= true;
+  document.getElementById("logout_footer").hidden= false;
+  document.getElementById("register_footer").hidden= true;
+}
+
+console.log(data);
+var emailadd = data.email;
+var emailInput = document.getElementById("email");
+emailInput.value = emailadd;
+
+</script>
 
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"

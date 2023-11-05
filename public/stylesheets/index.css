@@ -437,3 +437,10 @@ text-align: center;
     height: 50px;
     border-radius: 50%;
   }
+
+#header-photo {
+    width: 40px; /* Set the desired width for the logo */
+    height: auto; /* Allow the height to adjust to maintain the aspect ratio */
+    max-width: 100%; /* Ensure the logo doesn't exceed its container's width */
+    display: block; /* Make the image a block-level element to control its sizing */
+}
