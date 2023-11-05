@@ -135,6 +135,7 @@ document.addEventListener("DOMContentLoaded", event => {
                       } else {
                           // store the url in a hidden input field
                           document.getElementById("imageInputUrl").value = data.Location
+                          document.getElementById("imageInput2").setAttribute("src", document.getElementById("imageInputUrl").value);
                           // console.log('Image uploaded:', data.Location);
                       }
                   });
