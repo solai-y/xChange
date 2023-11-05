@@ -1,7 +1,61 @@
+function eMessage(error){
+
+    let errorCode = error;
+    let errorMessage = "";
+
+    switch(errorCode) {
+        case "auth/invalid-email":
+          errorMessage = "Email is invalid or not filled.";
+          break;
+        case "auth/missing-password":
+          errorMessage = "Password is not filled.";
+          break;
+        case "auth/invalid-login-credentials":
+          errorMessage = "Email or password is incorrect.";
+          break;
+        case "auth/weak-password":
+          errorMessage = "Password is too weak.";
+          break;
+        case "auth/email-already-in-use":
+          errorMessage = "Email is already in use.";
+          break;
+        case "auth/password-not-matching":
+          errorMessage = "Password is not matching.";
+          break;
+        case "auth/missing-all-fields":
+            errorMessage = "All fields are empty.";
+            break;
+        case "auth/missing-name":
+            errorMessage = "Name is empty.";
+            break;
+        default:
+          errorMessage = "Error";
+      }
+
+      return errorMessage;
+}
+
+function errorDisplay(errorMessage, errorField){
+    let oldP = "";
+    oldP = document.getElementById(errorField).firstChild;
+    let newP = document.createElement("p")
+    let tnP = document.createTextNode(errorMessage);
+    newP.appendChild(tnP);
+    newP.style.fontSize = "12px";
+    newP.style.color = "red";
+    if(oldP == ""){
+        document.getElementById(errorField).appendChild(newP);
+
+    }else{
+        document.getElementById(errorField).replaceChild(newP, oldP);
+    }
+}
+
 
 // register
 const registerForm = document.getElementById("registration");
 const registerSubmitButton = document.getElementById("registerSubmit");
+
 registerSubmitButton.addEventListener("click", (e) => {
     e.preventDefault();
     // getting users inputs
@@ -13,20 +67,40 @@ registerSubmitButton.addEventListener("click", (e) => {
         auth = firebase.auth();
     }
 
-    auth.createUserWithEmailAndPassword(email, password).then(cred=>{
-        // sets doc id ac the credential id that is automatically generated
-        return db.collection("Users").doc(cred.user.uid).set({
-            name: name,
-            // allows u to provide other input field to store in the database
-        })
-    }).then(() => {
-        // function that runs when the data successfully added to the database
-        registerForm.reset()
 
-    }).catch((error) => {
-        var errorCode = error.code;
-        var errorMessage = error.message;
-      });
+
+    // checks if the password and confirm password matches
+    if(name=="" && email=="" && password=="" && confirmpassword==""){
+        errorMessage = eMessage("auth/missing-all-fields");
+        errorDisplay(errorMessage, "errorFieldR");
+    }
+    else if(name==""){
+        errorMessage = eMessage("auth/missing-name");
+        errorDisplay(errorMessage, "errorFieldR");
+    }
+    else if(password != confirmpassword){
+        errorMessage = eMessage("auth/password-not-matching");
+        errorDisplay(errorMessage, "errorFieldR");
+    }
+    else{
+        auth.createUserWithEmailAndPassword(email, password).then(cred=>{
+            // sets doc id ac the credential id that is automatically generated
+            return db.collection("Users").doc(cred.user.uid).set({
+                name: name,
+                // allows u to provide other input field to store in the database
+            })
+        }).then(() => {
+            // function that runs when the data successfully added to the database
+            registerForm.reset()
+        }).catch((error) => {
+            var errorCode = error.code;
+            var error = error.message;
+            var errorMessage = "";
+            console.error(errorCode);
+            console.error("Error logging in: " + error);
+            errorMessage = eMessage(errorCode);
+            errorDisplay(errorMessage, "errorFieldR");
+    })};
 });
 
 
@@ -61,13 +135,12 @@ loginSubmitButton.addEventListener("click", (e) => {
         })
         .catch((error) => {
             var errorCode = error.code;
-            var errorMessage = error.message;
-            console.error("Error logging in: " + errorMessage);
-            let newP = document.createElement("p")
-            let tnP = document.createTextNode(errorMessage);
-            newP.appendChild(tnP);
-            newP.style.fontSize = "8px";
-            newP.style.color = "red";
-            document.getElementById("errorField").appendChild(newP);
+            console.log(errorCode)
+            var error = error.message;
+            var errorMessage = "";
+            console.error(errorCode);
+            console.error("Error logging in: " + error);
+            errorMessage = eMessage(errorCode);
+            errorDisplay(errorMessage, "errorField");
         });
 });
