@@ -285,3 +285,21 @@ a {
 a {
   color: #fff;
 }
+
+#suggestionListUniName, #suggestionListCountryName {
+  position: absolute;
+  background-color: #f1f1f1;
+  z-index: 1;
+  width: 100%;
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+#suggestionListUniName div, #suggestionListCountryName div {
+  padding: 10px;
+  cursor: pointer;
+}
+
+#suggestionListUniName div:hover, #suggestionListCountryName div:hover {
+  background-color: #ccc;
+}

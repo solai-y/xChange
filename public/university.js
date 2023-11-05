@@ -205,3 +205,54 @@ searchCountryName.addEventListener("input", (e) => {
         user.element.classList.toggle("hide", !isVisible);
     });
 });
+
+const searchSuggestionUniName = document.getElementById("suggestionListUniName");
+const searchSuggestionCountryName = document.getElementById("suggestionListCountryName");
+
+searchUniName.addEventListener("input", function () {
+    const userInput = searchUniName.value.toLowerCase();
+
+    // Clear the suggestion list
+    searchSuggestionUniName.innerHTML = "";
+
+    // Filter and display suggestions based on user input
+    const filteredSuggestions = content.filter(user => {
+        return user.name.toLowerCase().includes(userInput);
+    });
+    console.log(filteredSuggestions);
+
+    // Display the suggestions
+    filteredSuggestions.forEach(user => {
+        const suggestion = document.createElement("div");
+        suggestion.textContent = user.name + " (" + user.country + ")";
+        suggestion.addEventListener("click", function() {
+            searchUniName.value = user.name; // Set the input field value to the selected suggestion
+            searchSuggestionUniName.innerHTML = ""; // Clear the suggestion list
+        });
+        searchSuggestionUniName.appendChild(suggestion);
+    });
+});
+
+searchCountryName.addEventListener("input", function () {
+    const userInput = searchCountryName.value.toLowerCase();
+
+    // Clear the suggestion list
+    searchSuggestionCountryName.innerHTML = "";
+
+    // Filter and display suggestions based on user input
+    const filteredSuggestions = content.filter(user => {
+        return user.country.toLowerCase().includes(userInput);
+    });
+    console.log(filteredSuggestions);
+
+    // Display the suggestions
+    filteredSuggestions.forEach(user => {
+        const suggestion = document.createElement("div");
+        suggestion.textContent = user.name + " (" + user.country + ")";
+        suggestion.addEventListener("click", function() {
+            searchCountryName.value = user.name; // Set the input field value to the selected suggestion
+            searchSuggestionCountryName.innerHTML = ""; // Clear the suggestion list
+        });
+        searchSuggestionCountryName.appendChild(suggestion);
+    });
+});
