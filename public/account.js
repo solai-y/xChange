@@ -192,7 +192,7 @@ document.addEventListener("DOMContentLoaded", event => {
           })  
           .then(function() {
             document.getElementById("imageInput2").setAttribute("src", "./images/profile photo.jpeg");
-            document.getElementById("imageInput1").setAttribute("src", "./images/profile photo.jpeg");
+            document.getElementById("imageInputUrl").value = "./images/profile photo.jpeg";
           })
         })
 
