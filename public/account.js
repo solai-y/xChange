@@ -162,7 +162,9 @@ document.addEventListener("DOMContentLoaded", event => {
                 }, 3000); // Hide after 3 seconds (adjust as needed)
                 console.log("Document successfully updated!");
                 // Optionally, you can redirect or show a success message
-                document.getElementById("imageInput1").setAttribute("href", document.getElementById("imageInputUrl").value);
+                document.getElementById("imageInput1").setAttribute("src", document.getElementById("imageInputUrl").value);
+                document.getElementById("imageInput2").setAttribute("src", document.getElementById("imageInputUrl").value);
+                
                 
                 })
                 .catch(function(error) {
