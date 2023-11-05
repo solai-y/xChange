@@ -156,7 +156,9 @@ searchCountryName.addEventListener("input", (e) => {
 const searchSuggestionUniName = document.getElementById("suggestionListUniName");
 const searchSuggestionCountryName = document.getElementById("suggestionListCountryName");
 
-searchUniName.addEventListener("input", function () {
+document.getElementById('searchUniName').addEventListener("input", function () {
+  let content = document.getElementsByClassName("uniName");
+  console.log(content);
   const userInput = searchUniName.value.toLowerCase();
 
   // Clear the suggestion list

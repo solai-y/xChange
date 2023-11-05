@@ -282,3 +282,7 @@ a {
 #suggestionListUniName div:hover, #suggestionListCountryName div:hover {
   background-color: #ccc;
 }
+
+#searchTab {
+  color: white;
+}

@@ -128,23 +128,23 @@
                 </div>
                   <p>
                     <div class="inputBox">
-                      <input class="text" type="search" data-search-uni-name v-model="btnSearch">
+                      <input class="text" type="search" data-search-uni-name v-model="btnSearch" id="searchUniName">
                       <div id="suggestionListUniName"></div>
                       <span>University</span>
                     </div> 
                     <br>
                     <div class="inputBox">
-                      <input class="text" type="search" data-search-country-name v-model="btnSearchCountry">
+                      <input class="text" type="search" data-search-country-name v-model="btnSearchCountry" id="searchCountryName">
                       <div id="suggestionListCountryName"></div>
                       <span>Country</span>
                     </div>  
                     <br>
                     <button class="searchOption">
-                      <a href="#scrollSearch">
+                      <a href="#scrollSearch" id="searchTab">
                         Search
                       </a>
                     </button>
-                    <button @click="btnEditSearch()"  class="searchOption">Edit course parameters</button>   
+                    <button @click="btnEditSearch()"  class="searchOption">Back</button>   
                   </p>
               </div>
             </div>
