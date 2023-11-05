@@ -152,6 +152,7 @@ main, .container {
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
+  display: inline-block;
 }
 
 #save :hover {
@@ -184,6 +185,7 @@ main, .container {
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
+  display: inline-block;
 }
 
 #resetPassword :hover {
@@ -204,7 +206,7 @@ main, .container {
   font-size: 100%;
   height: 44px;
   line-height: 1.15;
-  margin: 0px 0 0;
+  margin-bottom: 2px;
   outline: none;
   overflow: hidden;
   padding: 0 25px;
@@ -216,6 +218,7 @@ main, .container {
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
+  display: inline-block;
 }
 
 .button-9:disabled {
@@ -241,46 +244,45 @@ main, .container {
 .modal {
   display: none;
   position: fixed;
-  z-index: 1;
-  left: 0;
   top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0,0,0,0.0);
+  background: rgba(0, 0, 0, 0.5);
 }
 
-/* Styles for the modal content */
 .modal-content {
-  display: inline;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: white;
+  background: #fff;
   padding: 20px;
-  padding-left: 600px;
-  border-radius: 5px;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  max-width: 50%; /* Adjust the maximum width as needed */
+  justify-content: center;
 }
 
 #yesButton {
-  background-color: #4ecca3;
-  color: white;
-  border: 5px;
-  padding: 10px 20px;
-  margin: 5px;
-  border-radius: 5px;
-  width: 15%;
+  display: block;
+  width: 100%;
+  margin-top: 10px;
+  border-radius: 10px; /* Adjust the border radius as needed */
+  background-color: var(--primary);
+  color: #fff;
 }
 
 #noButton {
-  background-color: #CCCCCC;
-  border: 5px;
-  padding: 10px 20px;
-  margin: 5px;
-  border-radius: 5px;
-  width: 15%;
+  display: block;
+  width: 100%;
+  margin-top: 10px;
+  border-radius: 10px; /* Adjust the border radius as needed */
+  background-color: var(--accent);
+  color: #fff;
 }
+
+
 
 .header-photo {
   width: 70px; /* Set the desired width for the logo */
@@ -325,6 +327,17 @@ h1.account {
 
 h5 {
   padding-left: 240px;
+}
+
+.text-end {
+  text-align: right; /* Ensure the buttons are right-aligned within their container */
+}
+
+@media (max-width: 768px) {
+  #resetPasswordButton, #save, #logout {
+    display: block; /* Change to block-level for stacking */
+    margin: 0 20px 0; /* Adjust margin for spacing */
+  }
 }
 
 
