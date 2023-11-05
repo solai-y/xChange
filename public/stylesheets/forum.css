@@ -29,6 +29,95 @@ main {
   z-index: 1000;
 }
 
+/* Search css */
+.head{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction:column;
+}
+
+.inputBox {
+  position: relative;
+  width: 100%;
+}
+
+.inputBox input {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #232931;
+  border-radius: 5px;
+  outline: none;
+  font-size: 1em;
+  transition: 0.5s;
+  font-family: var(--bs-body-font-family);
+
+}
+
+.inputBox span {
+  color: #232931;
+  position: absolute;
+  left: 0;
+  padding: 10px;
+  pointer-events: none;
+  text-transform: uppercase;
+  transition: 0.5s;
+  font-family: var(--bs-body-font-family);
+
+}
+
+.inputBox input:focus ~ span {
+  color: #4ecca3;
+  transform: translateX(10px) translateY(-7px);
+  font-size: 0.8em;
+  padding: 0 10px;
+  background: #ffffff;
+  border-left: 1px solid #4ecca3;
+  border-right: 1px solid #4ecca3;
+  letter-spacing: 0.2em;
+}
+
+.inputBox input:focus {
+  border: 2px solid #4ecca3;
+}
+
+.title .text{
+  padding: 0px;
+  font-size: 3em;
+  animation:changeColor 1.5s linear infinite;
+  font-family: var(--bs-body-font-family);
+
+}
+
+.title{
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+select {
+  background-color: #fffaeb; /* Set the background color */
+  border: none; /* Remove the border */
+  width: 145px;
+  height: 16px;
+}
+
+#filter-select {
+  font-size: 8pt;
+  align-items: center;
+  font-weight: 500;
+}
+
+option {
+  font-weight: normal;
+  display: block;
+  white-space-collapse: collapse;
+  text-wrap: nowrap;
+  min-height: 1.2em;
+  padding: 0px 2px;
+}
+
+
 /* Modal styles */
 .modal_forum {
   position: absolute;
@@ -40,41 +129,7 @@ main {
   border: 1px solid #ccc;
   border-radius: 5px  ;
 }
-select {
-  /* Reset */
-  appearance: none;
-  border: 0;
-  outline: 0;
-  font: inherit;
-  /* Personalize */
-  width: 10rem;
-  padding: 1rem 1rem 1rem 1rem;
-  background: var(--arrow-icon) no-repeat right 0.8em center / 1.4em,
-    linear-gradient(to left, var(--arrow-bg) 3em, var(--select-bg) 3em);
-  color: rgb(0, 0, 0);
-  border-radius: 0.25em;
-  box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.2);
-  cursor: pointer;
-  margin-bottom: 10px;
-  /* Remove IE arrow */
-  &::-ms-expand {
-    display: none;
-  }
-  /* Remove focus outline */
-  &:focus {
-    outline: none;
-  }
-  /* <option> colors */
-  option {
-    color: inherit;
-    background-color: var(--option-bg);
-  }
-}
 
-#filter-select{
-  margin-bottom: 10px;
-  text-align: center;
-}
 
 button {
   background-color:gray;
@@ -107,24 +162,6 @@ p{
 
 textarea {
   resize: none;
-}
-/* lets style the header */
-header {
-  background-color: #fff;
-  padding: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  border-bottom: 1px solid var(--border-color);
-  z-index: 1;
-  position: sticky;
-  top: 0;
-}
-
-header small {
-  font-size: var(--font-small);
-  font-style: italic;
 }
 
 /* styling for posts */
@@ -457,47 +494,7 @@ header small {
   height: 60px;
 }
 
-/* input field css */
-.inputBox {
-  position: relative;
-  width: 50%;
-}
-
-.inputBox input {
-  width: 100%;
-  padding: 10px;
-  border: 2px solid #232931;
-  border-radius: 5px;
-  outline: none;
-  font-size: 1em;
-  transition: 0.5s;
-  font-family: var(--bs-body-font-family);
-
-}
-
-.inputBox span {
-  color: #232931;
-  position: absolute;
-  left: 0;
-  padding: 10px;
-  pointer-events: none;
-  text-transform: uppercase;
-  transition: 0.5s;
-  font-family: var(--bs-body-font-family);
-
-}
-
-.inputBox input:focus ~ span {
-  color: #4ecca3;
-  transform: translateX(10px) translateY(-7px);
-  font-size: 0.8em;
-  padding: 0 10px;
-  background: #ffffff;
-  border-left: 1px solid #4ecca3;
-  border-right: 1px solid #4ecca3;
-  letter-spacing: 0.2em;
-}
-
-.inputBox input:focus {
-  border: 2px solid #4ecca3;
+img {
+  padding-left: 0px;
+  width: auto;
 }
