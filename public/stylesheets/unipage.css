@@ -59,7 +59,7 @@ body {
 }
 
 .carousel-inner {
-  height: 600px;
+  height: 500px;
 }
 
 .carousel-item {
@@ -118,7 +118,9 @@ body {
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
 .card img {
-  width: 25%;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
   border-radius: 50%;
   margin: 0 auto;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
@@ -151,4 +153,10 @@ body {
   border-radius: 5px; /* Optional: Adds rounded corners to the border */
   background-color: var(--background);
   height: 60px;
+}
+
+@media screen and (max-width: 425px) {
+  .cool {
+    height: 300px;
+  }
 }
