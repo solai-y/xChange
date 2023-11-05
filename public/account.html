@@ -74,23 +74,36 @@
         </nav> 
         <script>
             const navbar = document.querySelector('.navbar');
-
-          // Add an event listener to the navbar when it shows
+    
+            // Add an event listener to the navbar when it shows
             navbar.addEventListener('show.bs.collapse', function () {
                 const dropdown = this.querySelector('.navbar-collapse');
                 if (dropdown) {
                     dropdown.classList.add('custom-dropdown-bg');
                 }
-            });  
-          // Remove the custom class when the dropdown is hidden
+                numOfLi = document.getElementsByClassName("nav-item");
+                if (numOfLi.length < 4) {
+                  let li  = document.createElement("li");
+                  let a = document.createElement("a");
+                  let liTn = document.createTextNode("Profile");
+                  li.appendChild(liTn);
+                  a.setAttribute("href", "./account.html")
+                  li.setAttribute("class", "nav-item");
+                  li.append(a);
+                  document.getElementById("navbarList").appendChild(li);
+                }
+                
+            });
+    
+            // Remove the custom class when the dropdown is hidden
             navbar.addEventListener('hide.bs.collapse', function () {
                 const dropdown = this.querySelector('.navbar-collapse');
                 if (dropdown) {
                     dropdown.classList.remove('custom-dropdown-bg');
                 }
             });
-
-        </script>
+    
+          </script>
 
         <!-- Bootstrap JS bundle to be placed before the closing </body> tag -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3/dist/js/bootstrap.bundle.min.js"></script>
