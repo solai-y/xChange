@@ -102,11 +102,9 @@
 
       </script>
     <!--End of Navbar-->
-    <Header>
-    </Header>
-    <main >
+    <main style="margin: 0px auto;">
         <div>
-            <button onclick="goback()">Go back</button>
+            <button onclick="goback()" style="margin: 8px 0px;">Back</button>
           </div>
           
         <div id="post-detail">
@@ -114,8 +112,8 @@
           </div>
           
           <form id="add-comment-form" data-parent-id="">
-            <textarea id="comment" rows="4" required></textarea>
-            <button type="button" onclick="handleAddCommentFormSubmit()">Add comment</button>
+            <textarea id="comment" rows="4" required placeholder="Add comments here:" style="border-style: solid;"></textarea>
+            <button type="button" onclick="handleAddCommentFormSubmit()" style="margin: 8px 0px;">Add comment</button>
           </form>
     
           <div id="comments-container">
