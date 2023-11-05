@@ -136,7 +136,6 @@ const searchCountryName = document.querySelector("[data-search-country-name]");
 searchUniName.addEventListener("input", (e) => {
     let uniSearchValue = e.target.value.toLowerCase();
     let unis = document.getElementsByClassName("uniName");
-    console.log(uniSearchValue, unis)
     // console.log(uniSearchValue);
     unis.forEach(uni => {
         let isVisible = user.name.toLowerCase().includes(uniSearchValue)
@@ -151,6 +150,39 @@ searchCountryName.addEventListener("input", (e) => {
         let isVisible = user.country.toLowerCase().includes(countrySearchValue)
         uni.element.classList.toggle("hide", !isVisible);
     });
+});
+
+
+const searchSuggestionUniName = document.getElementById("suggestionListUniName");
+const searchSuggestionCountryName = document.getElementById("suggestionListCountryName");
+
+searchUniName.addEventListener("input", function () {
+  const userInput = searchUniName.value.toLowerCase();
+
+  // Clear the suggestion list
+  searchSuggestionUniName.innerHTML = "";
+
+  // Filter and display suggestions based on user input
+  const filteredSuggestions = content.filter(user => {
+      return user.name.toLowerCase().includes(userInput);
+  });
+  console.log(filteredSuggestions);
+  if(filteredSuggestions.length == 0) {
+      const noResultsMessage = document.createElement("div");
+      noResultsMessage.textContent = "No results found";
+      searchSuggestionUniName.appendChild(noResultsMessage);
+  } else {
+      // Display the suggestions
+      filteredSuggestions.forEach(user => {
+          const suggestion = document.createElement("div");
+          suggestion.textContent = user.name + " (" + user.country + ")";
+          suggestion.addEventListener("click", function() {
+              searchUniName.value = user.name; // Set the input field value to the selected suggestion
+              searchSuggestionUniName.innerHTML = ""; // Clear the suggestion list
+          });
+          searchSuggestionUniName.appendChild(suggestion);
+      });
+  }
 });
 
 function fixJavansProblems() {

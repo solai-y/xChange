@@ -184,26 +184,13 @@ document.addEventListener("DOMContentLoaded", event => {
         var imageInput1 = document.getElementsByClassName("profilepicture")[0]; // processed below
 
         removeImageButton.addEventListener("click", function() {
-          const file = "./images/profile photo.jpeg";
-          if (file) {
-              // AWS params
-              const params = {
-                  Bucket: "xchange-users",
-                  Key: data.uid, // The unique key for the image might need to use UID here?
-                  Body: file
-              }
-              // send info to AWS
-              s3.upload(params, (err, data) => {
-                  // console.log("loading")
-                  if (err) {
-                      console.error('S3 upload error:', err);
-                  } else {
-                      // store the url in a hidden input field
-                      document.getElementById("imageInputUrl").value = data.Location
-                      // console.log('Image uploaded:', data.Location);
-                  }
-              });
-          }
+          userCollection.update({
+            image_url: "https://xchange-users.s3.amazonaws.com/profile+photo.jpeg"
+          })  
+          .then(function() {
+            document.getElementById("imageInput2").setAttribute("src", "./images/profile photo.jpeg");
+            document.getElementById("imageInput1").setAttribute("src", "./images/profile photo.jpeg");
+          })
         })
 
         document.addEventListener("keydown", function (e) {
