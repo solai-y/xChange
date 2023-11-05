@@ -356,34 +356,8 @@
     const imageInput = document.getElementById("imageInput");
     const profilepicture = document.getElementsByClassName("profilepicture")[0];
 
-    imageInput.addEventListener("change", function () {
-        const selectedFile = imageInput.files[0];
-
-        if (selectedFile) {
-            // Create a URL for the selected image and set it as the src of the profile image
-            const imageUrl = URL.createObjectURL(selectedFile);
-            profilepicture.src = imageUrl;
-        } else {
-            // If no file is selected or the selection is canceled, you can set a default image
-            profilepicture.src = "./images/profile photo.jpeg";
-        }
-    });
-
     const imageInput2 = document.getElementById("imageInput2");
     const profilepicture2 = document.getElementsByClassName("profilepicture2")[0];
-
-    imageInput.addEventListener("change", function () {
-        const selectedFile = imageInput.files[0];
-
-        if (selectedFile) {
-            // Create a URL for the selected image and set it as the src of the profile image
-            const imageUrl = URL.createObjectURL(selectedFile);
-            profilepicture2.src = imageUrl;
-        } else {
-            // If no file is selected or the selection is canceled, you can set a default image
-            profilepicture2.src = "./images/profile photo.jpeg";
-        }
-    });
 
     var changePassword = document.getElementById("resetPasswordButton");
 
