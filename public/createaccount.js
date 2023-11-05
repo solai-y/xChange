@@ -31,6 +31,9 @@ function eMessage(error){
         case "auth/clear":
             errorMessage = "Account successfully created.";
             break;
+        case "auth/too-many-requests":
+            errorMessage = "Account temporarily disabled. Please try again later.";
+            break;
         default:
           errorMessage = "Error";
       }

@@ -229,28 +229,28 @@ a {
 }
 
 /* Boxes css */
-.ag-courses_item {
+.chapter {
     margin: 0 15px 20px;
     overflow: hidden;
     border-radius: 28px;
 }
-.ag-courses-item_link {
+.link {
     display: block;
     padding: 30px 20px;
     background-color: #000000;
     overflow: hidden;
     position: relative;
 }
-.ag-courses-item_link:hover,
-.ag-courses-item_link:hover .ag-courses-item_date {
+.link:hover,
+.link:hover .ag-courses-item_date {
     text-decoration: none;
 }
-.ag-courses-item_link:hover .ag-courses-item_bg {
+.link:hover .bg {
     -webkit-transform: scale(10);
     -ms-transform: scale(10);
     transform: scale(10);
 }
-.ag-courses-item_title {
+.Title {
     height: 100px;
     margin: 0 0 25px;
     overflow: hidden;
@@ -262,7 +262,7 @@ a {
     position: relative;
 }
 
-.ag-courses-item_bg {
+.bg {
     height: 128px;
     width: 128px;
     background-color: var(--primary);
@@ -303,7 +303,7 @@ a {
 /* Parallax Scroling */
 .parallax {
     height: 100vh;
-    background-image: url("/images/White\ and\ Black\ Simple\ Lined\ White\ UI\ Blank\ Prototypes\ Website.png"); /* Replace with your image */
+    background-image: url("/images/background.png"); /* Replace with your image */
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
@@ -354,7 +354,7 @@ a {
 @keyframes fade-top {
     from {
         opacity: 0;
-        transform: translateY(-100%);
+        transform: translateY(-20%);
     }
     to {
         opacity: 1;
@@ -362,7 +362,7 @@ a {
     }
     0% {
         opacity: 0;
-        transform: translateY(-100%);
+        transform: translateY(-20%);
     }
     100% {
         opacity: 1;
@@ -389,7 +389,7 @@ a {
         opacity: 0;
         transform: translateY(100%);
     }
-    100% {
+    50% {
         opacity: 1;
         transform: translateY(0);
     }
