@@ -45,7 +45,7 @@ button {
 
 a {
   text-decoration: none !important;
-  color: var(--text) !important;
+  color: #fff !important;
 }
 
 #primaryButton {
