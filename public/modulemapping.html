@@ -34,44 +34,61 @@
   
 </head>
 <body>
-  <!-- BS navbar: start -->
-  <nav class="navbar navbar-expand-lg">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="./index.html"><img src="./images/logo.jpeg" class="logo" /></a>
-        <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="./university.html">Home</a>
-                </li>
+        <!-- BS navbar: start -->
+        <nav class="navbar navbar-expand-lg">
+          <div class="container-fluid">
+              <a class="navbar-brand" href="./index.html"><img src="./images/logo.jpeg" class="logo" /></a>
+              <button
+                  class="navbar-toggler"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#navbarSupportedContent"
+                  aria-controls="navbarSupportedContent"
+                  aria-expanded="false"
+                  aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                      <li class="nav-item">
+                          <a class="nav-link active" aria-current="page" href="./university.html">Home</a>
+                      </li>
 
-                <li class="nav-item">
-                    <a class="nav-link active" href="./forum.html">Forum</a>
-                </li>
-                <li class = "nav-item">
-                  <a class = "nav-link active" href="modulemapping.html">Module Mapping</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active d-flex d-lg-none" href="./account.html">Profile</a>
-                </li>
-            </ul>
-            <button type="button" class="signup">
-              <a href="login_page.html">Sign Up</a></button>
-            <button type="button" class="login">
-              <a href="login_page.html">Log In</a></button>
+                      <li class="nav-item">
+                          <a class="nav-link active" href="./forum.html">Forum</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link active " href="./modulemapping.html">Module Mapping</a>
+                      </li>
+                  </ul>
+                  <div class="navimage d-flex align-items-center" id="signUpLogInImage">
+                      <!-- <a href="./account.html" class="avatar rounded-circle text-white d-none d-lg-flex">
+                          <img id="userImage" class="profilepicture" alt="imageInput1" src="./images/profile photo.jpeg" />
+                      </a> -->
+                  </div>
+              </div>
           </div>
-        </div>
-      </nav>
-    <!---End of Navbar-->
+      </nav> 
+      <script>
+        const navbar = document.querySelector('.navbar');
+
+        // Add an event listener to the navbar when it shows
+        navbar.addEventListener('show.bs.collapse', function () {
+            const dropdown = this.querySelector('.navbar-collapse');
+            if (dropdown) {
+                dropdown.classList.add('custom-dropdown-bg');
+            }
+        });
+
+        // Remove the custom class when the dropdown is hidden
+        navbar.addEventListener('hide.bs.collapse', function () {
+            const dropdown = this.querySelector('.navbar-collapse');
+            if (dropdown) {
+                dropdown.classList.remove('custom-dropdown-bg');
+            }
+        });
+
+      </script>
     
     <div id="appVue">
       <!-- Basket Selection Section -->

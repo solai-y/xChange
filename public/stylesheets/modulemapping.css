@@ -258,3 +258,9 @@ a {
   padding-top: 25px;
   margin-top: 0px;
 }
+
+.profilepicture {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}

@@ -416,3 +416,9 @@ font-size: 2.5em;
 height: 20vh;
 text-align: center;
 }
+
+.profilepicture {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
