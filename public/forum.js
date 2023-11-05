@@ -40,15 +40,6 @@ function new_forum(event) {
   var user = sessionStorage.getItem("user");
   var userObject = JSON.parse(user);
   var uid = userObject.uid;
-  var storage = firebase.storage();
-  var storRef = storage.ref();
-  var getImg = document.getElementById("image").files[0];
-  var Uploadimg = storRef.put(getImg);
-  Uploadimg.on("state_changed", function (snapshot) {
-    // Progress monitoring (optional)
-    var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-    console.log("Upload is " + progress + "% done");
-  });
   docRef.get().then(function (querySnapshot) {
     querySnapshot.forEach(function (doc) {
       //getting the user UID in the USER DOCUMENT
@@ -85,11 +76,41 @@ function new_forum(event) {
             .set(data_to_insert)
             .then(() => {
               console.log("data is inside");
-              $("#add-post-modal").modal("hide");
-              location.reload();
-            });
+              var add_post = document.getElementById("add-post-modal");
+              add_post.style.display = "none";
+              var currentTime = new Date();
+              const formattedDate = currentTime.toLocaleDateString("en-Sg", {
+                day: "numeric",
+                month: "short",
+              });
+              const formattedTime = currentTime.toLocaleTimeString("en-Sg", {
+                hour: "2-digit",
+                minute: "2-digit",
+              });
+              var postElements = document.createElement("div");
+              const postContainer = document.getElementById("posts-container"); // Replace with the actual container element ID
+              postContainer.appendChild(postElements);
+              postElements.innerHTML = `
+              <div class="post-content" id = "${title}" onclick="goComment('${title}')">
+              <div class ="ellipsis" onmouseover="edit_forum('${title}')"><i class="fa-solid fa-ellipsis"></i></div>
+              <img src = "${image_url}" id= "userimage" "> ${first_name} 
+                <h2 id =forumName>#${title}</h2>
+                <p>${content}</p>
+                <div class = "post-details">
+                  <div class = "post-date-time">${formattedDate} ${formattedTime} </div>
+                  <div class =  "replies">0 replies </div>
+                </div>
+              </div>
+            
+            `;
+            
+
+            }
+            );
+
         });
       }
+      
     });
   });
 }
