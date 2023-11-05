@@ -219,18 +219,23 @@ searchUniName.addEventListener("input", function () {
     const filteredSuggestions = content.filter(user => {
         return user.name.toLowerCase().includes(userInput);
     });
-    console.log(filteredSuggestions);
 
-    // Display the suggestions
-    filteredSuggestions.forEach(user => {
-        const suggestion = document.createElement("div");
-        suggestion.textContent = user.name + " (" + user.country + ")";
-        suggestion.addEventListener("click", function() {
-            searchUniName.value = user.name; // Set the input field value to the selected suggestion
-            searchSuggestionUniName.innerHTML = ""; // Clear the suggestion list
+    if(filteredSuggestions.length == 0) {
+        const noResultsMessage = document.createElement("div");
+        noResultsMessage.textContent = "No results found";
+        searchSuggestionUniName.appendChild(noResultsMessage);
+    } else {
+        // Display the suggestions
+        filteredSuggestions.forEach(user => {
+            const suggestion = document.createElement("div");
+            suggestion.textContent = user.name + " (" + user.country + ")";
+            suggestion.addEventListener("click", function() {
+                searchUniName.value = user.name; // Set the input field value to the selected suggestion
+                searchSuggestionUniName.innerHTML = ""; // Clear the suggestion list
+            });
+            searchSuggestionUniName.appendChild(suggestion);
         });
-        searchSuggestionUniName.appendChild(suggestion);
-    });
+    }
 });
 
 searchCountryName.addEventListener("input", function () {
@@ -245,16 +250,22 @@ searchCountryName.addEventListener("input", function () {
     });
     console.log(filteredSuggestions);
 
-    // Display the suggestions
-    filteredSuggestions.forEach(user => {
-        const suggestion = document.createElement("div");
-        suggestion.textContent = user.name + " (" + user.country + ")";
-        suggestion.addEventListener("click", function() {
-            searchCountryName.value = user.name; // Set the input field value to the selected suggestion
-            searchSuggestionCountryName.innerHTML = ""; // Clear the suggestion list
+    // Display the suggestions or "No results found" message
+    if (filteredSuggestions.length === 0) {
+        const noResultsMessage = document.createElement("div");
+        noResultsMessage.textContent = "No results found";
+        searchSuggestionCountryName.appendChild(noResultsMessage);
+    } else {
+        filteredSuggestions.forEach(user => {
+            const suggestion = document.createElement("div");
+            suggestion.textContent = user.name + " (" + user.country + ")";
+            suggestion.addEventListener("click", function() {
+                searchCountryName.value = user.name; // Set the input field value to the selected suggestion
+                searchSuggestionCountryName.innerHTML = ""; // Clear the suggestion list
+            });
+            searchSuggestionCountryName.appendChild(suggestion);
         });
-        searchSuggestionCountryName.appendChild(suggestion);
-    });
+    }
 });
 
 document.addEventListener("click", function (event) {
