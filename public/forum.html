@@ -119,6 +119,29 @@
   <main>
       <div class = "posts-header">
           <h1>Posts</h1>
+          <div class="inputBox">
+            <input type="search" id="searchPost">
+            <span>Search for post</span>
+            <script>
+              document.getElementById("searchPost").addEventListener("input", function() {
+                const input = this.value.toLowerCase(); // Get the input value in lowercase
+                const postContents = document.getElementsByClassName("post-content");
+  
+                for (let i = 0; i < postContents.length; i++) {
+                    const postContent = postContents[i];
+                    const postId = postContent.id.toLowerCase(); // Get the ID of the element in lowercase
+  
+                    // Check if the ID matches the input value
+                    if (postId.includes(input)) {
+                        postContent.style.display = "block"; // Show the matching element
+                    } else {
+                        postContent.style.display = "none"; // Hide the non-matching element
+                    }
+                }
+              })
+              
+            </script>
+          </div>
           <select id="filter-select">
             <option value="all" selected>All</option>
             <option value="Recent">Recent</option>
