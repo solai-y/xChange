@@ -85,8 +85,42 @@
               </div>
           </div>
       </nav> 
+
+
+      
       <script>
- 
+        const navbar = document.querySelector('.navbar');
+
+        // Add an event listener to the navbar when it shows
+        navbar.addEventListener('show.bs.collapse', function () {
+            const dropdown = this.querySelector('.navbar-collapse');
+            if (dropdown) {
+                dropdown.classList.add('custom-dropdown-bg');
+            }
+            numOfLi = document.getElementsByClassName("nav-item");
+            if (numOfLi.length < 4) {
+              let li  = document.createElement("li");
+              let a = document.createElement("a");
+              let liTn = document.createTextNode("Profile");
+              a.appendChild(liTn);
+              a.setAttribute("href", "./account.html")
+              li.setAttribute("class", "nav-item");
+              li.appendChild(a);
+              a.style.color = "black";
+              document.getElementById("navbarList").appendChild(li);
+            }
+            
+        });
+
+        // Remove the custom class when the dropdown is hidden
+        navbar.addEventListener('hide.bs.collapse', function () {
+            const dropdown = this.querySelector('.navbar-collapse');
+            if (dropdown) {
+                dropdown.classList.remove('custom-dropdown-bg');
+            }
+        });
+
+      </script>
 
 
 

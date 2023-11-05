@@ -76,7 +76,7 @@
                   <span class="navbar-toggler-icon"></span>
               </button>
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                  <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="navbarList">
                       <li class="nav-item">
                           <a class="nav-link active" aria-current="page" href="./university.html">Home</a>
                       </li>
@@ -110,10 +110,11 @@
               let li  = document.createElement("li");
               let a = document.createElement("a");
               let liTn = document.createTextNode("Profile");
-              li.appendChild(liTn);
+              a.appendChild(liTn);
               a.setAttribute("href", "./account.html")
               li.setAttribute("class", "nav-item");
-              li.append(a);
+              li.appendChild(a);
+              a.style.color = "black";
               document.getElementById("navbarList").appendChild(li);
             }
             
@@ -387,11 +388,6 @@ if(data == ""){
   document.getElementById("logout_footer").hidden= false;
   document.getElementById("register_footer").hidden= true;
 }
-
-console.log(data);
-var emailadd = data.email;
-var emailInput = document.getElementById("email");
-emailInput.value = emailadd;
 
 </script>
 
