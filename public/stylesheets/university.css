@@ -241,9 +241,11 @@ a {
   border-radius: 50%;
 }
 
-.footer1 {
-  padding-left: 0px;
-  padding-right: 0px;
+.footer  {
+  background-color: var(--secondary);
+  width: 100%;
+  padding-top: 25px;
+  margin-top: 0px;
 }
 
 .navbar {
