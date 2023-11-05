@@ -165,7 +165,7 @@ document.addEventListener("DOMContentLoaded", event => {
                 }, 3000); // Hide after 3 seconds (adjust as needed)
                 console.log("Document successfully updated!");
                 // Optionally, you can redirect or show a success message
-                    
+                
                 })
                 .catch(function(error) {
                     console.error("Error updating document: ", error);
@@ -186,26 +186,27 @@ document.addEventListener("DOMContentLoaded", event => {
         var imageInput1 = document.getElementsByClassName("profilepicture")[0]; // processed below
 
         removeImageButton.addEventListener("click", function() {
-                // Set the image URL in the database to the default URL
-                userCollection.update({
-                    image_url: "" // Update this URL to your default image
-                })
-                .then(function() {
-                    // Update the image element to display the default image
-                    if (imageInput2) {
-                        imageInput2.src = "./images/profile photo.jpeg";
-                    }
-                    if (imageInput1) {
-                        imageInput1.src = "./images/profile photo.jpeg";
-                    }
-                    console.log("Profile photo removed and database updated!");
-                })
-                .catch(function(error) {
-                    console.error("Error updating document: ", error);
-                    // Handle the error, e.g., show an error message
-                });
-            
-        });
+          const file = "./images/profile photo.jpeg";
+          if (file) {
+              // AWS params
+              const params = {
+                  Bucket: "xchange-users",
+                  Key: data.uid, // The unique key for the image might need to use UID here?
+                  Body: file
+              }
+              // send info to AWS
+              s3.upload(params, (err, data) => {
+                  // console.log("loading")
+                  if (err) {
+                      console.error('S3 upload error:', err);
+                  } else {
+                      // store the url in a hidden input field
+                      document.getElementById("imageInputUrl").value = data.Location
+                      // console.log('Image uploaded:', data.Location);
+                  }
+              });
+          }
+        })
 
         document.addEventListener("keydown", function (e) {
           if (e.key === "Enter") {
@@ -283,6 +284,7 @@ function fixJavansProblems() {
       anchor.setAttribute('href', './account.html');
       anchor.setAttribute('class', 'avatar rounded-circle text-white d-none d-lg-flex');
       imgTag.setAttribute('class','profilepicture');
+      imgTag.setAttribute('id', "imageInput1");
       //connect to a data source in firebase
       var userCollection = db.collection("Users").doc(userData.uid);
       userCollection.get().then(function (doc) {
