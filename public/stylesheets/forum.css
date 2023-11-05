@@ -132,33 +132,34 @@ option {
 
 
 button {
-  background-color:gray;
-  padding: 8px 12px;
-  border-radius: 8px;
-  border: 0;
-  color: var(--secondary);
-  font-weight: 600;
-  text-transform: uppercase;
-  font-size: var(--font-small);
-  cursor: pointer;
-  transition: background-color 300ms ease-in-out;
-}
-button:hover {
-  background-color: rgb(80, 88, 80);
-}
-a {
-  color: green;
-  text-decoration: none;
-  font-weight: 600;
-  transition: color 300ms ease-in-out;
+  position: relative;
+  border-radius: 20px;
+  border: 1px solid #4bb6bf;
+  background-color: #4bb6b7;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700px;
+  margin: 10px;
+  padding: 12px 80px;
+  letter-spacing: 1px;
+  text-transform: capitalize;
+  transition: 0.3s ease-in-out;
+ 
 }
 
-a:hover {
-  color: green;
+button:hover {
+  letter-spacing: 3px;
 }
-p{ 
-  padding:20px
+
+button:active {
+  transform: scale(0.95)
 }
+
+button:focus {
+  outline: none;
+}
+
+
 
 textarea {
   resize: none;

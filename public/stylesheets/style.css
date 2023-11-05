@@ -444,6 +444,8 @@ div .col-4 {
 
 /* Navbar styling */
 .navbar {
+    border-bottom: 2px solid var(--secondary);
+    border-radius: 5px;
     background-color: var(--background);
     height: 60px;
 }
