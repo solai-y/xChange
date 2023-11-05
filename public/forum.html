@@ -106,10 +106,11 @@
               let li  = document.createElement("li");
               let a = document.createElement("a");
               let liTn = document.createTextNode("Profile");
-              li.appendChild(liTn);
+              a.appendChild(liTn);
               a.setAttribute("href", "./account.html")
               li.setAttribute("class", "nav-item");
-              li.append(a);
+              li.appendChild(a);
+              a.style.color = "black";
               document.getElementById("navbarList").appendChild(li);
             }
             
