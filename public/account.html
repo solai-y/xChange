@@ -302,11 +302,14 @@
                         <div class="col-md-3">
                             <h6>Account</h6>
                             <ul class="footer-links">
-                                <li>
+                                <li id="login_footer">
                                     <a href="./login_page.html"><label>Log In</label></a>
                                 </li>
                                 <li>
                                     <a href="./login_page.html"><label>Register</label></a>
+                                </li>
+                                <li id="logout_footer">
+                                    <a href="./login_page.html"><label>Log Out</label></a>
                                 </li>
                             </ul>
                         </div>
@@ -330,7 +333,16 @@
 </html>
 
 <script>
-    var data = JSON.parse(sessionStorage.getItem("user"));
+    var data = ""
+    data = JSON.parse(sessionStorage.getItem("user"));
+    if(data = ""){
+        document.getElementById("login_footer").hidden= false;
+        document.getElementById("logout_footer").hidden= true;
+    }else{
+        document.getElementById("login_footer").hidden= true;
+        document.getElementById("logout_footer").hidden= false;
+    }
+
     console.log(data);
     var emailadd = data.email;
     var emailInput = document.getElementById("email");
