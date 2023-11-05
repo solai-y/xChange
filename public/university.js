@@ -1,7 +1,4 @@
 
-
-
-
 // for search bar
 var content = [];
 
@@ -193,18 +190,18 @@ const searchCountryName = document.querySelector("[data-search-country-name]");
 
 searchUniName.addEventListener("input", (e) => {
     let uniSearchValue = e.target.value.toLowerCase();
-    // console.log(uniSearchValue);
+    let countrySearchValue = searchCountryName.value.toLowerCase(); // Get the country search value
     content.forEach(user => {
-        let isVisible = user.name.toLowerCase().includes(uniSearchValue)
-        user.element.classList.toggle("hide", !isVisible);
-    });
-});
-searchCountryName.addEventListener("input", (e) => {
-    let countrySearchValue = e.target.value.toLowerCase();
-    // console.log(uniSearchValue);
-    content.forEach(user => {
-        let isVisible = user.country.toLowerCase().includes(countrySearchValue)
+        let isVisible = user.name.toLowerCase().includes(uniSearchValue) && user.country.toLowerCase().includes(countrySearchValue);
         user.element.classList.toggle("hide", !isVisible);
     });
 });
 
+searchCountryName.addEventListener("input", (e) => {
+    let countrySearchValue = e.target.value.toLowerCase();
+    let uniSearchValue = searchUniName.value.toLowerCase(); // Get the university search value
+    content.forEach(user => {
+        let isVisible = user.name.toLowerCase().includes(uniSearchValue) && user.country.toLowerCase().includes(countrySearchValue);
+        user.element.classList.toggle("hide", !isVisible);
+    });
+});
