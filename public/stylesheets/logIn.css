@@ -10,9 +10,18 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: 'Quicksand', sans-serif;
+    color: black;
     overflow: hidden;
     height: 100vh;
+}
+
+.form-control {
+    font-family: 'Quicksand', sans-serif;
+}   
+
+::placeholder {
+    font-family: 'Quicksand', sans-serif;
 }
 
 h1 {
@@ -20,6 +29,7 @@ h1 {
     letter-spacing: -1.5px;
     margin: 0;
     margin-bottom: 15px;
+    color: black;
 }
 
 h1.title {
@@ -36,7 +46,15 @@ p {
     line-height: 20px;
     letter-spacing: 0.5px;
     margin: 20 px 0 30px;
-    text-shadow: 0 0 10px rgba(16, 64, 74, 0.5);
+    
+    
+    -webkit-text-stroke: 1px white;
+   color: black;
+   text-shadow:
+     -1px -1px 0 #000,  
+      1px -1px 0 #000,
+      -1px 1px 0 #000,
+       1px 1px 0 #000;
 }
 
 span {
@@ -148,6 +166,7 @@ form {
     padding: 0 50px;
     height: 100%;
     text-align: center;
+    font-family:  'Quicksand', sans-serif;
 }
 
 input {
