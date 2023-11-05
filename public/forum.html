@@ -101,6 +101,18 @@
             if (dropdown) {
                 dropdown.classList.add('custom-dropdown-bg');
             }
+            numOfLi = document.getElementsByClassName("nav-item");
+            if (numOfLi.length < 4) {
+              let li  = document.createElement("li");
+              let a = document.createElement("a");
+              let liTn = document.createTextNode("Profile");
+              li.appendChild(liTn);
+              a.setAttribute("href", "./account.html")
+              li.setAttribute("class", "nav-item");
+              li.append(a);
+              document.getElementById("navbarList").appendChild(li);
+            }
+            
         });
 
         // Remove the custom class when the dropdown is hidden
@@ -262,8 +274,8 @@
               <h6>Quick Links</h6>
               <ul class="footer-links">
                 <li><a href="./university.html"><label>Home</label></a></li>
-                <li><a href="./individualunipage.html"><label>Universities</label></a></li>
                 <li><a href="./forum.html"><label>Forum</label></a></li>
+                <li><a href="./modulemapping.html"><label>Module Mapping</label></a></li>
                 <li><a href="./account.html"><label>Profile</label></a></li>
               </ul>
             </div>
@@ -271,10 +283,17 @@
             <div class="col-md-3">
               <h6>Account</h6>
               <ul class="footer-links">
-                <li><a href="./login_page.html"><label>Log In</label></a></li>
-                <li><a href="./login_page.html"><label>Register</label></a></li>
+                  <li id="login_footer">
+                      <a href="./login_page.html"><label>Log In</label></a>
+                  </li>
+                  <li id="register_footer">
+                      <a href="./login_page.html"><label>Register</label></a>
+                  </li>
+                  <li id="logout_footer">
+                      <a onclick="logout()"><label>Log Out</label></a>
+                  </li>
               </ul>
-            </div>
+          </div>
           </div>
         </div>
 
@@ -288,7 +307,22 @@
             </div>
           </div>
         </div>
-      </footer>   
+      </footer>
+      
+      <script>
+            var data = ""
+
+            data = JSON.parse(sessionStorage.getItem("user"));
+            if(data == ""){
+                document.getElementById("login_footer").hidden= false;
+                document.getElementById("logout_footer").hidden= true;
+                document.getElementById("register_footer").hidden= false;
+            }else{
+                document.getElementById("login_footer").hidden= true;
+                document.getElementById("logout_footer").hidden= false;
+                document.getElementById("register_footer").hidden= true;
+            }
+      </script>
 
 
   </main>
