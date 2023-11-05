@@ -467,7 +467,8 @@ div .col-4 {
 }
 
 .custom-dropdown-bg {
-    background-color: var(--background); /* Replace with your desired background color */
+    background-color: var(--background); 
+    z-index: 2;/* Replace with your desired background color */
 }
 
 
