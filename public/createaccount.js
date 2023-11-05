@@ -23,7 +23,10 @@ registerSubmitButton.addEventListener("click", (e) => {
         // function that runs when the data successfully added to the database
         registerForm.reset()
 
-    });
+    }).catch((error) => {
+        var errorCode = error.code;
+        var errorMessage = error.message;
+      });
 });
 
 
