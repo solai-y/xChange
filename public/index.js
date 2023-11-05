@@ -128,33 +128,35 @@ document.addEventListener("DOMContentLoaded", function() {
     function createCard(link, name, country, imageUrl) {
         const listItem = document.createElement('li'); // Create a list item for the card
         listItem.classList.add('card'); // Add appropriate classes for styling
-
+    
+        const cardContent = document.createElement('div');
+        cardContent.classList.add('card-content');
+    
         const redirection = document.createElement('a');
         redirection.href = `./individualunipage.html?uni=${link}`;
-
+    
         const cardImage = document.createElement('img');
         cardImage.src = imageUrl;
         cardImage.alt = `${name} Image`;
-
-        const cardContent = document.createElement('div');
-        cardContent.classList.add('card-content');
-
+    
         const cardTitle = document.createElement('h2');
         cardTitle.textContent = name;
-
+    
         const cardCountry = document.createElement('p');
         cardCountry.textContent = country;
-
+    
+        redirection.appendChild(cardImage); // Wrap the image with the anchor tag
+    
         cardContent.appendChild(cardTitle);
         cardContent.appendChild(cardCountry);
-        
-        listItem.appendChild(cardImage);
+    
+        listItem.appendChild(redirection); // Add the anchor tag to the list item
         listItem.appendChild(cardContent);
-        listItem.appendChild(redirection);
-
-       
+    
         return listItem;
     }
+    
+    
 
     function populateList(querySnapshot) {
         querySnapshot.forEach((doc) => {

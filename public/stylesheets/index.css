@@ -118,12 +118,7 @@ a {
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Add a box shadow on hover */
 }
 
-.card img {
-    width: 100%; /* Set the image width to 100% of the card's width */
-    height: 100%; /* Set the image height to 100% of the card's height */
-    object-fit: cover; /* Ensure the image covers the entire card, cropping as needed */
-    object-position: center; /* Center the image within the card */
-}
+
 
 .card .card-content {
     position: absolute; /* Position the content absolutely inside the card */
@@ -135,6 +130,26 @@ a {
     z-index: 1; /* Ensure the content is above the image */
     text-align: center;
 }
+
+.card {
+    width: 300px; /* Set the width of the card as needed */
+    height: 200px; /* Set the height of the card as needed */
+    border: 1px solid #ccc; /* Add borders or other styles as desired */
+    overflow: hidden; /* Hide any content that might overflow */
+}
+
+.card a {
+    display: block;
+    width: 100%; /* Make the anchor tag the same width as the card */
+    height: 100%; /* Make the anchor tag the same height as the card */
+}
+
+.card img {
+    width: 100%; /* Set the image's width to 100% of the anchor tag's width */
+    height: 100%; /* Set the image's height to 100% of the anchor tag's height */
+    object-fit: cover; /* Resize the image to cover the entire container */
+}
+
   
 
 h2 {
