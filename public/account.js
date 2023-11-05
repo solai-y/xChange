@@ -206,7 +206,6 @@ document.addEventListener("DOMContentLoaded", event => {
                 });
             
         });
-        console.log(imageInput1.src);
 
         document.addEventListener("keydown", function (e) {
           if (e.key === "Enter") {

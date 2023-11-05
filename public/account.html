@@ -334,8 +334,9 @@
 
 <script>
     var data = ""
+
     data = JSON.parse(sessionStorage.getItem("user"));
-    if(data = ""){
+    if(data == ""){
         document.getElementById("login_footer").hidden= false;
         document.getElementById("logout_footer").hidden= true;
         document.getElementById("register_footer").hidden= false;
@@ -350,18 +351,7 @@
     var emailInput = document.getElementById("email");
     emailInput.value = emailadd;
 
-    document.addEventListener("DOMContentLoaded", function () {
-        const passwordInput = document.getElementById("password");
-        const toggleButton = document.getElementById("togglePassword");
 
-        toggleButton.addEventListener("click", function () {
-            if (passwordInput.type === "password") {
-                passwordInput.type = "text";
-            } else {
-                passwordInput.type = "password";
-            }
-        });
-    });
 
     // JavaScript to handle image selection and update
     const imageInput = document.getElementById("imageInput");
