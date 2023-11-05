@@ -45,7 +45,6 @@ button {
 
 a {
   text-decoration: none !important;
-  color: #fff !important;
 }
 
 #primaryButton {
@@ -255,8 +254,9 @@ a {
 .footer {
   background-color: var(--secondary);
   width: 100%;
-  padding-top: 25px;
+  padding-top: 50px;
   margin-top: 0px;
+  height: 60vh;
 }
 
 .profilepicture {
