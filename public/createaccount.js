@@ -28,6 +28,9 @@ function eMessage(error){
         case "auth/missing-name":
             errorMessage = "Name is empty.";
             break;
+        case "auth/clear":
+            errorMessage = "Account successfully created.";
+            break;
         default:
           errorMessage = "Error";
       }
@@ -42,7 +45,11 @@ function errorDisplay(errorMessage, errorField){
     let tnP = document.createTextNode(errorMessage);
     newP.appendChild(tnP);
     newP.style.fontSize = "12px";
-    newP.style.color = "red";
+    if(errorMessage == "Account successfully created."){
+        newP.style.color = "green";
+    }else{
+        newP.style.color = "red";
+    }
     if(oldP == ""){
         document.getElementById(errorField).appendChild(newP);
 
@@ -92,6 +99,9 @@ registerSubmitButton.addEventListener("click", (e) => {
         }).then(() => {
             // function that runs when the data successfully added to the database
             registerForm.reset()
+            errorMessage = eMessage("auth/clear");
+            errorDisplay(errorMessage, "errorFieldR");
+
         }).catch((error) => {
             var errorCode = error.code;
             var error = error.message;
