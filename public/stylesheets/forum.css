@@ -1,16 +1,15 @@
 /*header*/
 header {
   text-align: center;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: 'Quicksand', sans-serif;
   font-style: italic;
   border-bottom: solid;
 }
 body {
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Quicksand', sans-serif;
   font-size: var(--font-reg);
   line-height: 1.5;
   background-color: var(--background);
- 
 }
 
 main {
@@ -35,6 +34,7 @@ select {
   border-radius: 0.25em;
   box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.2);
   cursor: pointer;
+  margin-bottom: 10px;
   /* Remove IE arrow */
   &::-ms-expand {
     display: none;
@@ -48,6 +48,11 @@ select {
     color: inherit;
     background-color: var(--option-bg);
   }
+}
+
+#filter-select{
+  margin-bottom: 10px;
+  text-align: center;
 }
 
 button {

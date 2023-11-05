@@ -115,7 +115,7 @@ function showing_post() {
       });
       postElements.innerHTML = `
         <div class="post-content" id = "${forum_name}" onclick="goComment('${forum_name}')">
-        <div class ="ellipsis" onmouseover="edit_forum('${forum_name}')"><i class="fa-solid fa-ellipsis"></i>,</div>
+        <div class ="ellipsis" onmouseover="edit_forum('${forum_name}')"><i class="fa-solid fa-ellipsis"></i></div>
         <img src = "${data.picture}" id= "userimage" "> ${data.user} 
           <h2 id =forumName>#${forum_name}</h2>
           <p>${data.description}</p>
@@ -159,7 +159,7 @@ function showing_post() {
           });
           postElements.innerHTML = `
         <div class="post-content" id = "${forum_name}" onclick="goComment('${forum_name}')">
-        <div class ="ellipsis" onmouseover="edit_forum('${forum_name}')"> ><i class="fa-solid fa-ellipsis"></i>,</div>
+        <div class ="ellipsis" onmouseover="edit_forum('${forum_name}')"><i class="fa-solid fa-ellipsis"></i></div>
         <img src = "${data.picture}" id= "userimage" "> ${data.user}
           <h2 id =forumName>#${forum_name}</h2>
           <p>${data.description}</p>
@@ -205,7 +205,7 @@ function showing_post() {
 
           postElements.innerHTML = `
         <div class="post-content"id = "${forum_name}"  onclick="goComment('${forum_name}')">
-        <div class ="ellipsis" onmouseover="edit_forum('${forum_name}')">><i class="fa-solid fa-ellipsis"></i>,</div>
+        <div class ="ellipsis" onmouseover="edit_forum('${forum_name}')"><i class="fa-solid fa-ellipsis"></i></div>
           <img src="${data.picture}" id="userimage"> ${data.user} 
           <h2 id="forumName">#${forum_name}</h2>
           <p>${data.description}</p>
@@ -243,7 +243,7 @@ function showing_post() {
             });
             postElements.innerHTML = `
           <div class="post-content" id = "${forum_name}" onclick="goComment('${forum_name}')">
-          <div class ="ellipsis" onmouseover="edit_forum('${forum_name}')">><i class="fa-solid fa-ellipsis"></i>,</div>
+          <div class ="ellipsis" onmouseover="edit_forum('${forum_name}')"><i class="fa-solid fa-ellipsis"></i></div>
           <img src = "${data.picture}" id= "userimage" "> ${data.user} 
             <h2 id =forumName>#${forum_name}</h2>
             <p>${data.description}</p>
