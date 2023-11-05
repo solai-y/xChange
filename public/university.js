@@ -256,3 +256,23 @@ searchCountryName.addEventListener("input", function () {
         searchSuggestionCountryName.appendChild(suggestion);
     });
 });
+
+document.addEventListener("click", function (event) {
+    const isClickInsideSearchBar = searchUniName.contains(event.target);
+    const isClickInsideSuggestionDiv = searchSuggestionUniName.contains(event.target);
+  
+    if (!isClickInsideSearchBar && !isClickInsideSuggestionDiv) {
+      // Clicked outside both search bar and suggestion div, so hide the suggestion div
+      searchSuggestionUniName.innerHTML = "";
+    }
+  });
+
+  document.addEventListener("click", function (event) {
+    const isClickInsideSearchBarC = searchCountryName.contains(event.target);
+    const isClickInsideSuggestionDivC = searchSuggestionCountryName.contains(event.target);
+  
+    if (!isClickInsideSearchBarC && !isClickInsideSuggestionDivC) {
+      // Clicked outside both search bar and suggestion div, so hide the suggestion div
+      searchSuggestionCountryName.innerHTML = "";
+    }
+  });
