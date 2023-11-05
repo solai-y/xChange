@@ -296,3 +296,7 @@ a {
   max-width: 100%; /* Ensure the logo doesn't exceed its container's width */
   display: block; /* Make the image a block-level element to control its sizing */
 }
+
+h1 {
+  font-family: 'Quicksand', sans-serif !important;
+}

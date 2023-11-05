@@ -56,7 +56,7 @@ html, body {
 #exploreInner p {
     color: var(--primary);
     font-size: 50px;
-    font-family: var(--font);
+    font-family: 'Quicksand', sans-serif;
 }
 .carousel img {
     height: 70vh;
@@ -86,7 +86,7 @@ html, body {
     transform: translate(-50%, -50%); /* Center the content element */
     background: rgba(255, 255, 255, 0.8); /* Semi-transparent white background for text */
     padding: 20px;
-    font-family: Montserrat, sans-serif;
+    font-family: 'Quicksand', sans-serif;
     font-size: 30px;
     max-width: 80%;
     color: #4ecca3;
@@ -289,6 +289,7 @@ a {
     width: 100%;
     padding-top: 25px;
     margin-top: 0px;
+    font-family: 'Quicksand', sans-serif;
 }
     
 .footer-links label {
@@ -444,4 +445,24 @@ text-align: center;
     height: auto; /* Allow the height to adjust to maintain the aspect ratio */
     max-width: 100%; /* Ensure the logo doesn't exceed its container's width */
     display: block; /* Make the image a block-level element to control its sizing */
+}
+
+p {
+    font-family: 'Quicksand', sans-serif;
+}
+
+h4 {
+    font-family: 'Quicksand', sans-serif;
+}
+
+h5 {
+    font-family: 'Quicksand', sans-serif;
+}
+
+label {
+    font-family: 'Quicksand', sans-serif;
+}
+
+h2 {
+    font-family: 'Quicksand', sans-serif;
 }

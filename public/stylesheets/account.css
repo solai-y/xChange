@@ -284,7 +284,7 @@ main, .container {
 
 
 
-.header-photo {
+#header-photo {
   width: 70px; /* Set the desired width for the logo */
   height: auto; /* Allow the height to adjust to maintain the aspect ratio */
   max-width: 100%; /* Ensure the logo doesn't exceed its container's width */

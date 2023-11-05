@@ -516,3 +516,49 @@ img {
   padding-left: 0px;
   width: auto;
 }
+
+#header-photo {
+  width: 70px; /* Set the desired width for the logo */
+  height: auto; /* Allow the height to adjust to maintain the aspect ratio */
+  max-width: 100%; /* Ensure the logo doesn't exceed its container's width */
+  display: block; /* Make the image a block-level element to control its sizing */
+}
+
+p {
+  font-family: 'Quicksand', sans-serif;
+}
+
+h4 {
+  font-family: 'Quicksand', sans-serif;
+}
+
+h5 {
+  font-family: 'Quicksand', sans-serif;
+}
+
+label {
+  font-family: 'Quicksand', sans-serif;
+}
+
+h2 {
+  font-family: 'Quicksand', sans-serif;
+}
+
+/* Footer css*/
+.footer  {
+  background-color: var(--secondary);
+  width: 100%;
+  padding-top: 25px;
+  margin-top: 0px;
+  font-family: 'Quicksand', sans-serif;
+}
+  
+.footer-links label {
+  color: var(--text);
+  cursor: pointer;
+}
+  
+.socials label {
+  color: var(--text);
+  cursor: pointer;
+}
