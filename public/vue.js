@@ -54,7 +54,9 @@ const app = createApp({
       popup.style.display = "block";
     },
     universityURL(){
-      return "https://www.google.com/maps/embed/v1/search?key={API-KEY}&q="+ this.universityVue + "&zoom=15&maptype=satellite";
+
+      var api_key = "AIzaSyALAMytvRCzbd_txEXw0QQwJh0GzSINQt0";
+      return "https://www.google.com/maps/embed/v1/search?key=" + api_key + "&q="+ this.universityVue + " " + this.country + "&zoom=15&maptype=satellite";
     },
 
     closePopup: function () {
@@ -213,6 +215,7 @@ const app = createApp({
             this.reviewVue = info.review;
             this.docIdVue = docId;
             this.bgImage = info.gallery[0];
+            this.country = info.country;
             document.getElementById("universityHome").style.backgroundImage=`url(${this.bgImage})`
           })
           .catch(function (error) {
