@@ -19,9 +19,6 @@ function eMessage(error){
         case "auth/email-already-in-use":
           errorMessage = "Email is already in use.";
           break;
-        case "auth/password-not-matching":
-          errorMessage = "Password is not matching.";
-          break;
         case "auth/missing-all-fields":
             errorMessage = "All fields are empty.";
             break;
@@ -72,7 +69,6 @@ registerSubmitButton.addEventListener("click", (e) => {
     let name = document.getElementById("name").value;
     let email = document.getElementById("email").value;
     let password = document.getElementById("password").value;
-    let confirmpassword = document.getElementById("confirmpassword").value;
     if (typeof auth === "undefined") {
         auth = firebase.auth();
     }
@@ -80,16 +76,12 @@ registerSubmitButton.addEventListener("click", (e) => {
 
 
     // checks if the password and confirm password matches
-    if(name=="" && email=="" && password=="" && confirmpassword==""){
-        errorMessage = eMessage("auth/missing-all-fields");
+    if(name=="" && email=="" && password==""){
+        let errorMessage = eMessage("auth/missing-all-fields");
         errorDisplay(errorMessage, "errorFieldR");
     }
     else if(name==""){
-        errorMessage = eMessage("auth/missing-name");
-        errorDisplay(errorMessage, "errorFieldR");
-    }
-    else if(password != confirmpassword){
-        errorMessage = eMessage("auth/password-not-matching");
+        let errorMessage = eMessage("auth/missing-name");
         errorDisplay(errorMessage, "errorFieldR");
     }
     else{
