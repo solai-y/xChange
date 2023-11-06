@@ -347,7 +347,7 @@ function fixJavansProblems() {
       var userCollection = db.collection("Users").doc(userData.uid);
       userCollection.get().then(function (doc) {
           let reviewData = doc.data()
-          if (reviewData.image_url) {
+          if (reviewData && reviewData.image_url) {
               imgTag.src = reviewData.image_url
           } else {
               imgTag.src = './images/profile photo.jpeg';
