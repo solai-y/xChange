@@ -352,7 +352,7 @@
     var data = ""
 
     data = JSON.parse(sessionStorage.getItem("user"));
-    if(data == ""){
+    if(data==null){
         document.getElementById("login_footer").hidden= false;
         document.getElementById("logout_footer").hidden= true;
         document.getElementById("register_footer").hidden= false;
