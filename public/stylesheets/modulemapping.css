@@ -16,6 +16,7 @@ body {
 */
 body {
   font-family: 'Quicksand', sans-serif;
+  background-color: var(--background);
 }
 
 button {
