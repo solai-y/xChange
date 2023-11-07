@@ -140,7 +140,7 @@
                     <div>
                         <h3 id="headerName"></h3>
                         <input type="file" id="imageInput" />
-                        <input type="text" id="imageInputUrl" style="display: none" />
+                        <input type="" id="imageInputUrl" style="display: none" />
                         <label class="btn btn-secondary" for="imageInput" id="imageInputLabel">Edit Profile Picture</label>
                         <button class="btn btn-primary" id="removeImage">Remove</button>
                     </div>
@@ -162,7 +162,7 @@
                     <div class="col-md-6">
                         <div class="inputBox">
                             <label class="form-label" for="first_name">Name</label>
-                            <input type="text" class="form-control" id="first_name" name="first_name" />
+                            <input type="text" class="form-control" id="first_name" name="first_name" required />
                         </div>
                     </div>
                 </div>
@@ -223,6 +223,7 @@
                 </div>
 
                 <div id="notification" style="display: none" class="notification">Changes have been saved!</div>
+                <div id="errorNotification" style="display: none" class="notification">Error! Missing fields!</div>
                 <div id="notificationForPassword" style="display: none" class="notification">
                     An email has been sent to you to reset your password!
                 </div>

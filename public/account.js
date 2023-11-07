@@ -145,6 +145,29 @@ document.addEventListener("DOMContentLoaded", event => {
             saveButton.addEventListener("click", function(e){
               e.preventDefault();
 
+                // Get input values
+              var name = document.getElementById("first_name").value;
+              var phoneNumber = document.getElementById("phone_number").value;
+              var primaryDegree = document.getElementById("primary_degree").value;
+              var secondaryDegree = document.getElementById("secondary_degree").value;
+              var imageUrl = document.getElementById("imageInputUrl").value;
+              var email = document.getElementById("email").value;
+
+              // Check if required fields are empty
+              if (!name || !email || !primaryDegree) {
+                // Display an error message
+                var errorNotification = document.getElementById("errorNotification");
+                errorNotification.style.display = "block";
+
+                // Optionally, you can hide the error message after a few seconds
+                setTimeout(function() {
+                  errorNotification.style.display = "none";
+                }, 3000); // Hide after 3 seconds (adjust as needed)
+
+                // Exit the function and prevent the document update
+                return;
+              }
+
               userCollection.update({
                 name : document.getElementById("first_name").value,
                 phone_number : document.getElementById("phone_number").value,
