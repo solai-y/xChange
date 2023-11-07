@@ -18,3 +18,8 @@ Account 2:
 Account 3 (has user image):
   Email: johnD@gmail.com
   Password: pass123
+  
+To run locally 
+  Use "firebase serve" on the public folder 
+  if you do not have the firebase commands, you have to install:
+    npm install -g firebase-tools
