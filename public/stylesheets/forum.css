@@ -562,3 +562,7 @@ h2 {
   color: var(--text);
   cursor: pointer;
 }
+
+#logout_header{
+  cursor: pointer;
+}

@@ -20,6 +20,7 @@ html, body {
     border-radius: 5px; /* Optional: Adds rounded corners to the border */
     background-color: var(--background);
     height: 60px;
+    font-family: 'Quicksand', sans-serif;
   }
 
 .navbar:hover {
@@ -460,4 +461,8 @@ label {
 
 h2 {
     font-family: 'Quicksand', sans-serif;
+}
+
+#logout_header{
+    cursor: pointer;
 }

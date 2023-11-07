@@ -300,3 +300,7 @@ a {
 h1 {
   font-family: 'Quicksand', sans-serif !important;
 }
+
+#logout_header{
+  cursor: pointer;
+}
