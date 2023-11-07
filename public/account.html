@@ -66,8 +66,8 @@
                         </li>
                     </ul>
                     <ul class="navbar-nav me-end mb-2 mb-lg-0" id="navbarList">
-                        <li class="nav-item">
-                            <a class="nav-link active" onclick="logout()">Log out</a>
+                        <li class="nav-item" id="logout_header">
+                            <a class="nav-link active" onclick="logout()"><label>Log out</label></a>
                         </li>
                     </ul>
                     <div class="navimage d-flex align-items-center" id="signUpLogInImage">
@@ -360,11 +360,28 @@
     if(data==null){
         document.getElementById("login_footer").hidden= false;
         document.getElementById("logout_footer").hidden= true;
+        document.getElementById("logout_header").hidden= true;
         document.getElementById("register_footer").hidden= false;
     }else{
         document.getElementById("login_footer").hidden= true;
         document.getElementById("logout_footer").hidden= false;
+        document.getElementById("logout_header").hidden= false;
         document.getElementById("register_footer").hidden= true;
+    }
+
+    function logout() {
+        // Sign out from Firebase
+        firebase.auth().signOut()
+            .then(() => {
+                // Clear the session storage
+                sessionStorage.clear();
+
+                // Implement your logout logic here, such as redirecting
+                location.href = "index.html"; // Replace with your desired action
+            })
+            .catch(error => {
+                console.error("Error during sign-out:", error);
+            });
     }
 
     console.log(data);
