@@ -9,20 +9,6 @@ const firebaseConfig = {
     measurementId: "G-94L4SG8ZW0"
 };
 
-// aws key info needed to be passes here
-const AWS_ACCESS_KEY_ID= 'AKIAXKQEJUDLDKV45O7O';
-const AWS_SECRET_ACCESS_KEY= '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';
-const AWS_REGION= 'us-east-1';
-
-
-AWS.config.update({
-  accessKeyId: AWS_ACCESS_KEY_ID,
-  secretAccessKey: AWS_SECRET_ACCESS_KEY,
-  region: AWS_REGION
-});
-
-const s3 = new AWS.S3();
-
 document.addEventListener("DOMContentLoaded", event => {
     // initialize firebase
     // comment out the below line when deploying
